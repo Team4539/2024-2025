@@ -24,13 +24,13 @@ public class Swerve extends SubsystemBase {
     public SwerveModule[] mSwerveMods;
     public Pigeon2 gyro;
     
-    private CANSparkMax m_intake;
+    /* private CANSparkMax m_intake; TODO: ADD BACK */
 
     public Swerve() {
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
         gyro.configFactoryDefault();
         zeroGyro();
-        m_intake = new CANSparkMax(Constants.intakePort, MotorType.kBrushless);
+        /* m_intake = new CANSparkMax(Constants.intakePort, MotorType.kBrushless); TODO: ADD BACK */
         mSwerveMods = new SwerveModule[] {
             new SwerveModule(0, Constants.Swerve.Mod0.constants),
             new SwerveModule(1, Constants.Swerve.Mod1.constants),
@@ -130,7 +130,7 @@ public class Swerve extends SubsystemBase {
    * @param speed the desired speed
    */
     public void setIntake(double speed) {
-    m_intake.set(speed);
+    /* m_intake.set(speed); TODO: ADD BACK */
   }
     
     @Override

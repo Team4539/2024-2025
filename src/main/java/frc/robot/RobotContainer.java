@@ -10,6 +10,7 @@ import frc.robot.autos.balance;
 import frc.robot.commands.ResetPosition;
 import frc.robot.commands.drive.TeleopSwerve;
 import frc.robot.subsystems.Swerve;
+import frc.robot.commands.coDrive.setIntake;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -63,7 +64,11 @@ public class RobotContainer {
     private void configureButtonBindings() {
         /* Driver Buttons */
         final JoystickButton resetButton = new JoystickButton(driver, XboxController.Button.kX.value);
+        final JoystickButton intakeOut = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
+        final JoystickButton intakeIn = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
         resetButton.onTrue(new ResetPosition(s_Swerve));
+        intakeOut.whileTrue(new setIntake(Constants.intakeSpeed, s_Swerve));
+        intakeIn.whileTrue(new setIntake(-Constants.intakeSpeed, s_Swerve));
     }
 
     /**

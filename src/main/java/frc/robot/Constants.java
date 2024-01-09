@@ -19,7 +19,7 @@ public final class Constants {
     public static final double lowerArmMin = 100;
     public static final double upperArmMin = 100;
     public static final int intakePort = 4;
-    
+    public final static double intakeSpeed = 0.6;
     public static final class Swerve {
         public static final int pigeonID = 5;
         public static final boolean invertGyro = false; // Always ensure Gyro is CCW+ CW-

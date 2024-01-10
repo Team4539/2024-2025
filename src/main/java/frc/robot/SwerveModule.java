@@ -87,10 +87,19 @@ public class SwerveModule {
         angleEncoder.configAllSettings(Robot.ctreConfigs.swerveCanCoderConfig);
     }
 
-    private void configAngleMotor(){
+    private void configAngleMotor()
+    {
         mAngleMotor.configFactoryDefault();
         mAngleMotor.configAllSettings(Robot.ctreConfigs.swerveAngleFXConfig);
-        mAngleMotor.setInverted(Constants.Swerve.angleMotorInvert);
+        int id = mAngleMotor.getDeviceID();
+        if (id == 1 || id == 4)
+        {
+            mAngleMotor.setInverted(true);
+        }
+        else
+        {
+            mAngleMotor.setInverted(Constants.Swerve.angleMotorInvert);
+        }
         mAngleMotor.setNeutralMode(Constants.Swerve.angleNeutralMode);
         resetToAbsolute();
     }

@@ -94,6 +94,10 @@ public class SwerveModule {
         {
             mAngleMotor.setInverted(true);
         }
+        else if (mAngleMotor.getDeviceID() == 5)
+        {
+            mAngleMotor.setInverted(true);
+        }
         else
         {
             mAngleMotor.setInverted(Constants.Swerve.angleMotorInvert);
@@ -105,7 +109,11 @@ public class SwerveModule {
     private void configDriveMotor(){        
         mDriveMotor.configFactoryDefault();
         mDriveMotor.configAllSettings(Robot.ctreConfigs.swerveDriveFXConfig);
-        if (mDriveMotor.getDeviceID() == 6 || mDriveMotor.getDeviceID() == 3)
+        if (mDriveMotor.getDeviceID() == 6)
+        {
+            mDriveMotor.setInverted(true);
+        }
+        else if (mDriveMotor.getDeviceID()  == 3)
         {
             mDriveMotor.setInverted(true);
         }

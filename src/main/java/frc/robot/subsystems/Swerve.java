@@ -10,7 +10,7 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.sensors.Pigeon2;
-
+import frc.lib.custom.SamsUtils;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -138,6 +138,23 @@ public class Swerve extends SubsystemBase {
         swerveOdometry.update(getYaw(), getModulePositions());  
         SmartDashboard.putNumber("Yaw: ", getYaw().getDegrees());
         SmartDashboard.putNumber("Pitch", getPitch());
+        String test = SmartDashboard.getString("data", "null");
+        if (test != "null")
+        {
+            
+            String valX = SamsUtils.getval(test, "tagX");
+            String valY = SamsUtils.getval(test, "tagY");
+            double cameraX = getPose().getX();
+            double cameraY = getPose().getY(); // TODO: offset by where the camera is on the robot
+            double cameraZ = getYaw().getDegrees();
+            if (valX != null && valY != null)
+            {
+                double tagX = Double.parseDouble(valX);
+                double tagY = Double.parseDouble(valY);
+                double distance = SamsUtils.calculateDistance(tagX, tagY, cameraX, cameraY, cameraZ, 1.0);
+                SmartDashboard.putNumber("Distance from AprilTag", distance);
+            }
+        }
         for(SwerveModule mod : mSwerveMods){
             SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Cancoder", mod.getCanCoder().getDegrees());
             SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Integrated", mod.getPosition().angle.getDegrees());

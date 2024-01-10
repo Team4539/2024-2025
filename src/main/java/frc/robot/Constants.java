@@ -12,10 +12,20 @@ import frc.lib.util.SwerveModuleConstants;
 
 public final class Constants {
     public static final double stickDeadband = 0.1;
-        public static final double lowerArmMax = 181000;
+    public static final double lowerArmMax = 181000;
     public static final double upperArmMax = 335000;
-        public static final int intakePort = 0;
-    public final static double intakeSpeed = 0.6;
+    public static final int intakePort = 0;
+    public static final double intakeSpeed = 0.6;
+        /*
+    *  What is fx and fy?
+    *  They are calculated by calibrating a camera using opencv and a checkerboard
+    *  Look at my calibration script here: 
+    *  https://gist.github.com/sstock2005/b5691a735121f3d17032dc8ab17b1c57
+    */
+    /* Focal Length x and y */
+    
+    public static final double fx = 0;
+    public static final double fy = 0;
     public static final class Swerve {
         public static final int pigeonID = 13;
         public static final boolean invertGyro = false; // Always ensure Gyro is CCW+ CW-

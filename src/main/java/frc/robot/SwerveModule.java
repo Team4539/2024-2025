@@ -91,15 +91,7 @@ public class SwerveModule {
     {
         mAngleMotor.configFactoryDefault();
         mAngleMotor.configAllSettings(Robot.ctreConfigs.swerveAngleFXConfig);
-        int id = mAngleMotor.getDeviceID();
-        if (id == 1 || id == 4)
-        {
-            mAngleMotor.setInverted(true);
-        }
-        else
-        {
-            mAngleMotor.setInverted(Constants.Swerve.angleMotorInvert);
-        }
+        mAngleMotor.setInverted(Constants.Swerve.angleMotorInvert);
         mAngleMotor.setNeutralMode(Constants.Swerve.angleNeutralMode);
         resetToAbsolute();
     }

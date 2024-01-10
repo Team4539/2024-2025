@@ -105,14 +105,16 @@ public class SwerveModule {
     private void configDriveMotor(){        
         mDriveMotor.configFactoryDefault();
         mDriveMotor.configAllSettings(Robot.ctreConfigs.swerveDriveFXConfig);
-        if (mAngleMotor.getDeviceID() == 1)
+        if (mDriveMotor.getDeviceID() == 6 || mDriveMotor.getDeviceID() == 3)
         {
-            mAngleMotor.setInverted(true);
+            mDriveMotor.setInverted(true);
         }
         else
         {
-            mAngleMotor.setInverted(Constants.Swerve.driveMotorInvert);
+            mDriveMotor.setInverted(Constants.Swerve.driveMotorInvert);
         }
+        
+        
         mDriveMotor.setNeutralMode(Constants.Swerve.driveNeutralMode);
         mDriveMotor.setSelectedSensorPosition(0);
     }

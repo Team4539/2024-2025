@@ -21,7 +21,7 @@ public class SwerveModule {
 
     private TalonFX mAngleMotor;
     private TalonFX mDriveMotor;
-    private CANCoder angleEncoder;
+    private CANCoder mCanCoder;
 
     SimpleMotorFeedforward feedforward = new SimpleMotorFeedforward(Constants.Swerve.driveKS, Constants.Swerve.driveKV, Constants.Swerve.driveKA);
 
@@ -30,8 +30,8 @@ public class SwerveModule {
         this.angleOffset = moduleConstants.angleOffset;
         
         /* Angle Encoder Config */
-        angleEncoder = new CANCoder(moduleConstants.cancoderID);
-        configAngleEncoder();
+        mCanCoder = new CANCoder(moduleConstants.cancoderID);
+        configCanCoder();
 
         /* Angle Motor Config */
         mAngleMotor = new TalonFX(moduleConstants.angleMotorID);
@@ -74,7 +74,7 @@ public class SwerveModule {
     }
 
     public Rotation2d getCanCoder(){
-        return Rotation2d.fromDegrees(angleEncoder.getAbsolutePosition());
+        return Rotation2d.fromDegrees(mCanCoder.getAbsolutePosition());
     }
 
     public void resetToAbsolute(){
@@ -82,9 +82,16 @@ public class SwerveModule {
         mAngleMotor.setSelectedSensorPosition(absolutePosition);
     }
 
-    private void configAngleEncoder(){        
-        angleEncoder.configFactoryDefault();
-        angleEncoder.configAllSettings(Robot.ctreConfigs.swerveCanCoderConfig);
+    private void configCanCoder(){        
+       // mCanCoder.configFactoryDefault();
+        //mCanCoder.configAllSettings(Robot.ctreConfigs.swerveCanCoderConfig);
+       if (mCanCoder.getDeviceID() == 10){
+        mCanCoder.configSensorDirection(true);
+       }
+       else 
+       {
+        mCanCoder.configSensorDirection(false);
+       }
     }
 
     private void configAngleMotor(){
@@ -94,16 +101,16 @@ public class SwerveModule {
         {
             mAngleMotor.setInverted(true);
         }
-        else if (mAngleMotor.getDeviceID() == 5)
+       /*  else if (mAngleMotor.getDeviceID() == 5)
         {
             mAngleMotor.setInverted(true);
-        }
+        }*/
         else
         {
             mAngleMotor.setInverted(Constants.Swerve.angleMotorInvert);
         }
         mAngleMotor.setNeutralMode(Constants.Swerve.angleNeutralMode);
-        resetToAbsolute();
+        //resetToAbsolute();
     }
 
     private void configDriveMotor(){        
@@ -119,7 +126,7 @@ public class SwerveModule {
         }
         else
         {
-            mDriveMotor.setInverted(Constants.Swerve.driveMotorInvert);
+            //mDriveMotor.setInverted(Constants.Swerve.driveMotorInvert);
         }
         
         

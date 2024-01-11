@@ -15,6 +15,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.wpilibj.CAN;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -101,6 +102,7 @@ public class Swerve extends SubsystemBase {
     public SwerveModulePosition[] getModulePositions(){
         SwerveModulePosition[] positions = new SwerveModulePosition[4];
         for(SwerveModule mod : mSwerveMods){
+       
             positions[mod.moduleNumber] = mod.getPosition();
         }
         return positions;
@@ -138,11 +140,11 @@ public class Swerve extends SubsystemBase {
         swerveOdometry.update(getYaw(), getModulePositions());  
         SmartDashboard.putNumber("Yaw: ", getYaw().getDegrees());
         SmartDashboard.putNumber("Pitch", getPitch());
-        String test = SamsUtils.updatePI();
-        if (test != "null")
+        //String test = SamsUtils.updatePI();
+        //if (test != "null")
         {
             
-            String valX = SamsUtils.getval(test, "tagX");
+            /*String valX = SamsUtils.getval(test, "tagX");
             String valY = SamsUtils.getval(test, "tagY");
             double cameraX = getPose().getX();
             double cameraY = getPose().getY(); // TODO: offset by where the camera is on the robot
@@ -153,7 +155,7 @@ public class Swerve extends SubsystemBase {
                 double tagY = Double.parseDouble(valY);
                 double distance = SamsUtils.calculateDistance(tagX, tagY, cameraX, cameraY, cameraZ, 1.0);
                 SmartDashboard.putNumber("Distance from AprilTag", distance);
-            }
+            }*/
         }
         for(SwerveModule mod : mSwerveMods){
             SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Cancoder", mod.getCanCoder().getDegrees());

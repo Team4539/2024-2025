@@ -74,7 +74,14 @@ public class SwerveModule {
     }
 
     public Rotation2d getCanCoder(){
+        if (mCanCoder.getDeviceID() == 10)
+        {
+        return Rotation2d.fromDegrees(mCanCoder.getAbsolutePosition()*-1);
+        }
+        else 
+        {
         return Rotation2d.fromDegrees(mCanCoder.getAbsolutePosition());
+        }
     }
 
     public void resetToAbsolute(){
@@ -83,9 +90,9 @@ public class SwerveModule {
     }
 
     private void configCanCoder(){        
-       // mCanCoder.configFactoryDefault();
-        //mCanCoder.configAllSettings(Robot.ctreConfigs.swerveCanCoderConfig);
-       if (mCanCoder.getDeviceID() == 10){
+        mCanCoder.configFactoryDefault();
+        mCanCoder.configAllSettings(Robot.ctreConfigs.swerveCanCoderConfig);
+        if (mCanCoder.getDeviceID() == 10){
         mCanCoder.configSensorDirection(true);
        }
        else 
@@ -97,7 +104,7 @@ public class SwerveModule {
     private void configAngleMotor(){
         mAngleMotor.configFactoryDefault();
         mAngleMotor.configAllSettings(Robot.ctreConfigs.swerveAngleFXConfig);
-        if (mAngleMotor.getDeviceID() == 4)
+        /*if (mAngleMotor.getDeviceID() == 4)
         {
             mAngleMotor.setInverted(true);
         }
@@ -105,10 +112,10 @@ public class SwerveModule {
         {
             mAngleMotor.setInverted(true);
         }*/
-        else
+       /*  else
         {
             mAngleMotor.setInverted(Constants.Swerve.angleMotorInvert);
-        }
+        }*/
         mAngleMotor.setNeutralMode(Constants.Swerve.angleNeutralMode);
         //resetToAbsolute();
     }

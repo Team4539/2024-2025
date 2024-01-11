@@ -51,7 +51,7 @@ public class SamsUtils
    *
    * @return the contents of the get request, or null
    */
-    public static String updatePI()
+    /*public static String updatePI()
     {
         try
         {
@@ -81,7 +81,7 @@ public class SamsUtils
    * @param key The key for the desired variable.
    * @return The desired variable.
    */
-    public static <T> T getval(String jsonString, String key) {
+    /*public static <T> T getval(String jsonString, String key) {
         int keyIndex = jsonString.indexOf("\"" + key + "\":");
         if (keyIndex != -1) {
             int startIndex = jsonString.indexOf("\"", keyIndex + key.length() + 2) + 1;
@@ -103,5 +103,5 @@ public class SamsUtils
             }
         }
         return null;
-    }
+    }*/
 }

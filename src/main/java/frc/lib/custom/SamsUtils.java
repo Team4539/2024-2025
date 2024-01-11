@@ -1,5 +1,11 @@
 package frc.lib.custom;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import frc.robot.Constants;
 
 /**
@@ -38,6 +44,34 @@ public class SamsUtils
         double depth = cameraZ / (normalizedX / cameraX + normalizedY / cameraY + offset);
 
         return depth;
+    }
+
+    /**
+   * Sends GET Request to PI
+   *
+   * @return the contents of the get request, or null
+   */
+    public static String updatePI()
+    {
+        try
+        {
+            URL url = new URL(Constants.m_url);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer content = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) 
+            {
+                content.append(inputLine);
+            }
+            in.close();
+            return content.toString();
+        }
+        catch(IOException asException)
+        {
+            return "null";
+        }
     }
 
     /**

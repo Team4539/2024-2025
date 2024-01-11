@@ -16,6 +16,7 @@ public final class Constants {
     public static final double upperArmMax = 335000;
     public static final int intakePort = 0;
     public static final double intakeSpeed = 0.6;
+    public static final String m_url = "http://10.45.39.14/api";
         /*
     *  What is fx and fy?
     *  They are calculated by calibrating a camera using opencv and a checkerboard

@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.DoublePublisher;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -21,6 +24,9 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
+  DoublePublisher xPub;
+
+  DoublePublisher yPub;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.

@@ -138,7 +138,7 @@ public class Swerve extends SubsystemBase {
         swerveOdometry.update(getYaw(), getModulePositions());  
         SmartDashboard.putNumber("Yaw: ", getYaw().getDegrees());
         SmartDashboard.putNumber("Pitch", getPitch());
-        String test = SmartDashboard.getString("data", "null");
+        String test = SamsUtils.updatePI();
         if (test != "null")
         {
             

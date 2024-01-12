@@ -17,7 +17,9 @@ public final class Constants {
 
     public static final class Swerve {
         public static final int pigeonID = 13;
-
+        public static final int intakeID = 0;
+        public static final double intakeSpeed = 0.5;
+        
         public static final COTSTalonFXSwerveConstants chosenModule =
         COTSTalonFXSwerveConstants.SDS.MK4.CustomFalcon500(COTSTalonFXSwerveConstants.SDS.MK4.driveRatios.L2);
 

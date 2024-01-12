@@ -24,8 +24,6 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-
-  private TalonFX tempTalon = new TalonFX(3);
   
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -99,8 +97,5 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during test mode. */
   @Override
-  public void testPeriodic() 
-  {
-    tempTalon.set(1.0);
-  }
+  public void testPeriodic() {}
 }

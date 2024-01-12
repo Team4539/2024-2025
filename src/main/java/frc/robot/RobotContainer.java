@@ -1,16 +1,15 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.autos.balance;
-import frc.robot.commands.ResetPosition;
-import frc.robot.commands.drive.TeleopSwerve;
-import frc.robot.subsystems.Swerve;
-import frc.robot.commands.coDrive.setIntake;
+
+import frc.robot.autos.*;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -20,8 +19,7 @@ import frc.robot.commands.coDrive.setIntake;
  */
 public class RobotContainer {
     /* Controllers */
-    private final XboxController driver = new XboxController(0);
-    private final XboxController coDriver = new XboxController(1);
+    private final Joystick driver = new Joystick(0);
 
     /* Drive Controls */
     private final int translationAxis = XboxController.Axis.kLeftY.value;
@@ -29,30 +27,27 @@ public class RobotContainer {
     private final int rotationAxis = XboxController.Axis.kRightX.value;
 
     /* Driver Buttons */
+    private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
     private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
+
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
 
-    /* Auto List */
-    SendableChooser<Command> m_chooser = new SendableChooser<>();
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve, 
-                () -> driver.getRawAxis(translationAxis), 
-                () -> driver.getRawAxis(strafeAxis), 
-                () -> -driver.getRawAxis(rotationAxis), // possible fix for rotation
+                () -> -driver.getRawAxis(translationAxis), 
+                () -> -driver.getRawAxis(strafeAxis), 
+                () -> -driver.getRawAxis(rotationAxis), 
                 () -> robotCentric.getAsBoolean()
             )
         );
-        
+
         // Configure the button bindings
         configureButtonBindings();
-        SmartDashboard.putData("Auto Mode", m_chooser);
-        // To add a new option: The first string is whatever you want to call it, the second must be the exact name of the file without .path
-        m_chooser.setDefaultOption("Auto Balance", new balance(s_Swerve));
     }
 
     /**
@@ -63,12 +58,7 @@ public class RobotContainer {
      */
     private void configureButtonBindings() {
         /* Driver Buttons */
-        final JoystickButton resetButton = new JoystickButton(driver, XboxController.Button.kX.value);
-        final JoystickButton intakeOut = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
-        final JoystickButton intakeIn = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
-        resetButton.onTrue(new ResetPosition(s_Swerve));
-        intakeOut.whileTrue(new setIntake(Constants.intakeSpeed, s_Swerve));
-        intakeIn.whileTrue(new setIntake(-Constants.intakeSpeed, s_Swerve));
+        zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
     }
 
     /**
@@ -76,5 +66,8 @@ public class RobotContainer {
      *
      * @return the command to run in autonomous
      */
-    public Command getAutonomousCommand() { return m_chooser.getSelected(); }
+    public Command getAutonomousCommand() {
+        // An ExampleCommand will run in autonomous
+        return new exampleAuto(s_Swerve);
+    }
 }

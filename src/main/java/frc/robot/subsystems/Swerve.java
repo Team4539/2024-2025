@@ -24,7 +24,8 @@ public class Swerve extends SubsystemBase {
     public SwerveModule[] mSwerveMods;
     public Pigeon2 gyro;
     public TalonFX intake;
-    
+    public TalonFX shooter;
+
     public Swerve() {
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
         gyro.getConfigurator().apply(new Pigeon2Configuration());
@@ -40,6 +41,7 @@ public class Swerve extends SubsystemBase {
         swerveOdometry = new SwerveDriveOdometry(Constants.Swerve.swerveKinematics, getGyroYaw(), getModulePositions());
 
         intake = new TalonFX(Constants.Swerve.intakeID);
+        shooter = new TalonFX(Constants.Swerve.shooterID);
     }
 
     public void drive(Translation2d translation, double rotation, boolean fieldRelative, boolean isOpenLoop) {
@@ -62,6 +64,11 @@ public class Swerve extends SubsystemBase {
             mod.setDesiredState(swerveModuleStates[mod.moduleNumber], isOpenLoop);
         }
     }    
+
+    public void setShooter(double speed)
+    {
+        shooter.set(speed);
+    }
 
     public void setIntake(double speed)
     {

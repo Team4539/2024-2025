@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.autos.*;
 import frc.robot.commands.Swerve.TeleopSwerve;
 import frc.robot.commands.Swerve.setIntake;
+import frc.robot.commands.Swerve.setShooter;
 import frc.robot.subsystems.*;
 
 /**
@@ -33,6 +34,7 @@ public class RobotContainer {
     private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
     private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
     private final JoystickButton intakeButton = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
+    private final JoystickButton shooterButton = new JoystickButton(driver, XboxController.Axis.kRightTrigger.value);
 
     /* Codriver Buttons */
 
@@ -72,6 +74,7 @@ public class RobotContainer {
         /* Driver Buttons */
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         intakeButton.whileTrue(new setIntake(Constants.Swerve.intakeSpeed, s_Swerve));
+        shooterButton.whileTrue(new setShooter(driver.getRightTriggerAxis(), s_Swerve)); // getRightTriggerAxis() returns a double from 0.0 to 1.0 (non-negative speed)
     }
 
     /**

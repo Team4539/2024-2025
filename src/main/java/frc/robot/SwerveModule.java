@@ -10,7 +10,6 @@ import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.wpilibj.DriverStation;
 import frc.lib.math.Conversions;
 import frc.lib.util.SwerveModuleConstants;
 
@@ -47,12 +46,6 @@ public class SwerveModule {
         /* Drive Motor Config */
         mDriveMotor = new TalonFX(moduleConstants.driveMotorID);
         mDriveMotor.getConfigurator().apply(Robot.ctreConfigs.swerveDriveFXConfig);
-
-        /*if (moduleConstants.driveMotorID == 3) {
-            DriverStation.reportWarning("Module " + moduleNumber + " is being inverted!", false);
-            mDriveMotor.setInverted(true);
-        }*/
-
         mDriveMotor.getConfigurator().setPosition(0.0);
     }
 

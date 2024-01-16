@@ -32,9 +32,9 @@ public class RobotContainer {
 
     /* Driver Buttons */
     private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
-    private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
-    private final JoystickButton intakeButton = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
-    private final JoystickButton shooterButton = new JoystickButton(driver, XboxController.Axis.kRightTrigger.value);
+    private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kX.value);
+    private final JoystickButton intakeButton = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
+    private final JoystickButton shooterButton = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
 
     /* Codriver Buttons */
 
@@ -70,11 +70,12 @@ public class RobotContainer {
      * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
      * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
-    private void configureButtonBindings() {
+    private void configureButtonBindings() 
+    {
         /* Driver Buttons */
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         intakeButton.whileTrue(new setIntake(Constants.Swerve.intakeSpeed, s_Swerve));
-        shooterButton.whileTrue(new setShooter(driver.getRightTriggerAxis(), s_Swerve)); // getRightTriggerAxis() returns a double from 0.0 to 1.0 (non-negative speed)
+        shooterButton.whileTrue(new setShooter(Constants.Swerve.shooterSpeed, s_Swerve));
     }
 
     /**

@@ -11,6 +11,7 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import com.ctre.phoenix6.configs.Pigeon2Configuration;
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -23,8 +24,9 @@ public class Swerve extends SubsystemBase {
     public SwerveDriveOdometry swerveOdometry;
     public SwerveModule[] mSwerveMods;
     public Pigeon2 gyro;
-    public TalonFX intake;
+    public CANSparkMax intake;
     public TalonFX shooter;
+    public TalonFX shooterInverted;
 
     public Swerve() {
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
@@ -40,8 +42,10 @@ public class Swerve extends SubsystemBase {
 
         swerveOdometry = new SwerveDriveOdometry(Constants.Swerve.swerveKinematics, getGyroYaw(), getModulePositions());
 
-        intake = new TalonFX(Constants.Swerve.intakeID);
+        intake = new CANSparkMax(Constants.Swerve.intakeID, com.revrobotics.CANSparkLowLevel.MotorType.kBrushless);
         shooter = new TalonFX(Constants.Swerve.shooterID);
+        shooterInverted = new TalonFX(Constants.Swerve.shooterInvertedID);
+        shooterInverted.setInverted(true);
     }
 
     public void drive(Translation2d translation, double rotation, boolean fieldRelative, boolean isOpenLoop) {
@@ -68,6 +72,7 @@ public class Swerve extends SubsystemBase {
     public void setShooter(double speed)
     {
         shooter.set(speed);
+        shooterInverted.set(speed);
     }
 
     public void setIntake(double speed)

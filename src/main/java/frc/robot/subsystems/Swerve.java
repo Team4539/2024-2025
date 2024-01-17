@@ -12,6 +12,7 @@ import com.ctre.phoenix6.configs.Pigeon2Configuration;
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -74,6 +75,8 @@ public class Swerve extends SubsystemBase {
         shooter.set(speed);
         shooterInverted.set(speed);
     }
+    
+    public final ColorSensorV3 m_colorSensor = new ColorSensorV3(Constants.Swerve.i2cPort);
 
     public void setIntake(double speed)
     {

@@ -12,6 +12,8 @@ import com.ctre.phoenix6.configs.Pigeon2Configuration;
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.ColorMatch;
+import com.revrobotics.ColorMatchResult;
 import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.math.geometry.Pose2d;
@@ -19,6 +21,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Swerve extends SubsystemBase {
@@ -28,6 +31,8 @@ public class Swerve extends SubsystemBase {
     public CANSparkMax intake;
     public TalonFX shooter;
     public TalonFX shooterInverted;
+    public ColorSensorV3 m_colorSensor;
+    public ColorMatch m_colorMatcher;
 
     public Swerve() {
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
@@ -47,6 +52,10 @@ public class Swerve extends SubsystemBase {
         shooter = new TalonFX(Constants.Swerve.shooterID);
         shooterInverted = new TalonFX(Constants.Swerve.shooterInvertedID);
         shooterInverted.setInverted(true);
+        m_colorSensor = new ColorSensorV3(Constants.Swerve.i2cPort);
+        m_colorMatcher = new ColorMatch();
+        m_colorMatcher.addColorMatch(Constants.Swerve.kOrange);
+        m_colorMatcher.addColorMatch(Constants.Swerve.kNotOrange);
     }
 
     public void drive(Translation2d translation, double rotation, boolean fieldRelative, boolean isOpenLoop) {
@@ -70,13 +79,25 @@ public class Swerve extends SubsystemBase {
         }
     }    
 
+    public boolean isOrange()
+    {
+        Color detectedColor = m_colorSensor.getColor();
+        ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
+        if (match.color == Constants.Swerve.kOrange)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public void setShooter(double speed)
     {
         shooter.set(speed);
         shooterInverted.set(speed);
     }
-    
-    public final ColorSensorV3 m_colorSensor = new ColorSensorV3(Constants.Swerve.i2cPort);
 
     public void setIntake(double speed)
     {
@@ -141,6 +162,7 @@ public class Swerve extends SubsystemBase {
     @Override
     public void periodic(){
         swerveOdometry.update(getGyroYaw(), getModulePositions());
+        SmartDashboard.putBoolean("See Game Piece", isOrange());
         SmartDashboard.putNumber("Gyro Yaw", getGyroYaw().getDegrees());
         SmartDashboard.putNumber("Gyro Pitch", gyro.getRoll().getValueAsDouble());
         for(SwerveModule mod : mSwerveMods){

@@ -28,6 +28,8 @@ public final class Constants {
         public static final double intakeSpeed = 0.5;
         public static final double shooterSpeed = 0.5;
         public static final I2C.Port i2cPort = I2C.Port.kOnboard;
+        public static final Color kOrange = new Color(0.666, 0.277, 0.058);
+        public static final Color kNotOrange = new Color(0.653, 0.264, 0.251);
         public static final COTSTalonFXSwerveConstants chosenModule =
         COTSTalonFXSwerveConstants.SDS.MK4i.Falcon500(COTSTalonFXSwerveConstants.SDS.MK4i.driveRatios.L2);
 
@@ -137,10 +139,6 @@ public final class Constants {
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
-    public final color kOrange = new Color(0.666, 0.277, 0.058);
-    public final color kNotOrange = new Color(0.653, 0.264, 0.251);
-    Color detectedColor = m_colorSensor.getColor();
-    public final ColorMatch m_colorMatcher = new ColorMatch();
     }
 
     public static final class AutoConstants { //TODO: Need to be tuned

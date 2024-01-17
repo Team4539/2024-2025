@@ -31,8 +31,8 @@ public class Swerve extends SubsystemBase {
     public CANSparkMax intake;
     public TalonFX shooter;
     public TalonFX shooterInverted;
-    public ColorSensorV3 m_colorSensor;
-    public ColorMatch m_colorMatcher;
+    public static ColorSensorV3 m_colorSensor;
+    public static ColorMatch m_colorMatcher;
 
     public Swerve() {
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
@@ -79,7 +79,7 @@ public class Swerve extends SubsystemBase {
         }
     }    
 
-    public boolean isOrange()
+    public static boolean isOrange()
     {
         Color detectedColor = m_colorSensor.getColor();
         ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);

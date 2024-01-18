@@ -1,4 +1,6 @@
 package frc.robot.commands.Swerve;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeUnit;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Swerve;
 
@@ -11,6 +13,7 @@ public class setShooter extends Command
     {
         m_speed = speed;
         s_Swerve = subsystem;
+
     }
     
     @Override
@@ -18,6 +21,14 @@ public class setShooter extends Command
     @Override
     public void execute() 
     {
+        s_Swerve.setIntake(-m_speed);
+        try {
+            TimeUnit.SECONDS.wait(1);
+        } catch (InterruptedException e) {
+            
+            e.printStackTrace();
+        }
+        s_Swerve.setIntake(m_speed);
         s_Swerve.setShooter(m_speed);
     }
     @Override

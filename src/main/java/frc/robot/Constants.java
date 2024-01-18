@@ -22,7 +22,7 @@ public final class Constants {
 
     public static final class Swerve {
         public static final int pigeonID = 13;
-        public static final int intakeID = 0;
+        public static final int intakeID = 14;
         public static final int shooterID = 0;
         public static final int shooterInvertedID = 0;
         public static final double intakeSpeed = 0.5;

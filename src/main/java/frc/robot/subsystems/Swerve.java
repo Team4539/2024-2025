@@ -49,6 +49,7 @@ public class Swerve extends SubsystemBase {
         swerveOdometry = new SwerveDriveOdometry(Constants.Swerve.swerveKinematics, getGyroYaw(), getModulePositions());
 
         intake = new CANSparkMax(Constants.Swerve.intakeID, com.revrobotics.CANSparkLowLevel.MotorType.kBrushless);
+        intake.setInverted(true);
         shooter = new TalonFX(Constants.Swerve.shooterID);
         shooterInverted = new TalonFX(Constants.Swerve.shooterInvertedID);
         shooterInverted.setInverted(true);

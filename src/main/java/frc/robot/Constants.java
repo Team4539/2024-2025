@@ -25,7 +25,7 @@ public final class Constants {
         public static final int intakeID = 14;
         public static final int shooterID = 0;
         public static final int shooterInvertedID = 0;
-        public static final double intakeSpeed = -0.5;
+        public static final double intakeSpeed = 0.5;
         public static final double shooterSpeed = 0.5;
         public static final I2C.Port i2cPort = I2C.Port.kOnboard;
         public static final Color kOrange = new Color(0.666, 0.277, 0.058);

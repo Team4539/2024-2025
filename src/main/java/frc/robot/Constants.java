@@ -23,10 +23,11 @@ public final class Constants {
     public static final class Swerve {
         public static final int pigeonID = 13;
         public static final int intakeID = 14;
-        public static final int shooterID = 0;
-        public static final int shooterInvertedID = 0;
-        public static final double intakeSpeed = 0.5;
-        public static final double shooterSpeed = 0.5;
+        public static final int shooterID = 15;
+        public static final int shooterInvertedID = 16;
+        public static final double intakeSpeed = 1.0;
+        public static final double shooterSpeed = 1.0;
+        public static final double reverseIntakeSpeed = 1.0;
         public static final I2C.Port i2cPort = I2C.Port.kOnboard;
         public static final Color kOrange = new Color(0.666, 0.277, 0.058);
         public static final Color kNotOrange = new Color(0.653, 0.264, 0.251);

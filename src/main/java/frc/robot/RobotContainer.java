@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.autos.*;
 import frc.robot.commands.Swerve.TeleopSwerve;
 import frc.robot.commands.Swerve.setIntake;
+import frc.robot.commands.Swerve.setReverseIntake;
 import frc.robot.commands.Swerve.setShooter;
 import frc.robot.subsystems.*;
 
@@ -35,6 +36,7 @@ public class RobotContainer {
     private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kX.value);
     private final JoystickButton intakeButton = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
     private final JoystickButton shooterButton = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
+    private final JoystickButton reverseIntake = new JoystickButton(driver, XboxController.Button.kA.value);
 
     /* Codriver Buttons */
 
@@ -74,8 +76,9 @@ public class RobotContainer {
     {
         /* Driver Buttons */
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
-        intakeButton.whileTrue(new setIntake(Constants.Swerve.intakeSpeed, s_Swerve));
-        shooterButton.whileTrue(new setShooter(Constants.Swerve.shooterSpeed, s_Swerve));
+        intakeButton.whileTrue(new setIntake(1.0, s_Swerve));
+        shooterButton.whileTrue(new setShooter(0.25, 1.0, 0.5, 3.0, s_Swerve));
+        reverseIntake.whileTrue(new setReverseIntake(Constants.Swerve.reverseIntakeSpeed, s_Swerve));
     }
 
     /**

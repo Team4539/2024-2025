@@ -98,7 +98,7 @@ public class Swerve extends SubsystemBase {
     {
         shooter.set(speed);
         shooterInverted.set(speed);
-        intake.set(speed);
+        
     }
 
     public void setIntake(double speed)

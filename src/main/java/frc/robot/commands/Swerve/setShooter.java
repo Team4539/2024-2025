@@ -23,7 +23,7 @@ public class setShooter extends Command
     {
         s_Swerve.setIntake(-m_speed);
         try {
-            TimeUnit.SECONDS.wait(1);
+            TimeUnit.SECONDS.wait(500);
         } catch (InterruptedException e) {
             
             e.printStackTrace();
@@ -35,6 +35,7 @@ public class setShooter extends Command
     public void end(boolean interrupted) 
     {
         s_Swerve.setShooter(0.0);
+        s_Swerve.setIntake(0.0);
     }
     @Override
     public boolean isFinished() { return false; }

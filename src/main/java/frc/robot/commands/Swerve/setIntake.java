@@ -6,12 +6,11 @@ import frc.robot.subsystems.Swerve;
 public class setIntake extends Command 
 {
     private final Swerve s_Swerve;
-    private double m_sp
-    eed;
+    private final  double m_speed;
 
     public setIntake(double speed, Swerve subsystem) 
     {
-        m_speed = speed;
+        m_speed = Constants.Swerve.intakeSpeed;
         s_Swerve = subsystem;
     }
 
@@ -26,7 +25,7 @@ public class setIntake extends Command
             s_Swerve.setIntake(0);
         }
         else {
-        s_Swerve.setIntake(-.5);
+        s_Swerve.setIntake(m_speed);
     }
     }
     @Override

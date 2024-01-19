@@ -23,8 +23,8 @@ public final class Constants {
 
     public static final class Arm
     {
-        public static final int armID = 0;
-        public static final int armInvertedID = 0;
+        public static final int armID = 0; //TODO: set canID
+        public static final int armInvertedID = 0; //TODO: set canID
     }
 
     public static final class Swerve {

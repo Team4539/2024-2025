@@ -25,6 +25,8 @@ public final class Constants {
         public static final int intakeID = 14;
         public static final int shooterID = 15;
         public static final int shooterInvertedID = 16;
+        public static final int armID = 0;
+        public static final int armInvertedID = 0;
         public static final double intakeSpeed = 1.0;
         public static final double shooterSpeed = 1.0;
         public static final double reverseIntakeSpeed = 1.0;

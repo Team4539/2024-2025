@@ -31,6 +31,8 @@ public class Swerve extends SubsystemBase {
     public CANSparkMax intake;
     public TalonFX shooter;
     public TalonFX shooterInverted;
+    public TalonFX arm;
+    public TalonFX armInverted;
     public static ColorSensorV3 m_colorSensor;
     public static ColorMatch m_colorMatcher;
 
@@ -53,6 +55,9 @@ public class Swerve extends SubsystemBase {
         shooter = new TalonFX(Constants.Swerve.shooterID);
         shooterInverted = new TalonFX(Constants.Swerve.shooterInvertedID);
         shooterInverted.setInverted(true);
+        arm = new TalonFX(Constants.Swerve.armID);
+        armInverted = new TalonFX(Constants.Swerve.armInvertedID);
+        armInverted.setInverted(true);
         m_colorSensor = new ColorSensorV3(Constants.Swerve.i2cPort);
         m_colorMatcher = new ColorMatch();
         m_colorMatcher.addColorMatch(Constants.Swerve.kOrange);
@@ -105,6 +110,11 @@ public class Swerve extends SubsystemBase {
     {
         intake.set(speed);
     }
+    public void setArm(double speed)
+    {
+        intake.set(speed);
+    }
+
 
     /* Used by SwerveControllerCommand in Auto */
     public void setModuleStates(SwerveModuleState[] desiredStates) {
@@ -172,5 +182,10 @@ public class Swerve extends SubsystemBase {
             SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Angle", mod.getPosition().angle.getDegrees());
             SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Velocity", mod.getState().speedMetersPerSecond);    
         }
+    }
+
+    public void setArm(Translation2d times) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setArm'");
     }
 }

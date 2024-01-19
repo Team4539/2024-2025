@@ -13,6 +13,7 @@ import frc.robot.commands.Swerve.TeleopSwerve;
 import frc.robot.commands.Swerve.setIntake;
 import frc.robot.commands.Swerve.setReverseIntake;
 import frc.robot.commands.Swerve.setShooter;
+import frc.robot.commands.Swerve.setArm;
 import frc.robot.subsystems.*;
 
 /**
@@ -34,12 +35,13 @@ public class RobotContainer {
     /* Driver Buttons */
     private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
     private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kX.value);
-    private final JoystickButton intakeButton = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
-    private final JoystickButton shooterButton = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
-    private final JoystickButton reverseIntake = new JoystickButton(driver, XboxController.Button.kA.value);
+   
 
     /* Codriver Buttons */
-
+    private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
+    private final JoystickButton shooterButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
+    private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kA.value);
+    private final JoystickButton arm = new JoystickButton(coDriver, XboxController.Axis.kLeftY.value);
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
 
@@ -76,6 +78,9 @@ public class RobotContainer {
     {
         /* Driver Buttons */
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
+        
+        /*Co driver buttons*/ 
+        arm.whileTrue(new setArm(1.0, s_Swerve));
         intakeButton.whileTrue(new setIntake(1.0, s_Swerve));
         shooterButton.whileTrue(new setShooter(0.25, 1.0, 0.5, 3.0, s_Swerve));
         reverseIntake.whileTrue(new setReverseIntake(Constants.Swerve.reverseIntakeSpeed, s_Swerve));

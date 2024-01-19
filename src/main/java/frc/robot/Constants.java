@@ -1,5 +1,6 @@
 package frc.robot;
 
+import com.ctre.phoenix6.configs.SlotConfigs;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
@@ -19,6 +20,12 @@ import com.revrobotics.ColorSensorV3;
 
 public final class Constants {
     public static final double stickDeadband = 0.1;
+
+    public static final class Arm
+    {
+        public static final int armID = 0;
+        public static final int armInvertedID = 0;
+    }
 
     public static final class Swerve {
         public static final int pigeonID = 13;

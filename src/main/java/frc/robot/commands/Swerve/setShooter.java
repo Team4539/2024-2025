@@ -1,35 +1,26 @@
 package frc.robot.commands.Swerve;
-import java.util.concurrent.TimeUnit;
-
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.subsystems.Swerve;
 
 public class setShooter extends Command 
 {
-    private final Swerve s_Swerve;
-   
-    private double m_shooterSpeed;
+    private Swerve s_Swerve;
+    private double m_speed;
    
 
-    public setShooter(double intakeSpeed, double shooterSpeed, double intakeResetTime, double spoolShooterSpeed, Swerve subsystem) 
+    public setShooter(double speed, Swerve subsystem) 
     {
-       
-        m_shooterSpeed = shooterSpeed;
-      
+        m_speed = speed;
         s_Swerve = subsystem;
     }
     
     @Override
     public void initialize() {}
 
-  
     @Override
     public void execute() 
     {
-        s_Swerve.setShooter(m_shooterSpeed);
+        s_Swerve.setShooter(m_speed);
     }
 
     @Override
@@ -38,6 +29,7 @@ public class setShooter extends Command
         s_Swerve.setShooter(0.0);
     
     }
+    
     @Override
     public boolean isFinished() { return false; }
 

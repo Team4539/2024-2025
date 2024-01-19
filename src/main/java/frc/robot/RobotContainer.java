@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.autos.*;
 import frc.robot.commands.Swerve.TeleopSwerve;
 import frc.robot.commands.Swerve.setIntake;
-import frc.robot.commands.Swerve.setReverseIntake;
 import frc.robot.commands.Swerve.setShooter;
 import frc.robot.commands.Swerve.setArm;
 import frc.robot.subsystems.*;
@@ -42,14 +41,17 @@ public class RobotContainer {
     private final JoystickButton shooterButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
     private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kA.value);
     private final JoystickButton arm = new JoystickButton(coDriver, XboxController.Axis.kLeftY.value);
+
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
+    private final Arm m_arm = new Arm();
 
     /* Auto List */
     SendableChooser<Command> m_chooser = new SendableChooser<>();
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
+        m_arm.setDefaultCommand(new setArm(coDriver.getLeftY(), m_arm)); // this is how you get the left stick y value and use it
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve, 
@@ -80,10 +82,10 @@ public class RobotContainer {
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         
         /*Co driver buttons*/ 
-        arm.whileTrue(new setArm(1.0, s_Swerve));
+        arm.whileTrue(new setArm(1.0, m_arm));
         intakeButton.whileTrue(new setIntake(1.0, s_Swerve));
-        shooterButton.whileTrue(new setShooter(0.25, 1.0, 0.5, 3.0, s_Swerve));
-        reverseIntake.whileTrue(new setReverseIntake(Constants.Swerve.reverseIntakeSpeed, s_Swerve));
+        shooterButton.whileTrue(new setShooter(0.25, s_Swerve));
+        reverseIntake.whileTrue(new setIntake(-Constants.Swerve.reverseIntakeSpeed, s_Swerve));
     }
 
     /**

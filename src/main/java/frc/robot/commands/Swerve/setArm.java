@@ -10,6 +10,7 @@ public class setArm extends Command
 
     public setArm(double speed, Arm subsystem) 
     {
+        addRequirements(subsystem);
         m_speed = speed;
         m_arm = subsystem;
     }

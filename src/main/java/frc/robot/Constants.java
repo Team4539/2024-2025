@@ -36,7 +36,7 @@ public final class Constants {
         public static final int armInvertedID = 18;
         public static final double intakeSpeed = 0.5;
         public static final double shooterSpeed = 1.0;
-        public static final double reverseIntakeSpeed = -0.5;
+        public static final double reverseIntakeSpeed = 1.0;
         public static final I2C.Port i2cPort = I2C.Port.kOnboard;
         public static final Color kOrange = new Color(0.666, 0.277, 0.058);
         public static final Color kNotOrange = new Color(0.653, 0.264, 0.251);

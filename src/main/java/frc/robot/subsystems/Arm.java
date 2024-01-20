@@ -17,6 +17,7 @@ public class Arm extends SubsystemBase
         arm = new TalonFX(Constants.Arm.armID);
         armInverted = new TalonFX(Constants.Arm.armInvertedID);
         armInverted.setInverted(true);
+        arm.setInverted(false);
         arm.setNeutralMode(NeutralModeValue.Brake);
         armInverted.setNeutralMode(NeutralModeValue.Brake);
     }
@@ -46,5 +47,10 @@ public class Arm extends SubsystemBase
     public double getEncoder()
     {
         return arm.getRotorPosition().getValueAsDouble();
+    }
+
+    public void setDefaultCommand(frc.robot.commands.Swerve.setArm setArm, Arm m_arm) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDefaultCommand'");
     }
 }

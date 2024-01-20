@@ -55,8 +55,6 @@ public class RobotContainer {
     public RobotContainer() {
         m_arm.setDefaultCommand(
             new setArm(coDriver.getLeftY(), m_arm)); // this is how you get the left stick y value and use it
-        //m_armdown.setDefaultCommand(
-            //new setArmdown(coDriver.getLeftY(), m_armdown)); // this is how you get the left stick y value and use it
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve, 

@@ -57,7 +57,6 @@ public class Swerve extends SubsystemBase {
         shooterInverted.setInverted(true);
         arm = new TalonFX(Constants.Swerve.armID);
         armInverted = new TalonFX(Constants.Swerve.armInvertedID);
-        //armInverted.setInverted(true);
         m_colorSensor = new ColorSensorV3(Constants.Swerve.i2cPort);
         m_colorMatcher = new ColorMatch();
         m_colorMatcher.addColorMatch(Constants.Swerve.kOrange);

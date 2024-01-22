@@ -1,14 +1,19 @@
 package frc.robot.commands.Swerve;
 
+import java.util.function.DoubleSupplier;
+
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.subsystems.Arm;
 
 public class setArm extends Command 
 {
     private final Arm m_arm;
-    private final  double m_speed;
+    private double speedAxis;
+    private final DoubleSupplier m_speed;
 
-    public setArm(double speed, Arm subsystem) 
+    public setArm(DoubleSupplier speed, Arm subsystem) 
     {
         addRequirements(subsystem);
         m_speed = speed;
@@ -21,14 +26,15 @@ public class setArm extends Command
     @Override
     public void execute() 
     {
-        m_arm.setArm(m_speed);
+        speedAxis = MathUtil.applyDeadband(m_speed.getAsDouble(), Constants.stickDeadband);
+        m_arm.setArm(speedAxis);
     }
 
-    @Override
-    public void end(boolean interrupted) 
-    {
-        m_arm.setArm(m_speed);
-    }
+    // @Override
+    // public void end(boolean interrupted) 
+    // {
+    //     m_arm.setArm(m_speed);
+    // }
 
     @Override
     public boolean isFinished() { return false; }

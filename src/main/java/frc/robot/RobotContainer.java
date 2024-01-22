@@ -31,6 +31,9 @@ public class RobotContainer {
     private final int strafeAxis = XboxController.Axis.kLeftX.value;
     private final int rotationAxis = XboxController.Axis.kRightX.value;
 
+    /* coDriver Controls */
+    private final int armAxis = XboxController.Axis.kLeftY.value;
+
     /* Driver Buttons */
     private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
     private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kX.value);
@@ -40,8 +43,6 @@ public class RobotContainer {
     private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
     private final JoystickButton shooterButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
     private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kY.value);
-    private final JoystickButton arm = new JoystickButton(coDriver, XboxController.Button.kA.value);
-    private final JoystickButton armdown = new JoystickButton(coDriver, XboxController.Button.kB.value);
     
 
     /* Subsystems */
@@ -54,7 +55,7 @@ public class RobotContainer {
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
         m_arm.setDefaultCommand(
-            new setArm(coDriver.getLeftY(), m_arm)); // this is how you get the left stick y value and use it
+            new setArm(() -> coDriver.getRawAxis(armAxis), m_arm)); // this is how you get the left stick y value and use it
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve, 
@@ -85,8 +86,7 @@ public class RobotContainer {
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
         
         /*Co driver buttons*/ 
-        arm.whileTrue(new setArm(0.2, m_arm));
-        armdown.whileTrue(new setArm(-.2, m_arm));
+
         intakeButton.whileTrue(new setIntake(Constants.Swerve.intakeSpeed, s_Swerve));
         shooterButton.whileTrue(new setShooter(Constants.Swerve.shooterSpeed, s_Swerve));
         reverseIntake.whileTrue(new setIntake(Constants.Swerve.reverseIntakeSpeed, s_Swerve));

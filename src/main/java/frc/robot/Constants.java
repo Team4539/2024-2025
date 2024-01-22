@@ -4,6 +4,9 @@ import com.ctre.phoenix6.configs.SlotConfigs;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
+import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
+import com.pathplanner.lib.util.PIDConstants;
+import com.pathplanner.lib.util.ReplanningConfig;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -150,6 +153,17 @@ public final class Constants {
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
     }
+
+    /* Path Planner Constants */
+    public static HolonomicPathFollowerConfig swervePathFollowerConfig = new HolonomicPathFollowerConfig( 
+        // TODO: maybe measure this?
+        // HolonomicPathFollowerConfig, this should likely live in your Constants class
+        new PIDConstants(Constants.Swerve.driveKP, Constants.Swerve.driveKI, Constants.Swerve.driveKD), // Translation PID constants
+        new PIDConstants(Constants.Swerve.angleKP, Constants.Swerve.angleKI, Constants.Swerve.angleKD), // Rotation PID constants
+        Constants.Swerve.maxSpeed, // Max module speed, in m/s
+        (Constants.Swerve.trackWidth / 2), // Drive base radius in meters. Distance from robot center to furthest module. 
+        new ReplanningConfig() // Default path replanning config. See the API for the options here
+        );
 
     public static final class AutoConstants { //TODO: Need to be tuned
         public static final double kMaxSpeedMetersPerSecond = 3;

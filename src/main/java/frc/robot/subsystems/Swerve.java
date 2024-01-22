@@ -4,6 +4,7 @@ import frc.robot.SwerveModule;
 import frc.robot.Constants;
 
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.math.kinematics.Kinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
@@ -11,6 +12,10 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import com.ctre.phoenix6.configs.Pigeon2Configuration;
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
+import com.pathplanner.lib.util.PIDConstants;
+import com.pathplanner.lib.util.ReplanningConfig;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
@@ -20,8 +25,10 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Swerve extends SubsystemBase {
@@ -35,6 +42,7 @@ public class Swerve extends SubsystemBase {
     public TalonFX armInverted;
     public static ColorSensorV3 m_colorSensor;
     public static ColorMatch m_colorMatcher;
+    private ChassisSpeeds m_speeds;
 
     public Swerve() {
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
@@ -61,6 +69,38 @@ public class Swerve extends SubsystemBase {
         m_colorMatcher = new ColorMatch();
         m_colorMatcher.addColorMatch(Constants.Swerve.kOrange);
         m_colorMatcher.addColorMatch(Constants.Swerve.kNotOrange);
+
+        // Configure AutoBuilder last
+        AutoBuilder.configureHolonomic(
+                this::getPose, // Robot pose supplier
+                this::setPose, // Method to reset odometry (will be called if your auto has a starting pose)
+                this::getCurrentSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
+                this::driveRobotCentric, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
+                Constants.swervePathFollowerConfig,
+                () -> {
+                    // Boolean supplier that controls when the path will be mirrored for the red alliance
+                    // This will flip the path being followed to the red side of the field.
+                    // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
+
+                    var alliance = DriverStation.getAlliance();
+                    if (alliance.isPresent()) {
+                        return alliance.get() == DriverStation.Alliance.Red;
+                    }
+                    return false;
+                },
+                this // Reference to this subsystem to set requirements
+        );
+    }
+
+    public ChassisSpeeds getCurrentSpeeds()
+    {
+        SwerveModuleState[] states = new SwerveModuleState[mSwerveMods.length];
+
+        for (int i = 0; i < mSwerveMods.length; i++) {
+            states[i] = mSwerveMods[i].getState();
+        }
+
+        return Constants.Swerve.swerveKinematics.toChassisSpeeds(states);
     }
 
     public void drive(Translation2d translation, double rotation, boolean fieldRelative, boolean isOpenLoop) {
@@ -82,7 +122,17 @@ public class Swerve extends SubsystemBase {
         for(SwerveModule mod : mSwerveMods){
             mod.setDesiredState(swerveModuleStates[mod.moduleNumber], isOpenLoop);
         }
-    }    
+    }
+
+    public void driveRobotCentric(ChassisSpeeds input) 
+    {
+        SwerveModuleState[] swerveModuleStates = Constants.Swerve.swerveKinematics.toSwerveModuleStates(input);
+        SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, Constants.Swerve.maxSpeed);
+
+        for(SwerveModule mod : mSwerveMods){
+            mod.setDesiredState(swerveModuleStates[mod.moduleNumber], false);
+        }
+    }
 
     public static boolean isOrange()
     {
@@ -109,6 +159,7 @@ public class Swerve extends SubsystemBase {
     {
         intake.set(speed);
     }
+
     public void setArm(double speed)
     {
         arm.set(speed);
@@ -170,7 +221,7 @@ public class Swerve extends SubsystemBase {
             mod.resetToAbsolute();
         }
     }
-
+    
     @Override
     public void periodic(){
         swerveOdometry.update(getGyroYaw(), getModulePositions());
@@ -182,10 +233,5 @@ public class Swerve extends SubsystemBase {
             SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Angle", mod.getPosition().angle.getDegrees());
             SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Velocity", mod.getState().speedMetersPerSecond);    
         }
-    }
-
-    public void setArm(Translation2d times) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setArm'");
     }
 }

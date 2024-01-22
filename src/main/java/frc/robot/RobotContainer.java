@@ -1,5 +1,10 @@
 package frc.robot;
 
+import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.commands.PathPlannerAuto;
+
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.GenericHID;
 //import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -71,7 +76,10 @@ public class RobotContainer {
 
         // Configure Autonomous
         SmartDashboard.putData("Autonomous", m_chooser);
-        m_chooser.setDefaultOption("Example Auto", new exampleAuto(s_Swerve));
+
+        NamedCommands.registerCommand("PrintComplete", new InstantCommand(() -> DriverStation.reportWarning("Auto Complete", false)));
+
+        m_chooser.setDefaultOption("Example Auto", new PathPlannerAuto("Example Auto"));
     }
 
     /**

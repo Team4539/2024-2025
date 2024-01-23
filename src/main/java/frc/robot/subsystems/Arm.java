@@ -49,8 +49,8 @@ public class Arm extends SubsystemBase
             else if (-arm.getRotorPosition().getValueAsDouble() < Constants.Arm.armMin)
             {
                 // run inverted to push it out at minimum power
-                arm.set(-0.5);
-                armInverted.set(-0.5);
+                arm.set(-0.1);
+                armInverted.set(-0.1);
             }
         }
         // if speed is zero

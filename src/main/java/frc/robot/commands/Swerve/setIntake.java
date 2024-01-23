@@ -1,4 +1,5 @@
 package frc.robot.commands.Swerve;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.subsystems.Swerve;
@@ -6,32 +7,38 @@ import frc.robot.subsystems.Swerve;
 public class setIntake extends Command 
 {
     private final Swerve s_Swerve;
-    private final  double m_speed;
+    private final double m_speed;
 
     public setIntake(double speed, Swerve subsystem) 
     {
-        m_speed = Constants.Swerve.intakeSpeed;
+        m_speed = speed;
         s_Swerve = subsystem;
     }
 
     @Override
     public void initialize() {}
+
     @Override
     public void execute() 
     {
-
-        if (frc.robot.subsystems.Swerve.isOrange() == true) {
+        if (s_Swerve.isOrange()) 
+        {
+            SmartDashboard.putBoolean("See Game Piece", true);
             s_Swerve.setIntake(0);
         }
-        else {
-        s_Swerve.setIntake(m_speed);
-    }
+        else 
+        {
+            SmartDashboard.putBoolean("See Game Piece", false);
+            s_Swerve.setIntake(m_speed);
+        }
     }
     @Override
     public void end(boolean interrupted) 
     {
+        SmartDashboard.putBoolean("See Game Piece", false);
         s_Swerve.setIntake(0.0);
     }
+    
     @Override
     public boolean isFinished() { return false; }
 

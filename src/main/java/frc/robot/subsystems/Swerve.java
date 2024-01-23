@@ -134,7 +134,7 @@ public class Swerve extends SubsystemBase {
         }
     }
 
-    public static boolean isOrange()
+    public boolean isOrange()
     {
         Color detectedColor = m_colorSensor.getColor();
         ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
@@ -227,13 +227,12 @@ public class Swerve extends SubsystemBase {
     @Override
     public void periodic(){
         swerveOdometry.update(getGyroYaw(), getModulePositions());
-        SmartDashboard.putBoolean("See Game Piece", isOrange());
-        SmartDashboard.putNumber("Gyro Yaw", getGyroYaw().getDegrees());
+       /*  SmartDashboard.putNumber("Gyro Yaw", getGyroYaw().getDegrees());
         SmartDashboard.putNumber("Gyro Pitch", gyro.getRoll().getValueAsDouble());
         for(SwerveModule mod : mSwerveMods){
             SmartDashboard.putNumber("Mod " + mod.moduleNumber + " CANcoder", mod.getCANcoder().getDegrees());
             SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Angle", mod.getPosition().angle.getDegrees());
             SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Velocity", mod.getState().speedMetersPerSecond);    
-        }
+        }*/
     }
 }

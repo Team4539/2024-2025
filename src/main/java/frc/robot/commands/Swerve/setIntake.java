@@ -21,20 +21,13 @@ public class setIntake extends Command
     @Override
     public void execute() 
     {
-        if (m_speed < 0)
+        if (!s_Swerve.isOrange() || m_speed < 0) 
         {
             s_Swerve.setIntake(m_speed);
         }
-        else
+        else 
         {
-            if (!s_Swerve.isOrange()) 
-            {
-                s_Swerve.setIntake(m_speed);
-            }
-            else 
-            {
-                s_Swerve.setIntake(0);
-            }
+            s_Swerve.setIntake(0);
         }
     }
     @Override

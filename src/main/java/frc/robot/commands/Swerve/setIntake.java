@@ -19,7 +19,6 @@ public class setIntake extends Command
     @Override
     public void execute() 
     {
-        s_Swerve.setIntake(m_speed);
 
         if (frc.robot.subsystems.Swerve.isOrange() == true) {
             s_Swerve.setIntake(0);

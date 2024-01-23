@@ -140,6 +140,8 @@ public class Swerve extends SubsystemBase {
         ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
         if (match.color == Constants.Swerve.kOrange)
         {
+            //String RGB = "(" + detectedColor.red + ", " + detectedColor.green + ", " + detectedColor.blue + ")";
+            //SmartDashboard.putString("RGB", RGB);
             return true;
         }
         else

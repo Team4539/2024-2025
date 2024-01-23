@@ -42,7 +42,7 @@ public class Swerve extends SubsystemBase {
     public TalonFX armInverted;
     public static ColorSensorV3 m_colorSensor;
     public static ColorMatch m_colorMatcher;
-    private ChassisSpeeds m_speeds;
+    public boolean m_override;
 
     public Swerve() {
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
@@ -69,7 +69,7 @@ public class Swerve extends SubsystemBase {
         m_colorMatcher = new ColorMatch();
         m_colorMatcher.addColorMatch(Constants.Swerve.kOrange);
         m_colorMatcher.addColorMatch(Constants.Swerve.kNotOrange);
-
+        m_override = false;
         // Configure AutoBuilder last
         AutoBuilder.configureHolonomic(
                 this::getPose, // Robot pose supplier
@@ -136,6 +136,7 @@ public class Swerve extends SubsystemBase {
 
     public boolean isOrange()
     {
+        if (m_override){return false;}
         Color detectedColor = m_colorSensor.getColor();
         ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
         if (match.color == Constants.Swerve.kOrange)
@@ -227,6 +228,8 @@ public class Swerve extends SubsystemBase {
     @Override
     public void periodic(){
         swerveOdometry.update(getGyroYaw(), getModulePositions());
+        SmartDashboard.putBoolean("See Game Piece", isOrange());
+        SmartDashboard.putNumber("Intake Speed", intake.get());
        /*  SmartDashboard.putNumber("Gyro Yaw", getGyroYaw().getDegrees());
         SmartDashboard.putNumber("Gyro Pitch", gyro.getRoll().getValueAsDouble());
         for(SwerveModule mod : mSwerveMods){

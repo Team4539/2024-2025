@@ -15,7 +15,10 @@ public class setShooter extends Command
     }
     
     @Override
-    public void initialize() {}
+    public void initialize() 
+    {
+        s_Swerve.m_override = true;
+    }
 
     @Override
     public void execute() 
@@ -27,7 +30,7 @@ public class setShooter extends Command
     public void end(boolean interrupted) 
     {
         s_Swerve.setShooter(0.0);
-    
+        s_Swerve.m_override = false;
     }
     
     @Override

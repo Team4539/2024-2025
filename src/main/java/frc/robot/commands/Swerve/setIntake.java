@@ -16,26 +16,32 @@ public class setIntake extends Command
     }
 
     @Override
-    public void initialize() {}
+    public void initialize() {  }
 
     @Override
     public void execute() 
     {
-        if (s_Swerve.isOrange()) 
+        if (m_speed < 0)
         {
-            SmartDashboard.putBoolean("See Game Piece", true);
-            s_Swerve.setIntake(0);
-        }
-        else 
-        {
-            SmartDashboard.putBoolean("See Game Piece", false);
             s_Swerve.setIntake(m_speed);
+        }
+        else
+        {
+            if (!s_Swerve.isOrange()) 
+            {
+                s_Swerve.setIntake(m_speed);
+            }
+            else 
+            {
+                s_Swerve.setIntake(0);
+            }
         }
     }
     @Override
     public void end(boolean interrupted) 
     {
         SmartDashboard.putBoolean("See Game Piece", false);
+        SmartDashboard.putNumber("Intake Speed", s_Swerve.intake.get());
         s_Swerve.setIntake(0.0);
     }
     

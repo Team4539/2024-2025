@@ -97,7 +97,7 @@ public class RobotContainer {
 
         intakeButton.whileTrue(new setIntake(Constants.Swerve.intakeSpeed, s_Swerve));
         shooterButton.whileTrue(new setShooter(Constants.Swerve.shooterSpeed, s_Swerve));
-        reverseIntake.whileTrue(new setIntake(Constants.Swerve.reverseIntakeSpeed, s_Swerve));
+        reverseIntake.whileTrue(new setIntake(Constants.Swerve.intakeSpeed*-1, s_Swerve));
     }
 
     /**

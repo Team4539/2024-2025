@@ -26,7 +26,8 @@ import frc.robot.subsystems.*;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
-public class RobotContainer {
+public class RobotContainer 
+{
     /* Controllers */
     private final XboxController driver = new XboxController(0);
     private final XboxController coDriver = new XboxController(1);
@@ -76,10 +77,11 @@ public class RobotContainer {
 
         // Configure Autonomous
         SmartDashboard.putData("Autonomous", m_chooser);
+        
+        NamedCommands.registerCommand("resetGyro", new InstantCommand(() -> s_Swerve.zeroHeading()));
+        NamedCommands.registerCommand("print", new InstantCommand(() -> DriverStation.reportWarning("Auto Complete", false)));
 
-        NamedCommands.registerCommand("PrintComplete", new InstantCommand(() -> DriverStation.reportWarning("Auto Complete", false)));
-
-        m_chooser.setDefaultOption("Example Auto", new PathPlannerAuto("Example Auto"));
+        m_chooser.setDefaultOption("Drive 1 Meter", new PathPlannerAuto("Straight Auto"));
     }
 
     /**
@@ -97,7 +99,7 @@ public class RobotContainer {
 
         intakeButton.whileTrue(new setIntake(Constants.Swerve.intakeSpeed, s_Swerve));
         shooterButton.whileTrue(new setShooter(Constants.Swerve.shooterSpeed, s_Swerve));
-        reverseIntake.whileTrue(new setIntake(-Constants.Swerve.intakeSpeed, s_Swerve));
+        reverseIntake.whileTrue(new setIntake((-Constants.Swerve.intakeSpeed + 0.25), s_Swerve));
     }
 
     /**

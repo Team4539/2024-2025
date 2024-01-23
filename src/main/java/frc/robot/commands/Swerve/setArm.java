@@ -30,12 +30,6 @@ public class setArm extends Command
         m_arm.setArm(speedAxis);
     }
 
-    // @Override
-    // public void end(boolean interrupted) 
-    // {
-    //     m_arm.setArm(m_speed);
-    // }
-
     @Override
     public boolean isFinished() { return false; }
 

@@ -25,7 +25,7 @@ public class Arm extends SubsystemBase
     @Override
     public void periodic() 
     {
-        SmartDashboard.putNumber("Arm Encoder", arm.getRotorPosition().getValueAsDouble());
+        SmartDashboard.putNumber("Arm Encoder", -arm.getRotorPosition().getValueAsDouble());
         arm.feed();
     }
 
@@ -34,8 +34,32 @@ public class Arm extends SubsystemBase
 
     public void setArm(double speed)
     {
-        arm.set(speed);
-        armInverted.set(speed);
+        // if speed is not zero
+        if (speed != 0)
+        {
+            // if rotations is greater than minimum
+            if (-arm.getRotorPosition().getValueAsDouble() > Constants.Arm.armMin)
+            {
+                // run normal
+                arm.set(speed);
+                armInverted.set(speed);
+            }
+
+            // if rotations is less than miminum
+            else if (-arm.getRotorPosition().getValueAsDouble() < Constants.Arm.armMin)
+            {
+                // run inverted to push it out at minimum power
+                arm.set(-0.5);
+                armInverted.set(-0.5);
+            }
+        }
+        // if speed is zero
+        else
+        {
+            // set zero
+            arm.set(0);
+            armInverted.set(0);
+        }
     }
 
     public void resetEncoder()
@@ -46,11 +70,6 @@ public class Arm extends SubsystemBase
     
     public double getEncoder()
     {
-        return arm.getRotorPosition().getValueAsDouble();
-    }
-
-    public void setDefaultCommand(frc.robot.commands.Swerve.setArm setArm, Arm m_arm) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setDefaultCommand'");
+        return -arm.getRotorPosition().getValueAsDouble();
     }
 }

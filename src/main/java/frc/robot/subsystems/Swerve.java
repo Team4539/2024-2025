@@ -70,6 +70,7 @@ public class Swerve extends SubsystemBase {
         m_colorMatcher.addColorMatch(Constants.Swerve.kOrange);
         m_colorMatcher.addColorMatch(Constants.Swerve.kNotOrange);
         m_override = false;
+
         // Configure AutoBuilder last
         AutoBuilder.configureHolonomic(
                 this::getPose, // Robot pose supplier
@@ -228,8 +229,9 @@ public class Swerve extends SubsystemBase {
     @Override
     public void periodic(){
         swerveOdometry.update(getGyroYaw(), getModulePositions());
-        SmartDashboard.putBoolean("See Game Piece", isOrange());
-        SmartDashboard.putNumber("Intake Speed", intake.get());
+        // SmartDashboard.putBoolean("See Game Piece", isOrange());
+        SmartDashboard.putNumber("Gyro Yaw", getGyroYaw().getDegrees());
+        SmartDashboard.putNumber("Gyro Pitch", gyro.getRoll().getValueAsDouble());
        /*  SmartDashboard.putNumber("Gyro Yaw", getGyroYaw().getDegrees());
         SmartDashboard.putNumber("Gyro Pitch", gyro.getRoll().getValueAsDouble());
         for(SwerveModule mod : mSwerveMods){

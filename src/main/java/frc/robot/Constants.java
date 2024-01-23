@@ -26,8 +26,9 @@ public final class Constants {
 
     public static final class Arm
     {
-        public static final int armID = 17; //TODO: set canID
-        public static final int armInvertedID = 18; //TODO: set canID
+        public static final int armID = 17;
+        public static final int armInvertedID = 18;
+        public static final double armMin = -0.5;
     }
 
     public static final class Swerve {

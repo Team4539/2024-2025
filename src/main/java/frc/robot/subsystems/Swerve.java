@@ -135,11 +135,11 @@ public class Swerve extends SubsystemBase {
         }
     }
 
-    public boolean isOrange()
+     /*public boolean isOrange()
     {
         if (m_override){return false;}
         Color detectedColor = m_colorSensor.getColor();
-        ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
+         ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
         if (match.color == Constants.Swerve.kOrange)
         {
             //String RGB = "(" + detectedColor.red + ", " + detectedColor.green + ", " + detectedColor.blue + ")";
@@ -150,7 +150,7 @@ public class Swerve extends SubsystemBase {
         {
             return false;
         }
-    }
+    }*/
 
     public void setShooter(double speed)
     {

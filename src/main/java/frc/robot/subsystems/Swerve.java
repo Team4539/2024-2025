@@ -35,7 +35,7 @@ public class Swerve extends SubsystemBase {
     public SwerveDriveOdometry swerveOdometry;
     public SwerveModule[] mSwerveMods;
     public Pigeon2 gyro;
-    public CANSparkMax intake;
+    public TalonFX intake;
     public TalonFX shooter;
     public TalonFX shooterInverted;
     public TalonFX arm;
@@ -58,7 +58,7 @@ public class Swerve extends SubsystemBase {
 
         swerveOdometry = new SwerveDriveOdometry(Constants.Swerve.swerveKinematics, getGyroYaw(), getModulePositions());
 
-        intake = new CANSparkMax(Constants.Swerve.intakeID, com.revrobotics.CANSparkLowLevel.MotorType.kBrushless);
+        intake = new TalonFX(Constants.Swerve.intakeID);
         intake.setInverted(true);
         shooter = new TalonFX(Constants.Swerve.shooterID);
         shooterInverted = new TalonFX(Constants.Swerve.shooterInvertedID);

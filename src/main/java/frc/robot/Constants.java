@@ -31,6 +31,12 @@ public final class Constants {
         public static final double armMin = -0.5;
     }
 
+    public static final class PI
+    {
+        public static final String IP = "10.45.39.108";
+        public static final String Port = "5000";
+    }
+
     public static final class Swerve {
         public static final int pigeonID = 13;
         public static final int intakeID = 14;

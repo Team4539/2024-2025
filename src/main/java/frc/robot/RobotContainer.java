@@ -49,11 +49,12 @@ public class RobotContainer
     private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
     private final JoystickButton shooterButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
     private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kY.value);
-    
+    private final JoystickButton debugButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
 
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
     private final Arm m_arm = new Arm();
+    private final Rasberry m_pi = new Rasberry();
 
     /* Auto List */
     SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -77,7 +78,8 @@ public class RobotContainer
 
         // Configure Autonomous
         SmartDashboard.putData("Autonomous", m_chooser);
-        
+        SmartDashboard.putBoolean("PI Connected", false);
+
         NamedCommands.registerCommand("resetGyro", new InstantCommand(() -> s_Swerve.zeroHeading()));
         NamedCommands.registerCommand("print", new InstantCommand(() -> DriverStation.reportWarning("Auto Complete", false)));
 
@@ -100,6 +102,7 @@ public class RobotContainer
         intakeButton.whileTrue(new setIntake(Constants.Swerve.intakeSpeed, s_Swerve));
         shooterButton.whileTrue(new setShooter(Constants.Swerve.shooterSpeed, s_Swerve));
         reverseIntake.whileTrue(new setIntake((-Constants.Swerve.intakeSpeed + 0.25), s_Swerve));
+        debugButton.whileTrue(new InstantCommand(() -> m_pi.getDetections()));
     }
 
     /**

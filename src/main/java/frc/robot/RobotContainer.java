@@ -80,7 +80,6 @@ public class RobotContainer
         SmartDashboard.putData("Autonomous", m_chooser);
         SmartDashboard.putBoolean("PI Connected", false);
 
-        NamedCommands.registerCommand("resetGyro", new InstantCommand(() -> s_Swerve.zeroHeading()));
         NamedCommands.registerCommand("print", new InstantCommand(() -> DriverStation.reportWarning("Auto Complete", false)));
 
         m_chooser.setDefaultOption("Drive 1 Meter", new PathPlannerAuto("Straight Auto"));

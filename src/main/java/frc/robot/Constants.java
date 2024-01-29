@@ -1,6 +1,5 @@
 package frc.robot;
 
-import com.ctre.phoenix6.configs.SlotConfigs;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
@@ -13,13 +12,8 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
-import edu.wpi.first.wpilibj.I2C;
-import edu.wpi.first.wpilibj.util.Color;
 import frc.lib.util.COTSTalonFXSwerveConstants;
 import frc.lib.util.SwerveModuleConstants;
-import com.revrobotics.ColorMatch;
-import com.revrobotics.ColorMatchResult;
-import com.revrobotics.ColorSensorV3;
 
 public final class Constants {
     public static final double stickDeadband = 0.1;
@@ -47,9 +41,7 @@ public final class Constants {
         public static final double intakeSpeed = 0.75;
         public static final double shooterSpeed = 1.0;
         public static final double reverseIntakeSpeed = 0.5;
-        public static final I2C.Port i2cPort = I2C.Port.kOnboard;
-        public static final Color kOrange = new Color(0.666, 0.277, 0.058);
-        public static final Color kNotOrange = new Color(0.653, 0.264, 0.251);
+
         public static final COTSTalonFXSwerveConstants chosenModule =
         COTSTalonFXSwerveConstants.SDS.MK4i.Falcon500(COTSTalonFXSwerveConstants.SDS.MK4i.driveRatios.L2);
 

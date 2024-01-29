@@ -4,7 +4,6 @@ import frc.robot.SwerveModule;
 import frc.robot.Constants;
 
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
-import edu.wpi.first.math.kinematics.Kinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
@@ -13,12 +12,7 @@ import com.ctre.phoenix6.configs.Pigeon2Configuration;
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.pathplanner.lib.auto.AutoBuilder;
-import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
-import com.pathplanner.lib.util.PIDConstants;
-import com.pathplanner.lib.util.ReplanningConfig;
-import com.revrobotics.CANSparkMax;
 import com.revrobotics.ColorMatch;
-import com.revrobotics.ColorMatchResult;
 import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.math.geometry.Pose2d;
@@ -27,8 +21,6 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.util.Color;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Swerve extends SubsystemBase {
@@ -65,11 +57,6 @@ public class Swerve extends SubsystemBase {
         shooterInverted.setInverted(true);
         arm = new TalonFX(Constants.Swerve.armID);
         armInverted = new TalonFX(Constants.Swerve.armInvertedID);
-        m_colorSensor = new ColorSensorV3(Constants.Swerve.i2cPort);
-        m_colorMatcher = new ColorMatch();
-        m_colorMatcher.addColorMatch(Constants.Swerve.kOrange);
-        m_colorMatcher.addColorMatch(Constants.Swerve.kNotOrange);
-        m_override = false;
 
         // Configure AutoBuilder last
         AutoBuilder.configureHolonomic(

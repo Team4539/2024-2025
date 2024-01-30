@@ -1,3 +1,5 @@
+package frc.robot.commands.Swerve;
+
 import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.math.MathUtil;
@@ -15,7 +17,7 @@ public class setClimb extends Command
     {
         addRequirements(subsystem);
         m_speed = speed;
-        m_Climb = subsystem;
+        m_climb = subsystem;
     }
 
     @Override

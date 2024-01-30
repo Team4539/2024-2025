@@ -17,6 +17,7 @@ import frc.robot.commands.Swerve.TeleopSwerve;
 import frc.robot.commands.Swerve.setIntake;
 import frc.robot.commands.Swerve.setShooter;
 import frc.robot.commands.Swerve.setArm;
+import frc.robot.commands.Swerve.setClimb;
 import frc.robot.subsystems.*;
 
 /**
@@ -65,7 +66,7 @@ public class RobotContainer
         m_arm.setDefaultCommand(
             new setArm(() -> coDriver.getRawAxis(armAxis), m_arm)); // this is how you get the left stick y value and use it
         m_climb.setDefaultCommand(
-            new setClimb(() -> coDriver.getRawAxis(climbAxis), m_climb));
+            new setClimb (() -> coDriver.getRawAxis(climbAxis), m_climb));
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve, 

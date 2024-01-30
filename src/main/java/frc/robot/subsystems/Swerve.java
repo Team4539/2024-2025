@@ -32,6 +32,7 @@ public class Swerve extends SubsystemBase {
     public TalonFX shooterInverted;
     public TalonFX arm;
     public TalonFX armInverted;
+    public TalonFX climb;
     public static ColorSensorV3 m_colorSensor;
     public static ColorMatch m_colorMatcher;
     public boolean m_override;
@@ -57,6 +58,7 @@ public class Swerve extends SubsystemBase {
         shooterInverted.setInverted(true);
         arm = new TalonFX(Constants.Swerve.armID);
         armInverted = new TalonFX(Constants.Swerve.armInvertedID);
+        climb = new TalonFX(Constants.Climb.climbID);
 
         // Configure AutoBuilder last
         AutoBuilder.configureHolonomic(

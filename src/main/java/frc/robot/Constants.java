@@ -24,6 +24,10 @@ public final class Constants {
         public static final int armInvertedID = 18;
         public static final double armMin = -0.5;
     }
+    public static final class Climb {
+        public static final int climbID = 19 ;
+        public static final double climbMin = -0.5;
+    }
 
     public static final class PI
     {

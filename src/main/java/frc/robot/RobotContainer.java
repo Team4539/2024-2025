@@ -38,6 +38,7 @@ public class RobotContainer
 
     /* coDriver Controls */
     private final int armAxis = XboxController.Axis.kLeftY.value;
+    private final int climbAxis = XboxController.Axis.kRightY.value;
 
     /* Driver Buttons */
     private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
@@ -54,6 +55,7 @@ public class RobotContainer
     private final Swerve s_Swerve = new Swerve();
     private final Arm m_arm = new Arm();
     private final Rasberry m_pi = new Rasberry();
+    private final Climb m_climb = new Climb();
 
     /* Auto List */
     SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -62,6 +64,8 @@ public class RobotContainer
     public RobotContainer() {
         m_arm.setDefaultCommand(
             new setArm(() -> coDriver.getRawAxis(armAxis), m_arm)); // this is how you get the left stick y value and use it
+        m_climb.setDefaultCommand(
+            new setClimb(() -> coDriver.getRawAxis(climbAxis), m_climb));
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve, 

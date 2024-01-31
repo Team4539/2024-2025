@@ -41,8 +41,8 @@ public class Arm extends SubsystemBase
             if (-arm.getRotorPosition().getValueAsDouble() > Constants.Arm.armMin)
             {
                 // run normal
-                arm.set(speed*.1);
-                armInverted.set(speed*.1);
+                arm.set(speed*.3);
+                armInverted.set(speed*.3);
             }
 
             // if rotations is less than miminum

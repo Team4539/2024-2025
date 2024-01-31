@@ -37,8 +37,8 @@ public class Arm extends SubsystemBase
         // if speed is not zero
         if (speed != 0)
         {
-            // if rotations is greater than minimum
-            if (-arm.getRotorPosition().getValueAsDouble() > Constants.Arm.armMin)
+            // if rotations is greater than minimum and less than Maximum
+            if (-arm.getRotorPosition().getValueAsDouble() > Constants.Arm.armMin || -arm.getRotorPosition().getValueAsDouble() < Constants.Arm.armMax)
             {
                 // run normal
                 arm.set(speed*.3);
@@ -51,6 +51,14 @@ public class Arm extends SubsystemBase
                 // run inverted to push it out at minimum power
                 arm.set(-0.1);
                 armInverted.set(-0.1);
+            } 
+
+            //if rotations is greater tham Maximum
+            else if(-arm.getRotorPosition().getValueAsDouble() > Constants.Arm.armMax )
+            {
+                //run to push in a minimum power
+                arm.set(0.1);
+                armInverted.set(0.1);
             }
         }
         // if speed is zero

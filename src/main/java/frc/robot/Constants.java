@@ -118,7 +118,7 @@ public final class Constants {
 
         /* Module Specific Constants */
         /* Front Left Module - Module 0 */
-        public static final class Mod0 {
+        public static final class Mod2 {
             public static final int driveMotorID = 1;
             public static final int angleMotorID = 2;
             public static final int canCoderID = 9;
@@ -128,7 +128,7 @@ public final class Constants {
         }
 
         /* Front Right Module - Module 1 */
-        public static final class Mod1 {
+        public static final class Mod3 {
             public static final int driveMotorID = 3;
             public static final int angleMotorID = 4;
             public static final int canCoderID = 10;
@@ -138,7 +138,7 @@ public final class Constants {
         }
         
         /* Back Left Module - Module 2 */
-        public static final class Mod2 {
+        public static final class Mod0 {
             public static final int driveMotorID = 6;
             public static final int angleMotorID = 5;
             public static final int canCoderID = 11;
@@ -148,7 +148,7 @@ public final class Constants {
         }
 
         /* Back Right Module - Module 3 */
-        public static final class Mod3 {
+        public static final class Mod1 {
             public static final int driveMotorID = 7;
             public static final int angleMotorID = 8;
             public static final int canCoderID = 12;
@@ -159,15 +159,13 @@ public final class Constants {
     }
 
     /* Path Planner Constants */
-    public static HolonomicPathFollowerConfig swervePathFollowerConfig = new HolonomicPathFollowerConfig( 
-        // TODO: maybe measure this?
-        // HolonomicPathFollowerConfig, this should likely live in your Constants class
-        new PIDConstants(Constants.Swerve.driveKP, Constants.Swerve.driveKI, Constants.Swerve.driveKD), // Translation PID constants
-        new PIDConstants(Constants.Swerve.angleKP, Constants.Swerve.angleKI, Constants.Swerve.angleKD), // Rotation PID constants
-        Constants.Swerve.maxSpeed, // Max module speed, in m/s
-        (Constants.Swerve.trackWidth / 2), // Drive base radius in meters. Distance from robot center to furthest module. 
-        new ReplanningConfig() // Default path replanning config. See the API for the options here
-        );
+    public static final HolonomicPathFollowerConfig pathFollowerConfig = new HolonomicPathFollowerConfig(
+        new PIDConstants(5.0, 0, 0), // Translation constants 
+        new PIDConstants(5.0, 0, 0), // Rotation constants 
+        4.1, 
+        Units.inchesToMeters(20.0 / 2), // Drive base radius (distance from center to furthest module) 
+        new ReplanningConfig()
+      );
 
     public static final class AutoConstants { //TODO: Need to be tuned
         public static final double kMaxSpeedMetersPerSecond = 3;

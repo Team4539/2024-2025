@@ -1,128 +1,69 @@
+// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
+// the WPILib BSD license file in the root directory of this project.
+
 package frc.robot;
 
-import java.util.List;
+import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
+import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 
-import com.pathplanner.lib.auto.AutoBuilder;
-import com.pathplanner.lib.auto.NamedCommands;
-import com.pathplanner.lib.commands.PathPlannerAuto;
-import com.pathplanner.lib.path.GoalEndState;
-import com.pathplanner.lib.path.PathConstraints;
-import com.pathplanner.lib.path.PathPlannerPath;
-
-import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.math.util.Units;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.GenericHID;
-//import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.generated.TunerConstants;
 
-import frc.robot.commands.Swerve.TeleopSwerve;
-import frc.robot.commands.Swerve.setIntake;
-import frc.robot.commands.Swerve.setShooter;
-import frc.robot.commands.Swerve.setArm;
-import frc.robot.commands.Swerve.setClimb;
-import frc.robot.subsystems.*;
+public class RobotContainer {
+  private double MaxSpeed = TunerConstants.kSpeedAt12VoltsMps; // kSpeedAt12VoltsMps desired top speed
+  private double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
 
-/**
- * This class is where the bulk of the robot should be declared. Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
- * subsystems, commands, and button mappings) should be declared here.
- */
-public class RobotContainer 
-{
-    /* Controllers */
-    private final XboxController driver = new XboxController(0);
-    private final XboxController coDriver = new XboxController(1);
+  /* Setting up bindings for necessary control of the swerve drive platform */
+  private final CommandXboxController joystick = new CommandXboxController(0); // My joystick
+  public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
 
-    /* Drive Controls */
-    private final int translationAxis = XboxController.Axis.kLeftY.value;
-    private final int strafeAxis = XboxController.Axis.kLeftX.value;
-    private final int rotationAxis = XboxController.Axis.kRightX.value;
+  private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
+      .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
+      .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // I want field-centric
+                                                               // driving in open loop
+  private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
+  private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
+  private final SwerveRequest.PointWheelsAt point = new SwerveRequest.PointWheelsAt();
 
-    /* coDriver Controls */
-    private final int armAxis = XboxController.Axis.kLeftY.value;
-    private final int climbAxis = XboxController.Axis.kRightY.value;
+  /* Path follower */
+  private Command runAuto = drivetrain.getAutoPath("Tests");
 
-    /* Driver Buttons */
-    private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
-    private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kX.value);
-   
+  private final Telemetry logger = new Telemetry(MaxSpeed);
 
-    /* Codriver Buttons */
-    private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
-    private final JoystickButton shooterButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
-    private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kY.value);
-    private final JoystickButton debugButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
+  private void configureBindings() {
+    drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
+        drivetrain.applyRequest(() -> drive.withVelocityX(MathUtil.applyDeadband(-joystick.getLeftY(), 0.1) * MaxSpeed) // Drive forward with
+                                                                                           // negative Y (forward)
+            .withVelocityY(MathUtil.applyDeadband(-joystick.getLeftX(), 0.1) * MaxSpeed) // Drive left with negative X (left)
+            .withRotationalRate(MathUtil.applyDeadband(-joystick.getRightX(), 0.1) * MaxAngularRate) // Drive counterclockwise with negative X (left)
+        ).ignoringDisable(true));
 
-    /* Subsystems */
-    private final Swerve s_Swerve = new Swerve();
-    private final Arm m_arm = new Arm();
-    private final Rasberry m_pi = new Rasberry();
-    private final Climb m_climb = new Climb();
+    joystick.a().whileTrue(drivetrain.applyRequest(() -> brake));
+    joystick.b().whileTrue(drivetrain
+        .applyRequest(() -> point.withModuleDirection(new Rotation2d(MathUtil.applyDeadband(-joystick.getLeftY(), 0.1), MathUtil.applyDeadband(-joystick.getLeftX(), 0.1)))));
 
-    /* Auto List */
-    SendableChooser<Command> m_chooser = new SendableChooser<>();
+    // reset the field-centric heading on left bumper press
+    joystick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
 
-    /** The container for the robot. Contains subsystems, OI devices, and commands. */
-    public RobotContainer() {
-        m_arm.setDefaultCommand(
-            new setArm(() -> coDriver.getRawAxis(armAxis), m_arm)); // this is how you get the left stick y value and use it
-        m_climb.setDefaultCommand(
-            new setClimb (() -> coDriver.getRawAxis(climbAxis), m_climb));
-        s_Swerve.setDefaultCommand(
-            new TeleopSwerve(
-                s_Swerve, 
-                () -> -driver.getRawAxis(translationAxis), 
-                () -> -driver.getRawAxis(strafeAxis), 
-                () -> -driver.getRawAxis(rotationAxis), 
-                () -> robotCentric.getAsBoolean()
-            )
-        );
+    // if (Utils.isSimulation()) {
+    //   drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(90)));
+    // }
+    drivetrain.registerTelemetry(logger::telemeterize);
 
-        // Configure the button bindings
-        configureButtonBindings();
+    joystick.pov(0).whileTrue(drivetrain.applyRequest(() -> forwardStraight.withVelocityX(0.5).withVelocityY(0)));
+    joystick.pov(180).whileTrue(drivetrain.applyRequest(() -> forwardStraight.withVelocityX(-0.5).withVelocityY(0)));
+  }
 
-        // Configure Autonomous
-        SmartDashboard.putData("Autonomous", m_chooser);
-        SmartDashboard.putBoolean("PI Connected", false);
+  public RobotContainer() {
+    configureBindings();
+  }
 
-        NamedCommands.registerCommand("print", new InstantCommand(() -> DriverStation.reportWarning("Auto Complete", false)));
-
-        m_chooser.setDefaultOption("Drive 1 Meter", new PathPlannerAuto("Straight Auto"));
-    }
-
-    /**
-     * Use this method to define your button->command mappings. Buttons can be created by
-     * instantiating a {@link GenericHID} or one of its subclasses ({@link
-     * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
-     * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
-     */
-    private void configureButtonBindings() 
-    {
-        /* Driver Buttons */
-        zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
-        
-        /*Co driver buttons*/ 
-
-        intakeButton.whileTrue(new setIntake(Constants.Swerve.intakeSpeed, s_Swerve));
-        shooterButton.whileTrue(new setShooter(Constants.Swerve.shooterSpeed, s_Swerve));
-        reverseIntake.whileTrue(new setIntake((-Constants.Swerve.intakeSpeed + 0.25), s_Swerve));
-        debugButton.whileTrue(new InstantCommand(() -> m_pi.getDetections()));
-    }
-
-    /**
-     * Use this to pass the autonomous command to the main {@link Robot} class.
-     *
-     * @return the command to run in autonomous
-     */
-    public Command getAutonomousCommand() { return m_chooser.getSelected(); }
+  public Command getAutonomousCommand() {
+    /* First put the drivetrain into auto run mode, then run the auto */
+    return runAuto;
+  }
 }

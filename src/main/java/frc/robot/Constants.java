@@ -24,4 +24,9 @@ public class Constants
         public static final int InvertedID = 16;
         public static final double shooterSpeed = 1.0;
     }
+    
+    public static final class Climb {
+        public static final int climbID = 19 ;
+        public static final double climbMin = -0.5;
+    }
 }

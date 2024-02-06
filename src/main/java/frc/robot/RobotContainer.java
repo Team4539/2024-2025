@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Commands.aimCamera;
 import frc.robot.Commands.setArm;
 import frc.robot.Commands.setIntake;
 import frc.robot.Commands.setShooter;
@@ -31,7 +32,6 @@ public class RobotContainer
   /* Setting up bindings for necessary control of the swerve drive platform */
   private final CommandXboxController joystick = new CommandXboxController(0); // My joystick
   private final XboxController coDriver = new XboxController(1); // My co-joystick
-
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
       .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // I want field-centric
@@ -40,6 +40,7 @@ public class RobotContainer
   // driver buttons
   private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
   private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
+  private final JoystickButton aimButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
 
   // co driver buttons
   private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
@@ -80,6 +81,7 @@ public class RobotContainer
     intakeButton.whileTrue(new setIntake(Constants.Intake.Speed, m_intake));
     reverseIntake.whileTrue(new setIntake((-Constants.Intake.Speed + 0.25), m_intake));
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
+    aimButton.whileTrue(new aimCamera(2, m_vision, drivetrain));
     
   }
 

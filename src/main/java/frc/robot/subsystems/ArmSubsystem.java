@@ -38,7 +38,7 @@ public class ArmSubsystem extends SubsystemBase
         if (speed != 0)
         {
             // if rotations is greater than minimum and less than Maximum
-            if (-arm.getRotorPosition().getValueAsDouble() > Constants.Arm.armMin || -arm.getRotorPosition().getValueAsDouble() < Constants.Arm.armMax)
+            if (-arm.getRotorPosition().getValueAsDouble() > Constants.Arm.armMin && -arm.getRotorPosition().getValueAsDouble() < Constants.Arm.armMax)
             {
                 // run normal
                 arm.set(speed*.3);

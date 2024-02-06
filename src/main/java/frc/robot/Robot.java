@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.net.PortForwarder;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -15,13 +16,10 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
-  private final boolean UseLimelight = false;
-
   @Override
   public void robotInit() {
     m_robotContainer = new RobotContainer();
-
-    m_robotContainer.drivetrain.getDaqThread().setThreadPriority(99);
+    PortForwarder.add(5800, "photonvision.local", 5800); // for photonvision
   }
   @Override
   public void robotPeriodic() {

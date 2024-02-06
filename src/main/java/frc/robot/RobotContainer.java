@@ -21,6 +21,7 @@ import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.visionSubsystem;
 
 public class RobotContainer 
 {
@@ -50,12 +51,14 @@ public class RobotContainer
   private final ArmSubsystem m_arm = new ArmSubsystem(); // My arm
   private final IntakeSubsystem m_intake = new IntakeSubsystem(); // My intake
   private final ShooterSubsystem m_shooter = new ShooterSubsystem(); // My shooter
+  private final visionSubsystem m_vision = new visionSubsystem(); // My vision
 
   /* Auto List */
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   private void configureBindings() 
   {
+    m_vision.periodic(); // start vision
     m_arm.setDefaultCommand(
             new setArm(() -> coDriver.getRawAxis(XboxController.Axis.kLeftY.value), m_arm)); // this is how you get the left stick y value and use it
 

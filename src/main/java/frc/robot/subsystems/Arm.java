@@ -54,7 +54,7 @@ public class Arm extends SubsystemBase
             } 
 
             //if rotations is greater tham Maximum
-            else if(-arm.getRotorPosition().getValueAsDouble() > Constants.Arm.armMax )
+            else if(-arm.getRotorPosition().getValueAsDouble() > Constants.Arm.armMax)
             {
                 //run to push in a minimum power
                 arm.set(0.1);

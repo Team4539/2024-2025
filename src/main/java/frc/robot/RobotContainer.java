@@ -72,9 +72,6 @@ public class RobotContainer
       ).ignoringDisable(true));
 
     joystick.a().whileTrue(drivetrain.applyRequest(() -> brake));
-
-    m_arm.setDefaultCommand(
-        new setClimb(() ->  coDriver.getRawAxis(XboxController.Axis.kRightY.value), m_climb));
     
 
     // reset the field-centric heading on left bumper press

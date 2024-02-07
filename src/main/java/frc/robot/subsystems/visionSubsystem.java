@@ -37,7 +37,7 @@ public class visionSubsystem extends SubsystemBase
         PhotonPipelineResult result = camera.getLatestResult();
         for (var target : result.getTargets())
         {
-            SmartDashboard.putNumber("[ID " + target.getFiducialId() + "] DTT", target.getBestCameraToTarget().getTranslation().getX()); // should be z but that doesn't work :()
+            SmartDashboard.putNumber("[ID " + target.getFiducialId() + "] DTT", target.getBestCameraToTarget().getTranslation().getY()); // should be z but that doesn't work :()
         }
     }
 }

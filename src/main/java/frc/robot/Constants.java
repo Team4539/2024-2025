@@ -9,7 +9,7 @@ public class Constants
         public static final int armID = 17;
         public static final int armInvertedID = 18;
         public static final double armMin = -0.5;
-        public static final double armMax = 40; //TODO: set this 
+        public static final double armMax = 45; //TODO: set this 
     }
 
     public static final class Intake

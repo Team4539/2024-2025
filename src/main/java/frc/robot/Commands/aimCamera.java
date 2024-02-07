@@ -23,6 +23,7 @@ public class aimCamera extends Command
     private final CommandSwerveDrivetrain m_drivetrain;
     private int m_targetID;
     private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
+    public double x;
 
     public aimCamera(int targetID, visionSubsystem visionSubsystem, CommandSwerveDrivetrain CommandSwerveDrivetrain) 
     {
@@ -34,18 +35,24 @@ public class aimCamera extends Command
 
     @Override
     public void initialize() {}
-
+    
     @Override
     public void execute() 
     {
         PhotonPipelineResult result = m_vision.camera.getLatestResult();
         PhotonTrackedTarget m_target = null;
-        
+    
         for (var target : result.getTargets())
         {
             if (target.getFiducialId() == m_targetID)
             {
                 m_target = target; // if we found what we are looking for
+                x = m_target.getBestCameraToTarget().getTranslation().getY(); // MY X
+            }
+            else
+            {
+                m_target = null;
+                x = 0;
             }
         }
 
@@ -54,21 +61,22 @@ public class aimCamera extends Command
             m_target = result.getBestTarget(); // if we didn't we just use best target
         }
 
-        double x = m_target.getBestCameraToTarget().getTranslation().getY(); // MY X
+        
         SmartDashboard.putNumber("MY X", x);
-        if (x > 0) 
+        if (x > 0.05
+        ) 
         {
             // Target is to the right of the center, move camera right
             // turn robot to the right
-            m_drivetrain.applyRequest(() -> forwardStraight.withVelocityX(0).withVelocityY(0.3));
+            m_drivetrain.setControl(forwardStraight.withVelocityX(0).withVelocityY(-0.5));
            DriverStation.reportError("I NEED TO GO RIGHT", true);
            SmartDashboard.putString("MOVE DIRECTION", "RIGHT");
         } 
-        else if (x < 0) 
+        else if (x < -0.05) 
         {
             // Target is to the left of the center, move camera left
             // turn robot to the left
-            m_drivetrain.applyRequest(() -> forwardStraight.withVelocityX(0).withVelocityY(-0.3));
+            m_drivetrain.setControl(forwardStraight.withVelocityX(0).withVelocityY(0.5));
             DriverStation.reportError("I NEED TO GO LEFT", true);
                        SmartDashboard.putString("MOVE DIRECTION", "LEFT");
 
@@ -76,9 +84,9 @@ public class aimCamera extends Command
         else
         {
             // Target is centered
-            m_drivetrain.applyRequest(() -> forwardStraight.withVelocityX(0).withVelocityY(0.0));
-           DriverStation.reportError("I NEED TO STAY HERE", true);
-            SmartDashboard.putString("MOVE DIRECTION", "DONT");
+            m_drivetrain.setControl(forwardStraight.withVelocityX(0).withVelocityY(0.0));
+           //DriverStation.reportError("I NEED TO STAY HERE", true);
+            //SmartDashboard.putString("MOVE DIRECTION", "DONT");
 
         }
     }

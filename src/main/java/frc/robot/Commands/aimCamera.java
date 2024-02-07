@@ -21,7 +21,8 @@ public class aimCamera extends Command
 {
     private final visionSubsystem m_vision;
     private final CommandSwerveDrivetrain m_drivetrain;
-    private int m_targetID;
+    private int m_targetIDBlue;
+    private int m_targetIDRed;
     private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
     public double x;
 
@@ -30,7 +31,8 @@ public class aimCamera extends Command
         addRequirements(visionSubsystem, CommandSwerveDrivetrain);
         m_vision = visionSubsystem;
         m_drivetrain = CommandSwerveDrivetrain;
-        m_targetID = targetID;
+        m_targetIDBlue = 7; //blue ID?
+        m_targetIDRed = 4;  // Red ID?
     }
 
     @Override
@@ -41,10 +43,15 @@ public class aimCamera extends Command
     {
         PhotonPipelineResult result = m_vision.camera.getLatestResult();
         PhotonTrackedTarget m_target = null;
-    
+       
         for (var target : result.getTargets())
         {
-            if (target.getFiducialId() == m_targetID)
+            if (target.getFiducialId() == m_targetIDBlue)
+            {
+                m_target = target; // if we found what we are looking for
+                x = m_target.getBestCameraToTarget().getTranslation().getY(); // MY X
+            }
+            else if (target.getFiducialId() == m_targetIDRed)
             {
                 m_target = target; // if we found what we are looking for
                 x = m_target.getBestCameraToTarget().getTranslation().getY(); // MY X

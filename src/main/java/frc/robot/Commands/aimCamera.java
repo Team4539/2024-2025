@@ -9,6 +9,8 @@ import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.subsystems.ArmSubsystem;
@@ -52,24 +54,32 @@ public class aimCamera extends Command
             m_target = result.getBestTarget(); // if we didn't we just use best target
         }
 
-        double x = m_target.getBestCameraToTarget().getTranslation().getZ(); // it should be x but that doesn't work :(
-        
+        double x = m_target.getBestCameraToTarget().getTranslation().getY(); // MY X
+        SmartDashboard.putNumber("MY X", x);
         if (x > 0) 
         {
             // Target is to the right of the center, move camera right
             // turn robot to the right
             m_drivetrain.applyRequest(() -> forwardStraight.withVelocityX(0).withVelocityY(0.3));
+           DriverStation.reportError("I NEED TO GO RIGHT", true);
+           SmartDashboard.putString("MOVE DIRECTION", "RIGHT");
         } 
         else if (x < 0) 
         {
             // Target is to the left of the center, move camera left
             // turn robot to the left
             m_drivetrain.applyRequest(() -> forwardStraight.withVelocityX(0).withVelocityY(-0.3));
+            DriverStation.reportError("I NEED TO GO LEFT", true);
+                       SmartDashboard.putString("MOVE DIRECTION", "LEFT");
+
         }
         else
         {
             // Target is centered
             m_drivetrain.applyRequest(() -> forwardStraight.withVelocityX(0).withVelocityY(0.0));
+           DriverStation.reportError("I NEED TO STAY HERE", true);
+            SmartDashboard.putString("MOVE DIRECTION", "DONT");
+
         }
     }
 

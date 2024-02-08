@@ -21,18 +21,18 @@ public class aimCamera extends Command
 {
     private final visionSubsystem m_vision;
     private final CommandSwerveDrivetrain m_drivetrain;
-    private int m_targetIDBlue;
     private int m_targetIDRed;
+    private int m_targetIDBlue;
     private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
     public double x;
 
-    public aimCamera(int targetID, visionSubsystem visionSubsystem, CommandSwerveDrivetrain CommandSwerveDrivetrain) 
+    public aimCamera(int targetIDRed, int targetIDBlue, visionSubsystem visionSubsystem, CommandSwerveDrivetrain CommandSwerveDrivetrain) 
     {
         addRequirements(visionSubsystem, CommandSwerveDrivetrain);
         m_vision = visionSubsystem;
         m_drivetrain = CommandSwerveDrivetrain;
-        m_targetIDBlue = 7; //blue ID?
-        m_targetIDRed = 4;  // Red ID?
+        m_targetIDRed = targetIDRed;
+        m_targetIDBlue = targetIDBlue;
     }
 
     @Override
@@ -43,17 +43,17 @@ public class aimCamera extends Command
     {
         PhotonPipelineResult result = m_vision.camera.getLatestResult();
         PhotonTrackedTarget m_target = null;
-       
+    
         for (var target : result.getTargets())
         {
-            if (target.getFiducialId() == m_targetIDBlue)
+            if (target.getFiducialId() == m_targetIDRed)
             {
                 m_target = target; // if we found what we are looking for
                 x = m_target.getBestCameraToTarget().getTranslation().getY(); // MY X
             }
-            else if (target.getFiducialId() == m_targetIDRed)
+            else if (target.getFiducialId() == m_targetIDBlue)
             {
-                m_target = target; // if we found what we are looking for
+                 m_target = target; // if we found what we are looking for
                 x = m_target.getBestCameraToTarget().getTranslation().getY(); // MY X
             }
             else
@@ -70,30 +70,29 @@ public class aimCamera extends Command
 
         
         SmartDashboard.putNumber("MY X", x);
+    
+    
         if (x > 0.05
         ) 
         {
             // Target is to the right of the center, move camera right
             // turn robot to the right
             m_drivetrain.setControl(forwardStraight.withVelocityX(0).withVelocityY(-0.5));
-           DriverStation.reportError("I NEED TO GO RIGHT", true);
-           SmartDashboard.putString("MOVE DIRECTION", "RIGHT");
+          
         } 
         else if (x < -0.05) 
         {
             // Target is to the left of the center, move camera left
             // turn robot to the left
             m_drivetrain.setControl(forwardStraight.withVelocityX(0).withVelocityY(0.5));
-            DriverStation.reportError("I NEED TO GO LEFT", true);
-                       SmartDashboard.putString("MOVE DIRECTION", "LEFT");
+           
 
         }
         else
         {
             // Target is centered
             m_drivetrain.setControl(forwardStraight.withVelocityX(0).withVelocityY(0.0));
-           //DriverStation.reportError("I NEED TO STAY HERE", true);
-            //SmartDashboard.putString("MOVE DIRECTION", "DONT");
+          
 
         }
     }

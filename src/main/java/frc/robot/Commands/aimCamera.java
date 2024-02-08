@@ -8,6 +8,7 @@ import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
@@ -26,6 +27,7 @@ public class aimCamera extends Command
         m_vision = visionSubsystem;
         m_drivetrain = CommandSwerveDrivetrain;
         m_targetID = targetID;
+        
     }
 
     @Override
@@ -64,8 +66,11 @@ public class aimCamera extends Command
         }
 
         double x = m_target.getBestCameraToTarget().getTranslation().getY(); // it should be x but that doesn't work :( // give aiden credit
-        
-        if (x > 0) 
+        double distance = m_target.getBestCameraToTarget().getZ();
+
+        SmartDashboard.putNumber("ID: " + m_target.getFiducialId() + " Distance" , distance);
+
+        /*if (x > 0) 
         {
             // Target is to the right of the center, move camera right
             // turn robot to the right
@@ -84,9 +89,8 @@ public class aimCamera extends Command
             // Target is centered
             // m_drivetrain.setControl(forwardStraight.withVelocityX(0).withVelocityY(0.0));
             m_drivetrain.setControl(forwardStraight.withRotationalRate(0));
-        }
+        }*/
     }
-
     @Override
     public boolean isFinished() { return false; }
 

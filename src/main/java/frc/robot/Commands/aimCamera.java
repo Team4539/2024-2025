@@ -50,6 +50,12 @@ public class aimCamera extends Command
     public void execute() 
     {
         PhotonPipelineResult result = m_vision.camera.getLatestResult();
+
+        if (!result.hasTargets())
+        {
+            return;
+        }
+
         PhotonTrackedTarget m_target = null;
         
         for (var target : result.getTargets())
@@ -65,11 +71,10 @@ public class aimCamera extends Command
             m_target = result.getBestTarget(); // if we didn't we just use best target
         }
 
-        double x = m_target.getBestCameraToTarget().getTranslation().getY(); // it should be x but that doesn't work :( // give aiden credit
-        double distance = m_target.getBestCameraToTarget().getTranslation().getX(); // TODO: test this for distance
-
         if (m_target != null) 
         {
+            double x = m_target.getBestCameraToTarget().getTranslation().getY(); // it should be x but that doesn't work :( // give aiden credit
+            double distance = m_target.getBestCameraToTarget().getTranslation().getX();
             SmartDashboard.putNumber("ID: " + m_target.getFiducialId() + " Distance" , distance);
         
             if (x > 0) 

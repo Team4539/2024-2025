@@ -20,11 +20,6 @@ public class visionSubsystem extends SubsystemBase
     public void periodic() 
     {
         SmartDashboard.putBoolean("Detection", isResults());
-
-        if (isResults())
-        {
-            distanceToTarget();
-        }
     }
 
     public boolean isResults()

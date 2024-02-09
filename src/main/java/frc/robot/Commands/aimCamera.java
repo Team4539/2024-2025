@@ -20,7 +20,8 @@ public class aimCamera extends Command
     private final CommandSwerveDrivetrain m_drivetrain;
     private int m_targetID;
     private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
-
+    private double x = 0;
+    private double distance = 0;
     public aimCamera(int targetID, visionSubsystem visionSubsystem, CommandSwerveDrivetrain CommandSwerveDrivetrain) 
     {
         addRequirements(visionSubsystem, CommandSwerveDrivetrain);
@@ -65,12 +66,13 @@ public class aimCamera extends Command
             m_target = result.getBestTarget(); // if we didn't we just use best target
         }
 
+
         double x = m_target.getBestCameraToTarget().getTranslation().getY(); // it should be x but that doesn't work :( // give aiden credit
         double distance = m_target.getBestCameraToTarget().getZ();
 
         SmartDashboard.putNumber("ID: " + m_target.getFiducialId() + " Distance" , distance);
 
-        /*if (x > 0) 
+        if (x > 0) 
         {
             // Target is to the right of the center, move camera right
             // turn robot to the right
@@ -89,7 +91,7 @@ public class aimCamera extends Command
             // Target is centered
             // m_drivetrain.setControl(forwardStraight.withVelocityX(0).withVelocityY(0.0));
             m_drivetrain.setControl(forwardStraight.withRotationalRate(0));
-        }*/
+        }
     }
     @Override
     public boolean isFinished() { return false; }

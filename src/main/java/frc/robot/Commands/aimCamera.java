@@ -63,14 +63,13 @@ public class aimCamera extends Command
         if (m_target == null)
         {
             m_target = result.getBestTarget(); // if we didn't we just use best target
-           
         }
 
-
         double x = m_target.getBestCameraToTarget().getTranslation().getY(); // it should be x but that doesn't work :( // give aiden credit
-        double distance = m_target.getBestCameraToTarget().getX();
+        double distance = m_target.getBestCameraToTarget().getTranslation().getX(); // TODO: test this for distance
 
-        if (m_target != null) {
+        if (m_target != null) 
+        {
             SmartDashboard.putNumber("ID: " + m_target.getFiducialId() + " Distance" , distance);
         
             if (x > 0) 

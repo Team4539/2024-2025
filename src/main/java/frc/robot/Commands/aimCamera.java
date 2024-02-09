@@ -64,6 +64,8 @@ public class aimCamera extends Command
         if (m_target == null)
         {
             m_target = result.getBestTarget(); // if we didn't we just use best target
+            x = 0;
+            distance = 0;
         }
 
 

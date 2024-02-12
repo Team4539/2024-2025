@@ -67,7 +67,8 @@ public class RobotContainer
     m_vision.periodic(); // start vision
     m_arm.setDefaultCommand(
             new setArm(() -> coDriver.getRawAxis(XboxController.Axis.kLeftY.value), m_arm)); // this is how you get the left stick y value and use it
-
+    m_climber.setDefaultCommand(
+            new setClimber(() -> coDriver.getRawAxis(XboxController.Axis.kRightY.value), m_climber));
     drivetrain.setDefaultCommand
     (
       drivetrain.applyRequest(() -> drive.withVelocityX(MathUtil.applyDeadband(-joystick.getLeftY(), 0.1) * MaxSpeed)
@@ -87,8 +88,8 @@ public class RobotContainer
     reverseIntake.whileTrue(new setIntake((-Constants.Intake.Speed + 0.25), m_intake));
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     aimButton.whileTrue(new aimCamera(0, 2, m_vision, drivetrain));
-    climberButton.whileTrue(new setClimber(Constants.Climber.Speed, m_climber));
-    reverseClimberButton.whileTrue(new setClimber((-Constants.Climber.Speed), m_climber));
+    //climberButton.whileTrue(new setClimber(Constants.Climber.Speed, m_climber));
+    //reverseClimberButton.whileTrue(new setClimber((-Constants.Climber.Speed), m_climber));
   }
 
   public RobotContainer() 

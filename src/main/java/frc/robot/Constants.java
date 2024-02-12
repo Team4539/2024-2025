@@ -22,7 +22,9 @@ public class Constants
     public static final class Climber
     {
         public static final int ID = 20;
-        public static final double Speed = .75;
+        //public static final double Speed = .75;
+        public static final double climberMin = -100;
+        public static final double climberMax = 100;
     }
     public static final class Shooter
     {

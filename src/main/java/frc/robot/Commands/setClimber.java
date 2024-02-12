@@ -1,16 +1,24 @@
 package frc.robot.Commands;
+import java.util.function.DoubleSupplier;
+
+import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.networktables.DoubleSubscriber;
+import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.subsystems.ClimberSubsystem;
 //import frc.robot.subsystems.IntakeSubsystem;
 
 public class setClimber extends Command 
 {
     private final ClimberSubsystem m_climber;
-    private final double m_speed;
+    private double speedAxis;
+    private final DoubleSupplier m_speed;
 
-    public setClimber(double speed, ClimberSubsystem subsystem) 
+    public setClimber(DoubleSupplier speed, ClimberSubsystem subsystem) 
     {
+        addRequirements(subsystem);
         m_speed = speed;
         m_climber = subsystem;
     }
@@ -21,7 +29,9 @@ public class setClimber extends Command
     @Override
     public void execute() 
     {
-        m_climber.setClimber(m_speed);
+        //m_climber.setClimber(m_speed);
+        speedAxis = MathUtil.applyDeadband(m_speed.getAsDouble(), Constants.stickDeadband);
+        m_climber.setClimber(speedAxis);
     }
     @Override
     public void end(boolean interrupted) 

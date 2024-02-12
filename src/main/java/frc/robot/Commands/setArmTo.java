@@ -1,23 +1,16 @@
 package frc.robot.Commands;
 
-import java.util.function.DoubleSupplier;
-
-import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants;
 import frc.robot.subsystems.ArmSubsystem;
 
 public class setArmTo extends Command 
 {
     private final ArmSubsystem m_arm;
-    private final DoubleSupplier m_speed;
-    private double speedAxis;
     private double m_target;
 
-    public setArmTo(double targetrot, DoubleSupplier speed, ArmSubsystem subsystem) 
+    public setArmTo(double targetrot, ArmSubsystem subsystem) 
     {
         addRequirements(subsystem);
-        m_speed = speed;
         m_arm = subsystem;
         m_target = targetrot;
     }

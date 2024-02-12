@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Commands.aimCamera;
 import frc.robot.Commands.setArm;
+import frc.robot.Commands.setArmTo;
 import frc.robot.Commands.setIntake;
 import frc.robot.Commands.setShooter;
 import frc.robot.Commands.setClimber;
@@ -51,6 +52,7 @@ public class RobotContainer
   private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
   private final JoystickButton shooterButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
   private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kY.value);
+  private final JoystickButton setArmButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
 
   /* Subsystems */
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -59,6 +61,7 @@ public class RobotContainer
   private final ShooterSubsystem m_shooter = new ShooterSubsystem(); // My shooter
   private final visionSubsystem m_vision = new visionSubsystem(); // My vision
   private final ClimberSubsystem m_climber = new ClimberSubsystem();// My Climber
+
   /* Auto List */
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -88,6 +91,7 @@ public class RobotContainer
     reverseIntake.whileTrue(new setIntake((-Constants.Intake.Speed + 0.25), m_intake));
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     aimButton.whileTrue(new aimCamera(0, 2, m_vision, drivetrain));
+    setArmButton.whileTrue(new setArmTo(39, m_arm));
     //climberButton.whileTrue(new setClimber(Constants.Climber.Speed, m_climber));
     //reverseClimberButton.whileTrue(new setClimber((-Constants.Climber.Speed), m_climber));
   }

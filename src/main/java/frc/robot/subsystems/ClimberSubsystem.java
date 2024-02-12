@@ -34,7 +34,7 @@ public class ClimberSubsystem extends SubsystemBase
             if (-climber.getRotorPosition().getValueAsDouble() > Constants.Climber.climberMin && -climber.getRotorPosition().getValueAsDouble() < Constants.Climber.climberMax)
             {
                 // run normal
-                climber.set(speed*.75);
+                climber.set(speed*.5);
             }
 
             // if rotations is less than miminum

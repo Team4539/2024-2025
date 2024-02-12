@@ -17,8 +17,10 @@ import frc.robot.Commands.aimCamera;
 import frc.robot.Commands.setArm;
 import frc.robot.Commands.setIntake;
 import frc.robot.Commands.setShooter;
+import frc.robot.Commands.setClimber;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -32,6 +34,7 @@ public class RobotContainer
   /* Setting up bindings for necessary control of the swerve drive platform */
   private final CommandXboxController joystick = new CommandXboxController(0); // My joystick
   private final XboxController coDriver = new XboxController(1); // My co-joystick
+  private final XboxController Driver = new XboxController(0); //Driver Buttons
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
       .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // I want field-centric
@@ -40,7 +43,9 @@ public class RobotContainer
   // driver buttons
   private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
   private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
-  private final JoystickButton aimButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
+    private final JoystickButton aimButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
+    private final JoystickButton climberButton = new JoystickButton(Driver, XboxController.Button.kRightBumper.value);
+    private final JoystickButton reverseClimberButton = new JoystickButton(Driver, XboxController.Button.kLeftBumper.value);
 
   // co driver buttons
   private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
@@ -53,7 +58,7 @@ public class RobotContainer
   private final IntakeSubsystem m_intake = new IntakeSubsystem(); // My intake
   private final ShooterSubsystem m_shooter = new ShooterSubsystem(); // My shooter
   private final visionSubsystem m_vision = new visionSubsystem(); // My vision
-
+  private final ClimberSubsystem m_climber = new ClimberSubsystem();// My Climber
   /* Auto List */
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -82,7 +87,8 @@ public class RobotContainer
     reverseIntake.whileTrue(new setIntake((-Constants.Intake.Speed + 0.25), m_intake));
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     aimButton.whileTrue(new aimCamera(0, 2, m_vision, drivetrain));
-    
+    climberButton.whileTrue(new setClimber(Constants.Climber.Speed, m_climber));
+    reverseClimberButton.whileTrue(new setClimber((-Constants.Climber.Speed), m_climber));
   }
 
   public RobotContainer() 

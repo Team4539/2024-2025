@@ -25,13 +25,13 @@ public class setArmTo extends Command
     public void execute() 
     {
         double encoder = m_arm.getEncoder();
-        if (encoder > m_target) // needs to go down
+        if (encoder > m_target+1) // needs to go down
         {
-            m_arm.setArm(-0.3); // TODO: test this value
+            m_arm.setArm(0.3); 
         }
-        else if (encoder < m_target)
+        else if (encoder < m_target-1)
         {
-            m_arm.setArm(0.3); // TODO: test this value
+            m_arm.setArm(-0.3); 
         }
         else
         {

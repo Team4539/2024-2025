@@ -91,7 +91,7 @@ public class RobotContainer
     reverseIntake.whileTrue(new setIntake((-Constants.Intake.Speed + 0.25), m_intake));
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     aimButton.whileTrue(new aimCamera(0, 2, m_vision, drivetrain));
-    setArmButton.whileTrue(new setArmTo(39, m_arm));
+    setArmButton.whileTrue(new setArmTo(42, m_arm));
     //climberButton.whileTrue(new setClimber(Constants.Climber.Speed, m_climber));
     //reverseClimberButton.whileTrue(new setClimber((-Constants.Climber.Speed), m_climber));
   }

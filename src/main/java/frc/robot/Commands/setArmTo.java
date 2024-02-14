@@ -25,18 +25,19 @@ public class setArmTo extends Command
     public void execute() 
     {
         double encoder = m_arm.getEncoder();
-        if (encoder > m_target+1) // needs to go down
+        if (encoder > m_target+.5) // needs to go down
         {
-            m_arm.setArm(0.3); 
+            m_arm.setArm(0.1); 
         }
         else if (encoder < m_target-1)
         {
-            m_arm.setArm(-0.3); 
+            m_arm.setArm(-0.75); 
         }
         else
         {
             m_arm.setArm(0);
         }
+
     }
 
     @Override

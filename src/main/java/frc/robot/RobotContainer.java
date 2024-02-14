@@ -45,8 +45,8 @@ public class RobotContainer
   private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
   private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
     private final JoystickButton aimButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
-    private final JoystickButton climberButton = new JoystickButton(Driver, XboxController.Button.kRightBumper.value);
-    private final JoystickButton reverseClimberButton = new JoystickButton(Driver, XboxController.Button.kLeftBumper.value);
+    //private final JoystickButton climberButton = new JoystickButton(Driver, XboxController.Button.kRightBumper.value);
+    //private final JoystickButton reverseClimberButton = new JoystickButton(Driver, XboxController.Button.kLeftBumper.value);
 
   // co driver buttons
   private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);

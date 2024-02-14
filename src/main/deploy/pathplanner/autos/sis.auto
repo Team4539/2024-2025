@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4,
-      "y": 5.58
+      "x": 1.2211290254423093,
+      "y": 5.53650223579517
     },
-    "rotation": 0.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -40,12 +40,6 @@
           "type": "path",
           "data": {
             "pathName": "back to note 2"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "intake"
           }
         },
         {

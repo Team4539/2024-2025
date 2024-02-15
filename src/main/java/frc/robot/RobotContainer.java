@@ -52,8 +52,9 @@ public class RobotContainer
   private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
   private final JoystickButton shooterButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
   private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kY.value);
-  private final JoystickButton setArmButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
+  private final JoystickButton setSourceButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
+  private final JoystickButton setHomeButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
 
   /* Subsystems */
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -92,21 +93,23 @@ public class RobotContainer
     reverseIntake.whileTrue(new setIntake((-Constants.Intake.Speed + 0.25), m_intake));
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     aimButton.whileTrue(new aimCamera(0, 2, m_vision, drivetrain));
-    setArmButton.whileTrue(new setArmTo(43, m_arm));
-    setAmpButton.whileTrue(new setArmTo(30, m_arm));
+    setSourceButton.whileTrue(new setArmTo(0, m_arm));
+    setAmpButton.whileTrue(new setArmTo(-6, m_arm));
+    setHomeButton.whileTrue(new setArmTo(-43, m_arm));
     //climberButton.whileTrue(new setClimber(Constants.Climber.Speed, m_climber));
     //reverseClimberButton.whileTrue(new setClimber((-Constants.Climber.Speed), m_climber));
   }
 
   public RobotContainer() 
   {
-    NamedCommands.registerCommand("intake", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(3));
+    NamedCommands.registerCommand("intake", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(1));
     NamedCommands.registerCommand("shoot", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(1));
     NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.2));
     configureBindings();
     SmartDashboard.putData("Autonomous", m_chooser);
     //m_chooser.setDefaultOption("shoot, intake, shoot", drivetrain.getAutoPath("sis"));
-    m_chooser.setDefaultOption("10 feet", drivetrain.getAutoPath("10"));
+    m_chooser.setDefaultOption("test", drivetrain.getAutoPath("test"));
+    //m_chooser.setDefaultOption("10 feet", drivetrain.getAutoPath("10"));
     //m_chooser.setDefaultOption("rotate", drivetrain.getAutoPath("rotate"));
   }
 

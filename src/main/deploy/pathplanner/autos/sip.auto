@@ -12,25 +12,19 @@
     "data": {
       "commands": [
         {
-          "type": "named",
-          "data": {
-            "name": "shoot"
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
               {
                 "type": "named",
                 "data": {
-                  "name": "intake"
+                  "name": "shoot"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "shoot"
+                  "name": "intake"
                 }
               }
             ]
@@ -51,32 +45,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "back to spawn from note 2"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "shoot"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "intake"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "shoot"
-                }
-              }
-            ]
+            "pathName": "Shoot 1st"
           }
         }
       ]

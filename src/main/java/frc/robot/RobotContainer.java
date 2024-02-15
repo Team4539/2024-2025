@@ -44,7 +44,6 @@ public class RobotContainer
   // driver buttons
   private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
   private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
-    private final JoystickButton aimButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
     //private final JoystickButton climberButton = new JoystickButton(Driver, XboxController.Button.kRightBumper.value);
     //private final JoystickButton reverseClimberButton = new JoystickButton(Driver, XboxController.Button.kLeftBumper.value);
 
@@ -55,6 +54,7 @@ public class RobotContainer
   private final JoystickButton setSourceButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
   private final JoystickButton setHomeButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
+  //private final JoystickButton aimButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
 
   /* Subsystems */
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -92,9 +92,9 @@ public class RobotContainer
     intakeButton.whileTrue(new setIntake(Constants.Intake.Speed, m_intake));
     reverseIntake.whileTrue(new setIntake((-Constants.Intake.Speed + 0.25), m_intake));
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
-    aimButton.whileTrue(new aimCamera(0, 2, m_vision, drivetrain));
-    setSourceButton.whileTrue(new setArmTo(0, m_arm));
-    setAmpButton.whileTrue(new setArmTo(-6, m_arm));
+    //aimButton.whileTrue(new aimCamera(0, 2, m_vision, drivetrain));
+    setSourceButton.whileTrue(new setArmTo(2, m_arm));
+    setAmpButton.whileTrue(new setArmTo(-2.5, m_arm));
     setHomeButton.whileTrue(new setArmTo(-43, m_arm));
     //climberButton.whileTrue(new setClimber(Constants.Climber.Speed, m_climber));
     //reverseClimberButton.whileTrue(new setClimber((-Constants.Climber.Speed), m_climber));
@@ -108,7 +108,7 @@ public class RobotContainer
     configureBindings();
     SmartDashboard.putData("Autonomous", m_chooser);
     //m_chooser.setDefaultOption("shoot, intake, shoot", drivetrain.getAutoPath("sis"));
-    m_chooser.setDefaultOption("test", drivetrain.getAutoPath("test"));
+    //m_chooser.setDefaultOption("test", drivetrain.getAutoPath("test"));
     //m_chooser.setDefaultOption("10 feet", drivetrain.getAutoPath("10"));
     //m_chooser.setDefaultOption("rotate", drivetrain.getAutoPath("rotate"));
   }

@@ -44,7 +44,7 @@ public class setArmTo extends Command
 
         if (encoder > m_target) // needs to go down
         {
-            m_arm.setArm(-fixedOutput); 
+            m_arm.setArm(-fixedOutput/3); 
         }
         else if (encoder < m_target) //me go up
         {

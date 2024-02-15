@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -11,6 +12,7 @@ public class ArmSubsystem extends SubsystemBase
 {
     private TalonFX arm;
     private TalonFX armInverted;
+    private final PIDController armPIDController;
 
     public ArmSubsystem() 
     {
@@ -20,6 +22,11 @@ public class ArmSubsystem extends SubsystemBase
         arm.setInverted(false);
         arm.setNeutralMode(NeutralModeValue.Brake);
         armInverted.setNeutralMode(NeutralModeValue.Brake);
+        double kP = 0.1;
+        double kI = 0.0;
+        double kD = 0.0;
+        armPIDController = new PIDController(kP, kI, kD);
+        
     }
 
     @Override

@@ -53,6 +53,7 @@ public class RobotContainer
   private final JoystickButton shooterButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
   private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kY.value);
   private final JoystickButton setArmButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
+  private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
 
   /* Subsystems */
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -92,6 +93,7 @@ public class RobotContainer
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     aimButton.whileTrue(new aimCamera(0, 2, m_vision, drivetrain));
     setArmButton.whileTrue(new setArmTo(43, m_arm));
+    setAmpButton.whileTrue(new setArmTo(30, m_arm));
     //climberButton.whileTrue(new setClimber(Constants.Climber.Speed, m_climber));
     //reverseClimberButton.whileTrue(new setClimber((-Constants.Climber.Speed), m_climber));
   }

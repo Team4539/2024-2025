@@ -108,9 +108,9 @@ public class RobotContainer
     configureBindings();
     SmartDashboard.putData("Autonomous", m_chooser);
     //m_chooser.setDefaultOption("shoot, intake, shoot", drivetrain.getAutoPath("sis"));
-    //m_chooser.setDefaultOption("test", drivetrain.getAutoPath("test"));
+    m_chooser.setDefaultOption("test", drivetrain.getAutoPath("test"));
     //m_chooser.setDefaultOption("10 feet", drivetrain.getAutoPath("10"));
-    //m_chooser.setDefaultOption("rotate", drivetrain.getAutoPath("rotate"));
+   // m_chooser.setDefaultOption("rotate", drivetrain.getAutoPath("rotate"));
   }
 
   public Command getAutonomousCommand() {

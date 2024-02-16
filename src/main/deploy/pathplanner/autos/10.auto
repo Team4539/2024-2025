@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.0,
-      "y": 5.0
+      "x": 0.7987428243044774,
+      "y": 4.52
     },
-    "rotation": 0
+    "rotation": -52.50768824591788
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "test"
+            "pathName": "STN 5"
           }
         }
       ]

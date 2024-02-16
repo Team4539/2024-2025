@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.4557840741870232,
-        "y": 2.631006406587682
+        "x": 1.8410072768790318,
+        "y": 2.7520465882586542
       },
       "isLocked": false,
       "linkedName": "SourceRight"
@@ -46,7 +46,18 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,

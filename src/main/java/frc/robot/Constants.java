@@ -32,4 +32,11 @@ public class Constants
         public static final int InvertedID = 16;
         public static final double shooterSpeed = 3;
     }
+    public static final class Aiming 
+    {
+        public static final double Home = -43;
+        public static final double Amp = -2.5;
+        public static final double Source = 2;
+        public static final double Position = -14;
+    }
 }

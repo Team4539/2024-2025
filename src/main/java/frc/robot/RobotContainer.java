@@ -94,10 +94,10 @@ public class RobotContainer
     reverseIntake.whileTrue(new setIntake((-Constants.Intake.Speed + 0.25), m_intake));
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     //aimButton.whileTrue(new aimCamera(0, 2, m_vision, drivetrain));
-    setSourceButton.whileTrue(new setArmTo(2, m_arm, "Source"));
-    setAmpButton.whileTrue(new setArmTo(-2.5, m_arm, "Amp"));
-    setHomeButton.whileTrue(new setArmTo(-43, m_arm, "home"));
-    setShootButton.whileTrue(new setArmTo(-14, m_arm, "Position"));
+    setSourceButton.whileTrue(new setArmTo(Constants.Aiming.Source, m_arm, "Source"));
+    setAmpButton.whileTrue(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"));
+    setHomeButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "home"));
+    setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
     //climberButton.whileTrue(new setClimber(Constants.Climber.Speed, m_climber));
     //reverseClimberButton.whileTrue(new setClimber((-Constants.Climber.Speed), m_climber));
   }
@@ -107,7 +107,7 @@ public class RobotContainer
     NamedCommands.registerCommand("intake", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(1));
     NamedCommands.registerCommand("shoot", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(1));
     NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.2));
-    NamedCommands.registerCommand("setShoot", new setArmTo(-14, m_arm, "Position") );
+    NamedCommands.registerCommand("setShoot", new setArmTo(Constants.Aiming.Position, m_arm, "Position") );
     configureBindings();
     SmartDashboard.putData("Autonomous", m_chooser);
     //m_chooser.setDefaultOption("shoot, intake, shoot", drivetrain.getAutoPath("sis"));

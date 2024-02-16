@@ -30,6 +30,6 @@ public class Constants
     {
         public static final int ID = 15;
         public static final int InvertedID = 16;
-        public static final double shooterSpeed = 1.0;
+        public static final double shooterSpeed = 3;
     }
 }

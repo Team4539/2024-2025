@@ -37,6 +37,6 @@ public class Constants
         public static final double Home = -43;
         public static final double Amp = -2.5;
         public static final double Source = 2;
-        public static final double Position = -14;
+        public static final double Position = -20; //used to be 14, 20 for the time being
     }
 }

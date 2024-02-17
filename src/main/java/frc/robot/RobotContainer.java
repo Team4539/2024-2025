@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Commands.aimCamera;
+//import frc.robot.Commands.aimCamera;
 import frc.robot.Commands.setArm;
 import frc.robot.Commands.setArmTo;
 import frc.robot.Commands.setIntake;
@@ -108,11 +108,13 @@ public class RobotContainer
     NamedCommands.registerCommand("shoot", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(1));
     NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.2));
     NamedCommands.registerCommand("setShoot", new setArmTo(Constants.Aiming.Position, m_arm, "Position") );
-    NamedCommands.registerCommand("Home", new setArmTo(Constants.Aiming.Home, m_arm, "home"));
+    NamedCommands.registerCommand("Home", new setArmTo(Constants.Aiming.Home, m_arm, "home").withTimeout(2));
     configureBindings();
     SmartDashboard.putData("Autonomous", m_chooser);
-    //m_chooser.setDefaultOption("shoot, intake, shoot", drivetrain.getAutoPath("sis"));
-    m_chooser.setDefaultOption("test", drivetrain.getAutoPath("test"));
+    m_chooser.setDefaultOption("shoot, intake, shoot", drivetrain.getAutoPath("sis 1"));
+    //m_chooser.setDefaultOption("test", drivetrain.getAutoPath("test"));
+    m_chooser.addOption("3 note", drivetrain.getAutoPath("3 Note"));
+    m_chooser.addOption("SR N8", drivetrain.getAutoPath("Sr N8"));
     //m_chooser.setDefaultOption("10 feet", drivetrain.getAutoPath("10"));
    // m_chooser.setDefaultOption("rotate", drivetrain.getAutoPath("rotate"));
   }

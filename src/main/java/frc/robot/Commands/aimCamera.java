@@ -14,7 +14,7 @@ import frc.robot.Constants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.visionSubsystem;
 
-public class aimCamera extends Command 
+/*public class aimCamera extends Command 
 {
     private final visionSubsystem m_vision;
     private final CommandSwerveDrivetrain m_drivetrain;
@@ -32,7 +32,7 @@ public class aimCamera extends Command
     }
 
     @Override
-    public void initialize() 
+     public void initialize() 
     {
         if (m_targetID == 0) // not assigned
         {
@@ -122,4 +122,4 @@ public class aimCamera extends Command
 
     @Override
     public boolean runsWhenDisabled() { return false; }
-}
+}*/

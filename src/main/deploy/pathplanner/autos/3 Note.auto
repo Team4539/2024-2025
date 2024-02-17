@@ -3,9 +3,9 @@
   "startingPose": {
     "position": {
       "x": 1.1852004303152672,
-      "y": 4.737997489313514
+      "y": 6.323851734722014
     },
-    "rotation": 0.0
+    "rotation": 60.0
   },
   "command": {
     "type": "sequential",
@@ -15,6 +15,43 @@
           "type": "named",
           "data": {
             "name": "Home"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "intake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "shoot"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "STN 7"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "N7 T S"
           }
         },
         {
@@ -45,7 +82,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "STN 7"
+            "pathName": "SPM T N6"
           }
         },
         {
@@ -57,7 +94,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "N7 T S"
+            "pathName": "N6 T S"
           }
         },
         {

@@ -8,29 +8,47 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.2436866923662522,
-        "y": 4.870771480344674
+        "x": 2.1499999999999995,
+        "y": 5.55
       },
       "isLocked": false,
       "linkedName": "SourceFront"
     },
     {
       "anchor": {
-        "x": 2.4031274310765443,
-        "y": 4.051949444840401
+        "x": 2.87,
+        "y": 6.99
       },
       "prevControl": {
-        "x": 1.4031274310765443,
-        "y": 4.051949444840401
+        "x": 0.28346601629009094,
+        "y": 7.471513716208602
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "N8"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.6,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "intake"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,

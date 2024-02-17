@@ -16,7 +16,7 @@ public class Constants
     public static final class Intake
     {
         public static final int ID = 14;
-        public static final double Speed = 0.75;
+        public static final double Speed = 1;
     }
 
     public static final class Climber

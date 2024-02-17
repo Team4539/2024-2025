@@ -12,10 +12,10 @@ public class visionSubsystem extends SubsystemBase
 
     public visionSubsystem()
     {
-        camera = new PhotonCamera("Microsoft_LifeCam_HD-3000");
+      //  camera = new PhotonCamera("Microsoft_LifeCam_HD-3000");
     }
 
-    @Override
+    /*@Override
     public void periodic() 
     {
         SmartDashboard.putBoolean("Detection", isResults());
@@ -33,5 +33,5 @@ public class visionSubsystem extends SubsystemBase
         {
             SmartDashboard.putNumber("[ID " + target.getFiducialId() + "] DTT", target.getBestCameraToTarget().getTranslation().getY()); // should be z but that doesn't work :()
         }
-    }
+}*/
 }

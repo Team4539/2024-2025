@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.1852004303152672,
-      "y": 4.737997489313514
+      "x": 0.7526759559662808,
+      "y": 4.618670813362998
     },
-    "rotation": 0.0
+    "rotation": -60.0
   },
   "command": {
     "type": "sequential",
@@ -45,7 +45,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "STN 7"
+            "pathName": "SRT 8"
           }
         },
         {
@@ -57,7 +57,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "N7 T S"
+            "pathName": "N8TSR"
           }
         },
         {

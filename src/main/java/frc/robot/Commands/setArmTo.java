@@ -43,9 +43,9 @@ public class setArmTo extends Command
             fixedOutput = output;
         }
 
-        if (encoder > m_target) // needs to go down
+        if (encoder > m_target) // go down
         {
-            m_arm.setArm(-fixedOutput*.2); 
+            m_arm.setArm(-fixedOutput*.5); 
         }
         else if (encoder < m_target) //me go up
         {

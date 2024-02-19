@@ -9,7 +9,7 @@ public class Constants
     {
         public static final int armID = 17;
         public static final int armInvertedID = 18;
-        public static final int armEncoder = 0; 
+        public static final int armEncoder = 0; //DIO port
         public static final double armMin = -41.5;
         public static final double armMax = 6; 
     }

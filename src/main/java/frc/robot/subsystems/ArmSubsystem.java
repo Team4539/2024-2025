@@ -2,6 +2,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.DutyCycleEncoder;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -12,27 +14,25 @@ public class ArmSubsystem extends SubsystemBase
 {
     private TalonFX arm;
     private TalonFX armInverted;
-    private final PIDController armPIDController;
+    private DutyCycleEncoder armEncoder;
 
     public ArmSubsystem() 
     {
         arm = new TalonFX(Constants.Arm.armID);
         armInverted = new TalonFX(Constants.Arm.armInvertedID);
+        armEncoder = new DutyCycleEncoder(Constants.Arm.armEncoder);
         armInverted.setInverted(true);
         arm.setInverted(false);
         arm.setNeutralMode(NeutralModeValue.Brake);
         armInverted.setNeutralMode(NeutralModeValue.Brake);
-        double kP = 0.1;
-        double kI = 0.0;
-        double kD = 0.0;
-        armPIDController = new PIDController(kP, kI, kD);
+        
         
     }
 
     @Override
     public void periodic() 
     {
-        SmartDashboard.putNumber("Arm Encoder", -arm.getRotorPosition().getValueAsDouble());
+        SmartDashboard.putNumber("Arm Encoder", -armEncoder.getDistance());
         arm.feed();
     }
 
@@ -45,7 +45,7 @@ public class ArmSubsystem extends SubsystemBase
         if (speed != 0)
         {
             // if rotations is greater than minimum and less than Maximum
-            if (-arm.getRotorPosition().getValueAsDouble() > Constants.Arm.armMin && -arm.getRotorPosition().getValueAsDouble() < Constants.Arm.armMax)
+            if (-armEncoder.getDistance() > Constants.Arm.armMin && -arm.getRotorPosition().getValueAsDouble() < Constants.Arm.armMax)
             {
                 // run normal
                 arm.set(speed*.3);
@@ -53,7 +53,7 @@ public class ArmSubsystem extends SubsystemBase
             }
 
             // if rotations is less than miminum
-            else if (-arm.getRotorPosition().getValueAsDouble() < Constants.Arm.armMin)
+            else if (-armEncoder.getDistance() < Constants.Arm.armMin)
             {
                 // run inverted to push it out at minimum power
                 arm.set(-0.1);
@@ -61,7 +61,7 @@ public class ArmSubsystem extends SubsystemBase
             } 
 
             //if rotations is greater tham Maximum
-            else if(-arm.getRotorPosition().getValueAsDouble() > Constants.Arm.armMax )
+            else if(-armEncoder.getDistance() > Constants.Arm.armMax )
             {
                 //run to push in a minimum power
                 arm.set(0.1);
@@ -79,12 +79,11 @@ public class ArmSubsystem extends SubsystemBase
 
     public void resetEncoder()
     {
-        arm.setPosition(0);
-        armInverted.setPosition(0);
+        armEncoder.reset();
     }
     
     public double getEncoder()
     {
-        return -arm.getRotorPosition().getValueAsDouble();
+        return -armEncoder.getDistance();
     }
 }

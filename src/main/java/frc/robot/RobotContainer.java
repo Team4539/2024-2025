@@ -24,6 +24,7 @@ import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.LedCommSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.visionSubsystem;
 
@@ -64,6 +65,7 @@ public class RobotContainer
   private final ShooterSubsystem m_shooter = new ShooterSubsystem(); // My shooter
   private final visionSubsystem m_vision = new visionSubsystem(); // My vision
   private final ClimberSubsystem m_climber = new ClimberSubsystem();// My Climber
+  public final LedCommSubsystem m_led = new LedCommSubsystem(); // My LED
 
   /* Auto List */
   SendableChooser<Command> m_chooser = new SendableChooser<>();

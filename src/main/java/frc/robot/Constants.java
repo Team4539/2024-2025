@@ -43,9 +43,9 @@ public class Constants
     public static final class arduinoCOMs
     {
         public static final int arduinoCOM = 0; // PWM port
-        public static final double Idle = -1.0; //  pulse length is less the 5000us
-        public static final double Auto = 0.0; // pulse length is less than 15000us
-        public static final double Game = 1.0; // pulse length is less than greater than 15000us
+        public static final double Idle = 0.0; // pulse length is less than 15000us
+        public static final double Auto = 1.0; // pulse length is less than greater than 15000us   
+        public static final double Game = -1.0;  //  pulse length is less the 5000us
         
         
     }

@@ -54,7 +54,7 @@ public class RobotContainer
   private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kY.value);
   private final JoystickButton setSourceButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
-  private final JoystickButton setHomeButton = new JoystickButton(coDriver, XboxController.Button.kStart.value);
+  //private final JoystickButton setHomeButton = new JoystickButton(coDriver, XboxController.Button.kStart.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kBack.value);
   //private final JoystickButton aimButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
 
@@ -98,7 +98,7 @@ public class RobotContainer
     //aimButton.whileTrue(new aimCamera(0, 2, m_vision, drivetrain));
     setSourceButton.whileTrue(new setArmTo(Constants.Aiming.Source, m_arm, "Source"));
     setAmpButton.whileTrue(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"));
-    setHomeButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "home"));
+    //setHomeButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "home"));
     setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
     //climberButton.whileTrue(new setClimber(Constants.Climber.Speed, m_climber));
     //reverseClimberButton.whileTrue(new setClimber((-Constants.Climber.Speed), m_climber));

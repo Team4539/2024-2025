@@ -19,7 +19,7 @@ public class setArmTo extends Command
         m_arm = subsystem;
         m_target = targetrot;
         m_command = command;
-        pidController = new PIDController(0.175, 0.111, 0.0); // Adjust these values as needed
+        pidController = new PIDController(0.15, 0.002, 0.0); // Adjust these values as needed
 
     }
 
@@ -45,7 +45,7 @@ public class setArmTo extends Command
 
         if (encoder > m_target) // go down
         {
-            m_arm.setArm(-fixedOutput*.3); 
+            m_arm.setArm(-fixedOutput*.65); 
         }
         else if (encoder < m_target) //me go up
         {

@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7626093884666401,
-      "y": 4.502249460339376
+      "x": 0.7284778050297884,
+      "y": 4.473539560488536
     },
     "rotation": -60.0
   },
@@ -46,6 +46,12 @@
           "type": "path",
           "data": {
             "pathName": "STN 5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "N 5 TS"
           }
         }
       ]

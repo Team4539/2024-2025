@@ -10,6 +10,7 @@ public class Constants
         public static final int armID = 17;
         public static final int armInvertedID = 18;
         public static final int armEncoder = 0; //DIO port
+        public static final int armEncoder2 = 1; //DIO port
         public static final double armMin = -41.5;
         public static final double armMax = 6; 
     }
@@ -43,7 +44,7 @@ public class Constants
     public static final class arduinoCOMs
     {
         public static final int arduinoCOM = 0; // PWM port
-        public static final double Idle = 0.0; // pulse length is less than 15000us
+        public static final double Idle = 1.0; // pulse length is less than 15000us
         public static final double Auto = 1.0; // pulse length is less than greater than 15000us   
         public static final double Game = -1.0;  //  pulse length is less the 5000us
         

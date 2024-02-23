@@ -19,6 +19,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_robotContainer = new RobotContainer();
+    m_led = m_robotContainer.m_led;
     PortForwarder.add(5800, "photonvision.local", 5800); // for photonvision
     m_led.setLed(Constants.arduinoCOMs.Idle);
   }

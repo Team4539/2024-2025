@@ -11,7 +11,7 @@ public class Constants
         public static final int armInvertedID = 18;
         public static final int armEncoder = 0; //DIO port
         public static final int armEncoder2 = 1; //DIO port
-        public static final double armMin = -0.85;
+        public static final double armMin = -0.7;
         public static final double armMax = 1000; 
     }
 
@@ -36,7 +36,7 @@ public class Constants
     }
     public static final class Aiming 
     {
-        public static final double Home = -0.73;
+        public static final double Home = -0.65;
         public static final double Amp = 13.3;
         public static final double Source = 15;
         public static final double Position = 4;

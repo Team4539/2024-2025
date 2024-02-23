@@ -33,7 +33,7 @@ public class ArmSubsystem extends SubsystemBase
     @Override
     public void periodic() 
     {
-        SmartDashboard.putNumber("Arm Encoder", (armEncoder.getDistance() *100) - 4.68);
+        SmartDashboard.putNumber("Arm Encoder", (armEncoder.getDistance() *100) - 5.68);
         arm.feed();
     }
 
@@ -46,7 +46,7 @@ public class ArmSubsystem extends SubsystemBase
         if (speed != 0)
         {
             // if rotations is greater than minimum and less than Maximum
-            if (armEncoder.getDistance() > Constants.Arm.armMin && armEncoder.getDistance() < Constants.Arm.armMax)
+            if ((armEncoder.getDistance() *100) - 5.68 > Constants.Arm.armMin && (armEncoder.getDistance() *100) - 5.68 < Constants.Arm.armMax)
             {
                 // run normal
                 arm.set(speed*.3);
@@ -54,7 +54,7 @@ public class ArmSubsystem extends SubsystemBase
             }
 
             // if rotations is less than miminum
-            else if (armEncoder.getDistance() < Constants.Arm.armMin)
+            else if ((armEncoder.getDistance() *100) - 5.68 < Constants.Arm.armMin)
             {
                 // run inverted to push it out at minimum power
                 arm.set(-0.1);
@@ -62,7 +62,7 @@ public class ArmSubsystem extends SubsystemBase
             } 
 
             //if rotations is greater tham Maximum
-            else if(armEncoder.getDistance() > Constants.Arm.armMax )
+            else if((armEncoder.getDistance() *100) - 5.68 > Constants.Arm.armMax )
             {
                 //run to push in a minimum power
                 arm.set(0.1);
@@ -85,6 +85,6 @@ public class ArmSubsystem extends SubsystemBase
     
     public double getEncoder()
     {
-        return armEncoder.getDistance();
+        return (armEncoder.getDistance() *100) - 5.68;
     }
 }

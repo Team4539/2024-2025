@@ -47,12 +47,6 @@
           "data": {
             "pathName": "STN 5"
           }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "intake"
-          }
         }
       ]
     }

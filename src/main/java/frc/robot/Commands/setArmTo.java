@@ -19,7 +19,7 @@ public class setArmTo extends Command
         m_arm = subsystem;
         m_target = targetrot;
         m_command = command;
-        pidController = new PIDController(0.1, 0.0, 0.0); // Adjust these values as needed
+        pidController = new PIDController(0.2, 0.036, 0.0); // Adjust these values as needed
 
     }
 

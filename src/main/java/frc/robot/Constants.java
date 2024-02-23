@@ -12,7 +12,7 @@ public class Constants
         public static final int armEncoder = 0; //DIO port
         public static final int armEncoder2 = 1; //DIO port
         public static final double armMin = -0.7;
-        public static final double armMax = 1000; 
+        public static final double armMax = 17.5; 
     }
 
     public static final class Intake

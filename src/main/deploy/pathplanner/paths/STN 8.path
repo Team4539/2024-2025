@@ -3,6 +3,15 @@
   "waypoints": [
     {
       "anchor": {
+<<<<<<< HEAD
+        "x": 1.20862210340683,
+        "y": 5.17
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.3023087957730823,
+        "y": 4.490771480344674
+=======
         "x": 1.15,
         "y": 5.55
       },
@@ -10,6 +19,7 @@
       "nextControl": {
         "x": 1.2436866923662522,
         "y": 4.870771480344674
+>>>>>>> dcf0cd6097a7d54954c7648ce09577523abf8a9e
       },
       "isLocked": false,
       "linkedName": "SourceFront"

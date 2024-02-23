@@ -12,7 +12,7 @@ public class Constants
         public static final int armEncoder = 0; //DIO port
         public static final int armEncoder2 = 1; //DIO port
         public static final double armMin = -0.7;
-        public static final double armMax = 17.5; 
+        public static final double armMax = 24; 
     }
 
     public static final class Intake
@@ -25,8 +25,8 @@ public class Constants
     {
         public static final int ID = 20;
         //public static final double Speed = .75;
-        public static final double climberMin = -150;
-        public static final double climberMax = 112;
+        public static final double climberMin = 261;
+        public static final double climberMax = 500;
     }
     public static final class Shooter
     {

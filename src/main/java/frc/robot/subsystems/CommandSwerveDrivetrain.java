@@ -14,8 +14,10 @@ import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
 
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.RobotController;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.generated.TunerConstants;
@@ -62,7 +64,7 @@ public class CommandSwerveDrivetrain extends SwerveDrivetrain implements Subsyst
                                             TunerConstants.kSpeedAt12VoltsMps,
                                             driveBaseRadius,
                                             new ReplanningConfig()),
-            ()->false, // Change this if the path needs to be flipped on red vs blue
+            ()->isRedAlliance(), // Change this if the path needs to be flipped on red vs blue
             this); // Subsystem for requirements
     }
 
@@ -70,6 +72,17 @@ public class CommandSwerveDrivetrain extends SwerveDrivetrain implements Subsyst
         return run(() -> this.setControl(requestSupplier.get()));
     }
 
+    public boolean isRedAlliance()
+    {
+        if (DriverStation.getAlliance().get() == Alliance.Red)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public Command getAutoPath(String pathName) {
         return new PathPlannerAuto(pathName);
     }

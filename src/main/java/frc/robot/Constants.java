@@ -9,8 +9,7 @@ public class Constants
     {
         public static final int armID = 17;
         public static final int armInvertedID = 18;
-        public static final int armEncoder = 0; //DIO port
-        public static final int armEncoder2 = 1; //DIO port
+        public static final int armEncoder = 1; //DIO port
         public static final double armMin = Aiming.Home;
         public static final double armMax = 24; 
     }

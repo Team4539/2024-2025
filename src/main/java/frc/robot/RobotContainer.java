@@ -18,10 +18,10 @@ import frc.robot.Commands.setArm;
 import frc.robot.Commands.setArmTo;
 import frc.robot.Commands.setIntake;
 import frc.robot.Commands.setShooter;
-import frc.robot.Commands.setClimber;
+// import frc.robot.Commands.setClimber;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.ArmSubsystem;
-import frc.robot.subsystems.ClimberSubsystem;
+// import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LedCommSubsystem;
@@ -64,7 +64,7 @@ public class RobotContainer
   private final IntakeSubsystem m_intake = new IntakeSubsystem(); // My intake
   private final ShooterSubsystem m_shooter = new ShooterSubsystem(); // My shooter
   private final visionSubsystem m_vision = new visionSubsystem(); // My vision
-  private final ClimberSubsystem m_climber = new ClimberSubsystem();// My Climber
+  // private final ClimberSubsystem m_climber = new ClimberSubsystem();// My Climber
   public final LedCommSubsystem m_led = new LedCommSubsystem(); // My LED
 
   /* Auto List */
@@ -75,8 +75,8 @@ public class RobotContainer
     m_vision.periodic(); // start vision
     m_arm.setDefaultCommand(
             new setArm(() -> coDriver.getRawAxis(XboxController.Axis.kLeftY.value), m_arm)); // this is how you get the left stick y value and use it
-    m_climber.setDefaultCommand(
-            new setClimber(() -> coDriver.getRawAxis(XboxController.Axis.kRightY.value), m_climber));
+    //m_climber.setDefaultCommand(
+    //        new setClimber(() -> coDriver.getRawAxis(XboxController.Axis.kRightY.value), m_climber));
     drivetrain.setDefaultCommand
     (
       drivetrain.applyRequest(() -> drive.withVelocityX(MathUtil.applyDeadband(-joystick.getLeftY(), 0.01) * MaxSpeed)

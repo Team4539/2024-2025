@@ -24,8 +24,8 @@ public class Constants
     {
         public static final int ID = 20;
         //public static final double Speed = .75;
-        public static final double climberMin = -195;
-        public static final double climberMax = 200;
+        public static final double climberMin = -180;
+        public static final double climberMax = 94;
     }
     public static final class Shooter
     {

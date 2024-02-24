@@ -16,7 +16,7 @@ import frc.robot.subsystems.visionSubsystem;
 
 public class aimCamera extends Command 
 {
-    private final visionSubsystem m_vision;
+   /* private final visionSubsystem m_vision;
     private final CommandSwerveDrivetrain m_drivetrain;
     private int m_targetID;
     private double m_targetDistance;
@@ -121,5 +121,5 @@ public class aimCamera extends Command
     public boolean isFinished() { return false; }
 
     @Override
-    public boolean runsWhenDisabled() { return false; }
+    public boolean runsWhenDisabled() { return false; } */
 }

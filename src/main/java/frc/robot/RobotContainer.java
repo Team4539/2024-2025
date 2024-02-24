@@ -52,6 +52,7 @@ public class RobotContainer
   private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kY.value);
   private final JoystickButton setSourceButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
+  private final JoystickButton halfpowerShootButton = new JoystickButton(Driver, XboxController.Button.kStart.value);
   //private final JoystickButton setHomeButton = new JoystickButton(coDriver, XboxController.Button.kStart.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kBack.value);
   //private final JoystickButton aimButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
@@ -98,6 +99,7 @@ public class RobotContainer
     setAmpButton.whileTrue(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"));
     //setHomeButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "home"));
     setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
+    halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed / 2, m_shooter));
   }
 
   public RobotContainer() 

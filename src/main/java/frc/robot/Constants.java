@@ -35,7 +35,7 @@ public class Constants
     }
     public static final class Aiming 
     {
-        public static final double Home = -0.75;
+        public static final double Home = -1.15;
         public static final double Amp = 13.3;
         public static final double Source = 16.7;
         public static final double Position = 4.5;

@@ -9,7 +9,7 @@ public class Constants
     {
         public static final int armID = 17;
         public static final int armInvertedID = 18;
-        public static final int armEncoder = 1; //DIO port
+        public static final int armEncoder = 0; //DIO port
         public static final double armMin = Aiming.Home;
         public static final double armMax = 24; 
     }
@@ -24,8 +24,8 @@ public class Constants
     {
         public static final int ID = 20;
         //public static final double Speed = .75;
-        public static final double climberMin = 261;
-        public static final double climberMax = 500;
+        public static final double climberMin = -195;
+        public static final double climberMax = 200;
     }
     public static final class Shooter
     {

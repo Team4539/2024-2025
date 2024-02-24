@@ -1,4 +1,4 @@
-/*package frc.robot.subsystems;
+package frc.robot.subsystems;
 
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
@@ -59,4 +59,3 @@ public class ClimberSubsystem extends SubsystemBase
         }
     }
 }
-*/

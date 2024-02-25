@@ -52,7 +52,7 @@ public class RobotContainer
   private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kY.value);
   private final JoystickButton setSourceButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
-  private final JoystickButton halfpowerShootButton = new JoystickButton(Driver, XboxController.Button.kStart.value);
+  private final JoystickButton halfpowerShootButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
   //private final JoystickButton setHomeButton = new JoystickButton(coDriver, XboxController.Button.kStart.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kBack.value);
   //private final JoystickButton aimButton = new JoystickButton(coDriver, XboxController.Button.kX.value);

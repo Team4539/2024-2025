@@ -105,8 +105,8 @@ public class RobotContainer
   public RobotContainer() 
   {
     NamedCommands.registerCommand("intake", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(1));
-    NamedCommands.registerCommand("shoot", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(1));
-    NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.2));
+    NamedCommands.registerCommand("shoot", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(.75));
+    NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.15));
     NamedCommands.registerCommand("setShoot", new setArmTo(Constants.Aiming.Position, m_arm, "Position").withTimeout(5) );
     NamedCommands.registerCommand("Home", new setArmTo(Constants.Aiming.Home, m_arm, "home").withTimeout(2));
     configureBindings();
@@ -114,6 +114,8 @@ public class RobotContainer
     m_chooser.setDefaultOption("(Center) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!csdin"));
     m_chooser.addOption("(Left) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!lsdin"));
     m_chooser.addOption("(Right) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!rsdin"));
+    m_chooser.addOption("3 Note Far, Towards Center", drivetrain.getAutoPath("3 Note Far"));
+    m_chooser.addOption("2 Note Far, Toward Amp", drivetrain.getAutoPath("2 Note Far"));
   }
 
   public Command getAutonomousCommand() {

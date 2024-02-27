@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7509152340242001,
-      "y": 4.502249460339376
+      "x": 0.77430354290908,
+      "y": 6.583808951093687
     },
-    "rotation": -60.0
+    "rotation": 60.0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SBU"
+            "pathName": "NBU"
           }
         },
         {
@@ -39,63 +39,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "STN 8"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "S8"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "shoot"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "intake"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "STN 4"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "N 4 TS"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "shoot"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "intake"
-                }
-              }
-            ]
+            "pathName": "STN 1"
           }
         }
       ]

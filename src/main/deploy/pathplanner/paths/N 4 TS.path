@@ -3,64 +3,53 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.8,
-        "y": 1.6
+        "x": 7.826244114026691,
+        "y": 1.75
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.41088598416513,
-        "y": 1.6868068807362695
+        "x": 6.612610148297221,
+        "y": 2.2003282468103404
       },
       "isLocked": false,
       "linkedName": "N42"
     },
     {
       "anchor": {
-        "x": 5.533824400982135,
-        "y": 1.0641680542620358
+        "x": 5.63578281002716,
+        "y": 3.216623356323636
       },
       "prevControl": {
-        "x": 6.445968447492449,
-        "y": 0.994003127607396
+        "x": 6.547926856537474,
+        "y": 3.1464584296689964
       },
       "nextControl": {
-        "x": 4.433478925029611,
-        "y": 1.1488100139506918
+        "x": 4.535437334074636,
+        "y": 3.3012653160122922
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.124828585839508,
-        "y": 2.5844081317792273
+        "x": 1.5114007151091242,
+        "y": 3.798772982161349
       },
       "prevControl": {
-        "x": 3.7680070801737044,
-        "y": 1.9763121007723505
+        "x": 2.8631718801899155,
+        "y": 2.012856333404975
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "TS"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 1,
-      "rotationDegrees": 0,
-      "rotateFast": false
-    },
-    {
-      "waypointRelativePos": 0,
-      "rotationDegrees": 0.0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.45,
+      "waypointRelativePos": 0.15,
       "command": {
         "type": "sequential",
         "data": {
@@ -68,7 +57,7 @@
             {
               "type": "named",
               "data": {
-                "name": "Farback"
+                "name": "setShoot"
               }
             }
           ]
@@ -118,13 +107,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -41.0,
+    "rotation": -52.0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": -1.193489423982003,
+    "rotation": -29.393298695711277,
     "velocity": 0
   },
   "useDefaultConstraints": true

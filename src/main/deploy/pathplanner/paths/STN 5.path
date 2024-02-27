@@ -3,40 +3,40 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.288546748033667,
-        "y": 2.362219197372869
+        "x": 1.6199370860280196,
+        "y": 3.6705027256208367
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.920031087925423,
-        "y": 1.578710849729393
+        "x": 2.2514214259197756,
+        "y": 2.886994377977361
       },
       "isLocked": false,
-      "linkedName": "SetUpSouth"
+      "linkedName": "T5"
     },
     {
       "anchor": {
-        "x": 5.697542563176294,
-        "y": 0.6197901854493164
+        "x": 4.836560442351654,
+        "y": 0.8880248529727832
       },
       "prevControl": {
-        "x": 4.339204153139754,
-        "y": 1.1513139111157868
+        "x": 3.6018501587196923,
+        "y": 1.6646143343723487
       },
       "nextControl": {
-        "x": 6.77340477188077,
-        "y": 0.19880062552147948
+        "x": 5.712160256229346,
+        "y": 0.3373032671991287
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.8,
+        "x": 7.5,
         "y": -0.2
       },
       "prevControl": {
-        "x": 7.074576763954495,
+        "x": 6.774576763954495,
         "y": -0.04580653119062658
       },
       "nextControl": null,
@@ -46,7 +46,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 1.85,
+      "waypointRelativePos": 0.65,
       "rotationDegrees": 0,
       "rotateFast": false
     }
@@ -102,7 +102,7 @@
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": -60.0,
+    "rotation": -46.25987884660326,
     "velocity": 0
   },
   "useDefaultConstraints": true

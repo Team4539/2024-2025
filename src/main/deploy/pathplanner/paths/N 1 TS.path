@@ -3,25 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.72,
-        "y": 7.788306858664999
+        "x": 7.848666424864946,
+        "y": 7.623754591303762
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.065127351223361,
-        "y": 7.846777630877199
+        "x": 7.193793776088308,
+        "y": 7.682225363515962
       },
       "isLocked": false,
-      "linkedName": "N1"
+      "linkedName": "S1"
     },
     {
       "anchor": {
-        "x": 2.4699559370628714,
-        "y": 6.349925862244887
+        "x": 4.710162230595501,
+        "y": 7.436381206571257
       },
       "prevControl": {
-        "x": 3.4522649102278273,
-        "y": 6.782609576615165
+        "x": 5.751499327985659,
+        "y": 7.738784297885866
+      },
+      "nextControl": {
+        "x": 3.7734704690180676,
+        "y": 7.164367000009466
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.122067353977788,
+        "y": 6.183321696172636
+      },
+      "prevControl": {
+        "x": 3.104376327142744,
+        "y": 6.616005410542915
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +49,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.25,
+      "waypointRelativePos": 0.5,
       "command": {
         "type": "parallel",
         "data": {
@@ -50,7 +66,7 @@
     },
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.6,
+      "waypointRelativePos": 1.1,
       "command": {
         "type": "parallel",
         "data": {
@@ -59,6 +75,30 @@
               "type": "named",
               "data": {
                 "name": "reverseintake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 1.6,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "parallel",
+              "data": {
+                "commands": [
+                  {
+                    "type": "named",
+                    "data": {
+                      "name": "shoot"
+                    }
+                  }
+                ]
               }
             }
           ]

@@ -11,8 +11,12 @@ public class LedCommSubsystem extends SubsystemBase{
     {
         pwm = new PWM(Constants.arduinoCOMs.arduinoCOM);
     }
+    public void periodic(){
+        pwm.setPulseTimeMicroseconds(1);
+    }
+
     public void setLed(double speed)
     {
-        pwm.setSpeed(speed);
+        pwm.setSpeed(1.0);
     }
 }

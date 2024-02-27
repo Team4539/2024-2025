@@ -3,12 +3,12 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.8,
+        "x": 7.5,
         "y": -0.2
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.113273613466389,
+        "x": 5.813273613466389,
         "y": -0.2
       },
       "isLocked": false,
@@ -16,12 +16,28 @@
     },
     {
       "anchor": {
-        "x": 3.276852593591227,
-        "y": 2.4323841240275086
+        "x": 2.951974365487194,
+        "y": 1.4405736503780713
       },
       "prevControl": {
-        "x": 3.6542707116672357,
-        "y": 1.9825947259002794
+        "x": 3.968269475000494,
+        "y": 0.6512182255133749
+      },
+      "nextControl": {
+        "x": 1.9366566792407647,
+        "y": 2.2291699115403483
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.6002032004064024,
+        "y": 3.394228326918193
+      },
+      "prevControl": {
+        "x": 2.6263652527305066,
+        "y": 2.5950059592426884
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +49,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.45,
+      "waypointRelativePos": 0.9,
       "command": {
         "type": "parallel",
         "data": {
@@ -50,7 +66,7 @@
     },
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.15,
+      "waypointRelativePos": 0.3,
       "command": {
         "type": "parallel",
         "data": {
@@ -58,7 +74,7 @@
             {
               "type": "named",
               "data": {
-                "name": "Farback"
+                "name": "setShoot"
               }
             }
           ]
@@ -67,7 +83,7 @@
     },
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.55,
+      "waypointRelativePos": 1.4,
       "command": {
         "type": "parallel",
         "data": {
@@ -76,23 +92,6 @@
               "type": "named",
               "data": {
                 "name": "shoot"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0.8,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "intake"
               }
             }
           ]
@@ -108,7 +107,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -42.0,
+    "rotation": -51.340191745909955,
     "rotateFast": false
   },
   "reversed": false,

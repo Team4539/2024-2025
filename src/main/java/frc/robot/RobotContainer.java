@@ -55,6 +55,7 @@ public class RobotContainer
   private final JoystickButton halfpowerShootButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
   //private final JoystickButton setHomeButton = new JoystickButton(coDriver, XboxController.Button.kStart.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kBack.value);
+  private final JoystickButton farbackButton = new JoystickButton(Driver, XboxController.Button.kB.value);
   //private final JoystickButton aimButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
 
   /* Subsystems */
@@ -100,20 +101,25 @@ public class RobotContainer
     //setHomeButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "home"));
     setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
     halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed / 2, m_shooter));
+    farbackButton.whileTrue(new setArmTo(Constants.Aiming.Farback, m_arm, "Farback"));
   }
 
   public RobotContainer() 
   {
     NamedCommands.registerCommand("intake", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(1));
-    NamedCommands.registerCommand("shoot", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(1));
-    NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.2));
+    NamedCommands.registerCommand("shoot", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(.75));
+    NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.1));
     NamedCommands.registerCommand("setShoot", new setArmTo(Constants.Aiming.Position, m_arm, "Position").withTimeout(5) );
     NamedCommands.registerCommand("Home", new setArmTo(Constants.Aiming.Home, m_arm, "home").withTimeout(2));
+    NamedCommands.registerCommand("Farback", new setArmTo(Constants.Aiming.Farback, m_arm, "Farback").withTimeout(5));
     configureBindings();
     SmartDashboard.putData("Autonomous", m_chooser);
     m_chooser.setDefaultOption("(Center) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!csdin"));
     m_chooser.addOption("(Left) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!lsdin"));
     m_chooser.addOption("(Right) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!rsdin"));
+    m_chooser.addOption("3 Note Far, Towards Center", drivetrain.getAutoPath("3 Note Far"));
+    m_chooser.addOption("2 Note Far, Toward Amp", drivetrain.getAutoPath("2 Note Far"));
+    m_chooser.addOption("Test", drivetrain.getAutoPath("test"));
   }
 
   public Command getAutonomousCommand() {

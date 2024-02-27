@@ -3,41 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7284778050297884,
-        "y": 4.473539560488536
+        "x": 1.6199370860280196,
+        "y": 3.6705027256208367
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.75463257590848,
-        "y": 2.6961873608974427
+        "x": 2.2514214259197756,
+        "y": 2.886994377977361
       },
       "isLocked": false,
-      "linkedName": "SourceRight"
+      "linkedName": "T5"
     },
     {
       "anchor": {
-        "x": 4.581343028591905,
-        "y": 0.8900235774793938
+        "x": 4.836560442351654,
+        "y": 0.8880248529727832
       },
       "prevControl": {
-        "x": 3.1777706066107694,
-        "y": 1.2869935554134515
+        "x": 3.6018501587196923,
+        "y": 1.6646143343723487
       },
       "nextControl": {
-        "x": 5.7407158466242745,
-        "y": 0.5621201541975123
+        "x": 5.712160256229346,
+        "y": 0.3373032671991287
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.895509771048071,
-        "y": 0.7612043754757987
+        "x": 7.5,
+        "y": -0.2
       },
       "prevControl": {
-        "x": 6.462297483510799,
-        "y": 0.7208186353034616
+        "x": 6.774576763954495,
+        "y": -0.04580653119062658
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,7 +46,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 1.4,
+      "waypointRelativePos": 0.65,
       "rotationDegrees": 0,
       "rotateFast": false
     }
@@ -55,7 +55,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 1.65,
+      "waypointRelativePos": 1.25,
       "command": {
         "type": "parallel",
         "data": {
@@ -69,11 +69,28 @@
           ]
         }
       }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.1,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Home"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 5.0,
+    "maxAcceleration": 3.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
@@ -85,7 +102,7 @@
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": -60.0,
+    "rotation": -46.25987884660326,
     "velocity": 0
   },
   "useDefaultConstraints": true

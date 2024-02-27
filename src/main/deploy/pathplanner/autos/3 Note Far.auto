@@ -1,20 +1,20 @@
 {
   "version": 1.0,
-  "startingPose": null,
+  "startingPose": {
+    "position": {
+      "x": 0.7509152340242001,
+      "y": 4.502249460339376
+    },
+    "rotation": -60.0
+  },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "Home"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "shoot"
+            "pathName": "SBU"
           }
         },
         {
@@ -24,13 +24,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "intake"
+                  "name": "shoot"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "shoot"
+                  "name": "intake"
                 }
               }
             ]
@@ -43,21 +43,21 @@
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "intake"
-          }
-        },
-        {
           "type": "path",
           "data": {
             "pathName": "N 5 TS"
           }
         },
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "reverseintake"
+            "pathName": "STN 4"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "N 4 TS"
           }
         },
         {
@@ -67,16 +67,22 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "intake"
+                  "name": "shoot"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "shoot"
+                  "name": "intake"
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "TS"
           }
         }
       ]

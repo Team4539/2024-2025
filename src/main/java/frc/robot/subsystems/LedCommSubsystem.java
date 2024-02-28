@@ -23,7 +23,7 @@ public class LedCommSubsystem extends SubsystemBase{
         }else {
             SmartDashboard.putBoolean("NOTE", false);
         }*/
-        SmartDashboard.putNumber("Data", pwmRcv.getDistance());
+        SmartDashboard.putNumber("Data", pwmRcv.getAbsolutePosition());
     }   
     public void setLed(double speed)
     {

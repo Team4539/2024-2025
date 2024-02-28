@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class visionSubsystem extends SubsystemBase
 {
-    /*public PhotonCamera camera;
+    public PhotonCamera camera;
 
     public visionSubsystem()
     {
@@ -33,5 +33,5 @@ public class visionSubsystem extends SubsystemBase
         {
             SmartDashboard.putNumber("[ID " + target.getFiducialId() + "] DTT", target.getBestCameraToTarget().getTranslation().getY()); // should be z but that doesn't work :()
         }
-}*/
+}
 }

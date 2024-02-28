@@ -19,12 +19,11 @@ public class LedCommSubsystem extends SubsystemBase{
         
     }
     public void periodic(){
-        /*if (pwmRcv.getDistance()){
+        if (pwmRcv.getValue() >= 3000){
             SmartDashboard.putBoolean("NOTE", true);
         }else {
             SmartDashboard.putBoolean("NOTE", false);
-        }*/
-        SmartDashboard.putNumber("Data", pwmRcv.getValue());
+        }
     }   
     public void setLed(double speed)
     {

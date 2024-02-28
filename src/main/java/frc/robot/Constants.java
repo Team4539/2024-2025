@@ -36,9 +36,10 @@ public class Constants
     public static final class Aiming 
     {
         public static final double Home = -1.35;
-        public static final double Amp = 13.22;
-        public static final double Source = 16.6;
-        public static final double Position = 4.25;
+        public static final double Amp = 12.25;
+        public static final double Source = 15.4;
+        public static final double Position = 3.9;
+        public static final double Middle = 6.9;
         //public static final double Farback = 7.25;
     }
     public static final class arduinoCOMs

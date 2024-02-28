@@ -53,9 +53,7 @@ public class RobotContainer
   private final JoystickButton setSourceButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
   private final JoystickButton halfpowerShootButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
-  //private final JoystickButton setHomeButton = new JoystickButton(coDriver, XboxController.Button.kStart.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kBack.value);
-  private final JoystickButton farbackButton = new JoystickButton(Driver, XboxController.Button.kB.value);
   //private final JoystickButton aimButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
 
   /* Subsystems */
@@ -101,7 +99,6 @@ public class RobotContainer
     //setHomeButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "home"));
     setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
     halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed / 2, m_shooter));
-    farbackButton.whileTrue(new setArmTo(Constants.Aiming.Farback, m_arm, "Farback"));
   }
 
   public RobotContainer() 
@@ -111,7 +108,6 @@ public class RobotContainer
     NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.1));
     NamedCommands.registerCommand("setShoot", new setArmTo(Constants.Aiming.Position, m_arm, "Position").withTimeout(5) );
     NamedCommands.registerCommand("Home", new setArmTo(Constants.Aiming.Home, m_arm, "home").withTimeout(2));
-    NamedCommands.registerCommand("Farback", new setArmTo(Constants.Aiming.Farback, m_arm, "Farback").withTimeout(5));
     configureBindings();
     SmartDashboard.putData("Autonomous", m_chooser);
     m_chooser.setDefaultOption("(Center) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!csdin"));

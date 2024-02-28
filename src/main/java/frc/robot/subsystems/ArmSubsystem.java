@@ -57,16 +57,16 @@ public class ArmSubsystem extends SubsystemBase
             else if ((armEncoder.getDistance() * 100) - 5.68 < Constants.Arm.armMin)
             {
                 // run inverted to push it out at minimum power
-                arm.set(-0.1);
-                armInverted.set(-0.1);
+                arm.set(-0.05);
+                armInverted.set(-0.05);
             } 
 
             //if rotations is greater tham Maximum
-            else if((armEncoder.getDistance() * 100) - 5.68 > Constants.Arm.armMax )
+            else if((armEncoder.getDistance() * 100) - 5.68 > Constants.Arm.armMax)
             {
                 //run to push in a minimum power
-                arm.set(0.1);
-                armInverted.set(0.1);
+                arm.set(0.05);
+                armInverted.set(0.05);
             }
         }
         // if speed is zero

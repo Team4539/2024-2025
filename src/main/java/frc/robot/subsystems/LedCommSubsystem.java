@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.PWM;
@@ -9,12 +10,12 @@ import frc.robot.Constants;
 
 public class LedCommSubsystem extends SubsystemBase{
     private PWM pwmSnd;
-    private DutyCycleEncoder pwmRcv;
+    private AnalogInput pwmRcv;
 
     public LedCommSubsystem()
     {
         pwmSnd = new PWM(Constants.arduinoCOMs.arduinoSend);
-        pwmRcv = new DutyCycleEncoder(Constants.arduinoCOMs.arduinoRcv);
+        pwmRcv = new AnalogInput(Constants.arduinoCOMs.arduinoRcv);
         
     }
     public void periodic(){
@@ -23,7 +24,7 @@ public class LedCommSubsystem extends SubsystemBase{
         }else {
             SmartDashboard.putBoolean("NOTE", false);
         }*/
-        SmartDashboard.putNumber("Data", pwmRcv.getAbsolutePosition());
+        SmartDashboard.putNumber("Data", pwmRcv.getAverageValue());
     }   
     public void setLed(double speed)
     {

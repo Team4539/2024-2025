@@ -48,8 +48,8 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0.15,
+      "name": "Go to shoot position",
+      "waypointRelativePos": 0.35,
       "command": {
         "type": "sequential",
         "data": {
@@ -65,7 +65,7 @@
       }
     },
     {
-      "name": "New Event Marker",
+      "name": "Reverseintake",
       "waypointRelativePos": 1.6,
       "command": {
         "type": "parallel",
@@ -82,7 +82,7 @@
       }
     },
     {
-      "name": "New Event Marker",
+      "name": "Wind up Shooter",
       "waypointRelativePos": 1.8,
       "command": {
         "type": "parallel",

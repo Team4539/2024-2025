@@ -27,12 +27,14 @@ public class Constants
         public static final double climberMin = -180;
         public static final double climberMax = 94;
     }
+
     public static final class Shooter
     {
         public static final int ID = 15;
         public static final int InvertedID = 16;
         public static final double shooterSpeed = 1;
     }
+
     public static final class Aiming 
     {
         public static final double Home = -1.35;
@@ -42,6 +44,7 @@ public class Constants
         public static final double Middle = 6.9;
         //public static final double Farback = 7.25;
     }
+
     public static final class arduinoCOMs
     {
         public static final int arduinoSend = 0; // PWM port
@@ -49,7 +52,5 @@ public class Constants
         public static final double Idle = 0.0; // pulse length is less than 15000us
         public static final double Auto = 1.0; // pulse length is less than greater than 15000us   
         public static final double Game = -1.0;  //  pulse length is less the 5000us
-        
-        
     }
 }

@@ -50,7 +50,7 @@ public class aimCamera extends Command
     @Override
     public void execute() 
     {
-        PhotonPipelineResult result = m_vision.camera.getLatestResult();
+        PhotonPipelineResult result = m_vision.april_tag_camera.getLatestResult();
         boolean isCentered = true;
 
         if (!result.hasTargets())

@@ -39,7 +39,7 @@ public class RobotContainer
   private final XboxController coDriver = new XboxController(1); // My co-joystick
   private final XboxController Driver = new XboxController(0); //Driver Buttons
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
-      .withDeadband(MaxSpeed * 0.04).withRotationalDeadband(MaxAngularRate * 0.06) // Add a 10% deadband
+      .withDeadband(MaxSpeed * 0.04).withRotationalDeadband(MaxAngularRate * 0.07) // Add a 10% deadband
       .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // I want field-centric
                                                                // driving in open loop
   

@@ -18,6 +18,7 @@ import frc.robot.Commands.setArm;
 import frc.robot.Commands.setArmTo;
 import frc.robot.Commands.setIntake;
 import frc.robot.Commands.setShooter;
+import frc.robot.Commands.ssCommand;
 import frc.robot.Commands.setClimber;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.ArmSubsystem;
@@ -100,11 +101,13 @@ public class RobotContainer
     SetMiddleButton.whileTrue(new setArmTo(Constants.Aiming.Middle, m_arm, "Middle"));
     //setHomeButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "home"));
     setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
-    halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed / 2, m_shooter));
+    //halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed / 2, m_shooter));
+    halfpowerShootButton.whileTrue(new ssCommand(m_vision, drivetrain));
   }
 
   public RobotContainer() 
   {
+    SmartDashboard.putNumber("P", 1);
     NamedCommands.registerCommand("intake", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(1));
     NamedCommands.registerCommand("shoot", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(.75));
     NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.1));

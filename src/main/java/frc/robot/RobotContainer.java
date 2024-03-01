@@ -92,7 +92,7 @@ public class RobotContainer
     joystick.pov(180).whileTrue(drivetrain.applyRequest(() -> forwardStraight.withVelocityX(-0.5).withVelocityY(0)));
 
     intakeButton.whileTrue(new setIntake(Constants.Intake.Speed, m_intake));
-    reverseIntake.whileTrue(new setIntake((-Constants.Intake.Speed + 0.25), m_intake));
+    reverseIntake.whileTrue(new setIntake((-Constants.Intake.Speed * 0.25), m_intake));
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     //aimButton.whileTrue(new aimCamera(0, 2, m_vision, drivetrain));
     setSourceButton.whileTrue(new setArmTo(Constants.Aiming.Source, m_arm, "Source"));
@@ -117,6 +117,7 @@ public class RobotContainer
     m_chooser.addOption("(Right) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!rsdin"));
     m_chooser.addOption("3 Note Far, Towards Center", drivetrain.getAutoPath("3 Note South"));
     m_chooser.addOption("3 Note Far, Toward Amp", drivetrain.getAutoPath("3 Note North"));
+    m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center"));
     m_chooser.addOption("Test", drivetrain.getAutoPath("Test"));
   }
 

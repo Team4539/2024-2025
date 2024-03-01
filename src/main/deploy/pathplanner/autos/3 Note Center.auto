@@ -2,35 +2,23 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.1852004303152672,
-      "y": 5.55
+      "x": 1.2654580294915574,
+      "y": 5.5430292057165325
     },
-    "rotation": -1.5969742397749207
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "named",
-          "data": {
-            "name": "Home"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "shoot"
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
               {
                 "type": "named",
                 "data": {
-                  "name": "intake"
+                  "name": "Home"
                 }
               },
               {
@@ -40,24 +28,6 @@
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": null
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "N7 T S"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "shoot"
           }
         },
         {
@@ -82,25 +52,57 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SPM T N6"
+            "pathName": "STN 7"
           }
         },
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "reverseintake"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "shoot"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intake"
+                }
+              }
+            ]
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "N6 T S"
+            "pathName": "STN 6 2"
           }
         },
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "shoot"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "shoot"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intake"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "STN 8 2"
           }
         },
         {

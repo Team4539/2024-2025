@@ -8,24 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.2654580294915574,
-        "y": 5.5430292057165325
+        "x": 1.9086365238257539,
+        "y": 6.034183692299009
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.119131303789673,
-        "y": 5.5430292057165325
+        "x": 2.5868974814872705,
+        "y": 6.560420642208806
       },
       "prevControl": {
-        "x": 1.1191313037896728,
-        "y": 5.5430292057165325
+        "x": 2.0169058564860958,
+        "y": 6.015761978318794
       },
       "nextControl": {
-        "x": 3.119131303789673,
-        "y": 5.5430292057165325
+        "x": 3.113134431397068,
+        "y": 7.063269283233724
       },
       "isLocked": false,
       "linkedName": null
@@ -36,20 +36,26 @@
         "y": 5.5430292057165325
       },
       "prevControl": {
-        "x": 1.943718987153074,
-        "y": 5.55472336015897
+        "x": 2.1776020760018726,
+        "y": 6.209596008935608
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1,
+      "rotationDegrees": 50.0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [
     {
       "name": "Start Intake",
-      "waypointRelativePos": 0.9,
+      "waypointRelativePos": 0.4,
       "command": {
         "type": "sequential",
         "data": {
@@ -71,8 +77,8 @@
       }
     },
     {
-      "name": "New Event Marker",
-      "waypointRelativePos": 1.7,
+      "name": "Wind up Shooter",
+      "waypointRelativePos": 1.8,
       "command": {
         "type": "parallel",
         "data": {
@@ -96,7 +102,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,

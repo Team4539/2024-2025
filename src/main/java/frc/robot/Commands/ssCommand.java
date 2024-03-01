@@ -63,7 +63,7 @@ public class ssCommand extends Command
                 }
                 else if ((rotationYaw + 2) < 0)
                 {
-                    m_drivetrain.setControl(forwardStraight.withRotationalRate(0.3));
+                    m_drivetrain.setControl(forwardStraight.withRotationalRate(-0.3));
                 }
                 else
                 {

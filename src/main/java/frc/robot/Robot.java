@@ -8,6 +8,7 @@ import edu.wpi.first.net.PortForwarder;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.ArmPositionCalculator;
 import frc.robot.subsystems.LedCommSubsystem;
 
 public class Robot extends TimedRobot {
@@ -24,7 +25,8 @@ public class Robot extends TimedRobot {
     m_led.setLed(Constants.arduinoCOMs.Idle);
   }
   @Override
-  public void robotPeriodic() {
+  public void robotPeriodic() 
+  {
     CommandScheduler.getInstance().run(); 
   }
 
@@ -57,7 +59,8 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void teleopInit() {
+  public void teleopInit() 
+  {
     m_led.setLed(Constants.arduinoCOMs.Game);
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
@@ -65,7 +68,9 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() 
+  {
+  }
 
   @Override
   public void teleopExit() {

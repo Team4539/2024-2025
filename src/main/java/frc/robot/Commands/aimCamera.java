@@ -9,9 +9,11 @@ import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
+import frc.robot.subsystems.ArmPositionCalculator;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.visionSubsystem;
@@ -27,13 +29,11 @@ public class aimCamera extends Command
 
     private double TARGET_HEIGHT_METERS; // Units.inchesToMeters(2);
 
-    private final double CAMERA_PITCH_RADIANS = Units.degreesToRadians(63.5);
+    private final double CAMERA_PITCH_RADIANS = Units.degreesToRadians(25.1);
 
     private final double GOAL_RANGE_METERS;
     
     private final int m_tag;
-
-    private IntakeSubsystem m_intake = new IntakeSubsystem();
 
     public aimCamera(int april_tag, double goal_range, visionSubsystem visionSubsystem, CommandSwerveDrivetrain CommandSwerveDrivetrain) 
     {
@@ -83,48 +83,56 @@ public class aimCamera extends Command
     @Override
     public void execute() 
     {
-        var result = m_vision.note_camera.getLatestResult();
-        if (result.getBestTarget().getFiducialId() == m_tag)
+        var result = m_vision.april_tag_camera.getLatestResult();
+        if (result.hasTargets())
         {
-            if (!aimed)
+            if (result.getBestTarget().getFiducialId() == m_tag)
             {
-                if (result.hasTargets()) 
+                if (!aimed)
                 {
-                    double rotationYaw = result.getBestTarget().getYaw();
+                    if (result.hasTargets()) 
+                    {
+                        double rotationYaw = result.getBestTarget().getYaw();
                 
-                    if ((rotationYaw - 2) > 0)
-                    {
-                        m_drivetrain.setControl(forwardStraight.withRotationalRate(0.3));
-                    }
-                    else if ((rotationYaw + 2) < 0)
-                    {
-                        m_drivetrain.setControl(forwardStraight.withRotationalRate(0.3));
-                    }
-                    else
-                    {
-                        m_drivetrain.setControl(forwardStraight.withRotationalRate(0));
-                        aimed = true;
+                        if ((rotationYaw - 2) > 0)
+                        {
+                            m_drivetrain.setControl(forwardStraight.withRotationalRate(-0.3));
+                        }
+                        else if ((rotationYaw + 2) < 0)
+                        {
+                            m_drivetrain.setControl(forwardStraight.withRotationalRate(0.3));
+                        }
+                        else
+                        {
+                            m_drivetrain.setControl(forwardStraight.withRotationalRate(0));
+                            aimed = true;
+                        }
                     }
                 }
-            }
-            else if (aimed)
-            {
-                if (result.hasTargets())
+                else if (aimed)
                 {
-                    // returns the distance to target in meters
-                    double range = PhotonUtils.calculateDistanceToTargetMeters(
-                        CAMERA_HEIGHT_METERS,
-                        TARGET_HEIGHT_METERS,
-                        CAMERA_PITCH_RADIANS,
-                        Units.degreesToRadians(result.getBestTarget().getPitch()));
-                    if (range > GOAL_RANGE_METERS)
+                    if (result.hasTargets())
                     {
-                        m_drivetrain.setControl(forwardStraight.withVelocityX(0.3));
-                    }
-                    else
-                    {
-                        // end
-                        m_drivetrain.setControl(forwardStraight.withVelocityX(0));
+                        // returns the distance to target in meters
+                        double range = PhotonUtils.calculateDistanceToTargetMeters(
+                            CAMERA_HEIGHT_METERS,
+                            TARGET_HEIGHT_METERS,
+                            CAMERA_PITCH_RADIANS,
+                            Units.degreesToRadians(result.getBestTarget().getPitch()));
+
+                        SmartDashboard.putNumber("Calculated Distance to Target", range);
+                        SmartDashboard.putNumber("Calculated Arm Position", ArmPositionCalculator.calculateArmPosition((int)Units.metersToInches(range)));
+                        
+                        if (range > GOAL_RANGE_METERS)
+                        {
+                            m_drivetrain.setControl(forwardStraight.withVelocityX(-0.3));
+                        }
+                        else
+                        {
+                            // end
+                            m_drivetrain.setControl(forwardStraight.withVelocityX(0));
+                            return;
+                        }
                     }
                 }
             }

@@ -22,11 +22,6 @@ public class visionSubsystem extends SubsystemBase
     {
         SmartDashboard.putBoolean("April Tag Detection", isResults(april_tag_camera));
         SmartDashboard.putBoolean("Note Detection", isResults(note_camera));
-
-        if (note_camera.getLatestResult().hasTargets())
-        {
-            SmartDashboard.putNumber("Note Yaw", note_camera.getLatestResult().getBestTarget().getYaw());
-        }
     }
 
     public boolean isResults(PhotonCamera camera)

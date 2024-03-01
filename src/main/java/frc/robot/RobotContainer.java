@@ -39,7 +39,7 @@ public class RobotContainer
   private final XboxController coDriver = new XboxController(1); // My co-joystick
   private final XboxController Driver = new XboxController(0); //Driver Buttons
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
-      .withDeadband(MaxSpeed * 0.04).withRotationalDeadband(MaxAngularRate * 0.07) // Add a 10% deadband
+      .withDeadband(MaxSpeed * 0.04).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
       .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // I want field-centric
                                                                // driving in open loop
   
@@ -102,12 +102,10 @@ public class RobotContainer
     //setHomeButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "home"));
     setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
     //halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed / 2, m_shooter));
-    halfpowerShootButton.whileTrue(new ssCommand(m_vision, drivetrain));
   }
 
   public RobotContainer() 
   {
-    SmartDashboard.putNumber("P", 1);
     NamedCommands.registerCommand("intake", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(1));
     NamedCommands.registerCommand("shoot", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(.75));
     NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.1));
@@ -115,6 +113,8 @@ public class RobotContainer
     NamedCommands.registerCommand("Home", new setArmTo(Constants.Aiming.Home, m_arm, "home").withTimeout(2));
     configureBindings();
     SmartDashboard.putData("Autonomous", m_chooser);
+    SmartDashboard.putData("Search for Note", new ssCommand(m_vision, drivetrain));
+    SmartDashboard.putData("Search for April Tag 6", new aimCamera(7, 86, m_vision, drivetrain));
     m_chooser.setDefaultOption("(Center) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!csdin"));
     m_chooser.addOption("(Left) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!lsdin"));
     m_chooser.addOption("(Right) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!rsdin"));

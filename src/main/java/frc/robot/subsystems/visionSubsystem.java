@@ -3,8 +3,6 @@ package frc.robot.subsystems;
 import org.photonvision.PhotonCamera;
 import org.photonvision.targeting.PhotonPipelineResult;
 
-import com.ctre.phoenix6.hardware.Pigeon2; // DELETE
-
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -25,10 +23,10 @@ public class visionSubsystem extends SubsystemBase
         SmartDashboard.putBoolean("April Tag Detection", isResults(april_tag_camera));
         SmartDashboard.putBoolean("Note Detection", isResults(note_camera));
 
-        //if (note_camera.getLatestResult().hasTargets())
-        //{
-            //SmartDashboard.putNumber("Note Yaw", note_camera.getLatestResult().getBestTarget().getYaw());
-        //}
+        if (note_camera.getLatestResult().hasTargets())
+        {
+            SmartDashboard.putNumber("Note Yaw", note_camera.getLatestResult().getBestTarget().getYaw());
+        }
     }
 
     public boolean isResults(PhotonCamera camera)

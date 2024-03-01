@@ -55,15 +55,15 @@ public class ssCommand extends Command
         {
             if (result.hasTargets()) 
             {
-                double rotationYaw = -result.getBestTarget().getYaw();
+                double rotationYaw = result.getBestTarget().getYaw();
                 
                 if ((rotationYaw - 2) > 0)
                 {
-                    m_drivetrain.setControl(forwardStraight.withRotationalRate(3));
+                    m_drivetrain.setControl(forwardStraight.withRotationalRate(0.3));
                 }
                 else if ((rotationYaw + 2) < 0)
                 {
-                    m_drivetrain.setControl(forwardStraight.withRotationalRate(3));
+                    m_drivetrain.setControl(forwardStraight.withRotationalRate(0.3));
                 }
                 else
                 {
@@ -80,8 +80,10 @@ public class ssCommand extends Command
 
                 if (areaperc < 5.5)
                 {
-                    ParallelCommandGroup group = new ParallelCommandGroup(new InstantCommand(() -> m_drivetrain.setControl(forwardStraight.withVelocityX(0.3)), m_drivetrain), new setIntake(0.3, m_intake));
+                    ParallelRaceGroup group = new ParallelRaceGroup(new check4Note(), new InstantCommand(() -> m_drivetrain.setControl(forwardStraight.withVelocityX(0.3)), m_drivetrain), new setIntake(0.3, m_intake));
                     group.schedule();
+                    
+                    //m_drivetrain.setControl(forwardStraight.withVelocityX(0.3));
                 }
             }
         }

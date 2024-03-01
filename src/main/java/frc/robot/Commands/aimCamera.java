@@ -120,7 +120,7 @@ public class aimCamera extends Command
                             CAMERA_PITCH_RADIANS,
                             Units.degreesToRadians(result.getBestTarget().getPitch()));
 
-                        SmartDashboard.putNumber("Calculated Distance to Target", range);
+                        SmartDashboard.putNumber("Calculated Distance to Target", (int)Units.metersToInches(range));
                         SmartDashboard.putNumber("Calculated Arm Position", ArmPositionCalculator.calculateArmPosition((int)Units.metersToInches(range)));
                         
                         if (range > GOAL_RANGE_METERS)

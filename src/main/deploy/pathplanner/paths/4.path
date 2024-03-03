@@ -3,45 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.6199370860280196,
-        "y": 3.6705027256208367
+        "x": 14.15241622506037,
+        "y": 4.385307915914978
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.69214487146923,
-        "y": 2.1985010351787078
+        "x": 14.643570711642845,
+        "y": 4.864768248055015
       },
       "isLocked": false,
-      "linkedName": "T5"
+      "linkedName": "34"
     },
     {
       "anchor": {
-        "x": 5.102967898243491,
-        "y": 3.6705027256208367
+        "x": 15.368608287074125,
+        "y": 5.5430292057165325
       },
       "prevControl": {
-        "x": 4.221099166330059,
-        "y": 3.7350297060047466
-      },
-      "nextControl": {
-        "x": 6.31660186397296,
-        "y": 3.581700240323558
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 8.071455914991601,
-        "y": 1.777511475250871
-      },
-      "prevControl": {
-        "x": 6.706461092694266,
-        "y": 2.3482388936287855
+        "x": 14.620182402757965,
+        "y": 4.946627329152095
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "N42"
+      "linkedName": "35"
     }
   ],
   "rotationTargets": [],
@@ -49,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 1.35,
+      "waypointRelativePos": 0.7,
       "command": {
         "type": "parallel",
         "data": {
@@ -57,13 +41,7 @@
             {
               "type": "named",
               "data": {
-                "name": "intake"
-              }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "Home"
+                "name": "shoot"
               }
             }
           ]
@@ -72,7 +50,7 @@
     },
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.15,
+      "waypointRelativePos": 0,
       "command": {
         "type": "parallel",
         "data": {
@@ -80,7 +58,7 @@
             {
               "type": "named",
               "data": {
-                "name": "Home"
+                "name": "reverseintake"
               }
             }
           ]
@@ -96,13 +74,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -25.854917331563655,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": -40.0302592732811,
+    "rotation": -145.56101069119643,
     "velocity": 0
   },
   "useDefaultConstraints": true

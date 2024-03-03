@@ -3,40 +3,40 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.2654580294915574,
+        "x": 1.08,
         "y": 5.5430292057165325
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.9086365238257539,
+        "x": 1.7231784943341966,
         "y": 6.034183692299009
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "31"
     },
     {
       "anchor": {
-        "x": 2.5868974814872705,
-        "y": 6.560420642208806
+        "x": 2.6570624081419103,
+        "y": 6.677362186633205
       },
       "prevControl": {
-        "x": 2.0169058564860958,
-        "y": 6.015761978318794
+        "x": 2.0870707831407356,
+        "y": 6.132703522743194
       },
       "nextControl": {
-        "x": 3.113134431397068,
-        "y": 7.063269283233724
+        "x": 2.729361477257222,
+        "y": 6.746447963787837
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.2654580294915574,
+        "x": 1.0,
         "y": 5.5430292057165325
       },
       "prevControl": {
-        "x": 2.1776020760018726,
+        "x": 1.9121440465103148,
         "y": 6.209596008935608
       },
       "nextControl": null,
@@ -87,6 +87,40 @@
               "type": "named",
               "data": {
                 "name": "shoot"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.3,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Home"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.55,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Home"
               }
             }
           ]

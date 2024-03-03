@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.27,
-        "y": 7.260718658384535
+        "x": 2.189296230444312,
+        "y": 6.958021893251764
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.9303857401723363,
-        "y": 7.202164475655628
+        "x": 1.8496819706166485,
+        "y": 6.899467710522856
       },
       "isLocked": false,
       "linkedName": "T6"
@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 2.5,
-        "y": 6.90939356201109
+        "x": 2.7506156436814293,
+        "y": 7.06163443710625
       },
       "prevControl": {
-        "x": 2.1764048057910657,
-        "y": 6.920503842836575
+        "x": 2.427020449472495,
+        "y": 7.072744717931735
       },
       "nextControl": null,
       "isLocked": false,
@@ -76,6 +76,16 @@
       "command": {
         "type": "parallel",
         "data": {
+          "commands": []
+        }
+      }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
           "commands": [
             {
               "type": "named",
@@ -90,7 +100,7 @@
   ],
   "globalConstraints": {
     "maxVelocity": 3.0,
-    "maxAcceleration": 2.0,
+    "maxAcceleration": 1.75,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },

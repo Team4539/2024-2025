@@ -29,7 +29,7 @@ public class aimCamera extends Command
 
     private double TARGET_HEIGHT_METERS; // Units.inchesToMeters(2);
 
-    private final double CAMERA_PITCH_RADIANS = Units.degreesToRadians(25.1);
+    private final double CAMERA_PITCH_RADIANS = Units.degreesToRadians(24);
 
     private final double GOAL_RANGE_METERS;
     

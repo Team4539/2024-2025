@@ -1,26 +1,28 @@
 package frc.robot;
 
+import org.photonvision.PhotonUtils;
+
+import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.NamedCommands;
-import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Commands.aimCamera;
 import frc.robot.Commands.setArm;
 import frc.robot.Commands.setArmTo;
+import frc.robot.Commands.setClimber;
 import frc.robot.Commands.setIntake;
 import frc.robot.Commands.setShooter;
 import frc.robot.Commands.ssCommand;
-import frc.robot.Commands.setClimber;
 import frc.robot.generated.TunerConstants;
+import frc.robot.subsystems.ArmPositionCalculator;
+import edu.wpi.first.math.util.Units;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
@@ -39,7 +41,7 @@ public class RobotContainer
   private final XboxController coDriver = new XboxController(1); // My co-joystick
   private final XboxController Driver = new XboxController(0); //Driver Buttons
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
-      .withDeadband(MaxSpeed * 0.04).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
+      .withDeadband(MaxSpeed * 0.04).withRotationalDeadband(MaxAngularRate * 0.08) // Add a 10% deadband
       .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // I want field-centric
                                                                // driving in open loop
   
@@ -53,10 +55,10 @@ public class RobotContainer
   private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kY.value);
   private final JoystickButton setSourceButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
-  private final JoystickButton halfpowerShootButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
+  //private final JoystickButton halfpowerShootButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kBack.value);
   private final JoystickButton SetMiddleButton = new JoystickButton(coDriver, XboxController.Button.kStart.value);
-  //private final JoystickButton aimButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
+  private final JoystickButton aimButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
 
   /* Subsystems */
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -102,25 +104,27 @@ public class RobotContainer
     //setHomeButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "home"));
     setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
     //halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed / 2, m_shooter));
+    //aimButton.whileTrue(new aimCamera(7, 86, m_vision, drivetrain, "Auto aim"));
   }
 
   public RobotContainer() 
   {
     NamedCommands.registerCommand("intake", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(1));
     NamedCommands.registerCommand("shoot", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(.75));
-    NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.1));
+    NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.2));
     NamedCommands.registerCommand("setShoot", new setArmTo(Constants.Aiming.Position, m_arm, "Position").withTimeout(5) );
     NamedCommands.registerCommand("Home", new setArmTo(Constants.Aiming.Home, m_arm, "home").withTimeout(2));
     configureBindings();
     SmartDashboard.putData("Autonomous", m_chooser);
     SmartDashboard.putData("Search for Note", new ssCommand(m_vision, drivetrain));
-    SmartDashboard.putData("Search for April Tag 6", new aimCamera(7, 86, m_vision, drivetrain));
+    //SmartDashboard.putData("Search for April Tag 7", new aimCamera(7, 86, m_vision, drivetrain));
     m_chooser.setDefaultOption("(Center) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!csdin"));
     m_chooser.addOption("(Left) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!lsdin"));
     m_chooser.addOption("(Right) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!rsdin"));
     m_chooser.addOption("3 Note Far, Towards Center", drivetrain.getAutoPath("3 Note South"));
     m_chooser.addOption("3 Note Far, Toward Amp", drivetrain.getAutoPath("3 Note North"));
-    m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center"));
+    //m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center"));
+    m_chooser.addOption("3 Note Center Red", drivetrain.getAutoPath("3 Note Center Red"));
     m_chooser.addOption("Test", drivetrain.getAutoPath("Test"));
   }
 

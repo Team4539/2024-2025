@@ -3,45 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.2771521839339972,
+        "x": 1.160210639509598,
         "y": 5.5430292057165325
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.9671072960379539,
+        "x": 1.8501657516135546,
         "y": 4.876462402497455
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "30"
     },
     {
       "anchor": {
-        "x": 2.4582617826204314,
-        "y": 4.502249460339376
+        "x": 2.493344245947751,
+        "y": 4.303448834817898
       },
       "prevControl": {
-        "x": 1.6412939193556704,
-        "y": 5.078932657938032
+        "x": 1.721530052746715,
+        "y": 4.8881565569398955
       },
       "nextControl": {
-        "x": 3.253464284706347,
-        "y": 3.940930047102259
+        "x": 2.5730534607631528,
+        "y": 4.243063066018351
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.2771521839339972,
+        "x": 1.08,
         "y": 5.5430292057165325
       },
       "prevControl": {
-        "x": 1.8033891338437944,
+        "x": 1.6062369499097973,
         "y": 5.051874719134054
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "31"
     }
   ],
   "rotationTargets": [
@@ -87,6 +87,40 @@
               "type": "named",
               "data": {
                 "name": "shoot"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Home"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.95,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Home"
               }
             }
           ]

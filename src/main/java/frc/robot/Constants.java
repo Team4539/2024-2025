@@ -1,5 +1,10 @@
 package frc.robot;
 
+import java.util.Optional;
+
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
+
 public class Constants 
 {
     public static final double stickDeadband = 0.1;
@@ -43,6 +48,25 @@ public class Constants
         public static final double Position = 3.9;
         public static final double Middle = 6.9;
         //public static final double Farback = 7.25;
+        public static int getTag()
+        {
+            Optional<Alliance> alliance = DriverStation.getAlliance();
+            if (alliance.isPresent()) 
+            {
+                if (alliance.get() == DriverStation.Alliance.Blue)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+            else
+            {
+                return 7;
+            }
+        }
     }
 
     public static final class arduinoCOMs

@@ -8,12 +8,14 @@ import org.photonvision.targeting.PhotonTrackedTarget;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import frc.robot.subsystems.ArmPositionCalculator;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.visionSubsystem;
@@ -23,6 +25,10 @@ public class aimCamera extends Command
     private boolean aimed;
     private final visionSubsystem m_vision;
     private final CommandSwerveDrivetrain m_drivetrain;
+    private final ArmSubsystem m_arms;
+    private final PIDController pidController;
+    private double fixedOutput;
+
     private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
 
     private final double CAMERA_HEIGHT_METERS = Units.inchesToMeters(13.5);
@@ -30,18 +36,17 @@ public class aimCamera extends Command
     private double TARGET_HEIGHT_METERS; // Units.inchesToMeters(2);
 
     private final double CAMERA_PITCH_RADIANS = Units.degreesToRadians(24);
-
-    private final double GOAL_RANGE_METERS;
     
     private final int m_tag;
 
-    public aimCamera(int april_tag, double goal_range, visionSubsystem visionSubsystem, CommandSwerveDrivetrain CommandSwerveDrivetrain) 
+    public aimCamera(int april_tag, visionSubsystem visionSubsystem, CommandSwerveDrivetrain CommandSwerveDrivetrain, ArmSubsystem arm) 
     {
-        addRequirements(visionSubsystem, CommandSwerveDrivetrain);
+        addRequirements(visionSubsystem, CommandSwerveDrivetrain, arm);
         m_vision = visionSubsystem;
         m_drivetrain = CommandSwerveDrivetrain;
-        GOAL_RANGE_METERS = Units.inchesToMeters(goal_range);
         m_tag = april_tag;
+        m_arms = arm;
+        pidController = new PIDController(0.175, 0.002, 0.0); // Adjust these values as needed
     }
 
     @Override
@@ -120,19 +125,35 @@ public class aimCamera extends Command
                             CAMERA_PITCH_RADIANS,
                             Units.degreesToRadians(result.getBestTarget().getPitch()));
 
-                        SmartDashboard.putNumber("Calculated Distance to Target", (int)Units.metersToInches(range));
-                        SmartDashboard.putNumber("Calculated Arm Position", ArmPositionCalculator.calculateArmPosition((int)Units.metersToInches(range)));
-                        
-                        if (range > GOAL_RANGE_METERS)
+                        double goal_arm_rot = ArmPositionCalculator.calculateArmPosition((int)Units.metersToInches(range));
+                        SmartDashboard.putNumber("Calculated Distance to Target (inch)", (int)Units.metersToInches(range));
+                        SmartDashboard.putNumber("Calculated Arm Position", goal_arm_rot);
+                        double encoder = m_arms.getEncoder();
+                        double output = pidController.calculate(encoder, goal_arm_rot);
+                        if (output > 1)
                         {
-                            m_drivetrain.setControl(forwardStraight.withVelocityX(-0.3));
+                            fixedOutput = 1; 
                         }
-                        else
+                        else 
                         {
-                            // end
-                            m_drivetrain.setControl(forwardStraight.withVelocityX(0));
-                            return;
+                            fixedOutput = output;
                         }
+
+                        if (encoder > goal_arm_rot) // go down
+                        {
+                            m_arms.setArm(-fixedOutput*.65); 
+                        }
+                        else if (encoder < goal_arm_rot) //me go up
+                        {
+                            m_arms.setArm(-fixedOutput); 
+
+                        }
+                        else //stay
+                        {
+                            m_arms.setArm(0);
+                        }
+                        SmartDashboard.putNumber("output", output);
+                        SmartDashboard.putString("Command", "aimCamera.java");
                     }
                 }
             }

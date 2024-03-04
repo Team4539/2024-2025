@@ -121,11 +121,11 @@ public class RobotContainer
     m_chooser.setDefaultOption("(Center) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!csdin"));
     m_chooser.addOption("(Left) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!lsdin"));
     m_chooser.addOption("(Right) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!rsdin"));
-    m_chooser.addOption("3 Note Far, Towards Center", drivetrain.getAutoPath("3 Note South Blue"));
-    m_chooser.addOption("3 Note Far, Toward Amp", drivetrain.getAutoPath("3 Note North Blue"));
+    m_chooser.addOption("3 Note Center Blue", drivetrain.getAutoPath("3 Note South Blue"));
+    m_chooser.addOption("3 Note Amp Blue", drivetrain.getAutoPath("3 Note North Blue"));
     //m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center"));
     m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center Red"));
-    m_chooser.addOption("3 Note North Red", drivetrain.getAutoPath("3 Note North Red"));
+    m_chooser.addOption("3 Note Amp Red", drivetrain.getAutoPath("3 Note North Red"));
     m_chooser.addOption("Test", drivetrain.getAutoPath("Test"));
   }
 

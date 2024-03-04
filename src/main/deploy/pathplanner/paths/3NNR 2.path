@@ -3,92 +3,52 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.2654580294915574,
-        "y": 5.5430292057165325
+        "x": 2.142519612674553,
+        "y": 7.54272961537376
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.2654580294915574,
-        "y": 5.5430292057165325
+        "x": 1.5928943538798759,
+        "y": 7.343928989852282
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "40"
     },
     {
       "anchor": {
-        "x": 2.119131303789673,
-        "y": 5.5430292057165325
+        "x": 1.4876469638979162,
+        "y": 7.1217400554459225
       },
       "prevControl": {
-        "x": 1.1191313037896728,
-        "y": 5.5430292057165325
+        "x": 1.4759528094554764,
+        "y": 7.285458217640082
       },
       "nextControl": {
-        "x": 3.119131303789673,
-        "y": 5.5430292057165325
+        "x": 1.499341118340356,
+        "y": 6.958021893251763
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.160210639509598,
-        "y": 5.5430292057165325
+        "x": 2.75,
+        "y": 7.12
       },
       "prevControl": {
-        "x": 1.8384715971711145,
-        "y": 5.55472336015897
+        "x": 2.0249624245687246,
+        "y": 7.155082463327321
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "30"
+      "linkedName": "41"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "Start Intake",
-      "waypointRelativePos": 0.9,
-      "command": {
-        "type": "sequential",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "intake"
-              }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "reverseintake"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 1.75,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "shoot"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "New Event Marker",
+      "name": "Set Home",
       "waypointRelativePos": 0,
       "command": {
         "type": "parallel",
@@ -103,23 +63,46 @@
           ]
         }
       }
+    },
+    {
+      "name": "Start Intake",
+      "waypointRelativePos": 1.05,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "intake"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "Home"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 2.5,
+    "maxVelocity": 5.0,
+    "maxAcceleration": 2.25,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": 43.40885972880534,
     "velocity": 0
   },
   "useDefaultConstraints": false

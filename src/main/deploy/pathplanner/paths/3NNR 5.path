@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.9,
-        "y": 7.7
+        "x": 7.825878671700363,
+        "y": 8.1
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.900000000000001,
-        "y": 7.7
+        "x": 7.112535250712862,
+        "y": 8.063719175306572
       },
       "isLocked": false,
-      "linkedName": "38"
+      "linkedName": "43"
     },
     {
       "anchor": {
-        "x": 1.6747534349769553,
-        "y": 7.028186819906404
+        "x": 1.768306670516475,
+        "y": 6.993104356579084
       },
       "prevControl": {
-        "x": 2.1794922450243774,
-        "y": 7.237782828842012
+        "x": 2.3062377748687135,
+        "y": 7.297152372082522
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,7 +32,7 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "New Event Marker",
+      "name": "Reverseintake",
       "waypointRelativePos": 0,
       "command": {
         "type": "parallel",
@@ -49,8 +49,8 @@
       }
     },
     {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0.25,
+      "name": "Set Shoot",
+      "waypointRelativePos": 0.4,
       "command": {
         "type": "parallel",
         "data": {
@@ -66,8 +66,8 @@
       }
     },
     {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0.8,
+      "name": "Spool Shooter",
+      "waypointRelativePos": 0.85,
       "command": {
         "type": "parallel",
         "data": {
@@ -91,13 +91,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 39.0,
+    "rotation": 40.0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": -1.9091524329963934,
     "velocity": 0
   },
   "useDefaultConstraints": true

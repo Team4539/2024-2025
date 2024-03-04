@@ -55,10 +55,10 @@ public class RobotContainer
   private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kY.value);
   private final JoystickButton setSourceButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
-  //private final JoystickButton halfpowerShootButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
+  private final JoystickButton halfpowerShootButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kBack.value);
   private final JoystickButton SetMiddleButton = new JoystickButton(coDriver, XboxController.Button.kStart.value);
-  private final JoystickButton aimButton = new JoystickButton(Driver, XboxController.Button.kA.value);
+  private final JoystickButton aimButton = new JoystickButton(Driver, XboxController.Button.kB.value);
 
   /* Subsystems */
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -103,7 +103,7 @@ public class RobotContainer
     SetMiddleButton.whileTrue(new setArmTo(Constants.Aiming.Middle, m_arm, "Middle"));
     //setHomeButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "home"));
     setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
-    //halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed / 2, m_shooter));
+    halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed * .85, m_shooter));
     aimButton.whileTrue(new aimCamera(Constants.Aiming.getTag(), m_vision, drivetrain, m_arm));
   }
 
@@ -121,10 +121,11 @@ public class RobotContainer
     m_chooser.setDefaultOption("(Center) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!csdin"));
     m_chooser.addOption("(Left) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!lsdin"));
     m_chooser.addOption("(Right) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!rsdin"));
-    m_chooser.addOption("3 Note Far, Towards Center", drivetrain.getAutoPath("3 Note South"));
-    m_chooser.addOption("3 Note Far, Toward Amp", drivetrain.getAutoPath("3 Note North"));
+    m_chooser.addOption("3 Note Far, Towards Center", drivetrain.getAutoPath("3 Note South Blue"));
+    m_chooser.addOption("3 Note Far, Toward Amp", drivetrain.getAutoPath("3 Note North Blue"));
     //m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center"));
-    m_chooser.addOption("3 Note Center Red", drivetrain.getAutoPath("3 Note Center Red"));
+    m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center Red"));
+    m_chooser.addOption("3 Note North Red", drivetrain.getAutoPath("3 Note North Red"));
     m_chooser.addOption("Test", drivetrain.getAutoPath("Test"));
   }
 

@@ -58,7 +58,7 @@ public class RobotContainer
   private final JoystickButton halfpowerShootButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kBack.value);
   private final JoystickButton SetMiddleButton = new JoystickButton(coDriver, XboxController.Button.kStart.value);
-  private final JoystickButton aimButton = new JoystickButton(Driver, XboxController.Button.kB.value);
+  //private final JoystickButton aimButton = new JoystickButton(Driver, XboxController.Button.kB.value);
 
   /* Subsystems */
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -104,7 +104,7 @@ public class RobotContainer
     //setHomeButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "home"));
     setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
     halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed * .85, m_shooter));
-    aimButton.whileTrue(new aimCamera(Constants.Aiming.getTag(), m_vision, drivetrain, m_arm));
+    //aimButton.whileTrue(new aimCamera(Constants.Aiming.getTag(), m_vision, drivetrain, m_arm));
   }
 
   public RobotContainer() 

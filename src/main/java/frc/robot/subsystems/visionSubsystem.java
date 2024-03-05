@@ -13,14 +13,14 @@ public class visionSubsystem extends SubsystemBase
 
     public visionSubsystem()
     {
-        april_tag_camera = new PhotonCamera("Global_Shutter_Camera");
+        //april_tag_camera = new PhotonCamera("Global_Shutter_Camera");
         note_camera = new PhotonCamera("Microsoft_LifeCam_HD-3000");
     }
 
     @Override
     public void periodic() 
     {
-        SmartDashboard.putBoolean("April Tag Detection", isResults(april_tag_camera));
+        //SmartDashboard.putBoolean("April Tag Detection", isResults(april_tag_camera));
         SmartDashboard.putBoolean("Note Detection", isResults(note_camera));
     }
 

@@ -127,6 +127,7 @@ public class RobotContainer
     //m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center"));
     m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center Red"));
     m_chooser.addOption("3 Note Amp Red", drivetrain.getAutoPath("3 Note North Red"));
+    m_chooser.addOption("1 note", drivetrain.getAutoPath("1 Note anywhere"));
     m_chooser.addOption("Test", drivetrain.getAutoPath("Test"));
   }
 

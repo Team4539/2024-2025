@@ -119,18 +119,18 @@ public class RobotContainer
     SmartDashboard.putData("Autonomous", m_chooser);
     SmartDashboard.putData("Search for Note", new ssCommand(m_vision, drivetrain));
     //SmartDashboard.putData("Search for April Tag 7", new aimCamera(7, 86, m_vision, drivetrain));
-    m_chooser.setDefaultOption("(Center) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!csdin"));
-    m_chooser.addOption("(Left) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!lsdin"));
-    m_chooser.addOption("(Right) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!rsdin"));
+    //m_chooser.setDefaultOption("(Center) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!csdin"));
+    //m_chooser.addOption("(Left) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!lsdin"));
+    //m_chooser.addOption("(Right) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!rsdin"));
     m_chooser.addOption("3 Note Center Blue", drivetrain.getAutoPath("3 Note South Blue"));
     m_chooser.addOption("3 Note Amp Blue", drivetrain.getAutoPath("3 Note North Blue"));
     //m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center"));
     m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center Red"));
     m_chooser.addOption("3 Note Amp Red", drivetrain.getAutoPath("3 Note North Red"));
     m_chooser.addOption("2 Note Center ", drivetrain.getAutoPath("2 Note Center"));
-    m_chooser.addOption("1 note", drivetrain.getAutoPath("1 Note Stay"));
+    m_chooser.setDefaultOption("1 note", drivetrain.getAutoPath("1 Note Stay"));
     m_chooser.addOption("1 Note South Send", drivetrain.getAutoPath("1 Note South Send"));
-    m_chooser.addOption("Test", drivetrain.getAutoPath("Test"));
+    //m_chooser.addOption("Test", drivetrain.getAutoPath("Test"));
   }
 
   public Command getAutonomousCommand() {

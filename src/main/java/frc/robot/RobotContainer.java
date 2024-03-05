@@ -96,6 +96,7 @@ public class RobotContainer
 
     intakeButton.whileTrue(new setIntake(Constants.Intake.Speed, m_intake));
     reverseIntake.whileTrue(new setIntake((-Constants.Intake.Speed * 0.25), m_intake));
+    reverseIntake.whileTrue(new setShooter((-Constants.Shooter.shooterSpeed * .1),m_shooter));
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     //aimButton.whileTrue(new aimCamera(0, 2, m_vision, drivetrain));
     setSourceButton.whileTrue(new setArmTo(Constants.Aiming.Source, m_arm, "Source"));

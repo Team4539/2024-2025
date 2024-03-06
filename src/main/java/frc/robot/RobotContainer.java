@@ -101,7 +101,7 @@ public class RobotContainer
     //aimButton.whileTrue(new aimCamera(0, 2, m_vision, drivetrain));
     setSourceButton.whileTrue(new setArmTo(Constants.Aiming.Source, m_arm, "Source"));
     setAmpButton.whileTrue(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"));
-    SetMiddleButton.whileTrue(new setArmTo(Constants.Aiming.Middle, m_arm, "Middle"));
+    SetMiddleButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "Home"));
     //setHomeButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "home"));
     setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
     halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed * .85, m_shooter));

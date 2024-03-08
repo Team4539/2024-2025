@@ -127,11 +127,11 @@ public class RobotContainer
     //m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center"));
     m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center Red"));
     m_chooser.addOption("3 Note Amp Red", drivetrain.getAutoPath("3 Note North Red"));
-    m_chooser.addOption("2 Note Center ", drivetrain.getAutoPath("2 Note Center"));
+    // m_chooser.addOption("2 Note Center ", drivetrain.getAutoPath("2 Note Center"));
     m_chooser.setDefaultOption("1 note", drivetrain.getAutoPath("1 Note Stay"));
     m_chooser.addOption("1 Note South Send", drivetrain.getAutoPath("1 Note South Send"));
     m_chooser.addOption("Test Test", drivetrain.getAutoPath("Test test"));
-    m_chooser.addOption("2 Note Center", drivetrain.getAutoPath("2 Note Center Red"));
+    m_chooser.addOption("(v2) 2 Note Center", drivetrain.getAutoPath("2 Note Center Red"));
     //m_chooser.addOption("Test", drivetrain.getAutoPath("Test"));
   }
 

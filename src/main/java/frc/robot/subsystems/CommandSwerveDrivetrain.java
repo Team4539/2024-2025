@@ -77,6 +77,10 @@ public class CommandSwerveDrivetrain extends SwerveDrivetrain implements Subsyst
                                             driveBaseRadius,
                                             new ReplanningConfig()),
              ()-> {
+                Optional<Alliance> alliance = DriverStation.getAlliance();
+                if (alliance.isPresent()) {
+                    return alliance.get() == DriverStation.Alliance.Red;
+                }
                 return false;
             }, // Change this if the path needs to be flipped on red vs blue
             this); // Subsystem for requirements

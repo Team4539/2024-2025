@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.Constants.Climber;
 
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
@@ -16,7 +17,6 @@ public class ArmSubsystem extends SubsystemBase
     private TalonFX armInverted;
     private DutyCycleEncoder armEncoder;
     private double armEncoderVal;
-
     public ArmSubsystem() 
     {
         arm = new TalonFX(Constants.Arm.armID);
@@ -45,28 +45,36 @@ public class ArmSubsystem extends SubsystemBase
         // if speed is not zero
         if (speed != 0)
         {
-            // if rotations is greater than minimum and less than Maximum
-            if ((armEncoder.getDistance() * 100) - 55.94 > Constants.Arm.armMin && (armEncoder.getDistance() * 100) - 55.94 < Constants.Arm.armMax)
+            if (ClimberSubsystem.armOverride)
             {
-                // run normal
                 arm.set(speed*.3);
                 armInverted.set(speed*.3);
             }
-
-            // if rotations is less than miminum
-            else if ((armEncoder.getDistance() * 100) - 55.94 < Constants.Arm.armMin)
+            else
             {
-                // run inverted to push it out at minimum power
-                arm.set(-0.05);
-                armInverted.set(-0.05);
-            } 
+                // if rotations is greater than minimum and less than Maximum
+                if ((armEncoder.getDistance() * 100) - 55.94 > Constants.Arm.armMin && (armEncoder.getDistance() * 100) - 55.94 < Constants.Arm.armMax)
+                {
+                    // run normal
+                    arm.set(speed*.3);
+                    armInverted.set(speed*.3);
+                }
 
-            //if rotations is greater tham Maximum
-            else if((armEncoder.getDistance() * 100) - 55.94 > Constants.Arm.armMax)
-            {
-                //run to push in a minimum power
-                arm.set(0.05);
-                armInverted.set(0.05);
+                // if rotations is less than miminum
+                else if ((armEncoder.getDistance() * 100) - 55.94 < Constants.Arm.armMin)
+                {
+                    // run inverted to push it out at minimum power
+                    arm.set(-0.05);
+                    armInverted.set(-0.05);
+                } 
+
+                //if rotations is greater tham Maximum
+                else if((armEncoder.getDistance() * 100) - 55.94 > Constants.Arm.armMax)
+                {
+                    //run to push in a minimum power
+                    arm.set(0.05);
+                    armInverted.set(0.05);
+                }
             }
         }
         // if speed is zero

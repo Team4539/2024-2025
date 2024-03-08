@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 // import frc.robot.Commands.aimCamera;
@@ -48,6 +49,7 @@ public class RobotContainer
   // driver buttons
   private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
   private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
+  private final JoystickButton armOverrideButton = new JoystickButton(Driver, XboxController.Button.kStart.value);
 
   // co driver buttons
   private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
@@ -106,6 +108,9 @@ public class RobotContainer
     setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
     halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed * .85, m_shooter));
     //aimButton.whileTrue(new aimCamera(Constants.Aiming.getTag(), m_vision, drivetrain, m_arm));
+    
+    armOverrideButton.whileFalse(new InstantCommand(() -> m_climber.setOverride(false)));
+    armOverrideButton.whileTrue(new InstantCommand(() -> m_climber.setOverride(true)));
   }
 
   public RobotContainer() 

@@ -10,6 +10,7 @@ import frc.robot.Constants;
 public class ClimberSubsystem extends SubsystemBase
 {
     public TalonFX climber;
+    public static boolean armOverride = false;
 
     public ClimberSubsystem()
     {
@@ -22,7 +23,13 @@ public class ClimberSubsystem extends SubsystemBase
     public void periodic() 
     {
         SmartDashboard.putNumber("Climber Encoder", -climber.getRotorPosition().getValueAsDouble());
+        SmartDashboard.putBoolean("Arm Override", armOverride);
         climber.feed();
+    }
+
+    public void setOverride(boolean value)
+    {
+        armOverride = value;
     }
 
     public void setClimber(double speed)

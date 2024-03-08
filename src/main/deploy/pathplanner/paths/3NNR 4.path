@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 8.204955319001547,
-        "y": 7.500311727896183
+        "x": 8.108714034959377,
+        "y": 7.563126396378017
       },
       "prevControl": {
-        "x": 7.164175573624392,
-        "y": 7.500311727896183
+        "x": 7.0679342895822215,
+        "y": 7.563126396378017
       },
       "nextControl": null,
       "isLocked": false,
@@ -50,7 +50,7 @@
     },
     {
       "name": "Start Intake",
-      "waypointRelativePos": 0.85,
+      "waypointRelativePos": 0.75,
       "command": {
         "type": "parallel",
         "data": {

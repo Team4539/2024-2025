@@ -1,6 +1,6 @@
 package frc.robot;
 
-import org.photonvision.PhotonUtils;
+// import org.photonvision.PhotonUtils;
 
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
@@ -13,23 +13,23 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Commands.aimCamera;
+// import frc.robot.Commands.aimCamera;
 import frc.robot.Commands.setArm;
 import frc.robot.Commands.setArmTo;
 import frc.robot.Commands.setClimber;
 import frc.robot.Commands.setIntake;
 import frc.robot.Commands.setShooter;
-import frc.robot.Commands.ssCommand;
+// import frc.robot.Commands.ssCommand;
 import frc.robot.generated.TunerConstants;
-import frc.robot.subsystems.ArmPositionCalculator;
-import edu.wpi.first.math.util.Units;
+// import frc.robot.subsystems.ArmPositionCalculator;
+// import edu.wpi.first.math.util.Units;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LedCommSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
-import frc.robot.subsystems.visionSubsystem;
+// import frc.robot.subsystems.visionSubsystem;
 
 public class RobotContainer 
 {
@@ -65,7 +65,7 @@ public class RobotContainer
   private final ArmSubsystem m_arm = new ArmSubsystem(); // My arm
   private final IntakeSubsystem m_intake = new IntakeSubsystem(); // My intake
   private final ShooterSubsystem m_shooter = new ShooterSubsystem(); // My shooter
-  private final visionSubsystem m_vision = new visionSubsystem(); // My vision
+  // private final visionSubsystem m_vision = new visionSubsystem(); // My vision
   private final ClimberSubsystem m_climber = new ClimberSubsystem();// My Climber
   public final LedCommSubsystem m_led = new LedCommSubsystem(); // My LED
 
@@ -74,7 +74,7 @@ public class RobotContainer
 
   private void configureBindings() 
   {
-    m_vision.periodic(); // start vision
+    // m_vision.periodic(); // start vision
     m_arm.setDefaultCommand(
             new setArm(() -> coDriver.getRawAxis(XboxController.Axis.kLeftY.value), m_arm)); // this is how you get the left stick y value and use it
     m_climber.setDefaultCommand(
@@ -117,7 +117,7 @@ public class RobotContainer
     NamedCommands.registerCommand("Home", new setArmTo(Constants.Aiming.Home, m_arm, "home").withTimeout(2));
     configureBindings();
     SmartDashboard.putData("Autonomous", m_chooser);
-    SmartDashboard.putData("Search for Note", new ssCommand(m_vision, drivetrain));
+    // SmartDashboard.putData("Search for Note", new ssCommand(m_vision, drivetrain));
     //SmartDashboard.putData("Search for April Tag 7", new aimCamera(7, 86, m_vision, drivetrain));
     //m_chooser.setDefaultOption("(Center) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!csdin"));
     //m_chooser.addOption("(Left) Shoot, Drive Back and Intake", drivetrain.getAutoPath("!lsdin"));

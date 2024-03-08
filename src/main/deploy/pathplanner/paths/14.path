@@ -1,0 +1,87 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 8.094028352636311,
+        "y": 7.284098432239799
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 6.8016883082066695,
+        "y": 7.475012302439633
+      },
+      "isLocked": false,
+      "linkedName": "52"
+    },
+    {
+      "anchor": {
+        "x": 0.7805585557503859,
+        "y": 6.5938713630557855
+      },
+      "prevControl": {
+        "x": 2.161012694118416,
+        "y": 7.137241609009158
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "53"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "Reverse intake",
+      "waypointRelativePos": 0.8,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "reverseintake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Spool shooter",
+      "waypointRelativePos": 0.85,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "shoot"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 5.0,
+    "maxAcceleration": 3.5,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 60.0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": null,
+  "previewStartingState": {
+    "rotation": 0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

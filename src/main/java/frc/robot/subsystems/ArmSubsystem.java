@@ -1,12 +1,9 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.Constants.Climber;
 
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
@@ -16,7 +13,7 @@ public class ArmSubsystem extends SubsystemBase
     private TalonFX arm;
     private TalonFX armInverted;
     private DutyCycleEncoder armEncoder;
-    private double armEncoderVal;
+
     public ArmSubsystem() 
     {
         arm = new TalonFX(Constants.Arm.armID);

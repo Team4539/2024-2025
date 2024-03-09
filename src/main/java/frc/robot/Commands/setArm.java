@@ -8,9 +8,9 @@ import frc.robot.subsystems.ArmSubsystem;
 public class setArm extends Command 
 {
     private final ArmSubsystem m_arm;
-    private double speedAxis;
     private final DoubleSupplier m_speed;
-
+    private double speedAxis;
+    
     public setArm(DoubleSupplier speed, ArmSubsystem subsystem) 
     {
         addRequirements(subsystem);

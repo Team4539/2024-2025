@@ -6,13 +6,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.subsystems.ClimberSubsystem;
-//import frc.robot.subsystems.IntakeSubsystem;
+// import frc.robot.subsystems.IntakeSubsystem;
 
 public class setClimber extends Command 
 {
     private final ClimberSubsystem m_climber;
-    private double speedAxis;
     private final DoubleSupplier m_speed;
+    private double speedAxis;
 
     public setClimber(DoubleSupplier speed, ClimberSubsystem subsystem) 
     {
@@ -27,7 +27,6 @@ public class setClimber extends Command
     @Override
     public void execute() 
     {
-        //m_climber.setClimber(m_speed);
         speedAxis = MathUtil.applyDeadband(m_speed.getAsDouble(), Constants.stickDeadband);
         m_climber.setClimber(speedAxis);
     }

@@ -8,10 +8,10 @@ import frc.robot.subsystems.ArmSubsystem;
 public class setArmTo extends Command 
 {
     private final ArmSubsystem m_arm;
-    private double m_target;
-    private double fixedOutput;
     private final PIDController pidController;
     private final String m_command;
+    private double m_target;
+    private double fixedOutput;
 
     public setArmTo(double targetrot, ArmSubsystem subsystem, String command) 
     {
@@ -34,6 +34,10 @@ public class setArmTo extends Command
     {
         double encoder = m_arm.getEncoder();
         double output = pidController.calculate(encoder, m_target);
+        
+        SmartDashboard.putNumber("output", output);
+        SmartDashboard.putString("Command", m_command.toString());
+
         if (output > 1)
         {
             fixedOutput = 1; 
@@ -56,9 +60,6 @@ public class setArmTo extends Command
         {
             m_arm.setArm(0);
         }
-        SmartDashboard.putNumber("output", output);
-        SmartDashboard.putString("Command", m_command.toString());
-
     }
 
     @Override

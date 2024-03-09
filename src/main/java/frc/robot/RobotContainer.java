@@ -124,8 +124,7 @@ public class RobotContainer
     NamedCommands.registerCommand("Home", new setArmTo(Constants.Aiming.Home, m_arm, "home").withTimeout(2));
     configureBindings();
     SmartDashboard.putData("Autonomous", m_chooser);
-    m_chooser.setDefaultOption("Defense for Blue", drivetrain.getAutoPath("Defense B"));
-    m_chooser.addOption("Defense for Red", drivetrain.getAutoPath("Defense R"));
+    m_chooser.setDefaultOption("Defense", drivetrain.getAutoPath("Defense"));
     m_chooser.addOption("3 Note Center Blue", drivetrain.getAutoPath("3 Note South Blue"));
     m_chooser.addOption("3 Note Amp Blue", drivetrain.getAutoPath("3 Note North Blue"));
     m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center Red"));

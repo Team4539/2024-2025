@@ -1,7 +1,5 @@
 package frc.robot;
 
-// import org.photonvision.PhotonUtils;
-
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.NamedCommands;
@@ -15,23 +13,18 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-// import frc.robot.Commands.aimCamera;
 import frc.robot.Commands.setArm;
 import frc.robot.Commands.setArmTo;
 import frc.robot.Commands.setClimber;
 import frc.robot.Commands.setIntake;
 import frc.robot.Commands.setShooter;
-// import frc.robot.Commands.ssCommand;
 import frc.robot.generated.TunerConstants;
-// import frc.robot.subsystems.ArmPositionCalculator;
-// import edu.wpi.first.math.util.Units;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LedCommSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
-// import frc.robot.subsystems.visionSubsystem;
 
 public class RobotContainer 
 {
@@ -61,14 +54,12 @@ public class RobotContainer
   private final JoystickButton halfpowerShootButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kBack.value);
   private final JoystickButton SetMiddleButton = new JoystickButton(coDriver, XboxController.Button.kStart.value);
-  //private final JoystickButton aimButton = new JoystickButton(Driver, XboxController.Button.kB.value);
 
   /* Subsystems */
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
   private final ArmSubsystem m_arm = new ArmSubsystem(); // My arm
   private final IntakeSubsystem m_intake = new IntakeSubsystem(); // My intake
   private final ShooterSubsystem m_shooter = new ShooterSubsystem(); // My shooter
-  // private final visionSubsystem m_vision = new visionSubsystem(); // My vision
   private final ClimberSubsystem m_climber = new ClimberSubsystem();// My Climber
   public final LedCommSubsystem m_led = new LedCommSubsystem(); // My LED
 
@@ -102,15 +93,11 @@ public class RobotContainer
     reverseIntake.whileTrue(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter)));
 
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
-    //aimButton.whileTrue(new aimCamera(0, 2, m_vision, drivetrain));
     setSourceButton.whileTrue(new setArmTo(Constants.Aiming.Source, m_arm, "Source"));
     setAmpButton.whileTrue(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"));
     SetMiddleButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "Home"));
-    //setHomeButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "home"));
     setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
     halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed * .85, m_shooter));
-    //aimButton.whileTrue(new aimCamera(Constants.Aiming.getTag(), m_vision, drivetrain, m_arm));
-    
     armOverrideButton.whileFalse(new InstantCommand(() -> m_climber.setOverride(false)));
     armOverrideButton.whileTrue(new InstantCommand(() -> m_climber.setOverride(true)));
   }
@@ -122,7 +109,6 @@ public class RobotContainer
     NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.2));
     NamedCommands.registerCommand("setShoot", new setArmTo(Constants.Aiming.Position, m_arm, "Position").withTimeout(5) );
     NamedCommands.registerCommand("Home", new setArmTo(Constants.Aiming.Home, m_arm, "home").withTimeout(2));
-    configureBindings();
     SmartDashboard.putData("Autonomous", m_chooser);
     m_chooser.setDefaultOption("Defense", drivetrain.getAutoPath("Defense"));
     m_chooser.addOption("3 Note Center Blue", drivetrain.getAutoPath("3 Note South Blue"));
@@ -134,6 +120,8 @@ public class RobotContainer
     m_chooser.addOption("Test Test", drivetrain.getAutoPath("Test test"));
     m_chooser.addOption("(v2) 2 Note Center", drivetrain.getAutoPath("2 Note Center Red"));
     m_chooser.addOption("1 note", drivetrain.getAutoPath("1 Note Stay"));
+
+    configureBindings();
   }
 
   public Command getAutonomousCommand() {

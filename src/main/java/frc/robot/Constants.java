@@ -28,7 +28,6 @@ public class Constants
     public static final class Climber
     {
         public static final int ID = 20;
-        //public static final double Speed = .75;
         public static final double climberMin = -180;
         public static final double climberMax = 94;
     }
@@ -47,7 +46,7 @@ public class Constants
         public static final double Source = 15.6;
         public static final double Position = 3.9;
         public static final double Middle = 6.9;
-        //public static final double Farback = 7.25;
+        
         public static int getTag()
         {
             Optional<Alliance> alliance = DriverStation.getAlliance();

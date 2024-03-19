@@ -17,14 +17,14 @@ public class Constants
         public static final int armEncoder = 0; //DIO port
         public static final double armMin = Aiming.Home;
         public static final double armMax = 24; 
-        public static final int HEAD_ID = 0; // TODO: change me too!
-        public static final int headEncoder = 0; // TODO: set me too!
+        public static final int HEAD_ID = 7;
+        public static final int headEncoder = 1; //DIO port
     }
 
     public static final class Intake
     {
         public static final int ID = 14;
-        public static final int INDEXER_ID = 0; // TODO: change me
+        public static final int INDEXER_ID = 8;
         public static final double Speed = 1;
     }
 

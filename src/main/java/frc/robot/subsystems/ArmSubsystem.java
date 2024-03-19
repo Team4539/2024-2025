@@ -5,25 +5,24 @@ import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkBase.IdleMode;
-import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 
 public class ArmSubsystem extends SubsystemBase 
 {
-    private CANSparkMax arm;
-    private CANSparkMax armInverted;
+    private TalonFX arm;
+    private TalonFX armInverted;
     private DutyCycleEncoder armEncoder;
 
     public ArmSubsystem() 
     {
-        arm = new CANSparkMax(Constants.Arm.armID, MotorType.kBrushless);
-        armInverted = new CANSparkMax(Constants.Arm.armInvertedID, MotorType.kBrushless);
+        arm = new TalonFX(Constants.Arm.armID);
+        armInverted = new TalonFX(Constants.Arm.armInvertedID);
         armEncoder = new DutyCycleEncoder(Constants.Arm.armEncoder);
         armInverted.setInverted(true);
         arm.setInverted(false);
-        arm.setIdleMode(IdleMode.kBrake);
-        armInverted.setIdleMode(IdleMode.kBrake);
+        arm.setNeutralMode(NeutralModeValue.Brake);
+        armInverted.setNeutralMode(NeutralModeValue.Brake);
     }
 
     @Override

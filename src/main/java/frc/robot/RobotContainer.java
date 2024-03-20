@@ -92,7 +92,7 @@ public class RobotContainer
     joystick.pov(0).whileTrue(drivetrain.applyRequest(() -> forwardStraight.withVelocityX(0.5).withVelocityY(0)));
     joystick.pov(180).whileTrue(drivetrain.applyRequest(() -> forwardStraight.withVelocityX(-0.5).withVelocityY(0)));
 
-    intakeButton.whileTrue(new ParallelCommandGroup(new setIntake(Constants.Intake.Speed, m_intake), new setHeadTo(3.5, m_head, "Intake")));
+    intakeButton.whileTrue(new setIntake(Constants.Intake.Speed, m_intake));
 
     reverseIntake.whileTrue(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter)));
 

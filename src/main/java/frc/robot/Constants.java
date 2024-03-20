@@ -16,7 +16,7 @@ public class Constants
         public static final int armInvertedID = 18;
         public static final int armEncoder = 0; //DIO port
         public static final double armMin = -11;
-        public static final double armMax = 6.62;
+        public static final double armMax = 6.71;
         public static final int HEAD_ID = 7;
         public static final int headEncoder = 1; //DIO port
         public static final double headMin = 3.5;

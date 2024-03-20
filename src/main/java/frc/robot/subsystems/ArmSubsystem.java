@@ -7,38 +7,28 @@ import frc.robot.Constants;
 
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
-//import com.revrobotics.CANSparkMax;
-//import com.revrobotics.CANSparkBase.IdleMode;
-//import com.revrobotics.CANSparkLowLevel.MotorType;
 
 public class ArmSubsystem extends SubsystemBase 
 {
     private TalonFX arm;
     private TalonFX armInverted;
-    //private CANSparkMax head;
     private DutyCycleEncoder armEncoder;
-    //private DutyCycleEncoder headEncoder;
 
     public ArmSubsystem() 
     {
         arm = new TalonFX(Constants.Arm.armID);
         armInverted = new TalonFX(Constants.Arm.armInvertedID);
         armEncoder = new DutyCycleEncoder(Constants.Arm.armEncoder);
-        //headEncoder = new DutyCycleEncoder(Constants.Arm.headEncoder);
         armInverted.setInverted(true);
         arm.setInverted(false);
         arm.setNeutralMode(NeutralModeValue.Brake);
         armInverted.setNeutralMode(NeutralModeValue.Brake);
-        //head = new CANSparkMax(Constants.Arm.HEAD_ID, MotorType.kBrushless);
-        //head.setInverted(false);
-        //head.setIdleMode(IdleMode.kBrake);
     }
 
     @Override
     public void periodic() 
     {
         SmartDashboard.putNumber("Arm Encoder", (armEncoder.getDistance() * 100) - 25.94);
-        //SmartDashboard.putNumber("Head Encoder", (headEncoder.getDistance() * 100)); // TODO: find offest
     }
 
     @Override
@@ -89,34 +79,9 @@ public class ArmSubsystem extends SubsystemBase
             armInverted.set(0);
         }
     }
-
-    /*public void setHead(double speed)
-    {
-        // if speed is not zero
-        if (speed != 0)
-        {
-            head.set(speed*.3);
-        }
-        // if speed is zero
-        else
-        {
-            // set zero
-            head.set(0);
-        }
-    }*/
-
-    /*public void resetEncoder()
-    {
-        armEncoder.reset();
-    }*/
     
     public double getEncoder()
     {
         return (armEncoder.getDistance() * 100) - 25.94;
     }
-
-    /*public double getHeadEncoder()
-    {
-        return (headEncoder.getDistance() * 100); //TODO: also put the head offset here!
-    }*/
 }

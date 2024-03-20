@@ -15,7 +15,8 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Commands.setArm;
 import frc.robot.Commands.setArmTo;
-import frc.robot.Commands.setClimber;
+// import frc.robot.Commands.setClimber;
+import frc.robot.Commands.setHead;
 import frc.robot.Commands.setHeadTo;
 import frc.robot.Commands.setIntake;
 import frc.robot.Commands.setShooter;
@@ -23,6 +24,7 @@ import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.HeadSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LedCommSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -63,6 +65,7 @@ public class RobotContainer
   private final ShooterSubsystem m_shooter = new ShooterSubsystem(); // My shooter
   private final ClimberSubsystem m_climber = new ClimberSubsystem();// My Climber
   public final LedCommSubsystem m_led = new LedCommSubsystem(); // My LED
+  public final HeadSubsystem m_head = new HeadSubsystem(); // My head
 
   /* Auto List */
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -72,8 +75,8 @@ public class RobotContainer
     // m_vision.periodic(); // start vision
     m_arm.setDefaultCommand(
             new setArm(() -> coDriver.getRawAxis(XboxController.Axis.kLeftY.value), m_arm)); // this is how you get the left stick y value and use it
-    m_climber.setDefaultCommand(
-            new setClimber(() -> coDriver.getRawAxis(XboxController.Axis.kRightY.value), m_climber));
+    m_head.setDefaultCommand(
+            new setHead(() -> coDriver.getRawAxis(XboxController.Axis.kRightY.value), m_head));
     drivetrain.setDefaultCommand
     (
       drivetrain.applyRequest(() -> drive.withVelocityX(MathUtil.applyDeadband(-joystick.getLeftY(), 0.01) * MaxSpeed)
@@ -95,7 +98,7 @@ public class RobotContainer
 
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     setSourceButton.whileTrue(new setArmTo(Constants.Aiming.Source, m_arm, "Source"));
-    setAmpButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(0, m_arm, "Amp")));
+    setAmpButton.whileTrue(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"));
     SetMiddleButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "Home"));
     setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
     halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed * .85, m_shooter));

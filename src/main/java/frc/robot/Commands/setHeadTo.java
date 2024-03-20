@@ -3,20 +3,21 @@ package frc.robot.Commands;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.ArmSubsystem;
+//import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.HeadSubsystem;
 
 public class setHeadTo extends Command 
 {
-    private final ArmSubsystem m_arm;
+    private final HeadSubsystem m_head;
     private final PIDController pidController;
     private final String m_command;
     private double m_target;
     private double fixedOutput;
 
-    public setHeadTo(double targetrot, ArmSubsystem subsystem, String command) 
+    public setHeadTo(double targetrot, HeadSubsystem subsystem, String command) 
     {
         addRequirements(subsystem);
-        m_arm = subsystem;
+        m_head = subsystem;
         m_target = targetrot;
         m_command = command;
         pidController = new PIDController(0.175, 0.002, 0.0); //    
@@ -32,7 +33,7 @@ public class setHeadTo extends Command
     @Override
     public void execute() 
     {
-        double encoder = m_arm.getHeadEncoder();
+        double encoder = m_head.getHeadEncoder();
         double output = pidController.calculate(encoder, m_target);
         
         SmartDashboard.putNumber("output", output);
@@ -49,16 +50,16 @@ public class setHeadTo extends Command
 
         if (encoder > m_target) // go down
         {
-            m_arm.setHead(-fixedOutput*.65); 
+            m_head.setHead(-fixedOutput*.65); 
         }
         else if (encoder < m_target) //me go up
         {
-            m_arm.setHead(-fixedOutput); 
+            m_head.setHead(-fixedOutput); 
 
         }
         else //stay
         {
-            m_arm.setHead(0);
+            m_head.setHead(0);
         }
     }
 

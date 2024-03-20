@@ -72,26 +72,6 @@ public class HeadSubsystem extends SubsystemBase
         }
     }
 
-    /*public void setHead(double speed)
-    {
-        // if speed is not zero
-        if (speed != 0)
-        {
-            head.set(speed*.3);
-        }
-        // if speed is zero
-        else
-        {
-            // set zero
-            head.set(0);
-        }
-    }*/
-
-    /*public void resetEncoder()
-    {
-        armEncoder.reset();
-    }*/
-
     public double getHeadEncoder()
     {
         return (headEncoder.getDistance() * 100) - 90; //TODO: also put the head offset here!

@@ -94,6 +94,6 @@ public class HeadSubsystem extends SubsystemBase
 
     public double getHeadEncoder()
     {
-        return (headEncoder.getDistance() * 100); //TODO: also put the head offset here!
+        return (headEncoder.getDistance() * 100) - 90; //TODO: also put the head offset here!
     }
 }

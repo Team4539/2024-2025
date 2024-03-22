@@ -49,11 +49,11 @@ public class setArmTo extends Command
 
         if (encoder > m_target) // go down
         {
-            m_arm.setArm(-fixedOutput*.65); 
+            m_arm.setArm(fixedOutput*.65); 
         }
         else if (encoder < m_target) //me go up
         {
-            m_arm.setArm(-fixedOutput); 
+            m_arm.setArm(fixedOutput); 
 
         }
         else //stay

@@ -100,7 +100,7 @@ public class RobotContainer
     setSourceButton.whileTrue(new setArmTo(Constants.Aiming.Source, m_arm, "Source"));
     setAmpButton.whileTrue(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"));
     SetMiddleButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "Home"));
-    setShootButton.whileTrue(new setArmTo(Constants.Aiming.Position, m_arm, "Position"));
+    setShootButton.whileTrue(new setHeadTo(Constants.Aiming.Upclose, m_head, "Upclose"));
     halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed * .85, m_shooter));
     armOverrideButton.whileFalse(new InstantCommand(() -> m_climber.setOverride(false)));
     armOverrideButton.whileTrue(new InstantCommand(() -> m_climber.setOverride(true)));
@@ -111,7 +111,7 @@ public class RobotContainer
     NamedCommands.registerCommand("intake", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(1));
     NamedCommands.registerCommand("shoot", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(.75));
     NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.2));
-    NamedCommands.registerCommand("setShoot", new setArmTo(Constants.Aiming.Position, m_arm, "Position").withTimeout(5) );
+    NamedCommands.registerCommand("setShoot", new setArmTo(Constants.Aiming.Upclose, m_arm, "Position").withTimeout(5) );
     NamedCommands.registerCommand("Home", new setArmTo(Constants.Aiming.Home, m_arm, "home").withTimeout(2));
     SmartDashboard.putData("Autonomous", m_chooser);
     m_chooser.setDefaultOption("Defense", drivetrain.getAutoPath("Defense"));

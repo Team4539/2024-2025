@@ -15,7 +15,7 @@ public class Constants
         public static final int armID = 17;
         public static final int armInvertedID = 18;
         public static final int armEncoder = 0; //DIO port
-        public static final double armMin = -11;
+        public static final double armMin = -18;
         public static final double armMax = 6.71;
         public static final int HEAD_ID = 7;
         public static final int headEncoder = 1; //DIO port
@@ -47,10 +47,10 @@ public class Constants
     public static final class Aiming 
     {
         public static final double Home = Arm.armMax;
-        public static final double Amp = 13.5;
-        public static final double Source = 15.6;
-        public static final double Position = 3.9;
-        public static final double Middle = 6.9;
+        public static final double Amp = -15; // for arm
+        public static final double Source = -13; // for arm
+        public static final double Upclose = 8; // for head
+        //public static final double Upclose = 8; // for head
         
         public static int getTag()
         {

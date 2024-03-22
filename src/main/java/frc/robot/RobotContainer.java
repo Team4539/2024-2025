@@ -52,11 +52,9 @@ public class RobotContainer
   private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
   private final JoystickButton shooterButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
   private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kY.value);
-  private final JoystickButton setSourceButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
-  private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
-  private final JoystickButton halfpowerShootButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
-  private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kBack.value);
-  private final JoystickButton SetMiddleButton = new JoystickButton(coDriver, XboxController.Button.kStart.value);
+  private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
+  private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
+  private final JoystickButton SetMiddleButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
 
   /* Subsystems */
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -97,11 +95,9 @@ public class RobotContainer
     reverseIntake.whileTrue(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter)));
 
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
-    setSourceButton.whileTrue(new setArmTo(Constants.Aiming.Source, m_arm, "Source"));
-    setAmpButton.whileTrue(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"));
-    SetMiddleButton.whileTrue(new setArmTo(Constants.Aiming.Home, m_arm, "Home"));
+    setAmpButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2")));
+    SetMiddleButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home"), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2")));
     setShootButton.whileTrue(new setHeadTo(Constants.Aiming.Upclose, m_head, "Upclose"));
-    halfpowerShootButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed * .85, m_shooter));
     armOverrideButton.whileFalse(new InstantCommand(() -> m_climber.setOverride(false)));
     armOverrideButton.whileTrue(new InstantCommand(() -> m_climber.setOverride(true)));
   }

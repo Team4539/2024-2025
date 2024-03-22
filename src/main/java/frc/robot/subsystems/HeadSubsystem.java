@@ -25,7 +25,7 @@ public class HeadSubsystem extends SubsystemBase
     @Override
     public void periodic() 
     {
-        SmartDashboard.putNumber("Head Encoder", (headEncoder.getDistance() * 100) - 90); // TODO: find offest
+        SmartDashboard.putNumber("Head Encoder", (headEncoder.getDistance() * 100) - 0); // TODO: find offest
     }
 
     @Override
@@ -43,21 +43,21 @@ public class HeadSubsystem extends SubsystemBase
             else
             {
                 // if rotations is greater than minimum and less than Maximum
-                if ((headEncoder.getDistance() * 100) - 90 > Constants.Arm.headMin && (headEncoder.getDistance() * 100) - 90 < Constants.Arm.headMax)
+                if ((headEncoder.getDistance() * 100) - 0 > Constants.Arm.headMin && (headEncoder.getDistance() * 100) - 0 < Constants.Arm.headMax)
                 {
                     // run normal
                     head.set(speed*.3);
                 }
 
                 // if rotations is less than miminum
-                else if ((headEncoder.getDistance() * 100) - 90 < Constants.Arm.headMin)
+                else if ((headEncoder.getDistance() * 100) - 0 < Constants.Arm.headMin)
                 {
                     // run inverted to push it out at minimum power
                     head.set(-0.05);
                 } 
 
                 //if rotations is greater tham Maximum
-                else if((headEncoder.getDistance() * 100) - 90 > Constants.Arm.headMax)
+                else if((headEncoder.getDistance() * 100) - 0 > Constants.Arm.headMax)
                 {
                     //run to push in a minimum power
                     head.set(0.05);
@@ -74,6 +74,6 @@ public class HeadSubsystem extends SubsystemBase
 
     public double getHeadEncoder()
     {
-        return (headEncoder.getDistance() * 100) - 90; //TODO: also put the head offset here!
+        return (headEncoder.getDistance() * 100) - 0; //TODO: also put the head offset here!
     }
 }

@@ -37,8 +37,8 @@ public class Constants
         public static final int ID = 20;
         public static final double climberMin = -1000;
         public static final double climberMax = 1000;
-        public static final double climberUp = 0.5;
-        public static final double climberDown = -0.5;
+        public static final double climberUp = 1;
+        public static final double climberDown = -1;
     }
 
     public static final class Shooter

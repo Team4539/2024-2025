@@ -1,22 +1,15 @@
-/*package frc.robot.Commands;
-import java.util.function.DoubleSupplier;
-
-import edu.wpi.first.math.MathUtil;
+package frc.robot.Commands;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants;
 import frc.robot.subsystems.ClimberSubsystem;
-// import frc.robot.subsystems.IntakeSubsystem;
 
 public class setClimber extends Command 
 {
     private final ClimberSubsystem m_climber;
-    private final DoubleSupplier m_speed;
-    private double speedAxis;
+    private final double m_speed;
 
-    public setClimber(DoubleSupplier speed, ClimberSubsystem subsystem) 
+    public setClimber(double speed, ClimberSubsystem subsystem) 
     {
-        addRequirements(subsystem);
         m_speed = speed;
         m_climber = subsystem;
     }
@@ -27,13 +20,12 @@ public class setClimber extends Command
     @Override
     public void execute() 
     {
-        speedAxis = MathUtil.applyDeadband(m_speed.getAsDouble(), Constants.stickDeadband);
-        m_climber.setClimber(speedAxis);
+        m_climber.setClimber(m_speed);
     }
     @Override
     public void end(boolean interrupted) 
     {
-        SmartDashboard.putNumber("Climber Speed", m_climber.climber.get());
+        SmartDashboard.putNumber("Intake Speed", m_climber.climber.get());
         m_climber.setClimber(0.0);
     }
     
@@ -42,4 +34,4 @@ public class setClimber extends Command
 
     @Override
     public boolean runsWhenDisabled() { return false; }
-}*/
+}

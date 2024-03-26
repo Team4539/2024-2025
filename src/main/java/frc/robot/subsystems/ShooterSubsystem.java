@@ -18,8 +18,8 @@ public class ShooterSubsystem extends SubsystemBase
         shooter = new TalonFX(Constants.Shooter.ID);
         shooterInverted = new TalonFX(Constants.Shooter.InvertedID);
         
-        shooter.setNeutralMode(NeutralModeValue.Coast);
-        shooterInverted.setNeutralMode(NeutralModeValue.Coast);
+        shooter.setNeutralMode(NeutralModeValue.Brake);
+        shooterInverted.setNeutralMode(NeutralModeValue.Brake);
     }
 
     public void setShooter(double speed)

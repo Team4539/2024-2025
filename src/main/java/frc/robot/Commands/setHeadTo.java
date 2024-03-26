@@ -20,7 +20,7 @@ public class setHeadTo extends Command
         m_head = subsystem;
         m_target = targetrot;
         m_command = command;
-        pidController = new PIDController(0.075, 0.0, 0.01);
+        pidController = new PIDController(10, 0.0, 0.5);
 
     }
 
@@ -36,7 +36,7 @@ public class setHeadTo extends Command
         double encoder = m_head.getHeadEncoder();
         double output = pidController.calculate(encoder, m_target);
         
-        SmartDashboard.putNumber("output", output);
+        SmartDashboard.putNumber("head output", output);
         SmartDashboard.putString("Command", m_command.toString());
 
         if (output > 1)

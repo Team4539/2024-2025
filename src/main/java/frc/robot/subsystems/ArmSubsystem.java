@@ -28,7 +28,7 @@ public class ArmSubsystem extends SubsystemBase
     @Override
     public void periodic() 
     {
-        SmartDashboard.putNumber("Arm Encoder", (armEncoder.getDistance() * 100) - 25.94);
+        SmartDashboard.putNumber("Arm Encoder", (armEncoder.getAbsolutePosition() + Constants.Arm.armOffset));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class ArmSubsystem extends SubsystemBase
             else
             {
                 // if rotations is greater than minimum and less than Maximum
-                if ((armEncoder.getDistance() * 100) - 25.94 > Constants.Arm.armMin && (armEncoder.getDistance() * 100) - 25.94 < Constants.Arm.armMax)
+                if ((armEncoder.getAbsolutePosition() + Constants.Arm.armOffset) > Constants.Arm.armMin && (armEncoder.getAbsolutePosition() + Constants.Arm.armOffset) < Constants.Arm.armMax)
                 {
                     // run normal
                     arm.set(speed*-.3);
@@ -55,7 +55,7 @@ public class ArmSubsystem extends SubsystemBase
                 }
 
                 // if rotations is less than miminum
-                else if ((armEncoder.getDistance() * 100) - 25.94 < Constants.Arm.armMin)
+                else if ((armEncoder.getAbsolutePosition() + Constants.Arm.armOffset) < Constants.Arm.armMin)
                 {
                     // run inverted to push it out at minimum power
                     arm.set(-0.05);
@@ -63,7 +63,7 @@ public class ArmSubsystem extends SubsystemBase
                 } 
 
                 //if rotations is greater tham Maximum
-                else if((armEncoder.getDistance() * 100) - 25.94 > Constants.Arm.armMax)
+                else if ((armEncoder.getAbsolutePosition() + Constants.Arm.armOffset) > Constants.Arm.armMax)
                 {
                     //run to push in a minimum power
                     arm.set(0.05);
@@ -82,6 +82,6 @@ public class ArmSubsystem extends SubsystemBase
     
     public double getEncoder()
     {
-        return (armEncoder.getDistance() * 100) - 25.94;
+        return (armEncoder.getAbsolutePosition() + Constants.Arm.armOffset);
     }
 }

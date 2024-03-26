@@ -9,14 +9,14 @@ import frc.robot.Constants;
 
 public class ClimberSubsystem extends SubsystemBase
 {
-    //public TalonFX climber;
+    public TalonFX climber;
     public static boolean armOverride = false;
 
     public ClimberSubsystem()
     {
-        /*climber = new TalonFX(Constants.Climber.ID);
+        climber = new TalonFX(Constants.Climber.ID);
         climber.setInverted(true);
-        climber.setNeutralMode(NeutralModeValue.Brake);*/
+        climber.setNeutralMode(NeutralModeValue.Brake);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class ClimberSubsystem extends SubsystemBase
         armOverride = value;
     }
 
-    /*public void setClimber(double speed)
+    public void setClimber(double speed)
     {
         //climber.set(speed);
     if (speed != 0)
@@ -64,5 +64,5 @@ public class ClimberSubsystem extends SubsystemBase
             // set zero
             climber.set(0);
         }
-    }*/
+    }
 }

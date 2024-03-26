@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Commands.setArm;
 import frc.robot.Commands.setArmTo;
+import frc.robot.Commands.setClimber;
 // import frc.robot.Commands.setClimber;
 import frc.robot.Commands.setHead;
 import frc.robot.Commands.setHeadTo;
@@ -47,6 +48,9 @@ public class RobotContainer
   private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
   private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
   private final JoystickButton armOverrideButton = new JoystickButton(Driver, XboxController.Button.kStart.value);
+  private final JoystickButton climberUp = new JoystickButton(Driver, XboxController.Button.kX.value);
+  private final JoystickButton climberDown = new JoystickButton(Driver, XboxController.Button.kB.value);
+
 
   // co driver buttons
   private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
@@ -100,6 +104,8 @@ public class RobotContainer
     setShootButton.whileTrue(new setHeadTo(Constants.Aiming.Upclose, m_head, "Upclose"));
     armOverrideButton.whileFalse(new InstantCommand(() -> m_climber.setOverride(false)));
     armOverrideButton.whileTrue(new InstantCommand(() -> m_climber.setOverride(true)));
+    climberUp.whileTrue(new setClimber(Constants.Climber.climberUp, m_climber));
+    climberDown.whileTrue(new setClimber(Constants.Climber.climberDown, m_climber));
   }
 
   public RobotContainer() 

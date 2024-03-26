@@ -15,12 +15,14 @@ public class Constants
         public static final int armID = 17;
         public static final int armInvertedID = 18;
         public static final int armEncoder = 0; //DIO port
-        public static final double armMin = -18;
-        public static final double armMax = 6.71;
+        public static final double armMin = 0.10;
+        public static final double armMax = 0.327;
         public static final int HEAD_ID = 7;
-        public static final int headEncoder = 1; //DIO port
-        public static final double headMin = -4;
-        public static final double headMax = 14;
+        public static final int headEncoder = 2; //DIO port
+        public static final double headMin = 0.285;
+        public static final double headMax = 0.47;
+        public static final double headOffset = 0;
+        public static final double armOffset = 0;
     }
 
     public static final class Intake
@@ -33,8 +35,10 @@ public class Constants
     public static final class Climber
     {
         public static final int ID = 20;
-        public static final double climberMin = -180;
-        public static final double climberMax = 94;
+        public static final double climberMin = -1000;
+        public static final double climberMax = 1000;
+        public static final double climberUp = 0.5;
+        public static final double climberDown = -0.5;
     }
 
     public static final class Shooter
@@ -48,10 +52,10 @@ public class Constants
     {
         public static final double Home = Arm.armMax;
         public static final double Home2 = Arm.headMin;
-        public static final double Amp = -15; // for arm
-        public static final double Amp2 = 10;
-        public static final double Source = -13; // for arm
-        public static final double Upclose = 10; // for head
+        public static final double Amp = 0.12; // for arm
+        public static final double Amp2 = 0.45; // for head
+        public static final double Source = .20; // for arm
+        public static final double Upclose = .43; // for head
         
         public static int getTag()
         {

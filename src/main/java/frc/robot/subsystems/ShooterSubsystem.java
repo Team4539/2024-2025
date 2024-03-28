@@ -11,7 +11,7 @@ public class ShooterSubsystem extends SubsystemBase
     public TalonFX shooter;
     public TalonFX shooterInverted;
     public boolean override = false;
-
+    public boolean slow = false;
     public ShooterSubsystem()
     {
    
@@ -22,9 +22,22 @@ public class ShooterSubsystem extends SubsystemBase
         shooterInverted.setNeutralMode(NeutralModeValue.Brake);
     }
 
+    public void setSlow(boolean value)
+    {
+        slow = value;
+    }
+
     public void setShooter(double speed)
     {
-        shooter.set(speed);
-        shooterInverted.set(speed);
+        if (slow)
+        {
+            shooter.set(speed/2);
+            shooterInverted.set(speed/2);
+        }
+        else
+        {
+            shooter.set(speed);
+            shooterInverted.set(speed);
+        }
     }
 }

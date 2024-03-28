@@ -59,6 +59,7 @@ public class RobotContainer
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
   private final JoystickButton SetMiddleButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
+  private final JoystickButton slowShootButton = new JoystickButton(coDriver, XboxController.Button.kStart.value);
 
   /* Subsystems */
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -95,7 +96,7 @@ public class RobotContainer
     joystick.pov(180).whileTrue(drivetrain.applyRequest(() -> forwardStraight.withVelocityX(-0.5).withVelocityY(0)));
 
     intakeButton.whileTrue(new setIntake(Constants.Intake.Speed, m_intake));
-
+    intakeButton.onFalse(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
     reverseIntake.whileTrue(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter)));
 
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
@@ -106,6 +107,8 @@ public class RobotContainer
     armOverrideButton.whileTrue(new InstantCommand(() -> m_climber.setOverride(true)));
     climberUp.whileTrue(new setClimber(Constants.Climber.climberUp, m_climber));
     climberDown.whileTrue(new setClimber(Constants.Climber.climberDown, m_climber));
+    slowShootButton.whileTrue(new InstantCommand(() -> m_shooter.setSlow(true)));
+    slowShootButton.whileFalse(new InstantCommand(() -> m_shooter.setSlow(false)));
   }
 
   public RobotContainer() 

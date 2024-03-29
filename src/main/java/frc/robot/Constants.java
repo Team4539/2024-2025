@@ -51,7 +51,7 @@ public class Constants
     public static final class Aiming 
     {
         public static final double Home = Arm.armMax;
-        public static final double Home2 = 0.27;
+        public static final double Home2 = 0.30;
         public static final double Amp = 0.12; // for arm
         public static final double Amp2 = 0.45; // for head
         public static final double Source = .20; // for arm

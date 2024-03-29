@@ -1,0 +1,43 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.348327060290484,
+      "y": 5.559932574410603
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "JustDrive1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakept1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakept2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "JustDrive2"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

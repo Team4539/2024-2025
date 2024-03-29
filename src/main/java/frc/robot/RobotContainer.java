@@ -118,13 +118,16 @@ public class RobotContainer
 
   public RobotContainer() 
   {
-    NamedCommands.registerCommand("intake", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(1));
-    NamedCommands.registerCommand("shoot", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(.75));
+    NamedCommands.registerCommand("intakept1", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(5.));
+    NamedCommands.registerCommand("intakept2", new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
     NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.2));
-    NamedCommands.registerCommand("setShoot", new setArmTo(Constants.Aiming.Upclose, m_arm, "Position").withTimeout(5) );
-    NamedCommands.registerCommand("Home", new setArmTo(Constants.Aiming.Home, m_arm, "home").withTimeout(2));
+    NamedCommands.registerCommand("setShootUpClose", new setHeadTo(Constants.Aiming.Upclose, m_head, "Upclose").withTimeout(1));
+    NamedCommands.registerCommand("setShooterMotor", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(1.5));
+    NamedCommands.registerCommand("setIntake", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(1));
+    NamedCommands.registerCommand("setHome", new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home").withTimeout(1), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2").withTimeout(1)));
     SmartDashboard.putData("Autonomous", m_chooser);
-    m_chooser.setDefaultOption("Defense", drivetrain.getAutoPath("Defense"));
+    m_chooser.setDefaultOption("Just Drive", drivetrain.getAutoPath("JustDrive"));
+    m_chooser.addOption("Middle Shoot Drive Back Pickup", drivetrain.getAutoPath("ShootDriveBackPickup"));
     m_chooser.addOption("3 Note Center Blue", drivetrain.getAutoPath("3 Note South Blue"));
     m_chooser.addOption("3 Note Amp Blue", drivetrain.getAutoPath("3 Note North Blue"));
     m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center Red"));
@@ -134,6 +137,7 @@ public class RobotContainer
     m_chooser.addOption("Test Test", drivetrain.getAutoPath("Test test"));
     m_chooser.addOption("(v2) 2 Note Center", drivetrain.getAutoPath("2 Note Center Red"));
     m_chooser.addOption("1 note", drivetrain.getAutoPath("1 Note Stay"));
+    m_chooser.addOption("Defense", drivetrain.getAutoPath("Defense"));
 
     configureBindings();
   }

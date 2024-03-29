@@ -19,7 +19,7 @@ public class Constants
         public static final double armMax = 0.322;
         public static final int HEAD_ID = 7;
         public static final int headEncoder = 2; //DIO port
-        public static final double headMin = 0.285;
+        public static final double headMin = 0.22;
         public static final double headMax = 0.47;
         public static final double headOffset = 0;
         public static final double armOffset = 0;

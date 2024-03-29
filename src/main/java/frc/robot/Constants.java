@@ -56,6 +56,8 @@ public class Constants
         public static final double Amp2 = 0.45; // for head
         public static final double Source = .20; // for arm
         public static final double Upclose = .43; // for head
+        public static final double lineHead = 0.417;
+        public static final double lineArm = 0.250;
         
         public static int getTag()
         {

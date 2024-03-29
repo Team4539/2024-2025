@@ -50,16 +50,16 @@ public class RobotContainer
   private final JoystickButton armOverrideButton = new JoystickButton(Driver, XboxController.Button.kStart.value);
   private final JoystickButton climberUp = new JoystickButton(Driver, XboxController.Button.kX.value);
   private final JoystickButton climberDown = new JoystickButton(Driver, XboxController.Button.kB.value);
-
+  private final JoystickButton slowShootButton = new JoystickButton(Driver, XboxController.Button.kRightBumper.value);
 
   // co driver buttons
   private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
   private final JoystickButton shooterButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
-  private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kY.value);
+  private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kStart.value);
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
   private final JoystickButton SetMiddleButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
-  private final JoystickButton slowShootButton = new JoystickButton(coDriver, XboxController.Button.kStart.value);
+  private final JoystickButton setLineButton = new JoystickButton(coDriver, XboxController.Button.kY.value);
 
   /* Subsystems */
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -98,8 +98,9 @@ public class RobotContainer
     intakeButton.whileTrue(new setIntake(Constants.Intake.Speed, m_intake));
     intakeButton.onFalse(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
     reverseIntake.whileTrue(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter)));
-
+    setLineButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.lineArm , m_arm, "Line Shot"), new setHeadTo(Constants.Aiming.lineHead, m_head, "Line Shot")));
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
+
     setAmpButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2")));
     SetMiddleButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home"), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2")));
     setShootButton.whileTrue(new setHeadTo(Constants.Aiming.Upclose, m_head, "Upclose"));

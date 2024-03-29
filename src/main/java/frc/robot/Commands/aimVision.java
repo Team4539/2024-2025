@@ -33,19 +33,18 @@ public class aimVision extends Command
         var result = m_vision.camera.getLatestResult();
         if (result.hasTargets())
         {
-            if (result.getBestTarget().getFiducialId() == m_tag)
+            for (var target: result.getTargets())
             {
-                if (result.hasTargets()) 
+                if (target.getFiducialId() == m_tag)
                 {
-                    double rotationYaw = result.getBestTarget().getYaw();
-                
+                    double rotationYaw = target.getYaw();
                     if ((rotationYaw - 2) > 0)
                     {
-                        m_drive.setControl(forwardStraight.withRotationalRate(-0.3));
+                        m_drive.setControl(forwardStraight.withRotationalRate(-0.6));
                     }
                     else if ((rotationYaw + 2) < 0)
                     {
-                        m_drive.setControl(forwardStraight.withRotationalRate(0.3));
+                        m_drive.setControl(forwardStraight.withRotationalRate(0.6));
                     }
                     else
                     {

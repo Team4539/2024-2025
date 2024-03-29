@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Commands.aimVision;
 import frc.robot.Commands.setArm;
 import frc.robot.Commands.setArmTo;
 import frc.robot.Commands.setClimber;
@@ -29,6 +30,7 @@ import frc.robot.subsystems.HeadSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LedCommSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.VisionSubsystem;
 
 public class RobotContainer 
 {
@@ -69,6 +71,8 @@ public class RobotContainer
   private final ClimberSubsystem m_climber = new ClimberSubsystem();// My Climber
   public final LedCommSubsystem m_led = new LedCommSubsystem(); // My LED
   public final HeadSubsystem m_head = new HeadSubsystem(); // My head
+  public final CommandSwerveDrivetrain vision_drivetrain = TunerConstants.DriveTrain; // My vision drive train
+  public final VisionSubsystem m_vision = new VisionSubsystem();
 
   /* Auto List */
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -98,7 +102,7 @@ public class RobotContainer
     intakeButton.whileTrue(new setIntake(Constants.Intake.Speed, m_intake));
     intakeButton.onFalse(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
     reverseIntake.whileTrue(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter)));
-    setLineButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.lineArm , m_arm, "Line Shot"), new setHeadTo(Constants.Aiming.lineHead, m_head, "Line Shot")));
+    setLineButton.whileTrue(new ParallelCommandGroup(new aimVision(Constants.Aiming.getTag(), m_vision, vision_drivetrain), new setArmTo(Constants.Aiming.lineArm , m_arm, "Line Shot"), new setHeadTo(Constants.Aiming.lineHead, m_head, "Line Shot")));
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
 
     setAmpButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2")));

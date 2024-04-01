@@ -1,0 +1,161 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.7059762690953959,
+      "y": 4.339199535541929
+    },
+    "rotation": -55.71312302279106
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShootUpClose"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShooterMotor"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShootUpClose"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShooterMotor"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setIntake"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "setHome"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "ShootDriveBackPickupAutoAim1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakept1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakept2"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShootLineArm"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShootLineArm"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShooterMotor"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "autoAim"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShootLineArm"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShootLineArm"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShooterMotor"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "autoAim"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setIntake"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "setHome"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

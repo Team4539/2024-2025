@@ -118,22 +118,24 @@ public class RobotContainer
 
   public RobotContainer() 
   {
-    NamedCommands.registerCommand("setShootUpClose", new setHeadTo(Constants.Aiming.Upclose, m_head, "Upclose").withTimeout(1));
-    NamedCommands.registerCommand("setShootLineHead", new setHeadTo(Constants.Aiming.lineHead, m_head, "Line").withTimeout(2));
-    NamedCommands.registerCommand("setShootLineArm", new setHeadTo(Constants.Aiming.lineArm, m_head, "Line").withTimeout(2));
-    NamedCommands.registerCommand("setShootMotor", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(1));
+    NamedCommands.registerCommand("intakept1", new setIntake(Constants.Intake.Speed, m_intake));
+    NamedCommands.registerCommand("intakept2", new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
+    NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake));
+    NamedCommands.registerCommand("setShootUpClose", new setHeadTo(Constants.Aiming.Upclose, m_head, "Upclose"));
+    NamedCommands.registerCommand("setShootLineHead", new setHeadTo(Constants.Aiming.lineHead, m_head, "Line"));
+    NamedCommands.registerCommand("Pickup2ShootPosition", new setHeadTo(Constants.Aiming.pickupShootPosition, m_head, "PickupShootHead"));
+    NamedCommands.registerCommand("setShootLineArm", new setArmTo(Constants.Aiming.lineArm, m_arm, "Line"));
+    NamedCommands.registerCommand("setShootMotor", new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
+    NamedCommands.registerCommand("setIntake", new setIntake(Constants.Intake.Speed, m_intake));
     NamedCommands.registerCommand("setHome", new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home").withTimeout(1), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2").withTimeout(1)));
-    NamedCommands.registerCommand("autoAim", new aimVision(Constants.Aiming.getTag(), m_vision, vision_drivetrain).withTimeout(2));
-    
-    NamedCommands.registerCommand("setIntake", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(1));
-    NamedCommands.registerCommand("reverseIntake", new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2));
-    NamedCommands.registerCommand("reverseShooter", new setShooter((-Constants.Shooter.shooterSpeed * 0.1), m_shooter).withTimeout(0.2));
+    NamedCommands.registerCommand("autoAim", new aimVision(Constants.Aiming.getTag(), m_vision, vision_drivetrain));
 
     SmartDashboard.putData("Autonomous", m_chooser);
-    m_chooser.setDefaultOption("ShootDriveBackPickupAutoAim", drivetrain.getAutoPath("ShootDriveBackPickupAutoAim"));
-    m_chooser.addOption("Defense", drivetrain.getAutoPath("Defense"));
-    m_chooser.addOption("Test", drivetrain.getAutoPath("Test"));
-
+    m_chooser.setDefaultOption("Best", drivetrain.getAutoPath("Test2"));
+    m_chooser.addOption("Drive Test", drivetrain.getAutoPath("DriveTest"));
+    // m_chooser.addOption("Middle Shoot Drive Back Pickup", drivetrain.getAutoPath("ShootDriveBackPickup"));
+    // m_chooser.addOption("ShootDriveBackPickupAutoAim", drivetrain.getAutoPath("ShootDriveBackPickupAutoAim"));
+    // m_chooser.addOption("Just Drive", drivetrain.getAutoPath("JustDrive"));
     configureBindings();
   }
 

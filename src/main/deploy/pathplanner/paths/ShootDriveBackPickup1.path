@@ -16,11 +16,11 @@
     },
     {
       "anchor": {
-        "x": 2.496814123442796,
+        "x": 2.803611425404669,
         "y": 5.574358195791997
       },
       "prevControl": {
-        "x": 1.665344728692309,
+        "x": 1.9721420306541821,
         "y": 5.574358195791997
       },
       "nextControl": null,
@@ -33,41 +33,15 @@
   "eventMarkers": [
     {
       "name": "Intake",
-      "waypointRelativePos": 0.5,
+      "waypointRelativePos": 0.3,
       "command": {
         "type": "parallel",
         "data": {
           "commands": [
             {
-              "type": "sequential",
+              "type": "named",
               "data": {
-                "commands": [
-                  {
-                    "type": "named",
-                    "data": {
-                      "name": "setIntake"
-                    }
-                  },
-                  {
-                    "type": "parallel",
-                    "data": {
-                      "commands": [
-                        {
-                          "type": "named",
-                          "data": {
-                            "name": "reverseIntake"
-                          }
-                        },
-                        {
-                          "type": "named",
-                          "data": {
-                            "name": "reverseShooter"
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
+                "name": "setIntake"
               }
             }
           ]

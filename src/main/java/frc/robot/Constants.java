@@ -58,7 +58,8 @@ public class Constants
         public static final double Upclose = .43; // for head
         public static final double lineHead = 0.417;
         public static final double lineArm = 0.250;
-        
+        public static final double pickupShootPosition = 0.463;
+
         public static int getTag()
         {
             Optional<Alliance> alliance = DriverStation.getAlliance();

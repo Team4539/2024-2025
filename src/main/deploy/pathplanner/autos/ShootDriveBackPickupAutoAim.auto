@@ -24,7 +24,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "setShooterMotor"
+                  "name": "setShootMotor"
                 }
               }
             ]
@@ -43,7 +43,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "setShooterMotor"
+                  "name": "setShootMotor"
                 }
               },
               {
@@ -74,22 +74,9 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "named",
           "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "reverseIntake"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "reverseShooter"
-                }
-              }
-            ]
+            "name": "intakept2"
           }
         },
         {
@@ -105,13 +92,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "setShootLineArm"
+                  "name": "setShootLineHead"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "setShooterMotor"
+                  "name": "setShootMotor"
                 }
               },
               {
@@ -136,13 +123,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "setShootLineArm"
+                  "name": "setShootLineHead"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "setShooterMotor"
+                  "name": "setShootMotor"
                 }
               },
               {

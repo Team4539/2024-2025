@@ -1,0 +1,119 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.496814123442796,
+        "y": 5.574358195791997
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.778361729229033,
+        "y": 5.574358195791997
+      },
+      "isLocked": false,
+      "linkedName": "Note71"
+    },
+    {
+      "anchor": {
+        "x": 1.407706324685116,
+        "y": 5.574358195791997
+      },
+      "prevControl": {
+        "x": 1.395995488139336,
+        "y": 5.574358195791997
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "StartFront1"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "ready to shoot",
+      "waypointRelativePos": 0.25,
+      "command": {
+        "type": "deadline",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "setShootUpClose"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "setShooterMotor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "shoot",
+      "waypointRelativePos": 0.85,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "sequential",
+              "data": {
+                "commands": [
+                  {
+                    "type": "parallel",
+                    "data": {
+                      "commands": [
+                        {
+                          "type": "named",
+                          "data": {
+                            "name": "setShooterMotor"
+                          }
+                        },
+                        {
+                          "type": "named",
+                          "data": {
+                            "name": "intakept1"
+                          }
+                        },
+                        {
+                          "type": "named",
+                          "data": {
+                            "name": "intakept2"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 5.0,
+    "maxAcceleration": 3.5,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -1.123302714075378,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": null,
+  "previewStartingState": {
+    "rotation": 0.0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

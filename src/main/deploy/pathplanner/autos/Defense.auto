@@ -1,0 +1,31 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.8338753339418218,
+      "y": 4.485250397034318
+    },
+    "rotation": -61.476881393687975
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Defense start"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Defense Drive Shoot"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

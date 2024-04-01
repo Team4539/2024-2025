@@ -138,6 +138,7 @@ public class RobotContainer
     m_chooser.addOption("(v2) 2 Note Center", drivetrain.getAutoPath("2 Note Center Red"));
     m_chooser.addOption("1 note", drivetrain.getAutoPath("1 Note Stay"));
     m_chooser.addOption("Defense", drivetrain.getAutoPath("Defense"));
+    m_chooser.addOption("Test", drivetrain.getAutoPath("Test"));
 
     configureBindings();
   }

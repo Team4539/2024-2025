@@ -8,38 +8,38 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.437706324685116,
-        "y": 5.574358195791997
+        "x": 1.8410072768790318,
+        "y": 4.930262185774015
       },
       "isLocked": false,
       "linkedName": "StartFront1"
     },
     {
       "anchor": {
-        "x": 2.496814123442796,
-        "y": 5.574358195791997
+        "x": 2.426549104168107,
+        "y": 4.438407050851191
       },
       "prevControl": {
-        "x": 1.665344728692309,
-        "y": 5.574358195791997
+        "x": 1.7121996600505924,
+        "y": 4.78975570276677
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Note71"
+      "linkedName": "Note81"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "Intake",
+      "name": "intake",
       "waypointRelativePos": 0.5,
       "command": {
-        "type": "parallel",
+        "type": "sequential",
         "data": {
           "commands": [
             {
-              "type": "sequential",
+              "type": "parallel",
               "data": {
                 "commands": [
                   {
@@ -70,7 +70,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": -30.963756532073532,
     "rotateFast": false
   },
   "reversed": false,

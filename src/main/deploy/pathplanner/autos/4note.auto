@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3576558062207034,
-      "y": 5.541275082550166
+      "x": 1.3763132980811417,
+      "y": 5.513288844759509
     },
     "rotation": 0
   },
@@ -64,7 +64,26 @@
         {
           "type": "path",
           "data": {
-            "pathName": "DriveTest1"
+            "pathName": "4note1"
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "setIntake"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.5
+                }
+              }
+            ]
           }
         },
         {
@@ -80,7 +99,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.5
+                  "waitTime": 1.0
                 }
               }
             ]
@@ -89,7 +108,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "DriveTest2"
+            "pathName": "4note1.5"
           }
         },
         {
@@ -99,25 +118,19 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Pickup2ShootPosition"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "setShootMotor"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "autoAim"
                 }
               },
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 2.0
+                  "waitTime": 1.0
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Pickup2ShootPosition"
                 }
               }
             ]
@@ -161,7 +174,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 1.0
+                  "waitTime": 0.5
                 }
               }
             ]

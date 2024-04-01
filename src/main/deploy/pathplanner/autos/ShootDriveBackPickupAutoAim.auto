@@ -70,13 +70,26 @@
         {
           "type": "named",
           "data": {
-            "name": "intakept1"
+            "name": "setIntake"
           }
         },
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "intakept2"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "reverseIntake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "reverseShooter"
+                }
+              }
+            ]
           }
         },
         {

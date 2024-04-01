@@ -118,13 +118,13 @@ public class RobotContainer
 
   public RobotContainer() 
   {
-    NamedCommands.registerCommand("intakept1", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(1.5));
+    NamedCommands.registerCommand("intakept1", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(1));
     NamedCommands.registerCommand("intakept2", new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
     NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake).withTimeout(0.2));
     NamedCommands.registerCommand("setShootUpClose", new setHeadTo(Constants.Aiming.Upclose, m_head, "Upclose").withTimeout(1));
     NamedCommands.registerCommand("setShootLineHead", new setHeadTo(Constants.Aiming.lineHead, m_head, "Line").withTimeout(2));
     NamedCommands.registerCommand("setShootLineArm", new setHeadTo(Constants.Aiming.lineArm, m_head, "Line").withTimeout(2));
-    NamedCommands.registerCommand("setShooterMotor", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(1.5));
+    NamedCommands.registerCommand("setShooterMotor", new setShooter(Constants.Shooter.shooterSpeed, m_shooter).withTimeout(1));
     NamedCommands.registerCommand("setIntake", new setIntake(Constants.Intake.Speed, m_intake).withTimeout(1));
     NamedCommands.registerCommand("setHome", new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home").withTimeout(1), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2").withTimeout(1)));
     NamedCommands.registerCommand("autoAim", new aimVision(Constants.Aiming.getTag(), m_vision, vision_drivetrain).withTimeout(2));

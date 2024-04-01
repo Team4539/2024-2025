@@ -130,17 +130,7 @@ public class RobotContainer
     NamedCommands.registerCommand("reverseShooter", new setShooter((-Constants.Shooter.shooterSpeed * 0.1), m_shooter).withTimeout(0.2));
 
     SmartDashboard.putData("Autonomous", m_chooser);
-    m_chooser.setDefaultOption("Just Drive", drivetrain.getAutoPath("JustDrive"));
-    m_chooser.addOption("Middle Shoot Drive Back Pickup", drivetrain.getAutoPath("ShootDriveBackPickup"));
-    m_chooser.addOption("3 Note Center Blue", drivetrain.getAutoPath("3 Note South Blue"));
-    m_chooser.addOption("3 Note Amp Blue", drivetrain.getAutoPath("3 Note North Blue"));
-    m_chooser.addOption("3 Note Center", drivetrain.getAutoPath("3 Note Center Red"));
-    m_chooser.addOption("3 Note Amp Red", drivetrain.getAutoPath("3 Note North Red"));
-    m_chooser.addOption("2 Note Center ", drivetrain.getAutoPath("2 Note Center"));
-    m_chooser.addOption("1 Note South Send", drivetrain.getAutoPath("1 Note South Send"));
-    m_chooser.addOption("Test Test", drivetrain.getAutoPath("Test test"));
-    m_chooser.addOption("(v2) 2 Note Center", drivetrain.getAutoPath("2 Note Center Red"));
-    m_chooser.addOption("1 note", drivetrain.getAutoPath("1 Note Stay"));
+    m_chooser.setDefaultOption("ShootDriveBackPickupAutoAim", drivetrain.getAutoPath("ShootDriveBackPickupAutoAim"));
     m_chooser.addOption("Defense", drivetrain.getAutoPath("Defense"));
     m_chooser.addOption("Test", drivetrain.getAutoPath("Test"));
 

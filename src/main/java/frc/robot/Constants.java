@@ -10,6 +10,13 @@ public class Constants
     public static final double stickDeadband = 0.1;
     public static final int blueTarget = 4;
     public static final int redTarget = 7;
+
+    public static final class Servo
+    {
+        public static final int id = 0; // TODO: set servo id
+        public static final double position = 0; // TODO set servo position
+    }
+
     public static final class Arm
     {
         public static final int armID = 17;

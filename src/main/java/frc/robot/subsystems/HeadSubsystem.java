@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -13,6 +14,7 @@ public class HeadSubsystem extends SubsystemBase
 {
     private CANSparkMax head;
     private DutyCycleEncoder headEncoder;
+    private Servo servo;
 
     public HeadSubsystem() 
     {
@@ -20,6 +22,7 @@ public class HeadSubsystem extends SubsystemBase
         head = new CANSparkMax(Constants.Arm.HEAD_ID, MotorType.kBrushless);
         head.setInverted(false);
         head.setIdleMode(IdleMode.kBrake);
+        servo = new Servo(Constants.Servo.id);
     }
 
     @Override
@@ -30,6 +33,11 @@ public class HeadSubsystem extends SubsystemBase
 
     @Override
     public void simulationPeriodic() {}
+
+    public void ServoBomb()
+    {
+        servo.set(Constants.Servo.position);
+    }
 
     public void setHead(double speed)
     {

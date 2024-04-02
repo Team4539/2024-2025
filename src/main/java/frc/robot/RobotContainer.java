@@ -53,6 +53,7 @@ public class RobotContainer
   private final JoystickButton climberUp = new JoystickButton(Driver, XboxController.Button.kX.value);
   private final JoystickButton climberDown = new JoystickButton(Driver, XboxController.Button.kB.value);
   private final JoystickButton slowShootButton = new JoystickButton(Driver, XboxController.Button.kRightBumper.value);
+  private final JoystickButton servoBombButton = new JoystickButton(Driver, XboxController.Button.kA.value);
 
   // co driver buttons
   private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
@@ -114,6 +115,7 @@ public class RobotContainer
     climberDown.whileTrue(new setClimber(Constants.Climber.climberDown, m_climber));
     slowShootButton.whileTrue(new InstantCommand(() -> m_shooter.setSlow(true)));
     slowShootButton.whileFalse(new InstantCommand(() -> m_shooter.setSlow(false)));
+    servoBombButton.onTrue(new InstantCommand(() -> m_head.ServoBomb()));  
   }
 
   public RobotContainer() 

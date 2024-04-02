@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.38,
-        "y": 5.53
+        "x": 2.79,
+        "y": 6.91
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8427505945920983,
-        "y": 5.942411157549588
+        "x": 2.803611425404669,
+        "y": 6.912600734292378
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.79,
-        "y": 6.91
+        "x": 1.3763132980811417,
+        "y": 5.531946336619947
       },
       "prevControl": {
-        "x": 2.1800308741157703,
-        "y": 6.480829207951022
+        "x": 1.3856420440113608,
+        "y": 5.531946336619947
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,45 +31,15 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 0.5,
-      "rotationDegrees": 40.0,
+      "rotationDegrees": 0,
       "rotateFast": false
     }
   ],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "home",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "race",
-              "data": {
-                "commands": [
-                  {
-                    "type": "named",
-                    "data": {
-                      "name": "setHome"
-                    }
-                  },
-                  {
-                    "type": "wait",
-                    "data": {
-                      "waitTime": 0.5
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "intake",
-      "waypointRelativePos": 0.65,
+      "name": "aim",
+      "waypointRelativePos": 0.6,
       "command": {
         "type": "parallel",
         "data": {
@@ -77,7 +47,13 @@
             {
               "type": "named",
               "data": {
-                "name": "setIntake"
+                "name": "setShootUpClose"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "setShootMotor"
               }
             }
           ]
@@ -93,13 +69,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 34.42442247226419,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": 37.570499939171306,
     "velocity": 0
   },
   "useDefaultConstraints": true

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.3763132980811417,
+        "x": 2.77,
         "y": 5.53
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.3726265961622834,
-        "y": 5.579261320340824
+        "x": 2.7756251876140117,
+        "y": 5.513288844759509
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.77,
+        "x": 1.38,
         "y": 5.53
       },
       "prevControl": {
-        "x": 1.2644371579652252,
-        "y": 5.483356270348905
+        "x": 1.398657491860438,
+        "y": 5.522617590689727
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,8 +32,8 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "intake",
-      "waypointRelativePos": 0.75,
+      "name": "aim",
+      "waypointRelativePos": 0.65,
       "command": {
         "type": "parallel",
         "data": {
@@ -41,37 +41,13 @@
             {
               "type": "named",
               "data": {
-                "name": "setIntake"
+                "name": "setShootUpClose"
               }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "home",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
+            },
             {
-              "type": "race",
+              "type": "named",
               "data": {
-                "commands": [
-                  {
-                    "type": "named",
-                    "data": {
-                      "name": "setHome"
-                    }
-                  },
-                  {
-                    "type": "wait",
-                    "data": {
-                      "waitTime": 0.5
-                    }
-                  }
-                ]
+                "name": "setShootMotor"
               }
             }
           ]

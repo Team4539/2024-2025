@@ -63,6 +63,12 @@ public class setArmTo extends Command
     }
 
     @Override
+    public void end(boolean interrupted) 
+    {
+        m_arm.setArm(0);
+    }
+
+    @Override
     public boolean isFinished() { return false; }
 
     @Override

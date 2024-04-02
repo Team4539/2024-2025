@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8427505945920983,
-        "y": 5.942411157549588
+        "x": 1.8966704123032583,
+        "y": 6.123929528717735
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.79,
-        "y": 6.91
+        "x": 2.821868398656297,
+        "y": 6.946327738809324
       },
       "prevControl": {
-        "x": 2.1800308741157703,
-        "y": 6.480829207951022
+        "x": 2.283166327620671,
+        "y": 6.45739932560366
       },
       "nextControl": null,
       "isLocked": false,
@@ -57,7 +57,7 @@
                   {
                     "type": "wait",
                     "data": {
-                      "waitTime": 0.5
+                      "waitTime": 0.75
                     }
                   }
                 ]
@@ -69,7 +69,7 @@
     },
     {
       "name": "intake",
-      "waypointRelativePos": 0.65,
+      "waypointRelativePos": 0.5,
       "command": {
         "type": "parallel",
         "data": {
@@ -86,14 +86,14 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 5.0,
-    "maxAcceleration": 3.5,
+    "maxVelocity": 2.5,
+    "maxAcceleration": 2.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 34.42442247226419,
+    "rotation": 36.0603549702908,
     "rotateFast": false
   },
   "reversed": false,
@@ -102,5 +102,5 @@
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

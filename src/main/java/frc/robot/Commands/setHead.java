@@ -29,6 +29,12 @@ public class setHead extends Command
     }
 
     @Override
+    public void end(boolean interrupted) 
+    {
+        m_head.setHead(0);
+    }
+
+    @Override
     public boolean isFinished() { return false; }
 
     @Override

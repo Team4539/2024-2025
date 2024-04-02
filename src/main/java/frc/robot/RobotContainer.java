@@ -131,9 +131,9 @@ public class RobotContainer
     NamedCommands.registerCommand("autoAim", new aimVision(Constants.Aiming.getTag(), m_vision, vision_drivetrain));
 
     SmartDashboard.putData("Autonomous", m_chooser);
-    m_chooser.setDefaultOption("Best", drivetrain.getAutoPath("Test2"));
-    m_chooser.addOption("Drive Test", drivetrain.getAutoPath("DriveTest"));
-    m_chooser.addOption("4 note", drivetrain.getAutoPath("4note"));
+    m_chooser.setDefaultOption("Middle 4 Note", drivetrain.getAutoPath("4note"));
+    m_chooser.addOption("Middle Shoot Far Pickup Shoot", drivetrain.getAutoPath("DriveTest"));
+    m_chooser.addOption("Middle Shoot Pickup Shoot", drivetrain.getAutoPath("Test2"));
     // m_chooser.addOption("Middle Shoot Drive Back Pickup", drivetrain.getAutoPath("ShootDriveBackPickup"));
     // m_chooser.addOption("ShootDriveBackPickupAutoAim", drivetrain.getAutoPath("ShootDriveBackPickupAutoAim"));
     // m_chooser.addOption("Just Drive", drivetrain.getAutoPath("JustDrive"));

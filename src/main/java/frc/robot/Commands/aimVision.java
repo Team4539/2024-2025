@@ -2,6 +2,7 @@ package frc.robot.Commands;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.VisionSubsystem;
@@ -53,6 +54,12 @@ public class aimVision extends Command
                 }
             }
         }
+    }
+
+    @Override
+    public void end(boolean interrupted) 
+    {
+        m_drive.setControl(forwardStraight.withRotationalRate(0));
     }
 
     @Override

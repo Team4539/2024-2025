@@ -30,7 +30,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 1.5
+                  "waitTime": 1.0
                 }
               }
             ]
@@ -80,7 +80,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.5
+                  "waitTime": 0.2
                 }
               }
             ]
@@ -99,7 +99,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 1.0
+                  "waitTime": 0.5
                 }
               }
             ]
@@ -109,31 +109,6 @@
           "type": "path",
           "data": {
             "pathName": "4note1.5"
-          }
-        },
-        {
-          "type": "race",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "setShootUpClose"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "setShootMotor"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 1.5
-                }
-              }
-            ]
           }
         },
         {

@@ -1,4 +1,4 @@
-package frc.robot.subsystems;
+/*package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.PWM;
@@ -12,8 +12,8 @@ public class LedCommSubsystem extends SubsystemBase{
 
     public LedCommSubsystem()
     {
-        pwmSnd = new PWM(Constants.arduinoCOMs.arduinoSend);
-        pwmRcv = new AnalogInput(Constants.arduinoCOMs.arduinoRcv);
+        // pwmSnd = new PWM(Constants.arduinoCOMs.arduinoSend);
+        // pwmRcv = new AnalogInput(Constants.arduinoCOMs.arduinoRcv);
         
     }
     public void periodic(){
@@ -28,3 +28,4 @@ public class LedCommSubsystem extends SubsystemBase{
         pwmSnd.setSpeed(speed);
     }
 }
+*/

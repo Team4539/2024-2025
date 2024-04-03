@@ -28,7 +28,7 @@ import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.HeadSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
-import frc.robot.subsystems.LedCommSubsystem;
+// import frc.robot.subsystems.LedCommSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
 
@@ -53,7 +53,8 @@ public class RobotContainer
   private final JoystickButton climberUp = new JoystickButton(Driver, XboxController.Button.kX.value);
   private final JoystickButton climberDown = new JoystickButton(Driver, XboxController.Button.kB.value);
   private final JoystickButton slowShootButton = new JoystickButton(Driver, XboxController.Button.kRightBumper.value);
-  private final JoystickButton servoBombButton = new JoystickButton(Driver, XboxController.Button.kA.value);
+  private final JoystickButton servoBombButton = new JoystickButton(Driver, XboxController.Button.kLeftBumper.value);
+  private final JoystickButton trapButton = new JoystickButton(Driver, XboxController.Button.kBack.value);
 
   // co driver buttons
   private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
@@ -70,7 +71,7 @@ public class RobotContainer
   private final IntakeSubsystem m_intake = new IntakeSubsystem(); // My intake
   private final ShooterSubsystem m_shooter = new ShooterSubsystem(); // My shooter
   private final ClimberSubsystem m_climber = new ClimberSubsystem();// My Climber
-  public final LedCommSubsystem m_led = new LedCommSubsystem(); // My LED
+  // public final LedCommSubsystem m_led = new LedCommSubsystem(); // My LED
   public final HeadSubsystem m_head = new HeadSubsystem(); // My head
   public final CommandSwerveDrivetrain vision_drivetrain = TunerConstants.DriveTrain; // My vision drive train
   public final VisionSubsystem m_vision = new VisionSubsystem();
@@ -116,6 +117,7 @@ public class RobotContainer
     slowShootButton.whileTrue(new InstantCommand(() -> m_shooter.setSlow(true)));
     slowShootButton.whileFalse(new InstantCommand(() -> m_shooter.setSlow(false)));
     servoBombButton.onTrue(new InstantCommand(() -> m_head.ServoBomb()));  
+    trapButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Trap.hell, m_arm, "hell"), new setHeadTo(Constants.Trap.heaven, m_head, "heaven")));
   }
 
   public RobotContainer() 

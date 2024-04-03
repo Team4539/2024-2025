@@ -11,22 +11,23 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.LedCommSubsystem;
+// import frc.robot.subsystems.LedCommSubsystem;
+import frc.robot.subsystems.HeadSubsystem;
 
 public class Robot extends TimedRobot 
 {
   private Command m_autonomousCommand;
   private TalonFX calibrate_wheel;
   private RobotContainer m_robotContainer;
-  private LedCommSubsystem m_led;
+  // private LedCommSubsystem m_led;
   private double init_click;
 
   @Override
   public void robotInit() {
     m_robotContainer = new RobotContainer();
-    m_led = m_robotContainer.m_led;
+    // m_led = m_robotContainer.m_led;
     PortForwarder.add(5800, "photonvision.local", 5800); // for photonvision
-    m_led.setLed(Constants.arduinoCOMs.Idle);
+    // m_led.setLed(Constants.arduinoCOMs.Idle);
   }
   @Override
   public void robotPeriodic() 
@@ -46,7 +47,7 @@ public class Robot extends TimedRobot
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-    m_led.setLed(Constants.arduinoCOMs.Auto);
+    // m_led.setLed(Constants.arduinoCOMs.Auto);
 
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
@@ -58,14 +59,14 @@ public class Robot extends TimedRobot
 
   @Override
   public void autonomousExit() {
-    m_led.setLed(Constants.arduinoCOMs.Idle);
+    // m_led.setLed(Constants.arduinoCOMs.Idle);
 
   }
 
   @Override
   public void teleopInit() 
   {
-    m_led.setLed(Constants.arduinoCOMs.Game);
+    // m_led.setLed(Constants.arduinoCOMs.Game);
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
@@ -78,7 +79,7 @@ public class Robot extends TimedRobot
 
   @Override
   public void teleopExit() {
-    m_led.setLed(Constants.arduinoCOMs.Idle);
+    /// m_led.setLed(Constants.arduinoCOMs.Idle);
 
   }
 

@@ -23,6 +23,7 @@ public class HeadSubsystem extends SubsystemBase
         head.setInverted(false);
         head.setIdleMode(IdleMode.kBrake);
         servo = new Servo(Constants.Servo.id);
+        ServoHome();
     }
 
     @Override
@@ -37,6 +38,11 @@ public class HeadSubsystem extends SubsystemBase
     public void ServoBomb()
     {
         servo.set(Constants.Servo.position);
+    }
+
+    public void ServoHome()
+    {
+        servo.set(Constants.Servo.home);
     }
 
     public void setHead(double speed)

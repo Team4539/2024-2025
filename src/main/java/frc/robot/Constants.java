@@ -11,10 +11,17 @@ public class Constants
     public static final int blueTarget = 4;
     public static final int redTarget = 7;
 
+    public static final class Trap
+    { 
+        public static final double hell = 0.143; // arm
+        public static final double heaven = 0.200; // head
+    }
+
     public static final class Servo
     {
-        public static final int id = 0; // TODO: set servo id
-        public static final double position = 0; // TODO set servo position
+        public static final int id = 0;
+        public static final double position = 0.25;
+        public static final double home = 0.0;
     }
 
     public static final class Arm
@@ -90,8 +97,8 @@ public class Constants
 
     public static final class arduinoCOMs
     {
-        public static final int arduinoSend = 0; // PWM port
-        public static final int arduinoRcv = 0; //analog
+        // public static final int arduinoSend = 0; // PWM port
+        // public static final int arduinoRcv = 0; //analog
         public static final double Idle = 0.0; // pulse length is less than 15000us
         public static final double Auto = 1.0; // pulse length is less than greater than 15000us   
         public static final double Game = -1.0;  //  pulse length is less the 5000us

@@ -20,8 +20,8 @@ public class Constants
     public static final class Servo
     {
         public static final int id = 0;
-        public static final double position = 0.25;
-        public static final double home = 0.0;
+        public static final double position = 0.75;
+        public static final double home = 1;
     }
 
     public static final class Arm

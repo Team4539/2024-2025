@@ -116,7 +116,8 @@ public class RobotContainer
     climberDown.whileTrue(new setClimber(Constants.Climber.climberDown, m_climber));
     slowShootButton.whileTrue(new InstantCommand(() -> m_shooter.setSlow(true)));
     slowShootButton.whileFalse(new InstantCommand(() -> m_shooter.setSlow(false)));
-    servoBombButton.onTrue(new InstantCommand(() -> m_head.ServoBomb()));  
+    servoBombButton.whileTrue(new InstantCommand(() -> m_head.ServoBomb()));
+    servoBombButton.whileFalse(new InstantCommand(() -> m_head.ServoHome()));
     trapButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Trap.hell, m_arm, "hell"), new setHeadTo(Constants.Trap.heaven, m_head, "heaven")));
   }
 

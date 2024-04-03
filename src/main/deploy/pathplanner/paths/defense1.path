@@ -60,7 +60,18 @@
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.25,
+      "rotationDegrees": 45.0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 0.95,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [
     {
@@ -79,6 +90,62 @@
           ]
         }
       }
+    },
+    {
+      "name": "intake",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "sequential",
+              "data": {
+                "commands": [
+                  {
+                    "type": "race",
+                    "data": {
+                      "commands": [
+                        {
+                          "type": "named",
+                          "data": {
+                            "name": "setIntake"
+                          }
+                        },
+                        {
+                          "type": "wait",
+                          "data": {
+                            "waitTime": 1.0
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "race",
+                    "data": {
+                      "commands": [
+                        {
+                          "type": "named",
+                          "data": {
+                            "name": "intakept2"
+                          }
+                        },
+                        {
+                          "type": "wait",
+                          "data": {
+                            "waitTime": 0.5
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "globalConstraints": {
@@ -89,7 +156,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -0.855097396266705,
+    "rotation": 45.0,
     "rotateFast": false
   },
   "reversed": false,

@@ -2,17 +2,17 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7059762690953959,
-      "y": 4.339199535541929
+      "x": 0.7326298288960215,
+      "y": 6.726025815687995
     },
-    "rotation": -55.71312302279106
+    "rotation": 60.10109816138546
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "parallel",
+          "type": "race",
           "data": {
             "commands": [
               {
@@ -26,20 +26,20 @@
                 "data": {
                   "name": "setShootMotor"
                 }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 1.0
+                }
               }
             ]
           }
         },
         {
-          "type": "parallel",
+          "type": "race",
           "data": {
             "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "setShootUpClose"
-                }
-              },
               {
                 "type": "named",
                 "data": {
@@ -51,91 +51,55 @@
                 "data": {
                   "name": "setIntake"
                 }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.5
+                }
               }
             ]
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "setHome"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "ShootDriveBackPickupAutoAim1"
+            "pathName": "2noteleft1"
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "setIntake"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "intakept2"
-          }
-        },
-        {
-          "type": "parallel",
+          "type": "race",
           "data": {
             "commands": [
               {
                 "type": "named",
                 "data": {
-                  "name": "setShootLineArm"
+                  "name": "intakept2"
                 }
               },
               {
-                "type": "named",
+                "type": "wait",
                 "data": {
-                  "name": "setShootLineHead"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "setShootMotor"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "autoAim"
+                  "waitTime": 0.5
                 }
               }
             ]
           }
         },
         {
-          "type": "parallel",
+          "type": "path",
+          "data": {
+            "pathName": "2noteleft1.5"
+          }
+        },
+        {
+          "type": "race",
           "data": {
             "commands": [
               {
                 "type": "named",
                 "data": {
-                  "name": "setShootLineArm"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "setShootLineHead"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "setShootMotor"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "autoAim"
                 }
               },
               {
@@ -143,14 +107,89 @@
                 "data": {
                   "name": "setIntake"
                 }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.5
+                }
               }
             ]
           }
         },
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "setHome"
+            "pathName": "2noteleft2"
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakept2"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.5
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "2noteleft2.5"
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShootMotor"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setIntake"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.5
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "setHome"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 1.0
+                }
+              }
+            ]
           }
         }
       ]

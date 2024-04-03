@@ -133,14 +133,19 @@ public class RobotContainer
     NamedCommands.registerCommand("setIntake", new setIntake(Constants.Intake.Speed, m_intake));
     NamedCommands.registerCommand("setHome", new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home").withTimeout(1), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2").withTimeout(1)));
     NamedCommands.registerCommand("autoAim", new aimVision(Constants.Aiming.getTag(), m_vision, vision_drivetrain));
-
+    NamedCommands.registerCommand("setAmp", new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2")));
+    
     SmartDashboard.putData("Autonomous", m_chooser);
-    m_chooser.setDefaultOption("Middle 4 Note", drivetrain.getAutoPath("4note"));
-    m_chooser.addOption("Middle Shoot Far Pickup Shoot", drivetrain.getAutoPath("DriveTest"));
-    m_chooser.addOption("Middle Shoot Pickup Shoot", drivetrain.getAutoPath("Test2"));
-    // m_chooser.addOption("Middle Shoot Drive Back Pickup", drivetrain.getAutoPath("ShootDriveBackPickup"));
-    // m_chooser.addOption("ShootDriveBackPickupAutoAim", drivetrain.getAutoPath("ShootDriveBackPickupAutoAim"));
-    // m_chooser.addOption("Just Drive", drivetrain.getAutoPath("JustDrive"));
+    m_chooser.setDefaultOption("4 Note Middle", drivetrain.getAutoPath("4note"));
+    // four note auto
+    m_chooser.addOption("2 Note Middle", drivetrain.getAutoPath("2notemiddle"));
+    // simple drive back shoot and pickup shoot
+    m_chooser.addOption("2 Note Left", drivetrain.getAutoPath("2noteleft"));
+    // 2 note left attempts 3 notes
+    m_chooser.addOption("2 Note Right", drivetrain.getAutoPath("2noteright"));
+    // 2 note right will run out of time trying to shoot the 3rd note
+    m_chooser.addOption("Defense", drivetrain.getAutoPath("defense"));
+    // funny defense auto
     configureBindings();
   }
 

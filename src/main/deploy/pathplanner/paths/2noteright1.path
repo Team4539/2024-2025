@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.3576558062207034,
-        "y": 5.54
+        "x": 0.6766573533147066,
+        "y": 4.365853095342555
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.6655044219179347,
-        "y": 0.9036132726810902
+        "x": 0.5553836562218579,
+        "y": 3.3396910430184503
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.32,
-        "y": 2.47
+        "x": 8.15,
+        "y": 0.76
       },
       "prevControl": {
-        "x": 6.426264576165517,
-        "y": 1.807659038954441
+        "x": 3.0844909598910117,
+        "y": 0.6480550488373706
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,30 +30,13 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.7,
-      "rotationDegrees": 0.0,
+      "waypointRelativePos": 0.5,
+      "rotationDegrees": 0,
       "rotateFast": false
     }
   ],
   "constraintZones": [],
   "eventMarkers": [
-    {
-      "name": "intake",
-      "waypointRelativePos": 0.85,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "setIntake"
-              }
-            }
-          ]
-        }
-      }
-    },
     {
       "name": "home",
       "waypointRelativePos": 0,
@@ -62,22 +45,26 @@
         "data": {
           "commands": [
             {
-              "type": "race",
+              "type": "named",
               "data": {
-                "commands": [
-                  {
-                    "type": "named",
-                    "data": {
-                      "name": "setHome"
-                    }
-                  },
-                  {
-                    "type": "wait",
-                    "data": {
-                      "waitTime": 2.0
-                    }
-                  }
-                ]
+                "name": "setHome"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "intake",
+      "waypointRelativePos": 0.8,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "setIntake"
               }
             }
           ]
@@ -99,7 +86,7 @@
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": -59.45242825109296,
     "velocity": 0
   },
   "useDefaultConstraints": true

@@ -3,37 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.407706324685116,
-        "y": 5.57
+        "x": 8.33,
+        "y": 4.03
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.437706324685116,
-        "y": 5.57
+        "x": 7.607915579467522,
+        "y": 4.515113030226061
       },
       "isLocked": false,
-      "linkedName": "StartFront1"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.8,
-        "y": 5.57
+        "x": 1.2358147077653734,
+        "y": 5.53650223579517
       },
       "prevControl": {
-        "x": 1.968530605249513,
-        "y": 5.57
+        "x": 2.7750577862515327,
+        "y": 4.435710216029311
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Note71"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "Intake",
-      "waypointRelativePos": 0.0,
+      "name": "aim",
+      "waypointRelativePos": 0.3,
       "command": {
         "type": "parallel",
         "data": {
@@ -41,13 +41,13 @@
             {
               "type": "named",
               "data": {
-                "name": "setIntake"
+                "name": "setShootUpClose"
               }
             },
             {
               "type": "named",
               "data": {
-                "name": "setHome"
+                "name": "setShootMotor"
               }
             }
           ]

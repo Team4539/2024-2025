@@ -13,7 +13,7 @@ public class Constants
 
     public static final class Trap
     { 
-        public static final double hell = 0.143; // arm
+        public static final double hell = 0.137; // arm
         public static final double heaven = 0.200; // head
     }
 
@@ -68,11 +68,11 @@ public class Constants
         public static final double Home2 = 0.30;
         public static final double Amp = 0.12; // for arm
         public static final double Amp2 = 0.45; // for head
-        public static final double Source = .20; // for arm
-        public static final double Upclose = .43; // for head
+        public static final double Source = 0.20; // for arm
+        public static final double Upclose = 0.43; // for head
         public static final double lineHead = 0.417;
         public static final double lineArm = 0.250;
-        public static final double pickupShootPosition = 0.463;
+        public static final double pickupShootPosition = 0.473;
 
         public static int getTag()
         {

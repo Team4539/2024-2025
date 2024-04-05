@@ -69,7 +69,7 @@ public class Constants
         public static final double Amp = 0.12; // for arm
         public static final double Amp2 = 0.45; // for head
         public static final double Source = 0.20; // for arm
-        public static final double Upclose = 0.43; // for head
+        public static final double Upclose = 0.40; // for head
         public static final double lineHead = 0.417;
         public static final double lineArm = 0.250;
         public static final double pickupShootPosition = 0.473;

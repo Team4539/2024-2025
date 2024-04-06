@@ -147,6 +147,8 @@ public class RobotContainer
     // 2 note right will run out of time trying to shoot the 3rd note
     m_chooser.addOption("Defense", drivetrain.getAutoPath("defense"));
     // funny defense auto
+    m_chooser.addOption("Shoot Don't Move", drivetrain.getAutoPath("shootdontmove"));
+    // shoot dont move any position upclose
     configureBindings();
   }
 

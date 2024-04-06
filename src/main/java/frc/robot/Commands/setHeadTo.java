@@ -50,7 +50,7 @@ public class setHeadTo extends Command
 
         if (encoder > m_target) // go down
         {
-            m_head.setHead(-fixedOutput*.65); 
+            m_head.setHead(-fixedOutput); 
         }
         else if (encoder < m_target) //me go up
         {

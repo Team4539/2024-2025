@@ -141,9 +141,9 @@ public class RobotContainer
     // four note auto
     m_chooser.addOption("2 Note Middle", drivetrain.getAutoPath("2notemiddle"));
     // simple drive back shoot and pickup shoot
-    m_chooser.addOption("2 Note Left", drivetrain.getAutoPath("2noteleft"));
+    m_chooser.addOption("2 Note Amp", drivetrain.getAutoPath("2noteamp"));
     // 2 note left attempts 3 notes
-    m_chooser.addOption("2 Note Right", drivetrain.getAutoPath("2noteright"));
+    m_chooser.addOption("2 Note Source", drivetrain.getAutoPath("2notesource"));
     // 2 note right will run out of time trying to shoot the 3rd note
     m_chooser.addOption("Defense", drivetrain.getAutoPath("defense"));
     // funny defense auto

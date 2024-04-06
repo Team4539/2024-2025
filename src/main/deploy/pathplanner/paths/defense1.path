@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 8.130325351561495,
-        "y": 0.7556284203438884
+        "x": 8.242270302724124,
+        "y": 0.7369709284873124
       },
       "prevControl": {
-        "x": 7.134195501536115,
-        "y": 0.6677346100475315
+        "x": 7.268853134393467,
+        "y": 0.5079315947493717
       },
       "nextControl": {
-        "x": 8.447502713188946,
-        "y": 0.7836146581345458
+        "x": 8.559447664349873,
+        "y": 0.811600895932927
       },
       "isLocked": false,
       "linkedName": null
@@ -65,11 +65,6 @@
       "waypointRelativePos": 1.25,
       "rotationDegrees": 45.0,
       "rotateFast": false
-    },
-    {
-      "waypointRelativePos": 0.95,
-      "rotationDegrees": 0,
-      "rotateFast": false
     }
   ],
   "constraintZones": [],
@@ -85,62 +80,6 @@
               "type": "named",
               "data": {
                 "name": "setHome"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "intake",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "sequential",
-              "data": {
-                "commands": [
-                  {
-                    "type": "race",
-                    "data": {
-                      "commands": [
-                        {
-                          "type": "named",
-                          "data": {
-                            "name": "setIntake"
-                          }
-                        },
-                        {
-                          "type": "wait",
-                          "data": {
-                            "waitTime": 1.0
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "type": "race",
-                    "data": {
-                      "commands": [
-                        {
-                          "type": "named",
-                          "data": {
-                            "name": "intakept2"
-                          }
-                        },
-                        {
-                          "type": "wait",
-                          "data": {
-                            "waitTime": 0.5
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
               }
             }
           ]

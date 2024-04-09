@@ -54,7 +54,7 @@ public class HeadSubsystem extends SubsystemBase
         {
             if (ClimberSubsystem.armOverride)
             {
-                head.set(speed*.3);
+                head.set(speed*.6);
             }
             else
             {
@@ -62,7 +62,7 @@ public class HeadSubsystem extends SubsystemBase
                 if ((headEncoder.getAbsolutePosition() + Constants.Arm.headOffset) > Constants.Arm.headMin && (headEncoder.getAbsolutePosition() + Constants.Arm.headOffset) < Constants.Arm.headMax)
                 {
                     // run normal
-                    head.set(speed*.3);
+                    head.set(speed*.6);
                 }
 
                 // if rotations is less than miminum

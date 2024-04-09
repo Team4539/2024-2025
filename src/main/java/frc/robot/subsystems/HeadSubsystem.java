@@ -6,22 +6,24 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
+import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 public class HeadSubsystem extends SubsystemBase 
 {
-    private CANSparkMax head;
+    private TalonFX head;
     private DutyCycleEncoder headEncoder;
     private Servo servo;
 
     public HeadSubsystem() 
     {
         headEncoder = new DutyCycleEncoder(Constants.Arm.headEncoder);
-        head = new CANSparkMax(Constants.Arm.HEAD_ID, MotorType.kBrushless);
+        head = new TalonFX(Constants.Arm.HEAD_ID);
         head.setInverted(false);
-        head.setIdleMode(IdleMode.kBrake);
+        head.setNeutralMode(NeutralModeValue.Brake);
         servo = new Servo(Constants.Servo.id);
         ServoHome();
     }

@@ -14,7 +14,7 @@ public class Constants
     public static final class Trap
     { 
         public static final double hell = 0.137; // arm
-        public static final double heaven = 0.200; // head
+        public static final double heaven = 0.2; // head
     }
 
     public static final class Servo
@@ -31,9 +31,9 @@ public class Constants
         public static final int armEncoder = 0; //DIO port
         public static final double armMin = 0.10;
         public static final double armMax = 0.322;
-        public static final int HEAD_ID = 7;
+        public static final int HEAD_ID = 24;
         public static final int headEncoder = 2; //DIO port
-        public static final double headMin = 0.22;
+        public static final double headMin = 0.2;
         public static final double headMax = 0.47;
         public static final double headOffset = 0;
         public static final double armOffset = 0;

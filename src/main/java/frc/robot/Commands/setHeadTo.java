@@ -20,7 +20,7 @@ public class setHeadTo extends Command
         m_head = subsystem;
         m_target = targetrot;
         m_command = command;
-        pidController = new PIDController(10, 0.0, 0.5);
+        pidController = new PIDController(12, 0.0, 0);
 
     }
 

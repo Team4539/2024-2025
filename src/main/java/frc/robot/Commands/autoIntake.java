@@ -51,7 +51,7 @@ public class autoIntake extends Command
         {
             if (!x_centered)
             {
-                if (tx < -5)
+                if (tx < -2)
                 {
                     m_drive.setControl(forwardStraight.withVelocityY(0.8));
                 }
@@ -67,7 +67,7 @@ public class autoIntake extends Command
             }
             else if (!y_centered)
             {
-                if (ty > 5)
+                if (ty > 2)
                 {
                     m_drive.setControl(forwardStraight.withVelocityX(0.8));
                 }

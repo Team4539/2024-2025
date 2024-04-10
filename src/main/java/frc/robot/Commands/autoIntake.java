@@ -2,6 +2,7 @@ package frc.robot.Commands;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -51,17 +52,20 @@ public class autoIntake extends Command
         {
             if (!x_centered)
             {
-                if (tx < -2)
+                if (tx < -0.5)
                 {
-                    m_drive.setControl(forwardStraight.withVelocityY(0.8));
+                    //m_drive.setControl(forwardStraight.withVelocityY(0.8));
+                    m_drive.setControl(forwardStraight.withRotationalRate(0.65));
                 }
-                else if (tx > 0)
+                else if (tx > 0.5)
                 {
-                    m_drive.setControl(forwardStraight.withVelocityY(-0.8));
+                    //m_drive.setControl(forwardStraight.withVelocityY(-0.8));
+                    m_drive.setControl(forwardStraight.withRotationalRate(-0.65));
                 }
                 else
                 {
                     m_drive.setControl(forwardStraight.withVelocityY(0));
+                    m_drive.setControl(forwardStraight.withRotationalRate(0));
                     x_centered = true;
                 }
             }
@@ -69,7 +73,7 @@ public class autoIntake extends Command
             {
                 if (ty > 2)
                 {
-                    m_drive.setControl(forwardStraight.withVelocityX(0.8));
+                    m_drive.setControl(forwardStraight.withVelocityX(2));
                 }
                 else
                 {
@@ -79,14 +83,14 @@ public class autoIntake extends Command
             }
             else
             {
-                m_drive.setControl(forwardStraight.withVelocityX(0.8));
+                m_drive.setControl(forwardStraight.withVelocityX(2));
                 m_intake.setIntake(Constants.Intake.Speed);
             }
         }
         else
         {
             m_drive.setControl(forwardStraight.withVelocityY(0).withVelocityX(0));
-            m_drive.setControl(forwardStraight.withVelocityX(0.8));
+            m_drive.setControl(forwardStraight.withVelocityX(1.2));
             m_intake.setIntake(Constants.Intake.Speed);
         }
     }

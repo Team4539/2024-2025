@@ -124,7 +124,7 @@ public class RobotContainer
     trapButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Trap.hell, m_arm, "hell"), new setHeadTo(Constants.Trap.heaven, m_head, "heaven")));
   }
 
-  public RobotContainer() 
+  public RobotContainer()
   {
     NamedCommands.registerCommand("intakept1", new setIntake(Constants.Intake.Speed, m_intake));
     NamedCommands.registerCommand("intakept2", new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
@@ -138,6 +138,7 @@ public class RobotContainer
     NamedCommands.registerCommand("setHome", new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home").withTimeout(1), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2").withTimeout(1)));
     NamedCommands.registerCommand("autoAim", new aimVision(Constants.Aiming.getTag(), m_vision, vision_drivetrain));
     NamedCommands.registerCommand("setAmp", new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2")));
+    NamedCommands.registerCommand("AutoIntake", new autoIntake(m_vision, drivetrain, m_intake));
     
     SmartDashboard.putData("Autonomous", m_chooser);
 

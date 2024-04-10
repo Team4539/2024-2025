@@ -86,7 +86,7 @@ public class autoIntake extends Command
         else
         {
             m_drive.setControl(forwardStraight.withVelocityY(0).withVelocityX(0));
-            m_drive.setControl(forwardStraight.withVelocityX(1.5));
+            m_drive.setControl(forwardStraight.withVelocityX(0.8));
             m_intake.setIntake(Constants.Intake.Speed);
         }
     }

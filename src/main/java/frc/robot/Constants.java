@@ -70,6 +70,7 @@ public class Constants
         public static final double Amp2 = 0.45; // for head
         public static final double Source = 0.20; // for arm
         public static final double Upclose = 0.425; // for head
+        public static final double KindaUpclose = 0.446;
         public static final double lineHead = 0.417;
         public static final double lineArm = 0.250;
         public static final double pickupShootPosition = 0.473;
@@ -93,6 +94,14 @@ public class Constants
                 return 7;
             }
         }
+    }
+
+    public static final class Vision
+    {
+        public static final double speed = 0.4;
+        public static final double Y_GOAL = 0.05;
+        public static final double A_GOAL1 = 179;
+        public static final double A_GOAL2 = 181;
     }
 
     public static final class arduinoCOMs

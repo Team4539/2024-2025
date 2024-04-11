@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 1.9640242916849469,
-        "y": 3.059828665111876
+        "x": 2.04,
+        "y": 6.74
       },
       "prevControl": {
-        "x": 1.7769178206059075,
-        "y": 3.0715228195543167
+        "x": 1.8528935289209607,
+        "y": 6.751694154442442
       },
       "nextControl": null,
       "isLocked": false,
@@ -47,23 +47,6 @@
           ]
         }
       }
-    },
-    {
-      "name": "test",
-      "waypointRelativePos": 0.65,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "autoIntake"
-              }
-            }
-          ]
-        }
-      }
     }
   ],
   "globalConstraints": {
@@ -74,7 +57,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 43.958373323990024,
+    "rotation": 15.154068050312496,
     "rotateFast": false
   },
   "reversed": false,

@@ -5,6 +5,7 @@ import org.photonvision.PhotonCamera;
 import org.photonvision.targeting.PhotonTrackedTarget;
 
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
+import com.ctre.phoenix6.mechanisms.swerve.SwerveDrivetrainConstants;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 
 import edu.wpi.first.math.controller.ProfiledPIDController;
@@ -25,7 +26,7 @@ public class chaseTag extends Command
   private static final TrapezoidProfile.Constraints OMEGA_CONSTRATINTS = new TrapezoidProfile.Constraints(8, 8);
   private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
 
-  private static final int TAG_TO_CHASE = 2;
+  private static final int TAG_TO_CHASE = 11;
   private static final Transform2d TAG_TO_GOAL = new Transform2d(new Translation2d(1, 0), Rotation2d.fromDegrees(180.0));
 
   private final PhotonCamera photonCamera;
@@ -123,15 +124,13 @@ public class chaseTag extends Command
     if (omegaController.atGoal()) {
       omegaSpeed = 0;
     }
-    //  ChassisSpeeds speeds = 
-    // drivetrainSubsystem.setControl();
-    // drivetrainSubsystem.drive(ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, omegaSpeed, robotPose.getRotation()));
-    //   );
+    drivetrainSubsystem.setControl(new SwerveRequest.RobotCentric.ApplyChassisSpeeds().withSpeeds(ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, omegaSpeed, robotPose.getRotation())));
   }
 
   @Override
-  public void end(boolean interrupted) {
-    // drivetrainSubsystem.stop();
+  public void end(boolean interrupted) 
+  {
+    drivetrainSubsystem.setControl(forwardStraight.withVelocityX(0).withVelocityY(0));
   }
 
 }

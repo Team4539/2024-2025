@@ -27,6 +27,9 @@ public class autoIntake extends Command
     private boolean x_centered;
     private boolean y_centered;
 
+    private final double X_CLOSE_THRESHOLD = 6;
+    private final double Y_CLOSE_THRESHOLD = 6;
+
     public autoIntake(VisionSubsystem subsystem, CommandSwerveDrivetrain drive_subsystem, IntakeSubsystem intake) 
     {
         addRequirements(subsystem, drive_subsystem, intake);
@@ -50,49 +53,12 @@ public class autoIntake extends Command
         double ty = LimelightHelpers.getTY("limelight-main");
         if (tx != 0.0 && ty != 0.0)
         {
-            if (!x_centered)
-            {
-                if (tx < -0.5)
-                {
-                    //m_drive.setControl(forwardStraight.withVelocityY(0.8));
-                    m_drive.setControl(forwardStraight.withRotationalRate(0.65));
-                }
-                else if (tx > 0.5)
-                {
-                    //m_drive.setControl(forwardStraight.withVelocityY(-0.8));
-                    m_drive.setControl(forwardStraight.withRotationalRate(-0.65));
-                }
-                else
-                {
-                    m_drive.setControl(forwardStraight.withVelocityY(0));
-                    m_drive.setControl(forwardStraight.withRotationalRate(0));
-                    x_centered = true;
-                }
-            }
-            else if (!y_centered)
-            {
-                if (ty > 2)
-                {
-                    m_drive.setControl(forwardStraight.withVelocityX(2));
-                }
-                else
-                {
-                    m_drive.setControl(forwardStraight.withVelocityX(0));
-                    y_centered = true;
-                }
-            }
-            else
-            {
-                m_drive.setControl(forwardStraight.withVelocityX(2));
-                m_intake.setIntake(Constants.Intake.Speed);
-            }
+            double xCorrection = calculateCorrection(tx);
+            double yCorrection = calculateCorrection(ty);
+        
+            applyCorrection(tx, ty, xCorrection, yCorrection);
         }
-        else
-        {
-            m_drive.setControl(forwardStraight.withVelocityY(0).withVelocityX(0));
-            m_drive.setControl(forwardStraight.withVelocityX(1.2));
-            m_intake.setIntake(Constants.Intake.Speed);
-        }
+
     }
 
     @Override
@@ -107,4 +73,37 @@ public class autoIntake extends Command
 
     @Override
     public boolean runsWhenDisabled() { return false; }
+
+    private double calculateCorrection(double offset) {
+        if (Math.abs(offset) > 0.5) {
+            return offset > 0 ? -0.65 : 0.65;
+        } else {
+            return 0;
+        }
+    }
+    
+    private void applyCorrection(double tx, double ty, double xCorrection, double yCorrection) {
+        if (Math.abs(tx) > 0.05) {
+            m_drive.setControl(forwardStraight.withRotationalRate(xCorrection));
+        } else {
+            x_centered = true;
+        }
+    
+        if (Math.abs(ty) > 0.05) {
+            m_drive.setControl(forwardStraight.withVelocityX(yCorrection > 0 ? 2 : 0));
+        } else {
+            y_centered = true;
+        }
+    
+        if (Math.abs(tx) < X_CLOSE_THRESHOLD || Math.abs(ty) < Y_CLOSE_THRESHOLD) {
+            m_intake.setIntake(Constants.Intake.Speed);
+        }
+    
+        if (x_centered && y_centered) {
+            m_drive.setControl(forwardStraight.withVelocityX(0.8));
+        } else {
+            m_drive.setControl(forwardStraight.withVelocityY(0).withVelocityX(0));
+            m_drive.setControl(forwardStraight.withVelocityX(0.8));
+        }
+    }
 }

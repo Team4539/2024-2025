@@ -138,7 +138,7 @@ public class RobotContainer
     NamedCommands.registerCommand("setHome", new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home").withTimeout(1), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2").withTimeout(1)));
     NamedCommands.registerCommand("autoAim", new aimVision(Constants.Aiming.getTag(), m_vision, vision_drivetrain));
     NamedCommands.registerCommand("setAmp", new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2")));
-    NamedCommands.registerCommand("AutoIntake", new autoIntake(m_vision, drivetrain, m_intake));
+    NamedCommands.registerCommand("autoIntake", new autoIntake(m_vision, drivetrain, m_intake));
     
     SmartDashboard.putData("Autonomous", m_chooser);
 
@@ -152,8 +152,8 @@ public class RobotContainer
     // 2 note right will run out of time trying to shoot the 3rd note
     m_chooser.addOption("Defense", drivetrain.getAutoPath("defense"));
     // funny defense auto
-    m_chooser.addOption("Shoot Don't Move", drivetrain.getAutoPath("shootdontmove"));
-    // shoot dont move any position upclose
+    m_chooser.addOption("Auto Intake Test", drivetrain.getAutoPath("Auto intake test"));
+    // a test for our auto intake
     configureBindings();
   }
 

@@ -12,9 +12,9 @@
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "Auto intake test"
+            "name": "autoIntake"
           }
         }
       ]

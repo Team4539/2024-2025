@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Commands.aimSpeaker;
 import frc.robot.Commands.aimVision;
 import frc.robot.Commands.autoIntake;
-import frc.robot.Commands.chaseTag;
 import frc.robot.Commands.setArm;
 import frc.robot.Commands.setArmTo;
 import frc.robot.Commands.setClimber;

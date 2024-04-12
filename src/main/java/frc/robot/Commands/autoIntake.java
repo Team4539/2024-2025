@@ -2,6 +2,7 @@ package frc.robot.Commands;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -30,12 +31,15 @@ public class autoIntake extends Command
     private final double X_CLOSE_THRESHOLD = 6;
     private final double Y_CLOSE_THRESHOLD = 6;
 
+    private final PIDController pidController;
+
     public autoIntake(VisionSubsystem subsystem, CommandSwerveDrivetrain drive_subsystem, IntakeSubsystem intake) 
     {
         addRequirements(subsystem, drive_subsystem, intake);
         m_vision = subsystem;
         m_drive = drive_subsystem;
         m_intake = intake;
+        pidController = new PIDController(10, 0.0, 0); // TODO: tune this
     }
 
     @Override
@@ -82,20 +86,30 @@ public class autoIntake extends Command
         }
     }
     
-    private void applyCorrection(double tx, double ty, double xCorrection, double yCorrection) {
-        if (Math.abs(tx) > 0.05) {
+    private void applyCorrection(double tx, double ty, double xCorrection, double yCorrection) 
+    {
+        if (Math.abs(tx) > 0.05) 
+        {
+            double output = pidController.calculate(xCorrection, tx);
+            if (output < 1){ output = 1; }
+            SmartDashboard.putNumber("PID", output);
             m_drive.setControl(forwardStraight.withRotationalRate(xCorrection));
-        } else {
+        } 
+        else 
+        {
             x_centered = true;
         }
     
-        if (Math.abs(ty) > 0.05) {
+        if (Math.abs(ty) > 0.05) 
+        {
             m_drive.setControl(forwardStraight.withVelocityX(yCorrection > 0 ? 2 : 0));
-        } else {
+        } else 
+        {
             y_centered = true;
         }
     
-        if (Math.abs(tx) < X_CLOSE_THRESHOLD || Math.abs(ty) < Y_CLOSE_THRESHOLD) {
+        if (Math.abs(tx) < X_CLOSE_THRESHOLD || Math.abs(ty) < Y_CLOSE_THRESHOLD) 
+        {
             m_intake.setIntake(Constants.Intake.Speed);
         }
     

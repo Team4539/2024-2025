@@ -51,24 +51,11 @@
                 "data": {
                   "name": "aimSpeaker"
                 }
-              }
-            ]
-          }
-        },
-        {
-          "type": "race",
-          "data": {
-            "commands": [
+              },
               {
                 "type": "named",
                 "data": {
                   "name": "setShootMotor"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.75
                 }
               }
             ]
@@ -100,25 +87,6 @@
           }
         },
         {
-          "type": "race",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "setHome"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 2.0
-                }
-              }
-            ]
-          }
-        },
-        {
           "type": "path",
           "data": {
             "pathName": "visonAuto2"
@@ -144,25 +112,6 @@
           }
         },
         {
-          "type": "race",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "intakept2"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.5
-                }
-              }
-            ]
-          }
-        },
-        {
           "type": "path",
           "data": {
             "pathName": "visionAuto2.5"
@@ -181,32 +130,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "kindaUpClose"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 3.5
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "race",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
                   "name": "setShootMotor"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.75
                 }
               }
             ]

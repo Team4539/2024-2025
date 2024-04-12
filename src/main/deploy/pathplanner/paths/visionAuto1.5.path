@@ -3,34 +3,112 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.04,
-        "y": 6.74
+        "x": 6.785098926323209,
+        "y": 2.069865336311869
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.047983005056919,
-        "y": 6.735354561618215
+        "x": 5.9080373431402124,
+        "y": 1.1694154442439952
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "va1"
     },
     {
       "anchor": {
-        "x": 1.9360380538942894,
-        "y": 5.615905049991919
+        "x": 2.119131303789673,
+        "y": 3.98770666487202
       },
       "prevControl": {
-        "x": 1.9453667998245088,
-        "y": 5.6065763040617
+        "x": 2.69214487146923,
+        "y": 3.0053976917070653
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "va1.5"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "SetUpclose",
+      "waypointRelativePos": 0.45,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "kindaUpClose"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Intake",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "race",
+              "data": {
+                "commands": [
+                  {
+                    "type": "named",
+                    "data": {
+                      "name": "setIntake"
+                    }
+                  },
+                  {
+                    "type": "wait",
+                    "data": {
+                      "waitTime": 0.5
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "reverse",
+      "waypointRelativePos": 0.25,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "race",
+              "data": {
+                "commands": [
+                  {
+                    "type": "named",
+                    "data": {
+                      "name": "intakept2"
+                    }
+                  },
+                  {
+                    "type": "wait",
+                    "data": {
+                      "waitTime": 0.5
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 5.0,
     "maxAcceleration": 3.5,
@@ -39,7 +117,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": -38.107576877514845,
     "rotateFast": false
   },
   "reversed": false,

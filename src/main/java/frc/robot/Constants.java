@@ -99,7 +99,7 @@ public class Constants
 
     public static final class Vision
     {
-        public static final double speed = 0.5;
+        public static final double speed = 0.4;
         public static final double speed2 = 1.2;
         public static final double Y_GOAL = 0.05;
         public static final double A_GOAL1 = 179;

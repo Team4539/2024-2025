@@ -30,6 +30,7 @@ public class autoIntake extends Command
 
     private boolean x_centered;
     private boolean y_centered;
+    private boolean finished;
 
     private final double X_CLOSE_THRESHOLD = 6;
     private final double Y_CLOSE_THRESHOLD = 6;
@@ -48,6 +49,7 @@ public class autoIntake extends Command
     {
         x_centered = false;
         y_centered = false;
+        finished = false;
     }
 
     @Override
@@ -74,7 +76,8 @@ public class autoIntake extends Command
         }
         else
         {
-            end(false);
+            finished = true;
+            isFinished();
         }
     }
 
@@ -86,7 +89,7 @@ public class autoIntake extends Command
     }
 
     @Override
-    public boolean isFinished() { return false; }
+    public boolean isFinished() { return finished; }
 
     @Override
     public boolean runsWhenDisabled() { return false; }

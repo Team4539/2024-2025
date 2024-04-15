@@ -44,6 +44,7 @@ public class Constants
         public static final int ID = 14;
         public static final int INDEXER_ID = 8;
         public static final double Speed = -1;
+        public static final int limit_id = 9; // TODO: set limit switch DIO port
     }
 
     public static final class Climber

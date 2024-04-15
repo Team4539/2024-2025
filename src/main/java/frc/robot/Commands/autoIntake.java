@@ -14,6 +14,7 @@ import frc.robot.LimelightHelpers.LimelightResults;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
+import frc.robot.subsystems.limitSwitchSubsystem;
 
 public class autoIntake extends Command 
 {
@@ -25,19 +26,21 @@ public class autoIntake extends Command
 
     private final IntakeSubsystem m_intake;
 
+    private final limitSwitchSubsystem m_switch;
+
     private boolean x_centered;
     private boolean y_centered;
-    private boolean isfinished;
 
     private final double X_CLOSE_THRESHOLD = 6;
     private final double Y_CLOSE_THRESHOLD = 6;
 
-    public autoIntake(VisionSubsystem subsystem, CommandSwerveDrivetrain drive_subsystem, IntakeSubsystem intake) 
+    public autoIntake(VisionSubsystem subsystem, CommandSwerveDrivetrain drive_subsystem, IntakeSubsystem intake, limitSwitchSubsystem switch1) 
     {
         addRequirements(subsystem, drive_subsystem, intake);
         m_vision = subsystem;
         m_drive = drive_subsystem;
         m_intake = intake;
+        m_switch = switch1;
     }
 
     @Override
@@ -45,13 +48,12 @@ public class autoIntake extends Command
     {
         x_centered = false;
         y_centered = false;
-        isfinished = false;
     }
 
     @Override
     public void execute() 
     {
-        if (!isfinished)
+        if (!m_switch.getSwitch())
         {
             // left is down x right is up x towards robot is down y away from robot is up y
             double tx = LimelightHelpers.getTX("limelight-main");

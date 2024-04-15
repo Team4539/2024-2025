@@ -109,7 +109,7 @@ public class RobotContainer
     // reverseIntake.whileTrue(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter)));
     reverseIntake.onTrue(new InstantCommand(() -> m_switch.periodic()));
     // setLineButton.whileTrue(new ParallelCommandGroup(new aimVision(Constants.Aiming.getTag(), m_vision, vision_drivetrain), new setArmTo(Constants.Aiming.lineArm , m_arm, "Line Shot"), new setHeadTo(Constants.Aiming.lineHead, m_head, "Line Shot")));
-    setLineButton.whileTrue(new autoIntake(m_vision, drivetrain, m_intake));
+    setLineButton.whileTrue(new autoIntake(m_vision, drivetrain, m_intake, m_switch));
     setLineButton.onFalse(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
     // shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     shooterButton.whileTrue(new aimSpeaker(7, 2.8, m_vision, drivetrain));
@@ -141,7 +141,7 @@ public class RobotContainer
     NamedCommands.registerCommand("setHome", new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home").withTimeout(1), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2").withTimeout(1)));
     //NamedCommands.registerCommand("autoAim", new aimVision(Constants.Aiming.getTag(), 2.3, m_vision, vision_drivetrain));
     NamedCommands.registerCommand("setAmp", new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2")));
-    NamedCommands.registerCommand("autoIntake", new autoIntake(m_vision, drivetrain, m_intake));
+    NamedCommands.registerCommand("autoIntake", new autoIntake(m_vision, drivetrain, m_intake, m_switch));
     NamedCommands.registerCommand("kindaUpClose", new setHeadTo(Constants.Aiming.kindaUpClose, m_head, "KindaUpClose"));
     NamedCommands.registerCommand("aimSpeaker", new aimSpeaker(Constants.Aiming.getTag(), 2.7, m_vision, drivetrain));
     SmartDashboard.putData("Autonomous", m_chooser);

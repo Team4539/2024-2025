@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Commands.aimSpeaker;
 import frc.robot.Commands.aimVision;
 import frc.robot.Commands.autoIntake;
+import frc.robot.Commands.limitSwitch;
 import frc.robot.Commands.setArm;
 import frc.robot.Commands.setArmTo;
 import frc.robot.Commands.setClimber;
@@ -33,6 +34,7 @@ import frc.robot.subsystems.IntakeSubsystem;
 // import frc.robot.subsystems.LedCommSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
+import frc.robot.subsystems.limitSwitchSubsystem;
 
 public class RobotContainer 
 {
@@ -73,7 +75,7 @@ public class RobotContainer
   private final IntakeSubsystem m_intake = new IntakeSubsystem(); // My intake
   private final ShooterSubsystem m_shooter = new ShooterSubsystem(); // My shooter
   private final ClimberSubsystem m_climber = new ClimberSubsystem();// My Climber
-  // public final LedCommSubsystem m_led = new LedCommSubsystem(); // My LED
+  private final limitSwitchSubsystem m_switch = new limitSwitchSubsystem(); // My limit switch
   public final HeadSubsystem m_head = new HeadSubsystem(); // My head
   public final CommandSwerveDrivetrain vision_drivetrain = TunerConstants.DriveTrain; // My vision drive train
   public final VisionSubsystem m_vision = new VisionSubsystem();
@@ -105,11 +107,12 @@ public class RobotContainer
 
     intakeButton.whileTrue(new setIntake(Constants.Intake.Speed, m_intake));
     intakeButton.onFalse(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
-    reverseIntake.whileTrue(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter)));
+    // reverseIntake.whileTrue(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter)));
+    reverseIntake.whileTrue(new limitSwitch(m_switch));
     // setLineButton.whileTrue(new ParallelCommandGroup(new aimVision(Constants.Aiming.getTag(), m_vision, vision_drivetrain), new setArmTo(Constants.Aiming.lineArm , m_arm, "Line Shot"), new setHeadTo(Constants.Aiming.lineHead, m_head, "Line Shot")));
     setLineButton.whileTrue(new autoIntake(m_vision, drivetrain, m_intake));
     setLineButton.onFalse(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
-    //shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
+    // shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     shooterButton.whileTrue(new aimSpeaker(7, 2.8, m_vision, drivetrain));
     setAmpButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2")));
     SetMiddleButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home"), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2")));

@@ -156,6 +156,7 @@ public class RobotContainer
     // funny defense auto
     m_chooser.addOption("Auto Intake Test", drivetrain.getAutoPath("Auto intake test"));
     // a test for our auto intake
+    m_chooser.addOption("SourceSideAuto", drivetrain.getAutoPath("SourceSideAuto"));
     configureBindings();
   }
 

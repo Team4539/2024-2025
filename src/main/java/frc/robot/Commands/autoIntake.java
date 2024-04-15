@@ -27,6 +27,7 @@ public class autoIntake extends Command
 
     private boolean x_centered;
     private boolean y_centered;
+    private boolean isfinished;
 
     private final double X_CLOSE_THRESHOLD = 6;
     private final double Y_CLOSE_THRESHOLD = 6;
@@ -44,26 +45,34 @@ public class autoIntake extends Command
     {
         x_centered = false;
         y_centered = false;
+        isfinished = false;
     }
 
     @Override
     public void execute() 
     {
-        // left is down x right is up x towards robot is down y away from robot is up y
-        double tx = LimelightHelpers.getTX("limelight-main");
-        double ty = LimelightHelpers.getTY("limelight-main");
-        SmartDashboard.putNumber("tx", tx);
-        SmartDashboard.putNumber("ty", ty);
-        if (tx != 0.0 && ty != 0.0)
+        if (!isfinished)
         {
-            double xCorrection = calculateCorrection(tx);
-            double yCorrection = calculateCorrection(ty);
-        
-            applyCorrection(tx, ty, xCorrection, yCorrection);
+            // left is down x right is up x towards robot is down y away from robot is up y
+            double tx = LimelightHelpers.getTX("limelight-main");
+            double ty = LimelightHelpers.getTY("limelight-main");
+            SmartDashboard.putNumber("tx", tx);
+            SmartDashboard.putNumber("ty", ty);
+            if (tx != 0.0 && ty != 0.0)
+            {
+                double xCorrection = calculateCorrection(tx);
+                double yCorrection = calculateCorrection(ty);
+            
+                applyCorrection(tx, ty, xCorrection, yCorrection);
+            }
+            else
+            {
+                m_drive.setControl(forwardStraight.withRotationalRate(0));
+            }
         }
         else
         {
-            m_drive.setControl(forwardStraight.withRotationalRate(0));
+            end(false);
         }
     }
 

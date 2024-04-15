@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 2.3179319293111518,
-        "y": 3.753823576023221
+        "x": 1.918405790196708,
+        "y": 3.296898402897804
       },
       "prevControl": {
-        "x": 3.4307667703654485,
-        "y": 2.571815206308476
+        "x": 3.031240631251005,
+        "y": 2.1148900331830593
       },
       "nextControl": null,
       "isLocked": false,
@@ -55,7 +55,7 @@
                         {
                           "type": "wait",
                           "data": {
-                            "waitTime": 0.5
+                            "waitTime": 0.75
                           }
                         }
                       ]
@@ -89,7 +89,7 @@
     },
     {
       "name": "setshootpos",
-      "waypointRelativePos": 0,
+      "waypointRelativePos": 0.3,
       "command": {
         "type": "parallel",
         "data": {
@@ -106,14 +106,14 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 4.5,
+    "maxVelocity": 5.5,
     "maxAcceleration": 3.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -36.2717035864177,
+    "rotation": -50.37099469553573,
     "rotateFast": false
   },
   "reversed": false,

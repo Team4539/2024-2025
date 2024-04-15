@@ -104,7 +104,7 @@ public class autoIntake extends Command
     
     private void applyCorrection(double tx, double ty, double xCorrection, double yCorrection) {
         if (Math.abs(tx) > 0.05) {
-            m_drive.setControl(forwardStraight.withRotationalRate(xCorrection));
+            m_drive.setControl(forwardStraight.withRotationalRate(xCorrection / 2));
         } else {
             x_centered = true;
         }

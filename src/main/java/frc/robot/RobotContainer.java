@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Commands.aimSpeaker;
 import frc.robot.Commands.aimVision;
 import frc.robot.Commands.autoIntake;
+import frc.robot.Commands.rotateTo;
 import frc.robot.Commands.setArm;
 import frc.robot.Commands.setArmTo;
 import frc.robot.Commands.setClimber;
@@ -144,6 +145,8 @@ public class RobotContainer
     NamedCommands.registerCommand("autoIntake", new autoIntake(m_vision, drivetrain, m_intake, m_switch));
     NamedCommands.registerCommand("kindaUpClose", new setHeadTo(Constants.Aiming.kindaUpClose, m_head, "KindaUpClose"));
     NamedCommands.registerCommand("aimSpeaker", new aimSpeaker(Constants.Aiming.getTag(), 2.7, m_vision, drivetrain));
+    NamedCommands.registerCommand("rotateTo", new rotateTo(-50, drivetrain));
+    
     SmartDashboard.putData("Autonomous", m_chooser);
 
     m_chooser.setDefaultOption("4 Note Middle", drivetrain.getAutoPath("4note"));
@@ -159,6 +162,9 @@ public class RobotContainer
     m_chooser.addOption("Auto Intake Test", drivetrain.getAutoPath("Auto intake test"));
     // a test for our auto intake
     m_chooser.addOption("SourceSideAuto", drivetrain.getAutoPath("SourceSideAuto"));
+    // source side auto for state
+    m_chooser.addOption("Test Auto for State", drivetrain.getAutoPath("testAuto"));
+    // test auto for state
     configureBindings();
   }
 

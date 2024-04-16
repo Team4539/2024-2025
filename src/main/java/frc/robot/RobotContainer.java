@@ -150,6 +150,7 @@ public class RobotContainer
     SmartDashboard.putData("Autonomous", m_chooser);
 
     m_chooser.setDefaultOption("4 Note Middle", drivetrain.getAutoPath("4note"));
+    m_chooser.setDefaultOption("MOEW 4 Note Middle", drivetrain.getAutoPath("Copy of 4note"));
     // four note auto
     m_chooser.addOption("2 Note Middle", drivetrain.getAutoPath("2notemiddle"));
     // simple drive back shoot and pickup shoot

@@ -163,7 +163,7 @@ public class RobotContainer
     // a test for our auto intake
     m_chooser.addOption("SourceSideAuto", drivetrain.getAutoPath("SourceSideAuto"));
     // source side auto for state
-    //m_chooser.addOption("Test Auto for State", drivetrain.getAutoPath("testAuto"));
+    m_chooser.addOption("NewSourceSideAuto", drivetrain.getAutoPath("NewSourceSideAuto"));
     // test auto for state
     configureBindings();
   }

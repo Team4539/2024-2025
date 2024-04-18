@@ -11,7 +11,7 @@ public class VisionSubsystem extends SubsystemBase
 
     public VisionSubsystem()
     {
-        camera = new PhotonCamera("Global_Shutter_Camera");
+        camera = new PhotonCamera("OV9281");
     }
 
     @Override

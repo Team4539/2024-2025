@@ -27,11 +27,7 @@ public class Robot extends TimedRobot
     m_robotContainer = new RobotContainer();
     // m_led = m_robotContainer.m_led;
     PortForwarder.add(5800, "photonvision.local", 5800); // for photonvision
-
-    for (int port = 5800; port <= 5809; port++) 
-    {
-      PortForwarder.add(port+10, "limelight.local", port);
-    }
+    PortForwarder.add(5801, "photonvision-tag.local", 5801);
     // m_led.setLed(Constants.arduinoCOMs.Idle);
   }
   @Override

@@ -13,7 +13,7 @@ public class Constants
 
     public static final class Trap
     { 
-        public static final double hell = 0.137; // arm
+        public static final double hell = 0.10; // arm
         public static final double heaven = 0.2; // head
     }
 

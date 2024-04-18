@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Commands.aimSpeaker;
 import frc.robot.Commands.aimVision;
+import frc.robot.Commands.aimVision2;
 import frc.robot.Commands.autoIntake;
 import frc.robot.Commands.rotateTo;
 import frc.robot.Commands.setArm;
@@ -107,13 +108,14 @@ public class RobotContainer
 
     intakeButton.whileTrue(new setIntake(Constants.Intake.Speed, m_intake));
     intakeButton.onFalse(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
-    // reverseIntake.whileTrue(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter)));
-    reverseIntake.onTrue(new InstantCommand(() -> m_switch.periodic()));
+    reverseIntake.whileTrue(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter)));
+    // reverseIntake.onTrue(new InstantCommand(() -> m_switch.periodic()));
     // setLineButton.whileTrue(new ParallelCommandGroup(new aimVision(Constants.Aiming.getTag(), m_vision, vision_drivetrain), new setArmTo(Constants.Aiming.lineArm , m_arm, "Line Shot"), new setHeadTo(Constants.Aiming.lineHead, m_head, "Line Shot")));
-    setLineButton.whileTrue(new autoIntake(m_vision, drivetrain, m_intake, m_switch));
-    setLineButton.onFalse(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
-    // shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
-    shooterButton.whileTrue(new aimSpeaker(7, 2.8, m_vision, drivetrain));
+    // setLineButton.whileTrue(new autoIntake(m_vision, drivetrain, m_intake, m_switch));
+    // setLineButton.onFalse(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
+    setLineButton.whileTrue(new aimVision2(7, m_vision, drivetrain, m_shooter, m_intake));
+    shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
+    // shooterButton.whileTrue(new aimSpeaker(7, 2.8, m_vision, drivetrain));
     setAmpButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2")));
     SetMiddleButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home"), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2")));
     setShootButton.whileTrue(new setHeadTo(Constants.Aiming.Upclose, m_head, "Upclose"));
@@ -146,6 +148,7 @@ public class RobotContainer
     NamedCommands.registerCommand("kindaUpClose", new setHeadTo(Constants.Aiming.kindaUpClose, m_head, "KindaUpClose"));
     NamedCommands.registerCommand("aimSpeaker", new aimSpeaker(Constants.Aiming.getTag(), 2.7, m_vision, drivetrain));
     NamedCommands.registerCommand("rotateTo", new rotateTo(-50, drivetrain));
+    NamedCommands.registerCommand("testVision", new aimVision2(7, m_vision, drivetrain, m_shooter, m_intake));
     
     SmartDashboard.putData("Autonomous", m_chooser);
 

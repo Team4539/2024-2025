@@ -31,8 +31,8 @@ public class ShooterSubsystem extends SubsystemBase
     {
         if (slow)
         {
-            shooter.set(speed * 0.2);
-            shooterInverted.set(speed * 0.2);
+            shooter.set(speed * 0.2); // front roller
+            shooterInverted.set(speed * 0.2); //back roller
         }
         else
         {

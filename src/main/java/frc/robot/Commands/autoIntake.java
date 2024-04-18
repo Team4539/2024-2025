@@ -104,7 +104,7 @@ public class autoIntake extends Command
     
     private void applyCorrection(double tx, double ty, double xCorrection, double yCorrection) {
         if (Math.abs(tx) > 0.05) {
-            m_drive.setControl(forwardStraight.withRotationalRate(xCorrection / 2));
+            m_drive.setControl(forwardStraight.withRotationalRate(xCorrection));
         } else {
             x_centered = true;
         }
@@ -120,10 +120,10 @@ public class autoIntake extends Command
         }
     
         if (x_centered && y_centered) {
-            m_drive.setControl(forwardStraight.withVelocityX(0.8));
+            m_drive.setControl(forwardStraight.withVelocityX(1.5));
         } else {
             m_drive.setControl(forwardStraight.withVelocityY(0).withVelocityX(0));
-            m_drive.setControl(forwardStraight.withVelocityX(0.8));
+            m_drive.setControl(forwardStraight.withVelocityX(1.5));
         }
     }
 }

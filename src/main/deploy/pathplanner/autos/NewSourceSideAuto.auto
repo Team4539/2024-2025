@@ -43,38 +43,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "aimSpeaker"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "setShootMotor"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "race",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "setShootMotor"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "setIntake"
+                  "name": "testVision"
                 }
               },
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.3
+                  "waitTime": 1.0
                 }
               }
             ]
@@ -93,7 +68,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "autoIntake"
+                  "name": "testVision"
                 }
               }
             ]
@@ -112,38 +87,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "aimSpeaker"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "setShootMotor"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "race",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "setShootMotor"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "setIntake"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.3
                 }
               }
             ]

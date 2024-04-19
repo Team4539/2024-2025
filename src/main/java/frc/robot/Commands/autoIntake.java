@@ -9,18 +9,15 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants;
-import frc.robot.LimelightHelpers;
-import frc.robot.LimelightHelpers.LimelightResults;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.IntakeSubsystem;
-import frc.robot.subsystems.VisionSubsystem;
+import frc.robot.subsystems.LimelightHelpers;
 import frc.robot.subsystems.limitSwitchSubsystem;
+import frc.robot.subsystems.LimelightHelpers.LimelightResults;
 
 public class autoIntake extends Command 
 {
     private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
-    
-    private final VisionSubsystem m_vision;
     
     private final CommandSwerveDrivetrain m_drive;
 
@@ -35,10 +32,9 @@ public class autoIntake extends Command
     private final double X_CLOSE_THRESHOLD = 6;
     private final double Y_CLOSE_THRESHOLD = 6;
 
-    public autoIntake(VisionSubsystem subsystem, CommandSwerveDrivetrain drive_subsystem, IntakeSubsystem intake, limitSwitchSubsystem switch1) 
+    public autoIntake(CommandSwerveDrivetrain drive_subsystem, IntakeSubsystem intake, limitSwitchSubsystem switch1) 
     {
-        addRequirements(subsystem, drive_subsystem, intake);
-        m_vision = subsystem;
+        addRequirements(drive_subsystem, intake);
         m_drive = drive_subsystem;
         m_intake = intake;
         m_switch = switch1;
@@ -60,8 +56,6 @@ public class autoIntake extends Command
             // left is down x right is up x towards robot is down y away from robot is up y
             double tx = LimelightHelpers.getTX("limelight-main");
             double ty = LimelightHelpers.getTY("limelight-main");
-            SmartDashboard.putNumber("tx", tx);
-            SmartDashboard.putNumber("ty", ty);
             if (tx != 0.0 && ty != 0.0)
             {
                 double xCorrection = calculateCorrection(tx);

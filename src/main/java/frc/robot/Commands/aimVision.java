@@ -2,193 +2,130 @@ package frc.robot.Commands;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 
-import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants;
+import frc.robot.Constants.Shooter;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
-import frc.robot.subsystems.VisionSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.LimelightHelpers;
+import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.limitSwitchSubsystem;
+import frc.robot.subsystems.LimelightHelpers.LimelightResults;
 
 public class aimVision extends Command 
 {
     private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
     
-    private final VisionSubsystem m_vision;
-    
     private final CommandSwerveDrivetrain m_drive;
 
+    private final ShooterSubsystem m_shooter;
+
+    private final IntakeSubsystem m_intake;
+
+    private boolean x_centered;
+    private boolean y_centered;
+    private boolean finished;
     private int m_tag;
-    private double m_x;
 
-    private boolean check1;
-    private boolean check2;
-    private boolean check3;
-    private boolean check4;
+    private final double X_CLOSE_THRESHOLD = 6;
+    private final double Y_CLOSE_THRESHOLD = 6;
 
-    public aimVision(int target_tag, double target_x, VisionSubsystem subsystem, CommandSwerveDrivetrain drive_subsystem) 
+    public aimVision(int tag, CommandSwerveDrivetrain drive_subsystem, ShooterSubsystem shooter_subsystem, IntakeSubsystem intake_subsystem) 
     {
-        addRequirements(subsystem, drive_subsystem);
-        m_vision = subsystem;
+        addRequirements(drive_subsystem, shooter_subsystem, intake_subsystem);
+        m_tag = tag;
         m_drive = drive_subsystem;
-        m_tag = target_tag;
-        m_x = target_x;
+        m_shooter = shooter_subsystem;
+        m_intake = intake_subsystem;
     }
 
     @Override
     public void initialize() 
     {
-        check1 = false;
-        check2 = false;
-        check3 = false;
-        check4 = false;
+        x_centered = false;
+        y_centered = false;
+        finished = false;
     }
 
     @Override
     public void execute() 
     {
-        var result = m_vision.camera.getLatestResult();
-        if (result.hasTargets())
+        // get tx, ty, and id from network tables
+        // returns 0.0 if no target is found
+        double tx = LimelightHelpers.getTX("limelight-main");
+        double ty = LimelightHelpers.getTY("limelight-main");
+        double ta = LimelightHelpers.getTA("limelight-main");
+        double id = LimelightHelpers.getFiducialID("limelight-main");
+
+        // if id matches target
+        if (id == m_tag)
         {
-            for (var target: result.getTargets())
+            // if not centered / no target is found
+            if (Math.abs(tx) > 0.1 || Math.abs(ty) > 0.1 || ta < 0.1 || ta > 0.2)
             {
-                if (target.getFiducialId() == m_tag)
+                if (tx > 0.1) 
                 {
-                    double tx = target.getBestCameraToTarget().getX(); // target is 1
-                    double ty = target.getBestCameraToTarget().getY(); // target is between -Constants.Vision.Y_GOAL and Constants.Vision.Y_GOAL
-                    double tangle = Units.radiansToDegrees(target.getBestCameraToTarget().getRotation().getAngle()); // target is between Constants.Vision.A_GOAL1 to Constants.Vision.A_GOAL2
-                    SmartDashboard.putString("Target Position", "tx: " + Double.valueOf(tx) + " ty: " + Double.valueOf(ty) + " tz: " + Double.valueOf(tangle));
-                    if (!check1)
-                    {
-                        if (!m_vision.camera.getLatestResult().hasTargets())
-                        {
-                            check1 = true;
-                            check2 = true;
-                            check3 = true;
-                            check4 = true;
-                            m_drive.setControl(forwardStraight.withVelocityY(0).withVelocityX(0).withRotationalRate(0));
-                        }
+                    // Move the robot to the right
+                    m_drive.setControl(forwardStraight.withVelocityY(-0.4));
+                } 
+                else if (tx < -0.1) 
+                {
+                    // Move the robot to the left
+                    m_drive.setControl(forwardStraight.withVelocityY(0.4));
+                }
+                if (ty > 0.1) 
+                {
+                    // Move the robot up
+                    m_drive.setControl(forwardStraight.withVelocityX(0.4));
+                } 
+                else if (ty < -0.1) 
+                {
+                    // Move the robot down
+                    m_drive.setControl(forwardStraight.withVelocityX(-0.4));
+                }
 
-                        if (ty < -Constants.Vision.Y_GOAL || ty > Constants.Vision.Y_GOAL)
-                        {
-                            if (ty < -Constants.Vision.Y_GOAL)
-                            {
-                                m_drive.setControl(forwardStraight.withVelocityY(Constants.Vision.speed));
-                            }
-                            if (ty > Constants.Vision.Y_GOAL)
-                            {
-                                m_drive.setControl(forwardStraight.withVelocityY(-Constants.Vision.speed));
-                            }
-                        }
-                        else
-                        {
-                            m_drive.setControl(forwardStraight.withVelocityY(0));
-                            check1 = true;
-                        }
-                    }
-                    else if (!check2)
-                    {
-                        if (!m_vision.camera.getLatestResult().hasTargets())
-                        {
-                            check1 = true;
-                            check2 = true;
-                            check3 = true;
-                            check4 = true;
-                            m_drive.setControl(forwardStraight.withVelocityY(0).withVelocityX(0).withRotationalRate(0));
-                        }
-
-                        if (tangle < Constants.Vision.A_GOAL1 || tangle > Constants.Vision.A_GOAL2)
-                        {
-                            if (tangle < Constants.Vision.A_GOAL1)
-                            {
-                                m_drive.setControl(forwardStraight.withRotationalRate(Constants.Vision.speed));
-                            }
-                            if (tangle > Constants.Vision.A_GOAL2)
-                            {
-                                m_drive.setControl(forwardStraight.withRotationalRate(-Constants.Vision.speed));
-                            }
-                        }
-                        else
-                        {
-                            m_drive.setControl(forwardStraight.withRotationalRate(0));
-                            check2 = true;
-                        }
-                    }
-                    else if (!check3)
-                    {
-                        if (!m_vision.camera.getLatestResult().hasTargets())
-                        {
-                            check1 = true;
-                            check2 = true;
-                            check3 = true;
-                            check4 = true;
-                            m_drive.setControl(forwardStraight.withVelocityY(0).withVelocityX(0).withRotationalRate(0));
-                        }
-
-                        if (ty < -Constants.Vision.Y_GOAL || ty > Constants.Vision.Y_GOAL)
-                        {
-                            if (ty < -Constants.Vision.Y_GOAL)
-                            {
-                                m_drive.setControl(forwardStraight.withVelocityY(Constants.Vision.speed));
-                            }
-                            if (ty > Constants.Vision.Y_GOAL)
-                            {
-                                m_drive.setControl(forwardStraight.withVelocityY(-Constants.Vision.speed));
-                            }
-                        }
-                        else
-                        {
-                            m_drive.setControl(forwardStraight.withVelocityY(0));
-                            check3 = true;
-                        }
-                    }
-                    else if (!check4)
-                    {
-                        if (!m_vision.camera.getLatestResult().hasTargets())
-                        {
-                            check1 = true;
-                            check2 = true;
-                            check3 = true;
-                            check4 = true;
-                            m_drive.setControl(forwardStraight.withVelocityY(0).withVelocityX(0).withRotationalRate(0));
-                        }
-                        double tx_rounded = tx;
-                        tx_rounded = 0.1 * Math.floor(tx_rounded * 10.0);
-                        SmartDashboard.putNumber("Test", tx_rounded);
-                        if (tx_rounded < (m_x - 0.2) || tx_rounded > (m_x + 0.2))
-                        {
-                            if (tx > m_x)
-                            {
-                                m_drive.setControl(forwardStraight.withVelocityX(-Constants.Vision.speed));
-                            }
-                            if (tx < m_x)
-                            {
-                                m_drive.setControl(forwardStraight.withVelocityX(Constants.Vision.speed));
-                            }
-                        }
-                        else
-                        {
-                            m_drive.setControl(forwardStraight.withVelocityX(0));
-                            check4 = true;
-                        }
-                    }
-                    else
-                    {
-                        m_drive.setControl(forwardStraight.withVelocityY(0).withVelocityX(0).withRotationalRate(0));
-                    }
+                if (ta < 0.1) 
+                {
+                    // Move the robot forward
+                    m_drive.setControl(forwardStraight.withRotationalRate(0.4));
+                } 
+                else if (ta > 0.2) 
+                {
+                    // Move the robot backward
+                    m_drive.setControl(forwardStraight.withRotationalRate(-0.4))
                 }
             }
+            else
+            {
+                // robot is centered
+                finished = true;
+                isFinished();
+            }
+        }
+        else
+        {
+            finished = true;
+            isFinished();
         }
     }
 
     @Override
     public void end(boolean interrupted) 
     {
-        m_drive.setControl(forwardStraight.withVelocityY(0).withRotationalRate(0));
+        m_drive.setControl(forwardStraight.withVelocityX(0).withVelocityY(0.0).withRotationalRate(0));
+        m_shooter.setShooter(0.0);
+        m_intake.setIntake(0.0);
     }
 
     @Override
-    public boolean isFinished() { return false; }
+    public boolean isFinished() { return finished; }
 
     @Override
     public boolean runsWhenDisabled() { return false; }

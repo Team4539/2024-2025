@@ -109,7 +109,7 @@ public class RobotContainer
     // setLineButton.whileTrue(new ParallelCommandGroup(new aimVision(Constants.Aiming.getTag(), m_vision, vision_drivetrain), new setArmTo(Constants.Aiming.lineArm , m_arm, "Line Shot"), new setHeadTo(Constants.Aiming.lineHead, m_head, "Line Shot")));
     // setLineButton.whileTrue(new autoIntake(m_vision, drivetrain, m_intake, m_switch));
     // setLineButton.onFalse(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
-    setLineButton.whileTrue(new aimVision(15, drivetrain, m_shooter, m_intake));
+    setLineButton.whileTrue(new aimVision(Constants.Aiming.getTag(), drivetrain));
     shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     // shooterButton.whileTrue(new aimSpeaker(7, 2.8, m_vision, drivetrain));
     setAmpButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2")));
@@ -143,7 +143,7 @@ public class RobotContainer
     NamedCommands.registerCommand("autoIntake", new autoIntake(drivetrain, m_intake, m_switch));
     NamedCommands.registerCommand("kindaUpClose", new setHeadTo(Constants.Aiming.kindaUpClose, m_head, "KindaUpClose"));
     NamedCommands.registerCommand("rotateTo", new rotateTo(-50, drivetrain));
-    NamedCommands.registerCommand("aimSpeaker", new aimVision(Constants.Aiming.getTag(), drivetrain, m_shooter, m_intake));
+    NamedCommands.registerCommand("aimSpeaker", new aimVision(Constants.Aiming.getTag(), drivetrain));
     
     SmartDashboard.putData("Autonomous", m_chooser);
 

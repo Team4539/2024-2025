@@ -43,7 +43,56 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "testVision"
+                  "name": "kindaUpClose"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShootMotor"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "aimSpeaker"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.5
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShootMotor"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setIntake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "aimSpeaker"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.35
                 }
               }
             ]
@@ -81,7 +130,56 @@
               {
                 "type": "named",
                 "data": {
+                  "name": "kindaUpClose"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
                   "name": "setShootMotor"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "aimSpeaker"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.5
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShootMotor"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setIntake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "aimSpeaker"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.35
                 }
               }
             ]

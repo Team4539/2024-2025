@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.082883155780575,
-        "y": 2.131372251332233
+        "x": 8.153148175055266,
+        "y": 2.3538781457020823
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.021775923723031,
-        "y": 1.7917579915045703
+        "x": 5.869535048627873,
+        "y": 0.0234216730915629
       },
       "isLocked": false,
       "linkedName": null
@@ -36,7 +36,7 @@
     },
     {
       "waypointRelativePos": 0.85,
-      "rotationDegrees": -49.0,
+      "rotationDegrees": -47.0,
       "rotateFast": true
     }
   ],
@@ -114,6 +114,23 @@
           ]
         }
       }
+    },
+    {
+      "name": "spool",
+      "waypointRelativePos": 0.85,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "setShootMotor"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "globalConstraints": {
@@ -124,7 +141,7 @@
   },
   "goalEndState": {
     "velocity": 1.5,
-    "rotation": -49.0,
+    "rotation": -47.17474411461004,
     "rotateFast": true
   },
   "reversed": false,

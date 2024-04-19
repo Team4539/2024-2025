@@ -70,20 +70,20 @@ public class aimVision2 extends Command
                 {
                     double yaw = target.getYaw();
                     m_shooter.setShooter(Constants.Shooter.shooterSpeed);
-                    if (yaw > 1)
+                    if (yaw > 0.1)
                     {
-                        if (yaw > 0.5)
+                        if (yaw > 0.1)
                         {
                             // correct angle
-                            m_drive.setControl(forwardStraight.withRotationalRate(-1));
+                            m_drive.setControl(forwardStraight.withRotationalRate(-0.05));
                         }
                     }
-                    else if (yaw < -1)
+                    else if (yaw < -0.1)
                     {
-                        if (yaw < -0.5)
+                        if (yaw < -0.1)
                         {
                             // correct other way
-                            m_drive.setControl(forwardStraight.withRotationalRate(1));
+                            m_drive.setControl(forwardStraight.withRotationalRate(0.05));
                         }
                     }
                     else
@@ -93,7 +93,7 @@ public class aimVision2 extends Command
                         m_intake.setIntake(Constants.Intake.Speed);
                         Timer m_timer = new Timer();
                         m_timer.start();
-                        if (m_timer.hasElapsed(1))
+                        if (m_timer.hasElapsed(99999))
                         {
                             m_timer.stop();
                             finished = true;

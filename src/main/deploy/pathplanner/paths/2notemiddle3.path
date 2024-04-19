@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.33,
-        "y": 7.44
+        "x": 1.1,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.326229016094397,
-        "y": 7.444339252314869
+        "x": 2.1000000000000005,
+        "y": 5.55
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "2nm2.5"
     },
     {
       "anchor": {
-        "x": 0.7979310504075553,
-        "y": 6.707368323827557
+        "x": 6.607317751012106,
+        "y": 3.3492992520935108
       },
       "prevControl": {
-        "x": 0.7886023044773364,
-        "y": 6.716697069757776
+        "x": 5.54163162534599,
+        "y": 4.801442983770416
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,8 +32,8 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "spool",
-      "waypointRelativePos": 0.4,
+      "name": "sethome",
+      "waypointRelativePos": 0,
       "command": {
         "type": "parallel",
         "data": {
@@ -41,13 +41,7 @@
             {
               "type": "named",
               "data": {
-                "name": "setShootUpClose"
-              }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "setShootMotor"
+                "name": "setHome"
               }
             }
           ]
@@ -59,11 +53,11 @@
     "maxVelocity": 5.5,
     "maxAcceleration": 3.5,
     "maxAngularVelocity": 540.0,
-    "maxAngularAcceleration": 720.0
+    "maxAngularAcceleration": 540.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 59.42077312751098,
+    "rotation": -35.059426966886946,
     "rotateFast": false
   },
   "reversed": false,

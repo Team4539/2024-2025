@@ -45,12 +45,6 @@
                 "data": {
                   "name": "testVision"
                 }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 1.0
-                }
               }
             ]
           }
@@ -68,7 +62,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "testVision"
+                  "name": "autoIntake"
                 }
               }
             ]

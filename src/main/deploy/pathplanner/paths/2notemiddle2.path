@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.8,
-        "y": 5.57
+        "x": 2.7,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.708499780635925,
-        "y": 4.179278176738172
+        "x": 4.001198730214863,
+        "y": 4.664334618312603
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "2nm1"
     },
     {
       "anchor": {
-        "x": 8.33,
-        "y": 4.03
+        "x": 6.595606914466325,
+        "y": 4.075371117931965
       },
       "prevControl": {
-        "x": 7.9008776872099205,
-        "y": 4.552409772092268
+        "x": 5.8695350486278715,
+        "y": 4.0285277717488395
       },
       "nextControl": null,
       "isLocked": false,
@@ -47,34 +47,17 @@
           ]
         }
       }
-    },
-    {
-      "name": "intake",
-      "waypointRelativePos": 0.5,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "setIntake"
-              }
-            }
-          ]
-        }
-      }
     }
   ],
   "globalConstraints": {
     "maxVelocity": 5.5,
     "maxAcceleration": 3.5,
     "maxAngularVelocity": 540.0,
-    "maxAngularAcceleration": 720.0
+    "maxAngularAcceleration": 540.0
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": -22.932100437589778,
+    "velocity": 1.5,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,

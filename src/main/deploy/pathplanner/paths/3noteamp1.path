@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7326298288960215,
-        "y": 6.726025815687995
+        "x": 0.5176827472057212,
+        "y": 6.92
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.9005472556399657,
-        "y": 7.239106841850047
+        "x": 0.8455861704903705,
+        "y": 6.909393562017954
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.8,
-        "y": 6.99
+        "x": 2.286019065618729,
+        "y": 7.307562004567661
       },
       "prevControl": {
-        "x": 1.7999999999999998,
-        "y": 6.99
+        "x": 1.7356097479669983,
+        "y": 7.014791090923123
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "3na1"
     }
   ],
   "rotationTargets": [
@@ -38,7 +38,7 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "homeandintake",
+      "name": "spool and set shoot",
       "waypointRelativePos": 0,
       "command": {
         "type": "parallel",
@@ -47,13 +47,13 @@
             {
               "type": "named",
               "data": {
-                "name": "setIntake"
+                "name": "setShootMotor"
               }
             },
             {
               "type": "named",
               "data": {
-                "name": "setHome"
+                "name": "kindaUpClose"
               }
             }
           ]
@@ -69,13 +69,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 40.23635830927383,
     "rotateFast": false
   },
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": 59.172337700131976,
+    "rotation": 0.0,
     "velocity": 0
   },
   "useDefaultConstraints": false

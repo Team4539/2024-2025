@@ -118,7 +118,7 @@
     "maxAngularAcceleration": 540.0
   },
   "goalEndState": {
-    "velocity": 0,
+    "velocity": 1.0,
     "rotation": 0,
     "rotateFast": false
   },
@@ -126,7 +126,7 @@
   "folder": null,
   "previewStartingState": {
     "rotation": 0,
-    "velocity": 0
+    "velocity": 1.0
   },
   "useDefaultConstraints": false
 }

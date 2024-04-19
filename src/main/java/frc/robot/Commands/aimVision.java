@@ -59,48 +59,31 @@ public class aimVision extends Command
     {
         // get tx, ty, and id from network tables
         // returns 0.0 if no target is found
-        double tx = LimelightHelpers.getTX("limelight-main");
-        double ty = LimelightHelpers.getTY("limelight-main");
-        double ta = LimelightHelpers.getTA("limelight-main");
-        double id = LimelightHelpers.getFiducialID("limelight-main");
+        double tx = LimelightHelpers.getTX("limelight-tag");
+        double ty = LimelightHelpers.getTY("limelight-tag");
+        double id = LimelightHelpers.getFiducialID("limelight-tag");
 
         // if id matches target
         if (id == m_tag)
         {
             // if not centered / no target is found
-            if (Math.abs(tx) > 0.1 || Math.abs(ty) > 0.1 || ta < 0.1 || ta > 0.2)
+            if (Math.abs(tx) > 1) // Math.abs(tx) > 0.1 || Math.abs(ty) > 0.1 || ta < 0.1 || ta > 0.2
             {
-                if (tx > 0.1) 
+                if (tx > 0.5) 
                 {
                     // Move the robot to the right
-                    m_drive.setControl(forwardStraight.withVelocityY(-0.4));
-                } 
-                else if (tx < -0.1) 
-                {
-                    // Move the robot to the left
-                    m_drive.setControl(forwardStraight.withVelocityY(0.4));
-                }
-                if (ty > 0.1) 
-                {
-                    // Move the robot up
-                    m_drive.setControl(forwardStraight.withVelocityX(0.4));
-                } 
-                else if (ty < -0.1) 
-                {
-                    // Move the robot down
-                    m_drive.setControl(forwardStraight.withVelocityX(-0.4));
-                }
-
-                if (ta < 0.1) 
-                {
-                    // Move the robot forward
                     m_drive.setControl(forwardStraight.withRotationalRate(0.4));
                 } 
-                else if (ta > 0.2) 
+                else if (tx < -0.5) 
                 {
-                    // Move the robot backward
+                    // Move the robot to the left
                     m_drive.setControl(forwardStraight.withRotationalRate(-0.4));
                 }
+                
+            }
+            else if (ty < 0)
+            {
+                m_drive.setControl(forwardStraight.withVelocityY(0.4));
             }
             else
             {

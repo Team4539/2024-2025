@@ -99,7 +99,7 @@ public class aimVision extends Command
                 else if (ta > 0.2) 
                 {
                     // Move the robot backward
-                    m_drive.setControl(forwardStraight.withRotationalRate(-0.4))
+                    m_drive.setControl(forwardStraight.withRotationalRate(-0.4));
                 }
             }
             else

@@ -133,7 +133,7 @@ public class RobotContainer
     NamedCommands.registerCommand("reverseintake", new setIntake(-Constants.Intake.Speed * 0.25, m_intake));
     NamedCommands.registerCommand("setShootUpClose", new setHeadTo(Constants.Aiming.Upclose, m_head, "Upclose"));
     NamedCommands.registerCommand("setShootLineHead", new setHeadTo(Constants.Aiming.lineHead, m_head, "Line"));
-    NamedCommands.registerCommand("Pickup2ShootPosition", new setHeadTo(Constants.Aiming.pickupShootPosition, m_head, "PickupShootHead"));
+    NamedCommands.registerCommand("Pickup2ShootPosition", new setHeadTo(Constants.Aiming.kindaUpClose, m_head, "PickupShootHead"));
     NamedCommands.registerCommand("setShootLineArm", new setArmTo(Constants.Aiming.lineArm, m_arm, "Line"));
     NamedCommands.registerCommand("setShootMotor", new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     NamedCommands.registerCommand("setIntake", new setIntake(Constants.Intake.Speed, m_intake));
@@ -148,22 +148,17 @@ public class RobotContainer
     SmartDashboard.putData("Autonomous", m_chooser);
 
     m_chooser.setDefaultOption("4 Note Middle", drivetrain.getAutoPath("4note"));
+    //  origanl 3 note auto
     m_chooser.setDefaultOption("MOEW 4 Note Middle", drivetrain.getAutoPath("Copy of 4note"));
     // four note auto
-    m_chooser.addOption("2 Note Middle", drivetrain.getAutoPath("2notemiddle"));
+    m_chooser.addOption("3 Note Middle", drivetrain.getAutoPath("3notemiddle"));
     // simple drive back shoot and pickup shoot
-    m_chooser.addOption("2 Note Amp", drivetrain.getAutoPath("2noteamp"));
+    m_chooser.addOption("3 Note Amp", drivetrain.getAutoPath("3noteamp"));
     // 2 note left attempts 3 notes
-    m_chooser.addOption("2 Note Source", drivetrain.getAutoPath("2notesource"));
+    m_chooser.addOption("3 Note Source", drivetrain.getAutoPath("NewSourceSideAuto"));
     // 2 note right will run out of time trying to shoot the 3rd note
     m_chooser.addOption("Defense", drivetrain.getAutoPath("defense"));
     // funny defense auto
-    m_chooser.addOption("Auto Intake Test", drivetrain.getAutoPath("Auto intake test"));
-    // a test for our auto intake
-    m_chooser.addOption("SourceSideAuto", drivetrain.getAutoPath("SourceSideAuto"));
-    // source side auto for state
-    m_chooser.addOption("NewSourceSideAuto", drivetrain.getAutoPath("NewSourceSideAuto"));
-    // test auto for state
     configureBindings();
   }
 

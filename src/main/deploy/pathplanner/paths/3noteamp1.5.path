@@ -3,42 +3,36 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.73,
-        "y": 6.74
+        "x": 2.286019065618729,
+        "y": 7.307562004567661
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.73,
-        "y": 6.74
+        "x": 2.004958988519973,
+        "y": 7.272429494930316
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "3na1"
     },
     {
       "anchor": {
-        "x": 8.33,
-        "y": 7.44
+        "x": 1.4662605074140238,
+        "y": 6.885971888919526
       },
       "prevControl": {
-        "x": 7.33,
-        "y": 7.44
+        "x": 1.6536338921465275,
+        "y": 6.991369417831561
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.25,
-      "rotationDegrees": 0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "homeandintake",
+      "name": "sethome",
       "waypointRelativePos": 0,
       "command": {
         "type": "parallel",
@@ -49,12 +43,6 @@
               "data": {
                 "name": "setHome"
               }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "setIntake"
-              }
             }
           ]
         }
@@ -62,21 +50,21 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 5.5,
-    "maxAcceleration": 3.5,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": 62.05231539857555,
+    "rotation": 60.0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

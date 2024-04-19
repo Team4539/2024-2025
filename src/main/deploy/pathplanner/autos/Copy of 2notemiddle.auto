@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7326298288960215,
-      "y": 6.726025815687995
+      "x": 1.407706324685116,
+      "y": 5.574358195791997
     },
-    "rotation": 60.10109816138546
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -30,7 +30,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 1.0
+                  "waitTime": 0.75
                 }
               }
             ]
@@ -55,7 +55,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.5
+                  "waitTime": 0.3
                 }
               }
             ]
@@ -64,7 +64,52 @@
         {
           "type": "path",
           "data": {
-            "pathName": "2noteleft1"
+            "pathName": "2notemiddle1"
+          }
+        },
+        {
+          "type": "sequential",
+          "data": {
+            "commands": [
+              {
+                "type": "race",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "setIntake"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.25
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "race",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakept2"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
           }
         },
         {
@@ -74,22 +119,22 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "intakept2"
+                  "name": "Pickup2ShootPosition"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShootMotor"
                 }
               },
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.5
+                  "waitTime": 1.5
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "2noteleft1.5"
           }
         },
         {
@@ -111,7 +156,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.5
+                  "waitTime": 0.3
                 }
               }
             ]
@@ -120,7 +165,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "2noteleft2"
+            "pathName": "2notemiddle2"
           }
         },
         {
@@ -130,13 +175,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "intakept2"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 0.5
+                  "name": "autoIntake"
                 }
               }
             ]
@@ -145,7 +184,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "2noteleft2.5"
+            "pathName": "2notemiddle2.5"
           }
         },
         {
@@ -167,29 +206,22 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 0.5
+                  "waitTime": 0.3
                 }
               }
             ]
           }
         },
         {
-          "type": "race",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "setHome"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 1.0
-                }
-              }
-            ]
+            "pathName": "2notemiddle3.5"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "autoIntake"
           }
         }
       ]

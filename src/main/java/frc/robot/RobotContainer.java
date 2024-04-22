@@ -106,7 +106,7 @@ public class RobotContainer
     intakeButton.onFalse(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
     reverseIntake.whileTrue(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter)));
     setSafeButton.whileTrue(new ParallelCommandGroup(new aimVision(Constants.Aiming.getTag(), vision_drivetrain), new setArmTo(Constants.Aiming.safeArm , m_arm, "Line Shot"), new setHeadTo(Constants.Aiming.safeHead, m_head, "Line Shot"), new setShooter(Constants.Shooter.shooterSpeed, m_shooter)));
-    setAmpButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2"), new setShooter(0.5, m_shooter)));
+    setAmpButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2"), new setShooter((Constants.Shooter.shooterSpeed * 0.2), m_shooter)));
     SetHomeButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home"), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2")));
     setShootButton.whileTrue(new ParallelCommandGroup(new setHeadTo(Constants.Aiming.Upclose, m_head, "Upclose"), new setShooter(Constants.Shooter.shooterSpeed, m_shooter)));
     armOverrideButton.whileFalse(new InstantCommand(() -> m_climber.setOverride(false)));

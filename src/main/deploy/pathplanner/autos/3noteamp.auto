@@ -77,7 +77,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 0.75
+                        "waitTime": 1.0
                       }
                     },
                     {
@@ -158,6 +158,12 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "3noteampfinal"
           }
         }
       ]

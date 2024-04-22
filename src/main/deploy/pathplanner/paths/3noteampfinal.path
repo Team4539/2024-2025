@@ -3,43 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7251390307442104,
-        "y": 6.601329429073953
+        "x": 0.61,
+        "y": 6.66
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.9899093776886136,
-        "y": 6.589618592528172
+        "x": 1.6099999999999999,
+        "y": 6.66
       },
       "isLocked": false,
-      "linkedName": "3na2"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 5.553279918990471,
-        "y": 7.3172894847454515
+        "x": 7.710339061077678,
+        "y": 6.66
       },
       "prevControl": {
-        "x": 4.440750447141227,
-        "y": 7.235313628924981
+        "x": 6.710339061077678,
+        "y": 6.66
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.8,
-      "rotationDegrees": 0.0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "sethome",
-      "waypointRelativePos": 0,
+      "name": "home",
+      "waypointRelativePos": 0.6,
       "command": {
         "type": "parallel",
         "data": {
@@ -62,15 +56,15 @@
     "maxAngularAcceleration": 540.0
   },
   "goalEndState": {
-    "velocity": 1.5,
-    "rotation": 0.0,
+    "velocity": 0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": 60.0,
-    "velocity": 0.0
+    "rotation": 54.0,
+    "velocity": 0
   },
   "useDefaultConstraints": true
 }

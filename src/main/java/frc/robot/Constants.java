@@ -72,7 +72,7 @@ public class Constants
         public static final double Source = 0.20; // for arm
         public static final double Upclose = 0.425; // for head
         public static final double kindaUpClose = 0.459;
-        public static final double safeHead = 0.270;
+        public static final double safeHead = 0.280;
         public static final double safeArm = 0.122;
         public static final double lineArm = 0.0;
         public static final double lineHead = 0.459;

@@ -30,7 +30,7 @@ public class Constants
         public static final int armInvertedID = 18;
         public static final int armEncoder = 0; //DIO port
         public static final double armMin = 0.10;
-        public static final double armMax = 0.322;
+        public static final double armMax = 0.330;
         public static final int HEAD_ID = 24;
         public static final int headEncoder = 2; //DIO port
         public static final double headMin = 0.2;
@@ -72,8 +72,10 @@ public class Constants
         public static final double Source = 0.20; // for arm
         public static final double Upclose = 0.425; // for head
         public static final double kindaUpClose = 0.459;
-        public static final double lineHead = 0.417;
-        public static final double lineArm = 0.250;
+        public static final double safeHead = 0.270;
+        public static final double safeArm = 0.122;
+        public static final double lineArm = 0.0;
+        public static final double lineHead = 0.459;
         public static final double pickupShootPosition = 0.473;
 
         public static int getTag()

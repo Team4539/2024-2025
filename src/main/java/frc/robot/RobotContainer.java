@@ -60,12 +60,12 @@ public class RobotContainer
 
   // co driver buttons
   private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
-  private final JoystickButton shooterButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
+  private final JoystickButton setLineButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
   private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kStart.value);
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
   private final JoystickButton SetHomeButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
-  private final JoystickButton setLineButton = new JoystickButton(coDriver, XboxController.Button.kY.value);
+  private final JoystickButton setSafeButton = new JoystickButton(coDriver, XboxController.Button.kY.value);
 
   /* Subsystems */
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -105,16 +105,10 @@ public class RobotContainer
     intakeButton.whileTrue(new setIntake(Constants.Intake.Speed, m_intake));
     intakeButton.onFalse(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
     reverseIntake.whileTrue(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter)));
-    // reverseIntake.onTrue(new InstantCommand(() -> m_switch.periodic()));
-    // setLineButton.whileTrue(new ParallelCommandGroup(new aimVision(Constants.Aiming.getTag(), m_vision, vision_drivetrain), new setArmTo(Constants.Aiming.lineArm , m_arm, "Line Shot"), new setHeadTo(Constants.Aiming.lineHead, m_head, "Line Shot")));
-    // setLineButton.whileTrue(new autoIntake(m_vision, drivetrain, m_intake, m_switch));
-    // setLineButton.onFalse(new ParallelCommandGroup(new setIntake((-Constants.Intake.Speed * 0.25), m_intake).withTimeout(0.2), new setShooter((-Constants.Shooter.shooterSpeed * .1), m_shooter).withTimeout(0.2)));
-    setLineButton.whileTrue(new aimVision(Constants.Aiming.getTag(), drivetrain));
-    shooterButton.whileTrue(new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
-    // shooterButton.whileTrue(new aimSpeaker(7, 2.8, m_vision, drivetrain));
-    setAmpButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2")));
+    setSafeButton.whileTrue(new ParallelCommandGroup(new aimVision(Constants.Aiming.getTag(), vision_drivetrain), new setArmTo(Constants.Aiming.safeArm , m_arm, "Line Shot"), new setHeadTo(Constants.Aiming.safeHead, m_head, "Line Shot"), new setShooter(Constants.Shooter.shooterSpeed, m_shooter)));
+    setAmpButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2"), new setShooter(0.5, m_shooter)));
     SetHomeButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home"), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2")));
-    setShootButton.whileTrue(new setHeadTo(Constants.Aiming.Upclose, m_head, "Upclose"));
+    setShootButton.whileTrue(new ParallelCommandGroup(new setHeadTo(Constants.Aiming.Upclose, m_head, "Upclose"), new setShooter(Constants.Shooter.shooterSpeed, m_shooter)));
     armOverrideButton.whileFalse(new InstantCommand(() -> m_climber.setOverride(false)));
     armOverrideButton.whileTrue(new InstantCommand(() -> m_climber.setOverride(true)));
     climberUp.whileTrue(new setClimber(Constants.Climber.climberUp, m_climber));
@@ -123,7 +117,8 @@ public class RobotContainer
     slowShootButton.whileFalse(new InstantCommand(() -> m_shooter.setSlow(false)));
     servoBombButton.whileTrue(new InstantCommand(() -> m_head.ServoBomb()));
     servoBombButton.whileFalse(new InstantCommand(() -> m_head.ServoHome()));
-    trapButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Trap.hell, m_arm, "hell"), new setHeadTo(Constants.Trap.heaven, m_head, "heaven")));
+    trapButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Trap.hell, m_arm, "hell"), new setHeadTo(Constants.Trap.heaven, m_head, "heaven"), new setShooter(0.2, m_shooter)));
+    setLineButton.whileTrue(new ParallelCommandGroup(new aimVision(Constants.Aiming.getTag(), vision_drivetrain), new setHeadTo(Constants.Aiming.lineHead, m_head, "Line Shot"), new setShooter(Constants.Shooter.shooterSpeed, m_shooter)));
   }
 
   public RobotContainer()

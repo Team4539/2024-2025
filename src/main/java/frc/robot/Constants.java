@@ -66,14 +66,14 @@ public class Constants
     public static final class Aiming 
     {
         public static final double Home = Arm.armMax;
-        public static final double Home2 = 0.30;
-        public static final double Amp = 0.12; // for arm
+        public static final double Home2 = 0.28;
+        public static final double Amp = 0.102; // for arm
         public static final double Amp2 = 0.45; // for head
         public static final double Source = 0.20; // for arm
         public static final double Upclose = 0.425; // for head
         public static final double kindaUpClose = 0.459;
-        public static final double safeHead = 0.280;
-        public static final double safeArm = 0.122;
+        public static final double safeHead = 0.290;
+        public static final double safeArm = 0.11;
         public static final double lineArm = 0.0;
         public static final double lineHead = 0.459;
         public static final double pickupShootPosition = 0.473;

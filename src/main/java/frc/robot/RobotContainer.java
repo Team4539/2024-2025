@@ -19,7 +19,6 @@ import frc.robot.Commands.rotateTo;
 import frc.robot.Commands.setArm;
 import frc.robot.Commands.setArmTo;
 import frc.robot.Commands.setClimber;
-// import frc.robot.Commands.setClimber;
 import frc.robot.Commands.setHead;
 import frc.robot.Commands.setHeadTo;
 import frc.robot.Commands.setIntake;
@@ -30,7 +29,6 @@ import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.HeadSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
-// import frc.robot.subsystems.LedCommSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.limitSwitchSubsystem;
 
@@ -109,7 +107,6 @@ public class RobotContainer
     setSafeButton.onFalse(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home").withTimeout(3), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2").withTimeout(3)));
     setAmpButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2"), new setShooter((Constants.Shooter.shooterSpeed * 0.2), m_shooter)));
     setAmpButton.onFalse(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home").withTimeout(3), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2").withTimeout(3)));
-    // SetHomeButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home"), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2")));
     setShootButton.whileTrue(new ParallelCommandGroup(new setHeadTo(Constants.Aiming.Upclose, m_head, "Upclose"), new setShooter(Constants.Shooter.shooterSpeed, m_shooter)));
     setShootButton.onFalse(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home").withTimeout(3), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2").withTimeout(3)));
     armOverrideButton.whileFalse(new InstantCommand(() -> m_climber.setOverride(false)));
@@ -137,7 +134,6 @@ public class RobotContainer
     NamedCommands.registerCommand("setShootMotor", new setShooter(Constants.Shooter.shooterSpeed, m_shooter));
     NamedCommands.registerCommand("setIntake", new setIntake(Constants.Intake.Speed, m_intake));
     NamedCommands.registerCommand("setHome", new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home").withTimeout(1), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2").withTimeout(1)));
-    //NamedCommands.registerCommand("autoAim", new aimVision(Constants.Aiming.getTag(), 2.3, m_vision, vision_drivetrain));
     NamedCommands.registerCommand("setAmp", new ParallelCommandGroup(new setArmTo(Constants.Aiming.Amp , m_arm, "Amp"), new setHeadTo(Constants.Aiming.Amp2, m_head, "Amp2")));
     NamedCommands.registerCommand("autoIntake", new autoIntake(drivetrain, m_intake, m_switch));
     NamedCommands.registerCommand("kindaUpClose", new setHeadTo(Constants.Aiming.kindaUpClose, m_head, "KindaUpClose"));

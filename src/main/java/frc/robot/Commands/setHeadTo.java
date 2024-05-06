@@ -3,7 +3,6 @@ package frc.robot.Commands;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-//import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.HeadSubsystem;
 
 public class setHeadTo extends Command 
@@ -25,19 +24,13 @@ public class setHeadTo extends Command
     }
 
     @Override
-    public void initialize() 
-    {
-        
-    }
+    public void initialize() {}
 
     @Override
     public void execute() 
     {
         double encoder = m_head.getHeadEncoder();
         double output = pidController.calculate(encoder, m_target);
-        
-        SmartDashboard.putNumber("head output", output);
-        SmartDashboard.putString("Command", m_command.toString());
 
         if (output > 1)
         {
@@ -48,16 +41,16 @@ public class setHeadTo extends Command
             fixedOutput = output;
         }
 
-        if (encoder > m_target) // go down
+        if (encoder > m_target)
         {
             m_head.setHead(-fixedOutput); 
         }
-        else if (encoder < m_target) //me go up
+        else if (encoder < m_target)
         {
             m_head.setHead(-fixedOutput); 
 
         }
-        else //stay
+        else
         {
             m_head.setHead(0);
         }

@@ -19,24 +19,18 @@ public class setArmTo extends Command
         m_arm = subsystem;
         m_target = targetrot;
         m_command = command;
-        pidController = new PIDController(15, 0, 0.0); // Adjust these values as needed
+        pidController = new PIDController(15, 0, 0.0);
 
     }
 
     @Override
-    public void initialize() 
-    {
-        
-    }
+    public void initialize() {}
 
     @Override
     public void execute() 
     {
         double encoder = m_arm.getEncoder();
         double output = pidController.calculate(encoder, m_target);
-        
-        SmartDashboard.putNumber("output", output);
-        SmartDashboard.putString("Command", m_command.toString());
 
         if (output > 1)
         {
@@ -47,16 +41,16 @@ public class setArmTo extends Command
             fixedOutput = output;
         }
 
-        if (encoder > m_target) // go down
+        if (encoder > m_target)
         {
             m_arm.setArm(fixedOutput*.65); 
         }
-        else if (encoder < m_target) //me go up
+        else if (encoder < m_target)
         {
             m_arm.setArm(fixedOutput); 
 
         }
-        else //stay
+        else
         {
             m_arm.setArm(0);
         }

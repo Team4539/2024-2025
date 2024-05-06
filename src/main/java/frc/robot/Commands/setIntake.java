@@ -1,5 +1,4 @@
 package frc.robot.Commands;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.IntakeSubsystem;
 
@@ -25,7 +24,6 @@ public class setIntake extends Command
     @Override
     public void end(boolean interrupted) 
     {
-        SmartDashboard.putNumber("Intake Speed", m_intake.intake.get());
         m_intake.setIntake(0.0);
     }
     

@@ -21,7 +21,6 @@ public class limitSwitchSubsystem extends SubsystemBase
 
     public boolean getSwitch()
     {
-        // if true, limit switch is tripped; else it has not been tripped
         return !limitswitch.get();
     }
 }

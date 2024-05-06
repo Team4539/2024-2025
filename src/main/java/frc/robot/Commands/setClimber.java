@@ -15,7 +15,7 @@ public class setClimber extends Command
     }
 
     @Override
-    public void initialize() {  }
+    public void initialize() {}
 
     @Override
     public void execute() 
@@ -25,7 +25,6 @@ public class setClimber extends Command
     @Override
     public void end(boolean interrupted) 
     {
-        SmartDashboard.putNumber("Intake Speed", m_climber.climber.get());
         m_climber.setClimber(0.0);
     }
     

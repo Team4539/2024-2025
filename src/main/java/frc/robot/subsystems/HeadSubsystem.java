@@ -8,9 +8,6 @@ import frc.robot.Constants;
 
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkBase.IdleMode;
-import com.revrobotics.CANSparkLowLevel.MotorType;
 
 public class HeadSubsystem extends SubsystemBase 
 {
@@ -29,10 +26,7 @@ public class HeadSubsystem extends SubsystemBase
     }
 
     @Override
-    public void periodic() 
-    {
-        SmartDashboard.putNumber("Head Encoder", ((headEncoder.getAbsolutePosition() + Constants.Arm.headOffset))); // TODO: find offest
-    }
+    public void periodic() {}
 
     @Override
     public void simulationPeriodic() {}
@@ -49,7 +43,6 @@ public class HeadSubsystem extends SubsystemBase
 
     public void setHead(double speed)
     {
-        // if speed is not zero
         if (speed != 0)
         {
             if (ClimberSubsystem.armOverride)
@@ -58,38 +51,28 @@ public class HeadSubsystem extends SubsystemBase
             }
             else
             {
-                // if rotations is greater than minimum and less than Maximum
                 if ((headEncoder.getAbsolutePosition() + Constants.Arm.headOffset) > Constants.Arm.headMin && (headEncoder.getAbsolutePosition() + Constants.Arm.headOffset) < Constants.Arm.headMax)
                 {
-                    // run normal
                     head.set(speed*.6);
                 }
-
-                // if rotations is less than miminum
                 else if ((headEncoder.getAbsolutePosition() + Constants.Arm.headOffset) < Constants.Arm.headMin)
                 {
-                    // run inverted to push it out at minimum power
                     head.set(-0.05);
                 } 
-
-                //if rotations is greater tham Maximum
                 else if ((headEncoder.getAbsolutePosition() + Constants.Arm.headOffset) > Constants.Arm.headMax)
                 {
-                    //run to push in a minimum power
                     head.set(0.05);
                 }
             }
         }
-        // if speed is zero
         else
         {
-            // set zero
             head.set(0);
         }
     }
 
     public double getHeadEncoder()
     {
-        return (headEncoder.getAbsolutePosition() + Constants.Arm.headOffset); //TODO: also put the head offset here!
+        return (headEncoder.getAbsolutePosition() + Constants.Arm.headOffset);
     }
 }

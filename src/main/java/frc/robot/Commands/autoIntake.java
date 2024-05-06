@@ -2,28 +2,20 @@ package frc.robot.Commands;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightHelpers;
 import frc.robot.subsystems.limitSwitchSubsystem;
-import frc.robot.subsystems.LimelightHelpers.LimelightResults;
 
 public class autoIntake extends Command 
 {
     private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.OpenLoopVoltage);
     
     private final CommandSwerveDrivetrain m_drive;
-
-    private final IntakeSubsystem m_intake;
-
     private final limitSwitchSubsystem m_switch;
+    private final IntakeSubsystem m_intake;
 
     private boolean x_centered;
     private boolean y_centered;
@@ -53,9 +45,8 @@ public class autoIntake extends Command
     {
         if (!m_switch.getSwitch())
         {
-            // left is down x right is up x towards robot is down y away from robot is up y
-            double tx = LimelightHelpers.getTX("limelight-main");
-            double ty = LimelightHelpers.getTY("limelight-main");
+            double tx = LimelightHelpers.getTX("limelight");
+            double ty = LimelightHelpers.getTY("limelight");
             if (tx != 0.0 && ty != 0.0)
             {
                 double xCorrection = calculateCorrection(tx);

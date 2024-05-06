@@ -44,7 +44,7 @@ public class Constants
         public static final int ID = 14;
         public static final int INDEXER_ID = 8;
         public static final double Speed = -1;
-        public static final int limit_id = 3; // TODO: set limit switch DIO port
+        public static final int limit_id = 3;
     }
 
     public static final class Climber
@@ -106,14 +106,5 @@ public class Constants
         public static final double Y_GOAL = 0.05;
         public static final double A_GOAL1 = 179;
         public static final double A_GOAL2 = 181;
-    }
-
-    public static final class arduinoCOMs
-    {
-        // public static final int arduinoSend = 0; // PWM port
-        // public static final int arduinoRcv = 0; //analog
-        public static final double Idle = 0.0; // pulse length is less than 15000us
-        public static final double Auto = 1.0; // pulse length is less than greater than 15000us   
-        public static final double Game = -1.0;  //  pulse length is less the 5000us
     }
 }

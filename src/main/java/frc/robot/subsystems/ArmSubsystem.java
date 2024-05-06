@@ -26,17 +26,13 @@ public class ArmSubsystem extends SubsystemBase
     }
 
     @Override
-    public void periodic() 
-    {
-        SmartDashboard.putNumber("Arm Encoder", (armEncoder.getAbsolutePosition() + Constants.Arm.armOffset));
-    }
+    public void periodic() {}
 
     @Override
     public void simulationPeriodic() {}
 
     public void setArm(double speed)
     {
-        // if speed is not zero
         if (speed != 0)
         {
             if (ClimberSubsystem.armOverride)
@@ -46,35 +42,25 @@ public class ArmSubsystem extends SubsystemBase
             }
             else
             {
-                // if rotations is greater than minimum and less than Maximum
                 if ((armEncoder.getAbsolutePosition() + Constants.Arm.armOffset) > Constants.Arm.armMin && (armEncoder.getAbsolutePosition() + Constants.Arm.armOffset) < Constants.Arm.armMax)
                 {
-                    // run normal
                     arm.set(speed*-.3);
                     armInverted.set(speed*-.3);
                 }
-
-                // if rotations is less than miminum
                 else if ((armEncoder.getAbsolutePosition() + Constants.Arm.armOffset) < Constants.Arm.armMin)
                 {
-                    // run inverted to push it out at minimum power
                     arm.set(-0.05);
                     armInverted.set(-0.05);
                 } 
-
-                //if rotations is greater tham Maximum
                 else if ((armEncoder.getAbsolutePosition() + Constants.Arm.armOffset) > Constants.Arm.armMax)
                 {
-                    //run to push in a minimum power
                     arm.set(0.05);
                     armInverted.set(0.05);
                 }
             }
         }
-        // if speed is zero
         else
         {
-            // set zero
             arm.set(0);
             armInverted.set(0);
         }

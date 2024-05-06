@@ -20,12 +20,7 @@ public class ClimberSubsystem extends SubsystemBase
     }
 
     @Override
-    public void periodic() 
-    {
-        //SmartDashboard.putNumber("Climber Encoder", -climber.getRotorPosition().getValueAsDouble());
-        SmartDashboard.putBoolean("Arm Override", armOverride);
-        //climber.feed();
-    }
+    public void periodic() {}
 
     public void setOverride(boolean value)
     {
@@ -34,34 +29,23 @@ public class ClimberSubsystem extends SubsystemBase
 
     public void setClimber(double speed)
     {
-        //climber.set(speed);
-    if (speed != 0)
+        if (speed != 0)
         {
-            // if rotations is greater than minimum and less than Maximum
             if (-climber.getRotorPosition().getValueAsDouble() > Constants.Climber.climberMin && -climber.getRotorPosition().getValueAsDouble() < Constants.Climber.climberMax)
             {
-                // run normal
                 climber.set(-speed);
             }
-
-            // if rotations is less than miminum
             else if (-climber.getRotorPosition().getValueAsDouble() < Constants.Climber.climberMin)
             {
-                // run inverted to push it out at minimum power
                 climber.set(-0.1);
             } 
-
-            //if rotations is greater tham Maximum
             else if(-climber.getRotorPosition().getValueAsDouble() > Constants.Climber.climberMax )
             {
-                //run to push in a minimum power
                 climber.set(0.1);
             }
         }
-        // if speed is zero
         else
         {
-            // set zero
             climber.set(0);
         }
     }

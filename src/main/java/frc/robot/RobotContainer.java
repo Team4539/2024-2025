@@ -144,7 +144,7 @@ public class RobotContainer
 
     m_chooser.addOption("4 Note Middle (Stage)", drivetrain.getAutoPath("4note"));
     //  origanl 3 note auto
-    m_chooser.addOption("MOEW 4 Note Middle (AMP)", drivetrain.getAutoPath("Copy of 4note"));
+    m_chooser.addOption("4 Note Middle (AMP)", drivetrain.getAutoPath("Copy of 4note"));
     // four note auto
     m_chooser.addOption("3 Note Middle", drivetrain.getAutoPath("3notemiddle"));
     // simple drive back shoot and pickup shoot

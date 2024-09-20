@@ -62,7 +62,7 @@ public class RobotContainer
   private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kStart.value);
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
-  // private final JoystickButton SetHomeButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
+  //private final JoystickButton SetHomeButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
   private final JoystickButton setSafeButton = new JoystickButton(coDriver, XboxController.Button.kY.value);
 
   /* Subsystems */
@@ -142,15 +142,15 @@ public class RobotContainer
     
     SmartDashboard.putData("Autonomous", m_chooser);
 
-    m_chooser.setDefaultOption("4 Note Middle", drivetrain.getAutoPath("4note"));
+    m_chooser.addOption("4 Note Middle", drivetrain.getAutoPath("4note"));
     //  origanl 3 note auto
-    m_chooser.setDefaultOption("MOEW 4 Note Middle", drivetrain.getAutoPath("Copy of 4note"));
+    m_chooser.addOption("MOEW 4 Note Middle", drivetrain.getAutoPath("Copy of 4note"));
     // four note auto
     m_chooser.addOption("3 Note Middle", drivetrain.getAutoPath("3notemiddle"));
     // simple drive back shoot and pickup shoot
     m_chooser.addOption("3 Note Amp", drivetrain.getAutoPath("3noteamp"));
     // 2 note left attempts 3 notes
-    m_chooser.addOption("3 Note Source", drivetrain.getAutoPath("NewSourceSideAuto"));
+    m_chooser.setDefaultOption("3 Note Source", drivetrain.getAutoPath("NewSourceSideAuto"));
     // 2 note right will run out of time trying to shoot the 3rd note
     m_chooser.addOption("Defense", drivetrain.getAutoPath("defense"));
     // funny defense auto

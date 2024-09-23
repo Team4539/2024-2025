@@ -151,7 +151,7 @@ public class RobotContainer
     m_chooser.addOption("3 Note Amp", drivetrain.getAutoPath("3noteamp"));
     // 2 note left attempts 3 notes
     m_chooser.setDefaultOption("3 Note Source", drivetrain.getAutoPath("NewSourceSideAuto"));
-    // 2 note right will run out of time trying to shoot the 3rd note
+    // 2 note right will run out of t\ime trying to shoot the 3rd note
     m_chooser.addOption("Defense", drivetrain.getAutoPath("defense"));
     // funny defense auto
     configureBindings();

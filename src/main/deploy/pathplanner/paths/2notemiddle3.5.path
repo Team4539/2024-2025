@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 1.3842846515935527,
-        "y": 5.539225686154654
+        "x": 0.9392728628538557,
+        "y": 5.562647359246215
       },
       "prevControl": {
-        "x": 3.8669819992992314,
-        "y": 5.574358195791997
+        "x": 3.421970210559534,
+        "y": 5.597779868883558
       },
       "nextControl": null,
       "isLocked": false,
@@ -86,6 +86,29 @@
           ]
         }
       }
+    },
+    {
+      "name": "spool",
+      "waypointRelativePos": 0.85,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "kindaUpClose"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "setShootMotor"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "globalConstraints": {
@@ -100,7 +123,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "3 note middle",
   "previewStartingState": {
     "rotation": -28.9888225211916,
     "velocity": 1.0

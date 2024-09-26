@@ -16,11 +16,11 @@
     },
     {
       "anchor": {
-        "x": 2.7,
+        "x": 2.7427416909042077,
         "y": 5.55
       },
       "prevControl": {
-        "x": 1.8685306052495134,
+        "x": 1.911272296153721,
         "y": 5.55
       },
       "nextControl": null,
@@ -33,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "Intake",
-      "waypointRelativePos": 0.0,
+      "waypointRelativePos": 0.15,
       "command": {
         "type": "parallel",
         "data": {
@@ -67,7 +67,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "3 note middle",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

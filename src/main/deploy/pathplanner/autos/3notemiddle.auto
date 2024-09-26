@@ -18,7 +18,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "setShootUpClose"
+                  "name": "kindaUpClose"
                 }
               },
               {
@@ -119,7 +119,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Pickup2ShootPosition"
+                  "name": "kindaUpClose"
                 }
               },
               {
@@ -228,6 +228,31 @@
           "type": "path",
           "data": {
             "pathName": "2notemiddle3.5"
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "setShootMotor"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setIntake"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.3
+                }
+              }
+            ]
           }
         }
       ]

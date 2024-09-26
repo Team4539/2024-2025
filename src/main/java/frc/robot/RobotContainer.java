@@ -63,7 +63,7 @@ public class RobotContainer
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
   //private final JoystickButton SetHomeButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
-  //private final JoystickButton setSafeButton = new JoystickButton(coDriver, XboxController.Button.kY.value);
+  private final JoystickButton setSafeButton = new JoystickButton(coDriver, XboxController.Button.kY.value);
 
   /* Subsystems */
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain

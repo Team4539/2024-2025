@@ -1,9 +1,9 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.LimelightHelpers;
 
 public class setArmTo extends Command 
 {
@@ -53,6 +53,7 @@ public class setArmTo extends Command
         else
         {
             m_arm.setArm(0);
+            LimelightHelpers.setLEDMode_ForceOff("limelight");
         }
     }
 
@@ -60,6 +61,7 @@ public class setArmTo extends Command
     public void end(boolean interrupted) 
     {
         m_arm.setArm(0);
+        LimelightHelpers.setLEDMode_ForceOff("limelight");
     }
 
     @Override

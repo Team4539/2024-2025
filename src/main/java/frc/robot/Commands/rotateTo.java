@@ -4,6 +4,7 @@ import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.LimelightHelpers;
 
 public class rotateTo extends Command 
 {
@@ -33,10 +34,14 @@ public class rotateTo extends Command
         if (m_drive.getState().Pose.getRotation().getDegrees() > (m_target + 2))
         {
             m_drive.setControl(forwardStraight.withRotationalRate(0.4));
+            LimelightHelpers.setLEDMode_ForceBlink("limelight");
+
         }
         else if (m_drive.getState().Pose.getRotation().getDegrees() < (m_target - 2))
         {
             m_drive.setControl(forwardStraight.withRotationalRate(-0.4));
+            LimelightHelpers.setLEDMode_ForceBlink("limelight");
+
         }
         else
         {
@@ -49,6 +54,8 @@ public class rotateTo extends Command
     public void end(boolean interrupted) 
     {
         m_drive.setControl(forwardStraight.withRotationalRate(0));
+        LimelightHelpers.setLEDMode_ForceOff("limelight");
+
     }
 
     @Override

@@ -1,7 +1,7 @@
 package frc.robot.Commands;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ClimberSubsystem;
+import frc.robot.subsystems.LimelightHelpers;
 
 public class setClimber extends Command 
 {
@@ -21,6 +21,8 @@ public class setClimber extends Command
     public void execute() 
     {
         m_climber.setClimber(m_speed);
+        LimelightHelpers.setLEDMode_ForceBlink("limelight");
+
     }
     @Override
     public void end(boolean interrupted) 

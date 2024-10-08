@@ -113,13 +113,19 @@
           }
         },
         {
+          "type": "path",
+          "data": {
+            "pathName": "4note2.5"
+          }
+        },
+        {
           "type": "race",
           "data": {
             "commands": [
               {
                 "type": "named",
                 "data": {
-                  "name": "kindaUpClose"
+                  "name": "setShootUpClose"
                 }
               },
               {

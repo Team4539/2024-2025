@@ -1,9 +1,9 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.HeadSubsystem;
+import frc.robot.subsystems.LimelightHelpers;
 
 public class setHeadTo extends Command 
 {
@@ -44,10 +44,12 @@ public class setHeadTo extends Command
         if (encoder > m_target)
         {
             m_head.setHead(-fixedOutput); 
+
         }
         else if (encoder < m_target)
         {
-            m_head.setHead(-fixedOutput); 
+            m_head.setHead(-fixedOutput);
+ 
 
         }
         else
@@ -60,6 +62,7 @@ public class setHeadTo extends Command
     public void end(boolean interrupted)
     {
         m_head.setHead(0);
+        LimelightHelpers.setLEDMode_ForceOff("limelight");
     }
 
     @Override

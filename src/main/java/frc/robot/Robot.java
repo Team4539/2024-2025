@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.LimelightHelpers;
 
 public class Robot extends TimedRobot 
 {
@@ -25,6 +26,7 @@ public class Robot extends TimedRobot
     m_robotContainer = new RobotContainer();
     PortForwarder.add(5800, "photonvision.local", 5800);
     PortForwarder.add(5801, "photonvision-tag.local", 5801);
+    LimelightHelpers.setLEDMode_ForceBlink("limelight");
   }
   @Override
   public void robotPeriodic() 
@@ -36,7 +38,10 @@ public class Robot extends TimedRobot
   public void disabledInit() {}
 
   @Override
-  public void disabledPeriodic() {}
+  public void disabledPeriodic() {
+    LimelightHelpers.setLEDMode_ForceBlink("limelight");
+
+  }
 
   @Override
   public void disabledExit() {}
@@ -51,7 +56,9 @@ public class Robot extends TimedRobot
   }
 
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+    LimelightHelpers.setLEDMode_ForceOff("limelight");
+  }
 
   @Override
   public void autonomousExit() {}
@@ -62,6 +69,8 @@ public class Robot extends TimedRobot
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    LimelightHelpers.setLEDMode_ForceOff("limelight");
+
   }
 
   @Override

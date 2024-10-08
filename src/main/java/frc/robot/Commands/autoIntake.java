@@ -57,12 +57,14 @@ public class autoIntake extends Command
             else
             {
                 m_drive.setControl(forwardStraight.withRotationalRate(0));
+
             }
         }
         else
         {
             finished = true;
             isFinished();
+            LimelightHelpers.setLEDMode_ForceBlink("limelight");
         }
     }
 

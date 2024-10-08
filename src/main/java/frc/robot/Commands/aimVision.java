@@ -40,6 +40,7 @@ public class aimVision extends Command
         else
         {
             m_drive.setControl(forwardStraight.withRotationalRate(0.0));
+            LimelightHelpers.setLEDMode_ForceOff("limelight");
         }
     }
 
@@ -47,6 +48,7 @@ public class aimVision extends Command
     public void end(boolean interrupted) 
     {
         m_drive.setControl(forwardStraight.withRotationalRate(0));
+        LimelightHelpers.setLEDMode_ForceOff("limelight");
     }
 
     @Override

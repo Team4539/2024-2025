@@ -4,6 +4,7 @@ import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.subsystems.HeadSubsystem;
+import frc.robot.subsystems.LimelightHelpers;
 
 public class setHead extends Command 
 {
@@ -32,6 +33,8 @@ public class setHead extends Command
     public void end(boolean interrupted) 
     {
         m_head.setHead(0);
+        LimelightHelpers.setLEDMode_ForceOff("limelight");
+
     }
 
     @Override

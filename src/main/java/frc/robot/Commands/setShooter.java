@@ -1,5 +1,6 @@
 package frc.robot.Commands;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.LimelightHelpers;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class setShooter extends Command 
@@ -30,6 +31,8 @@ public class setShooter extends Command
     {
         m_shooter.setShooter(0.0);
         m_shooter.override = false;
+        LimelightHelpers.setLEDMode_ForceOff("limelight");
+
     }
     
     @Override

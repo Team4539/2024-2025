@@ -58,10 +58,10 @@ public class RobotContainer
 
   // co driver buttons
   private final JoystickButton intakeButton = new JoystickButton(coDriver, XboxController.Button.kLeftBumper.value);
-  private final JoystickButton setLineButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
+  private final JoystickButton setLineButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
   private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kStart.value);
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
-  private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kA.value);
+  private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
   //private final JoystickButton SetHomeButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
   private final JoystickButton setSafeButton = new JoystickButton(coDriver, XboxController.Button.kY.value);
 

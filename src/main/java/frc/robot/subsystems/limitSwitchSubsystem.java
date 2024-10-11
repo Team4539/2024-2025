@@ -10,7 +10,7 @@ import frc.robot.Constants;
 public class limitSwitchSubsystem extends SubsystemBase
 {
     private DigitalInput limitswitch;
-    private final TalonFX MORARR = new TalonFX(1);
+    private final TalonFX Motor1 = new TalonFX(1);
 
     
     public limitSwitchSubsystem()
@@ -21,7 +21,7 @@ public class limitSwitchSubsystem extends SubsystemBase
     public void periodic()
     {
         SmartDashboard.putBoolean("Limit Switch", getSwitch());
-        SmartDashboard.putNumber("MOTARr TEMP", MORARR.getProcessorTemp().getValue()*2+30);
+        SmartDashboard.putString("Motor temp", ((Motor1.getDeviceTemp().getValue() * 9/5) + 32) + "\u00B0F");
 
     }
 

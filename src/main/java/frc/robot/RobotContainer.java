@@ -1,10 +1,12 @@
 package frc.robot;
 
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
+import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -42,8 +44,8 @@ public class RobotContainer
   private final XboxController coDriver = new XboxController(1); // My co-joystick
   private final XboxController Driver = new XboxController(0); //Driver Buttons
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
-      .withDeadband(MaxSpeed * 0.06).withRotationalDeadband(MaxAngularRate * 0.07) // Add a 10% deadband
-      .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // I want field-centric
+    .withDeadband(MaxSpeed * 0.06).withRotationalDeadband(MaxAngularRate * 0.07) // Add a 10% deadband
+    .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // I want field-centric
                                                                // driving in open loop
   
   // driver buttons
@@ -62,7 +64,7 @@ public class RobotContainer
   private final JoystickButton reverseIntake = new JoystickButton(coDriver, XboxController.Button.kStart.value);
   private final JoystickButton setAmpButton = new JoystickButton(coDriver, XboxController.Button.kX.value);
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
-  //private final JoystickButton SetHomeButton = new JoystickButton(coDriver, XboxController.Button.kB.value);
+  private final JoystickButton trapButton2 = new JoystickButton(coDriver, XboxController.Button.kBack.value);
   private final JoystickButton setSafeButton = new JoystickButton(coDriver, XboxController.Button.kY.value);
 
   /* Subsystems */
@@ -118,6 +120,7 @@ public class RobotContainer
     servoBombButton.whileTrue(new InstantCommand(() -> m_head.ServoBomb()));
     servoBombButton.whileFalse(new InstantCommand(() -> m_head.ServoHome()));
     trapButton.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Trap.hell, m_arm, "hell"), new setHeadTo(Constants.Trap.heaven, m_head, "heaven"), new setShooter(0.2, m_shooter)));
+    trapButton2.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Trap.hell, m_arm, "hell"), new setHeadTo(Constants.Trap.heaven, m_head, "heaven"), new setShooter(0.2, m_shooter)));
     setLineButton.whileTrue(new ParallelCommandGroup(new aimVision(Constants.Aiming.getTag(), vision_drivetrain), new setHeadTo(Constants.Aiming.lineHead, m_head, "Line Shot"), new setShooter(Constants.Shooter.shooterSpeed, m_shooter)));
     setLineButton.onFalse(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home").withTimeout(3), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2").withTimeout(3)));
   }
@@ -139,7 +142,6 @@ public class RobotContainer
     NamedCommands.registerCommand("kindaUpClose", new setHeadTo(Constants.Aiming.kindaUpClose, m_head, "KindaUpClose"));
     NamedCommands.registerCommand("rotateTo", new rotateTo(-50, drivetrain));
     NamedCommands.registerCommand("aimSpeaker", new aimVision(Constants.Aiming.getTag(), drivetrain));
-    
     SmartDashboard.putData("Autonomous", m_chooser);
 
     m_chooser.addOption("4 Note Middle (Stage)", drivetrain.getAutoPath("4note"));
@@ -155,6 +157,8 @@ public class RobotContainer
     m_chooser.addOption("Defense", drivetrain.getAutoPath("defense"));
     // funny defense auto
     configureBindings();
+    
+
   }
 
   public Command getAutonomousCommand() {

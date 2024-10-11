@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix6.hardware.TalonFX;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -8,6 +10,8 @@ import frc.robot.Constants;
 public class limitSwitchSubsystem extends SubsystemBase
 {
     private DigitalInput limitswitch;
+    private final TalonFX MORARR = new TalonFX(1);
+
     
     public limitSwitchSubsystem()
     {
@@ -17,6 +21,8 @@ public class limitSwitchSubsystem extends SubsystemBase
     public void periodic()
     {
         SmartDashboard.putBoolean("Limit Switch", getSwitch());
+        SmartDashboard.putNumber("MOTARr TEMP", MORARR.getProcessorTemp().getValue()*2+30);
+
     }
 
     public boolean getSwitch()

@@ -45,6 +45,7 @@ public class limitSwitchSubsystem extends SubsystemBase
         SmartDashboard.putString("Shooter Motor 2", ((Motor16.getDeviceTemp().getValue() * 9/5) + 32) + "\u00B0F");
 
     }
+    
 
     public boolean getSwitch()
     {

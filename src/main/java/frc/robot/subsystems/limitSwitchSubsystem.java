@@ -21,8 +21,16 @@ public class limitSwitchSubsystem extends SubsystemBase
     private final TalonFX Motor14 = new TalonFX(14);
     private final TalonFX Motor15 = new TalonFX(15);
     private final TalonFX Motor16 = new TalonFX(16);
+    private final double MOTOR1_temp = Motor1.getDeviceTemp().getValue() * 9/5 + 32;
+    private final double MOTOR3_temp = Motor3.getDeviceTemp().getValue() * 9/5 + 32;
+    private final double MOTOR6_temp = Motor6.getDeviceTemp().getValue() * 9/5 + 32;
+    private final double MOTOR7_temp = Motor7.getDeviceTemp().getValue() * 9/5 + 32;
+    private boolean MOD0OT = false;
+    private boolean MOD1OT = false;
+    private boolean MOD2OT = false;
+    private boolean MOD3OT = false;
 
-
+    
     
     public limitSwitchSubsystem()
     {
@@ -31,6 +39,25 @@ public class limitSwitchSubsystem extends SubsystemBase
 
     public void periodic()
     {
+        if(MOTOR1_temp > 200){
+            MOD0OT = false; }
+        else{
+            MOD0OT = true;}
+        if(MOTOR3_temp > 200){
+            MOD1OT = false; }
+        else{
+            MOD1OT = true;}
+        if(MOTOR6_temp > 200){
+            MOD2OT = false; }
+        else{
+            MOD2OT = true;}
+        if(MOTOR7_temp > 200){
+            MOD3OT = false; }
+        else{
+            MOD3OT = true;}
+
+
+
         SmartDashboard.putBoolean("Limit Switch", getSwitch());
         SmartDashboard.putString("Module 0 Drive", ((Motor1.getDeviceTemp().getValue() * 9/5) + 32) + "\u00B0F");
         SmartDashboard.putString("Module 0 Turn", ((Motor2.getDeviceTemp().getValue() * 9/5) + 32) + "\u00B0F");
@@ -43,6 +70,10 @@ public class limitSwitchSubsystem extends SubsystemBase
         SmartDashboard.putString("Intake Motor", ((Motor14.getDeviceTemp().getValue() * 9/5) + 32) + "\u00B0F");
         SmartDashboard.putString("Shooter Motor 1", ((Motor15.getDeviceTemp().getValue() * 9/5) + 32) + "\u00B0F");
         SmartDashboard.putString("Shooter Motor 2", ((Motor16.getDeviceTemp().getValue() * 9/5) + 32) + "\u00B0F");
+        SmartDashboard.putBoolean("MOD 0 Over Temp", MOD0OT);
+        SmartDashboard.putBoolean("MOD 1 Over Temp", MOD1OT);
+        SmartDashboard.putBoolean("MOD 2 Over Temp", MOD2OT);
+        SmartDashboard.putBoolean("MOD 3 Over Temp", MOD3OT);
 
     }
     

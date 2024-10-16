@@ -48,8 +48,8 @@
   "constraintZones": [
     {
       "name": "Slow",
-      "minWaypointRelativePos": 0.15,
-      "maxWaypointRelativePos": 0.2,
+      "minWaypointRelativePos": 0.1,
+      "maxWaypointRelativePos": 0.15,
       "constraints": {
         "maxVelocity": 0.5,
         "maxAcceleration": 3.5,
@@ -78,7 +78,7 @@
     },
     {
       "name": "SpoolNshoot",
-      "waypointRelativePos": 0.1,
+      "waypointRelativePos": 0.0,
       "command": {
         "type": "parallel",
         "data": {
@@ -100,7 +100,7 @@
                         {
                           "type": "wait",
                           "data": {
-                            "waitTime": 0.6
+                            "waitTime": 0.8
                           }
                         }
                       ]

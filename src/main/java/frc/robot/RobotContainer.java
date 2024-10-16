@@ -8,6 +8,7 @@ import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.simulation.JoystickSim;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -66,6 +67,7 @@ public class RobotContainer
   private final JoystickButton setShootButton = new JoystickButton(coDriver, XboxController.Button.kRightBumper.value);
   private final JoystickButton trapButton2 = new JoystickButton(coDriver, XboxController.Button.kBack.value);
   private final JoystickButton setSafeButton = new JoystickButton(coDriver, XboxController.Button.kY.value);
+  private final JoystickButton vARSHOOTTrigger = new JoystickButton(coDriver, XboxController.Button.kLeftStick.value);
 
   /* Subsystems */
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -123,6 +125,7 @@ public class RobotContainer
     trapButton2.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Trap.hell, m_arm, "hell"), new setHeadTo(Constants.Trap.heaven, m_head, "heaven"), new setShooter(0.2, m_shooter)));
     setLineButton.whileTrue(new ParallelCommandGroup(new aimVision(Constants.Aiming.getTag(), vision_drivetrain), new setHeadTo(Constants.Aiming.lineHead, m_head, "Line Shot"), new setShooter(Constants.Shooter.shooterSpeed, m_shooter)));
     setLineButton.onFalse(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home").withTimeout(3), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2").withTimeout(3)));
+    vARSHOOTTrigger.whileTrue(new ParallelCommandGroup (new setShooter(XboxController.Axis.kRightTrigger.value, m_shooter)));
   }
 
   public RobotContainer()

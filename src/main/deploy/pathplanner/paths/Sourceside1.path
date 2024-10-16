@@ -111,13 +111,19 @@
                         {
                           "type": "named",
                           "data": {
+                            "name": "kindaUpClose"
+                          }
+                        },
+                        {
+                          "type": "named",
+                          "data": {
                             "name": "setShootMotor"
                           }
                         },
                         {
                           "type": "wait",
                           "data": {
-                            "waitTime": 1.0
+                            "waitTime": 0.8
                           }
                         }
                       ]

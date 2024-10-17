@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 0.7,
-        "y": 6.3
+        "x": 2.4599653194866877,
+        "y": 6.3259601768926075
       },
       "prevControl": {
-        "x": 1.1215901156481356,
-        "y": 6.393686692366245
+        "x": 2.881555435134824,
+        "y": 6.419646869258859
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "3na2"
     }
   ],
   "rotationTargets": [],
@@ -39,11 +39,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 60.0,
+    "rotation": 20.195730649039575,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "3 Note Amp",
+  "folder": "4 Note Amp",
   "previewStartingState": {
     "rotation": 0.0,
     "velocity": 0

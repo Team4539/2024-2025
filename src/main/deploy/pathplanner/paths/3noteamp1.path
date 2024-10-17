@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 1.9346939692452838,
-        "y": 7.06163443710625
+        "x": 1.8175856037874687,
+        "y": 6.487803446362955
       },
       "prevControl": {
-        "x": 1.384284651593553,
-        "y": 6.768863523461712
+        "x": 1.3117558517759775,
+        "y": 6.095300249984369
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "3na1"
+      "linkedName": null
     }
   ],
   "rotationTargets": [
@@ -53,7 +53,7 @@
             {
               "type": "named",
               "data": {
-                "name": "kindaUpClose"
+                "name": "midUpClose"
               }
             }
           ]
@@ -69,7 +69,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 46.0,
+    "rotation": 33.69006752597984,
     "rotateFast": false
   },
   "reversed": false,

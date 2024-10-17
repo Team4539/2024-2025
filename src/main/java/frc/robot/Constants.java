@@ -72,11 +72,13 @@ public class Constants
         public static final double Source = 0.20; // for arm
         public static final double Upclose = 0.425; // for head
         public static final double kindaUpClose = 0.459;
+        public static final double midUpClose = 0.442;
         public static final double safeHead = 0.290;
         public static final double safeArm = 0.11;
         public static final double lineArm = 0.0;
         public static final double lineHead = 0.459;
         public static final double pickupShootPosition = 0.473;
+        public static final double farArm = 0.2729614;
 
         public static int getTag()
         {

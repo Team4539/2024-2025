@@ -1,8 +1,11 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+
+import javax.swing.text.StyleContext.SmallAttributeSet;
 
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
@@ -25,7 +28,9 @@ public class ArmSubsystem extends SubsystemBase
     }
 
     @Override
-    public void periodic() {}
+    public void periodic() {
+        SmartDashboard.putNumber("Arm Encoder Val", armEncoder.get());
+    }
 
     @Override
     public void simulationPeriodic() {}

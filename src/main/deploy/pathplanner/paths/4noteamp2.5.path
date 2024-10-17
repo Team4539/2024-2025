@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 6.553788201916028,
-        "y": 6.968488431982414
+        "x": 5.011720389700492,
+        "y": 6.546255578637684
       },
       "prevControl": {
-        "x": 5.441258730066783,
-        "y": 6.886512576161944
+        "x": 3.8991909178512474,
+        "y": 6.4642797228172135
       },
       "nextControl": null,
       "isLocked": false,
@@ -67,7 +67,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "3 Note Amp",
+  "folder": "4 Note Amp",
   "previewStartingState": {
     "rotation": 60.0,
     "velocity": 0.0

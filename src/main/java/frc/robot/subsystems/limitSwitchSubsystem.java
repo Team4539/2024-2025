@@ -1,7 +1,9 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix6.hardware.Pigeon2;
 import com.ctre.phoenix6.hardware.TalonFX;
 
+import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -9,7 +11,7 @@ import frc.robot.Constants;
 
 public class limitSwitchSubsystem extends SubsystemBase
 {
-    private DigitalInput limitswitch;
+    private DigitalInput limitswitch; 
     private final TalonFX Motor1 = new TalonFX(1);
     private final TalonFX Motor2 = new TalonFX(2);
     private final TalonFX Motor3 = new TalonFX(3);
@@ -74,6 +76,8 @@ public class limitSwitchSubsystem extends SubsystemBase
         SmartDashboard.putBoolean("MOD 1 Over Temp", MOD1OT);
         SmartDashboard.putBoolean("MOD 2 Over Temp", MOD2OT);
         SmartDashboard.putBoolean("MOD 3 Over Temp", MOD3OT);
+       
+
 
     }
     

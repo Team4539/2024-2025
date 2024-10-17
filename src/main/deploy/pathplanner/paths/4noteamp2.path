@@ -16,21 +16,64 @@
     },
     {
       "anchor": {
-        "x": 2.4599653194866877,
-        "y": 6.3259601768926075
+        "x": 5.799270029353182,
+        "y": 6.8391285427364
       },
       "prevControl": {
-        "x": 2.881555435134824,
-        "y": 6.419646869258859
+        "x": 6.220860145001321,
+        "y": 6.932815235102652
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "3na2"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
-  "constraintZones": [],
-  "eventMarkers": [],
+  "constraintZones": [
+    {
+      "name": "slow",
+      "minWaypointRelativePos": 0.05,
+      "maxWaypointRelativePos": 0.55,
+      "constraints": {
+        "maxVelocity": 0.5,
+        "maxAcceleration": 3.5,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 540.0
+      }
+    }
+  ],
+  "eventMarkers": [
+    {
+      "name": "FIRE",
+      "waypointRelativePos": 0.5,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "race",
+              "data": {
+                "commands": [
+                  {
+                    "type": "named",
+                    "data": {
+                      "name": "setIntake"
+                    }
+                  },
+                  {
+                    "type": "wait",
+                    "data": {
+                      "waitTime": 0.3
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 5.5,
     "maxAcceleration": 3.5,

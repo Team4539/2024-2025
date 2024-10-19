@@ -17,11 +17,11 @@
     {
       "anchor": {
         "x": 5.799270029353182,
-        "y": 6.8391285427364
+        "y": 6.84
       },
       "prevControl": {
         "x": 6.220860145001321,
-        "y": 6.932815235102652
+        "y": 6.933686692366251
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,7 +32,7 @@
   "constraintZones": [
     {
       "name": "slow",
-      "minWaypointRelativePos": 0.05,
+      "minWaypointRelativePos": 0.4,
       "maxWaypointRelativePos": 0.55,
       "constraints": {
         "maxVelocity": 0.5,
@@ -82,7 +82,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 20.195730649039575,
+    "rotation": 20.2,
     "rotateFast": false
   },
   "reversed": false,

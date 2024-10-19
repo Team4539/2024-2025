@@ -148,6 +148,7 @@ public class RobotContainer
     NamedCommands.registerCommand("aimSpeaker", new aimVision(Constants.Aiming.getTag(), drivetrain));
     NamedCommands.registerCommand("midUpClose", new setHeadTo(Constants.Aiming.midUpClose, m_head, "MidUpClose"));
     NamedCommands.registerCommand("Farshot", new ParallelCommandGroup(new setArmTo(Constants.Aiming.farArm, m_arm,"WEEEEE"), new setShooter(Constants.Shooter.shooterSpeed,m_shooter) ));
+    NamedCommands.registerCommand("FarShotSetup", new setArmTo(Constants.Aiming.farArm, m_arm, "Setuparm"));
     SmartDashboard.putData("Autonomous", m_chooser);
 
     m_chooser.addOption("4 Note Middle (Stage)", drivetrain.getAutoPath("4note"));

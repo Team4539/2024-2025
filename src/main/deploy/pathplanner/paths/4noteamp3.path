@@ -8,37 +8,43 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.486531171949646,
-        "y": 5.527514849608872
+        "x": 7.579317184311971,
+        "y": 7.190453639109847
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 0.7,
-        "y": 6.3
+        "x": 5.8,
+        "y": 6.84
       },
       "prevControl": {
-        "x": 1.6017297411871576,
-        "y": 6.487395871357903
+        "x": 6.701729741187157,
+        "y": 7.0273958713579034
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
+  "rotationTargets": [],
+  "constraintZones": [
     {
-      "waypointRelativePos": 0.9,
-      "rotationDegrees": 54.0,
-      "rotateFast": false
+      "name": "Slow ",
+      "minWaypointRelativePos": 0.8,
+      "maxWaypointRelativePos": 1.0,
+      "constraints": {
+        "maxVelocity": 0.5,
+        "maxAcceleration": 3.5,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 360.0
+      }
     }
   ],
-  "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "reverse intake",
+      "name": "reverse intake and setshot",
       "waypointRelativePos": 0,
       "command": {
         "type": "parallel",
@@ -92,36 +98,6 @@
           ]
         }
       }
-    },
-    {
-      "name": "setupclose",
-      "waypointRelativePos": 0.45,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "race",
-              "data": {
-                "commands": [
-                  {
-                    "type": "named",
-                    "data": {
-                      "name": "setShootUpClose"
-                    }
-                  },
-                  {
-                    "type": "named",
-                    "data": {
-                      "name": "setShootMotor"
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      }
     }
   ],
   "globalConstraints": {
@@ -132,7 +108,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 41.19,
+    "rotation": 20.2,
     "rotateFast": false
   },
   "reversed": false,

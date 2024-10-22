@@ -78,7 +78,7 @@ public class Constants
         public static final double lineArm = 0.0;
         public static final double lineHead = 0.459;
         public static final double pickupShootPosition = 0.473;
-        public static final double farArm = 0.2729614;
+        public static final double farArm = 0.2758614;
 
         public static int getTag()
         {

@@ -126,7 +126,7 @@ public class RobotContainer
     trapButton2.whileTrue(new ParallelCommandGroup(new setArmTo(Constants.Trap.hell, m_arm, "hell"), new setHeadTo(Constants.Trap.heaven, m_head, "heaven"), new setShooter(0.2, m_shooter)));
     setLineButton.whileTrue(new ParallelCommandGroup(new aimVision(Constants.Aiming.getTag(), vision_drivetrain), new setHeadTo(Constants.Aiming.lineHead, m_head, "Line Shot"), new setShooter(Constants.Shooter.shooterSpeed, m_shooter)));
     setLineButton.onFalse(new ParallelCommandGroup(new setArmTo(Constants.Aiming.Home, m_arm, "Home").withTimeout(3), new setHeadTo(Constants.Aiming.Home2, m_head, "Home 2").withTimeout(3)));
-    vARSHOOTTrigger.whileTrue(new ParallelCommandGroup (new setShooter(XboxController.Axis.kRightTrigger.value, m_shooter), new setArmTo(Constants.Aiming.farArm, m_arm, "WEEEEE")));
+    vARSHOOTTrigger.whileTrue(new ParallelCommandGroup (new setShooter(XboxController.Axis.kRightTrigger.value, m_shooter), new setArmTo(Constants.Aiming.farArm, m_arm, "WEEEEE"), new setHeadTo(Constants.Aiming.kindaUpClose, m_head, null)));
   }
 
   public RobotContainer()
@@ -147,7 +147,7 @@ public class RobotContainer
     NamedCommands.registerCommand("rotateTo", new rotateTo(-50, drivetrain));
     NamedCommands.registerCommand("aimSpeaker", new aimVision(Constants.Aiming.getTag(), drivetrain));
     NamedCommands.registerCommand("midUpClose", new setHeadTo(Constants.Aiming.midUpClose, m_head, "MidUpClose"));
-    NamedCommands.registerCommand("Farshot", new ParallelCommandGroup(new setArmTo(Constants.Aiming.farArm, m_arm,"WEEEEE"), new setShooter(Constants.Shooter.shooterSpeed,m_shooter) ));
+    NamedCommands.registerCommand("Farshot", new ParallelCommandGroup(new setArmTo(Constants.Aiming.farArm, m_arm,"WEEEEE"), new setShooter(Constants.Shooter.shooterSpeed,m_shooter)));
     NamedCommands.registerCommand("FarShotSetup", new setArmTo(Constants.Aiming.farArm, m_arm, "Setuparm"));
     SmartDashboard.putData("Autonomous", m_chooser);
 

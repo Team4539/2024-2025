@@ -191,6 +191,12 @@
                     }
                   ]
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "setHome"
+                }
               }
             ]
           }
@@ -209,12 +215,6 @@
                 "type": "path",
                 "data": {
                   "pathName": "4noteamp3"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "FarShotSetup"
                 }
               },
               {
@@ -260,9 +260,22 @@
                       }
                     },
                     {
-                      "type": "named",
+                      "type": "parallel",
                       "data": {
-                        "name": "Farshot"
+                        "commands": [
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Farshot"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "kindaUpClose"
+                            }
+                          }
+                        ]
                       }
                     }
                   ]
@@ -297,6 +310,12 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "setHome"
+          }
+        },
+        {
           "type": "path",
           "data": {
             "pathName": "4NoteAmp3.5"
@@ -316,12 +335,6 @@
                 "type": "path",
                 "data": {
                   "pathName": "4NoteAmp4"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "FarShotSetup"
                 }
               },
               {
@@ -367,9 +380,22 @@
                       }
                     },
                     {
-                      "type": "named",
+                      "type": "parallel",
                       "data": {
-                        "name": "Farshot"
+                        "commands": [
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Farshot"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "kindaUpClose"
+                            }
+                          }
+                        ]
                       }
                     }
                   ]
@@ -392,6 +418,12 @@
                 "type": "named",
                 "data": {
                   "name": "Farshot"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "kindaUpClose"
                 }
               },
               {

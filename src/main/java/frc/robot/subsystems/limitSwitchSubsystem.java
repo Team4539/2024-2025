@@ -5,6 +5,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -27,6 +28,7 @@ public class limitSwitchSubsystem extends SubsystemBase
     private final double MOTOR3_temp = Motor3.getDeviceTemp().getValue();
     private final double MOTOR6_temp = Motor6.getDeviceTemp().getValue();
     private final double MOTOR7_temp = Motor7.getDeviceTemp().getValue();
+    private final double BATVOLT = DriverStation.
     private boolean MOD0OT = false;
     private boolean MOD1OT = false;
     private boolean MOD2OT = false;
@@ -76,6 +78,7 @@ public class limitSwitchSubsystem extends SubsystemBase
         SmartDashboard.putBoolean("MOD 1 Over Temp", MOD1OT);
         SmartDashboard.putBoolean("MOD 2 Over Temp", MOD2OT);
         SmartDashboard.putBoolean("MOD 3 Over Temp", MOD3OT);
+
        
 
 

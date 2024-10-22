@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 5.799270029353182,
-        "y": 6.84
+        "x": 5.283993221338795,
+        "y": 6.78
       },
       "prevControl": {
-        "x": 6.220860145001321,
-        "y": 6.933686692366251
+        "x": 5.705583336986934,
+        "y": 6.873686692366252
       },
       "nextControl": null,
       "isLocked": false,
@@ -45,7 +45,7 @@
   "eventMarkers": [
     {
       "name": "FIRE",
-      "waypointRelativePos": 0.5,
+      "waypointRelativePos": 1.0,
       "command": {
         "type": "parallel",
         "data": {

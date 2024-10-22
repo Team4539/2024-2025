@@ -1,11 +1,14 @@
 package frc.robot.subsystems;
 
+import javax.xml.crypto.Data;
+
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.ctre.phoenix6.hardware.TalonFX;
 
-import edu.wpi.first.util.sendable.Sendable;
+import edu.wpi.first.units.Power;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.PowerDistribution;
+import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -24,15 +27,16 @@ public class limitSwitchSubsystem extends SubsystemBase
     private final TalonFX Motor14 = new TalonFX(14);
     private final TalonFX Motor15 = new TalonFX(15);
     private final TalonFX Motor16 = new TalonFX(16);
+    PowerDistribution pdp = new PowerDistribution(0, ModuleType.kCTRE);
     private final double MOTOR1_temp = Motor1.getDeviceTemp().getValue();
     private final double MOTOR3_temp = Motor3.getDeviceTemp().getValue();
     private final double MOTOR6_temp = Motor6.getDeviceTemp().getValue();
     private final double MOTOR7_temp = Motor7.getDeviceTemp().getValue();
-    private final double BATVOLT = DriverStation.
     private boolean MOD0OT = false;
     private boolean MOD1OT = false;
     private boolean MOD2OT = false;
     private boolean MOD3OT = false;
+    private boolean BROWNOUT = false;
 
     
     
@@ -55,10 +59,14 @@ public class limitSwitchSubsystem extends SubsystemBase
             MOD2OT = false; }
         else{
             MOD2OT = true;}
-        if(Motor7.getProcessorTemp().getValue() > 90               ){
+        if(Motor7.getProcessorTemp().getValue() > 90){
             MOD3OT = false; }
         else{
             MOD3OT = true;}
+        if(pdp.getVoltage() < 7){ 
+            BROWNOUT = true;}
+
+        
 
 
 
@@ -78,6 +86,8 @@ public class limitSwitchSubsystem extends SubsystemBase
         SmartDashboard.putBoolean("MOD 1 Over Temp", MOD1OT);
         SmartDashboard.putBoolean("MOD 2 Over Temp", MOD2OT);
         SmartDashboard.putBoolean("MOD 3 Over Temp", MOD3OT);
+        SmartDashboard.putBoolean("BROWNOUT HAPPENED", BROWNOUT);
+        SmartDashboard.putNumber("BatVolt", pdp.getVoltage());
 
        
 

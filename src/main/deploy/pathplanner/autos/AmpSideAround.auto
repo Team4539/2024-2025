@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.53,
-      "y": 7.77
+      "x": 1.41,
+      "y": 7.768154237191747
     },
     "rotation": 0
   },
@@ -95,6 +95,12 @@
           }
         },
         {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.35
+          }
+        },
+        {
           "type": "race",
           "data": {
             "commands": [
@@ -117,6 +123,36 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AmpSideAround2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AmpSideAround2.5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AmpSideAround3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AmpSideAround3.5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AmpSideAround4"
           }
         }
       ]

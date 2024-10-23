@@ -165,7 +165,7 @@ public class RobotContainer
     // funny defense auto
     m_chooser.addOption("4NoteAmp{TEST}", drivetrain.getAutoPath("4noteamp"));
     // test for 4 note
-    m_chooser.addOption("djhsdjkfhsdkjfhdshfdjshfksdhfkshdfkjhdskj", drivetrain.getAutoPath("AmpSideAround"));
+    m_chooser.addOption("Amp Side Around", drivetrain.getAutoPath("AmpSideAround"));
     configureBindings();
     
 

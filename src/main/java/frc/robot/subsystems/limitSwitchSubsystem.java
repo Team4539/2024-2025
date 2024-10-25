@@ -63,7 +63,7 @@ public class limitSwitchSubsystem extends SubsystemBase
             MOD3OT = false; }
         else{
             MOD3OT = true;}
-        if(pdp.getVoltage() < 7){ 
+        if(pdp.getVoltage() < 6.8){ 
             BROWNOUT = true;}
 
         

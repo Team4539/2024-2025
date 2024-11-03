@@ -50,6 +50,7 @@ public class limitSwitchSubsystem extends SubsystemBase
         if(Motor1.getProcessorTemp().getValue() > 90){
             MOD0OT = false; }
         else{
+            
             MOD0OT = true;}
         if(Motor3.getProcessorTemp().getValue() > 90){
             MOD1OT = false; }
